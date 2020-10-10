@@ -32,9 +32,9 @@ void (timer_int_handler)() {
 }
 
 int (timer_get_conf)(uint8_t timer, uint8_t *st) {
-  uint8_t RB_command = TIMER_RB_CMD| TIMER_RB_COUNT_ | TIMER_RB_STATUS_ | TIMER_RB_SEL(timer);
+  uint8_t RB_command = TIMER_RB_CMD| TIMER_RB_COUNT_  | TIMER_RB_SEL(timer);
   sys_outb(TIMER_CTRL,RB_command);
-  util_sys_inb(TIMER_0+timer,st);
+  if(util_sys_inb(TIMER_0+timer,st)!=0) return 1;
 
   return 0;
 }
@@ -47,14 +47,30 @@ int (timer_display_conf)(uint8_t timer, uint8_t st,
     case tsf_all: conf.byte=st;
 
     /*!< initialization mode */
-    case tsf_initial: conf.in_mode=st&24;
-
+    case tsf_initial:switch(st&48){
+      case 0:conf.in_mode=INVAL_val;
+      case 16:conf.in_mode=LSB_only;
+      case 32:conf.in_mode=MSB_only;
+      case 48:conf.in_mode=MSB_after_LSB;
+    }
+    
     /*!< counting mode: 0, 1,.., 5 */
-    case tsf_mode:conf.count_mode=st&7;
+    case tsf_mode:switch(st&14){
+      case 0:conf.count_mode=0;
+      case 2:conf.count_mode=1;
+      case 4:
+      case 12:
+      conf.count_mode=2;
+      case 6:
+      case 14:
+      conf.count_mode=3;
+      case 8:conf.count_mode=4;
+      case 10:conf.count_mode=5;
+    }
 
     /*!< counting base, true if BCD */
     case tsf_base: conf.bcd=st&1;
   }
-  timer_print_config(timer, field, conf);
+  if(!timer_print_config(timer, field, conf))return 1;
   return 0;
 }
