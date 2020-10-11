@@ -6,10 +6,56 @@
 #include "i8254.h"
 
 int (timer_set_frequency)(uint8_t timer, uint32_t freq) {
-  /* To be implemented by the students */
-  printf("%s is not yet implemented!\n", __func__);
+  uint8_t st;
+  if(timer_get_conf(timer,&st)) return 1;
 
-  return 1;
+  uint8_t new_st = (st&0x0F) | TIMER_LSB_MSB;
+  
+  if (freq>TIMER_FREQ)return 1;
+  uint16_t div = TIMER_FREQ/freq;
+
+  uint8_t lsb, msb;
+	
+	util_get_LSB(div, &lsb);
+	util_get_MSB(div, &msb);
+
+  switch (timer)
+	{
+	case 0:
+		new_st = new_st | TIMER_SEL0;
+		if(sys_outb(TIMER_CTRL, new_st))return 1;
+			
+		if(sys_outb(TIMER_0, lsb))return 1;
+			
+		if(sys_outb(TIMER_0, msb))return 1;
+		
+		break;
+	
+	case 1:
+		new_st = new_st | TIMER_SEL1;
+		if (sys_outb(TIMER_CTRL, new_st))return 1;
+			
+		if(sys_outb(TIMER_1, lsb))return 1;
+			
+		if(sys_outb(TIMER_1, msb))return 1;
+	
+		break;
+	
+	case 2:
+		new_st = new_st | TIMER_SEL2;	
+		if(sys_outb(TIMER_CTRL, new_st))return 1;
+			
+		if(sys_outb(TIMER_2, lsb))return 1;
+			
+		if(sys_outb(TIMER_2, msb))return 1;
+	
+		break;
+
+	default:
+		return 1;
+	}
+
+  return 0;
 }
 
 int (timer_subscribe_int)(uint8_t *bit_no) {
