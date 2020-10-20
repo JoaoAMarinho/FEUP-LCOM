@@ -35,5 +35,6 @@ void (kbc_ih)() {
       util_sys_inb(KEYBOARD_OUT_BUF, &data);
       error=false;
   }
-  error = true;
+  else
+    error = true;
 }

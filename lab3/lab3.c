@@ -68,9 +68,9 @@ int (kbd_test_scan) () {
                   }
                   if((data & BIT(7)) == BIT(7)) //((data&BIT(7))>>7); 
                   {
-                    make = true;
+                    make = false;
                   }
-                  else make = false;
+                  else make = true;
                   kbd_print_scancode(make, size, vect);
                   }
               }
