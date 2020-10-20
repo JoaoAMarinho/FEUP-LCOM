@@ -7,7 +7,7 @@
 
 #define DELAY_US    20000
 
-//#define KEYBOARD_IRQ 0x01   supostamente ja esta definida?
+#define KBD_IRQ 0x01
 
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 
@@ -21,22 +21,21 @@
 #define MAKE_CODE_VERIFICATION BIT(7)
 
 // Status Register State
-#define PARITY_ERROR   BIT(7)
+#define PARITY_ERROR BIT(7)
 
-#define TIMEOUT_ERROR  BIT(6)
+#define TIMEOUT_ERROR BIT(6)
 
-#define	AUX  BIT(5)
+#define	AUX BIT(5)
 
-#define KEYBOARD_INHIBIT   BIT(4)
+#define KEYBOARD_INHIBIT BIT(4)
 
-#define A2_LINE	 BIT(3)
+#define A2_LINE BIT(3)
 
 #define SYSTEM_FLAG BIT(2)
 
-#define INPUT_BUF_FULL	BIT(1)
+#define INPUT_BUF_FULL BIT(1)
 
 #define OUTPUT_BUF_FULL  BIT(0)
-
 
 #define TWO_BYTES   0xE0
 

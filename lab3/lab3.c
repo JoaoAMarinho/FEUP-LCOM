@@ -8,8 +8,9 @@
 #include "KeyBoard.h"
 
 
-int cnt=0, itr_counter = 0;
-uint8_t stat,data=0;
+int cnt=0;
+uint8_t data;
+bool error=false;
 
 
 
@@ -41,7 +42,10 @@ int (kbd_test_scan) () {
   int ipc_status, r;
   message msg;
   uint8_t irq_set;
-  keyboard_subscribe_int(&irq_set);
+  uint8_t size=0;
+  uint8_t vect[2];
+  bool make;
+  if(keyboard_subscribe_int(&irq_set)) return 1;
   while( data!=ESC_KEY) { 
   /* Get a request message. */
       if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
@@ -53,9 +57,22 @@ int (kbd_test_scan) () {
           case HARDWARE: /* hardware interrupt notification */
               if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
                   /* process it */
+                  size=1;
                   kbc_ih();
-                  if(keyboard_read_command()) return 1;
-                  //kbd_print_scancode(bool make, uint8_t size, uint8_t bytes[]);
+                  if(!error){
+                    vect[0]=data;
+                    if(data==TWO_BYTES){
+                      kbc_ih();
+                      size++;
+                      vect[1]=data;
+                  }
+                  if((data & BIT(7)) == BIT(7)) //((data&BIT(7))>>7); 
+                  {
+                    make = true;
+                  }
+                  else make = false;
+                  kbd_print_scancode(make, size, vect);
+                  }
               }
               break;
           default:
@@ -67,36 +84,6 @@ int (kbd_test_scan) () {
   }
   keyboard_unsubscribe_int();
   kbd_print_no_sysinb(cnt);
-/*
-  uint8_t irq_set, cmd=READ_COMMAND_BYTE;
-  keyboard_subscribe_int(&irq_set);
-  //stat, cmdc data
-  int retry=3;
-  while( retry!=0 ) {
-    util_sys_inb(STATUS_REGISTER, &stat);
-    if( (stat & INPUT_BUF_FULL) == 0 ) {
-      sys_outb(COMMAND_REGISTER, cmd);
-      return 0;
-  }
-  tickdelay(micros_to_ticks(DELAY_US));
-  retry--;
-}
-
-retry=3;
-while( retry!=0 ) {
-  util_sys_inb(STATUS_REGISTER, &stat); 
-  if( stat & OUTPUT_BUF_FULL ) {
-    util_sys_inb(KEYBOARD_OUT_BUF, &data);
-    if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR)) == 0 )
-      return data;
-    else
-      return -1;
-  }
-  tickdelay(micros_to_ticks(DELAY_US));
-  retry--;
-}
-  keyboard_unsubscribe_int();*/
-  printf ("%d",itr_counter);
   return 0;
 }
 
