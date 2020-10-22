@@ -6,8 +6,7 @@ SRCS = lab3.c KeyBoard.c utils.c
 
 # additional compilation flags
 # "-Wall -Wextra -Werror -I . -std=c11 -Wno-unused-parameter" are already set
-CFLAGS += -pedantic
-CPPFLAGS += -D LAB3
+CPPFLAGS += -pedantic -DLAB3
 
 # list of library dependencies (for Lab 3, only LCF library)
 DPADD += ${LIBLCF}

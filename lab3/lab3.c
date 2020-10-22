@@ -66,12 +66,12 @@ int (kbd_test_scan) () {
                       size++;
                       vect[1]=data;
                   }
-                  if((data & BIT(7)) == BIT(7)) //((data&BIT(7))>>7); 
+                  if(data & MAKE_CODE_VERIFY) 
                   {
                     make = false;
                   }
                   else make = true;
-                  kbd_print_scancode(make, size, vect);
+                  if(kbd_print_scancode(make, size, vect)) return 1;
                   }
               }
               break;
@@ -83,15 +83,35 @@ int (kbd_test_scan) () {
       }
   }
   keyboard_unsubscribe_int();
-  kbd_print_no_sysinb(cnt);
+  if (kbd_print_no_sysinb(cnt)) return 1;
   return 0;
 }
 
 int (kbd_test_poll) () {
-  /* A ser preenchido pelos alunos */
-  printf ("% s ainda não foi implementado! \n", __func__);
-
-  return 1;
+  uint8_t size=0;
+  uint8_t vect[2];
+  bool make;
+  while( data!=ESC_KEY ) { 
+    kbc_poll_ih();
+    size=1;
+    if(!error){
+      vect[0]=data;
+      if(data==TWO_BYTES){
+        kbc_poll_ih();
+        size++;
+        vect[1]=data;
+      }
+      if(data & MAKE_CODE_VERIFY) 
+      {
+        make = false;
+      }
+      else make = true;
+      if(kbd_print_scancode(make, size, vect)) return 1;
+    }
+  }
+  if(itrp_enable()) return 1;
+  if (kbd_print_no_sysinb(cnt)) return 1;
+  return 0;
 }
 
 int (kbd_test_timed_scan) (uint8_t n) {

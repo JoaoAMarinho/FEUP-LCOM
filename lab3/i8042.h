@@ -5,20 +5,21 @@
 
 #define BIT(n)    (1 << (n))
 
-#define DELAY_US    20000
+#define DELAY 20000
 
 #define KBD_IRQ 0x01
 
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 
-#define ESC_KEY    0x81
+#define ESC_KEY 0x81
 
-#define KEYBOARD_OUT_BUF     0x60
+#define KEYBOARD_OUT_BUF 0x60
 
-#define STATUS_REGISTER   0x64 
+#define STATUS_REGISTER 0x64 
+
 #define COMMAND_REGISTER 0x64
 
-#define MAKE_CODE_VERIFICATION BIT(7)
+#define MAKE_CODE_VERIFY BIT(7)
 
 // Status Register State
 #define PARITY_ERROR BIT(7)

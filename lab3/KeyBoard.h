@@ -19,4 +19,6 @@ int (keyboard_unsubscribe_int)();
 // Handles keyboard interrupt counter
 void (kbc_ih)();
 
-int (keyboard_read_command)();
+void(kbc_poll_ih)();
+
+int (itrp_enable)();
