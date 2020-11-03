@@ -1,15 +1,15 @@
-#include "keyboard.h"
+#include "KeyBoard.h"
 
 extern uint8_t data;
-int hook_id = 0;
+int kb_hook_id = 1;
 extern bool error;
 
 
 
 // Subscribes keyboard
 int(keyboard_subscribe_int)(uint8_t* bit_no){
-  *bit_no = BIT(hook_id);
-  if (sys_irqsetpolicy(KBD_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)){
+  *bit_no = BIT(kb_hook_id);
+  if (sys_irqsetpolicy(KBD_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &kb_hook_id)){
     printf("Irqpolicy fails");
     return 1;
   }
@@ -18,7 +18,7 @@ int(keyboard_subscribe_int)(uint8_t* bit_no){
 
 // Unsubscribes keyboard
 int (keyboard_unsubscribe_int)(){
-  if (sys_irqrmpolicy(&hook_id)) {
+  if (sys_irqrmpolicy(&kb_hook_id)) {
     printf("Irqrmpolicy fails");
     return 1;
   }
