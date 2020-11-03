@@ -1,5 +1,6 @@
 // IMPORTANT: you must include the following line in all your C files
 #include <lcom/lcf.h>
+#include <lcom/lab4.h>
 
 #include <stdint.h>
 #include <stdio.h>
@@ -46,8 +47,7 @@ int (mouse_test_packet)(uint32_t cnt) {
     if(mouse_subscribe_int(&irq_set)) return 1;
     while(counter < cnt) { 
     /* Get a request message. */
-        printf("subs\n");
-        if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
           printf("driver_receive failed with: %d", r);
           continue;
         }
@@ -56,6 +56,7 @@ int (mouse_test_packet)(uint32_t cnt) {
         switch (_ENDPOINT_P(msg.m_source)) {
           case HARDWARE: /* hardware interrupt notification */
             if (msg.m_notify.interrupts & irq_set) {//code here
+             printf("kikikikik");
               mouse_ih();
               if(!error){
                 if(packet_counter==0 && (received_data & A2_LINE)!=0){
@@ -84,8 +85,9 @@ int (mouse_test_packet)(uint32_t cnt) {
       }
   }
   mouse_unsubscribe_int();
-
+  printf("jhjhjh");
   mouse_disable_data_reporting(); //criar nossa
+  printf("popopo");
 
   return 0;
 }

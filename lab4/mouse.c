@@ -1,11 +1,11 @@
 #include "mouse.h"
 
-int hook_id=0;
+int hook_id=MOUSE_IRQ;
 extern bool error;
 extern uint8_t received_data;
 
 int(mouse_subscribe_int)(uint8_t* bit_n){
-    *bit_n = BIT(hook_id);
+    *bit_n = hook_id;
     if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)){
         printf("Irqpolicy fails");
     return 1;
@@ -24,6 +24,7 @@ int (mouse_unsubscribe_int)(){
 void (mouse_ih)(){
     uint8_t stat;
     util_sys_inb(STATUS_REGISTER, &stat);
+    error = false;
     if( stat & OUTPUT_BUF_FULL ) {
         if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR | AUX)) != 0 ) error=true; //Need to verify AUX as well
         else
