@@ -6,7 +6,7 @@ extern uint8_t received_data;
 
 int(mouse_subscribe_int)(uint8_t* bit_n){
     *bit_n = hook_id;
-    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)){
+    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)!=0){
         printf("Irqpolicy fails");
     return 1;
   }
@@ -49,22 +49,24 @@ void (get_packet)(struct packet *pp){
     else pp->delta_x=pp->bytes[2];
 }
 
-int (mouse_disable_data_reporting)(){
+int (mouse_data_reporting)(uint32_t cmd){
     uint8_t status=0, ackn_type;
 
     while(1){
         if (util_sys_inb(STATUS_REGISTER, &status) != 0)return 1;
-        if((status& (AUX|INPUT_BUF_FULL))==0){
+
+        if((status & (AUX|INPUT_BUF_FULL))==0){
             if(sys_outb(STATUS_REGISTER, WRITE_MOUSE_BYTE)!=0) return 1;
         }
+
         if(util_sys_inb(STATUS_REGISTER, &status) != 0)return 1;
-        if((status& (AUX|INPUT_BUF_FULL))==0){
-            if(sys_outb(WRITE_COMMAND_BYTE, MOUSE_DISABLE)!=0) return 1;
+
+        if((status & (AUX|INPUT_BUF_FULL))==0){
+            if(sys_outb(WRITE_COMMAND_BYTE, cmd)!=0) return 1;
         }
-        if (util_sys_inb(WRITE_COMMAND_BYTE, &ackn_type) != 0) {
-				printf("Sys_inb failed\n");
-				return 1;
-			}
+
+        if (util_sys_inb(WRITE_COMMAND_BYTE, &ackn_type) != 0) return 1;
+			
 		if(ackn_type == ACK){ //if everything OK
 			return 0;
 		}
@@ -72,4 +74,5 @@ int (mouse_disable_data_reporting)(){
 			return 1;
 		}
     }
+    return 0;
 }

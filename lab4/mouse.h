@@ -21,6 +21,6 @@ void (mouse_ih)();
 
 void (get_packet)(struct packet *pp);
 
-int (mouse_disable_data_reporting)();
+int (mouse_data_reporting)(uint32_t cmd);
 
 

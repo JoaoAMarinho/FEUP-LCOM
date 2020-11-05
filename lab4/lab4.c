@@ -1,6 +1,5 @@
 // IMPORTANT: you must include the following line in all your C files
 #include <lcom/lcf.h>
-#include <lcom/lab4.h>
 
 #include <stdint.h>
 #include <stdio.h>
@@ -36,57 +35,57 @@ int main(int argc, char *argv[]) {
 
 
 int (mouse_test_packet)(uint32_t cnt) {
-    int ipc_status, r, packet_counter=0;
     message msg;
-    uint8_t irq_set;
-    struct packet* pp=NULL;
+    int ipc_status, packet_counter=0;
+    uint16_t r;
+	  uint8_t irq_set;
+    struct packet pp;
     uint32_t counter=0;
 
-    mouse_enable_data_reporting(); //criar nossa
+    mouse_data_reporting(MOUSE_ENABLE);
 
     if(mouse_subscribe_int(&irq_set)) return 1;
+
     while(counter < cnt) { 
-    /* Get a request message. */
-        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
+        if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0) { 
           printf("driver_receive failed with: %d", r);
           continue;
         }
         printf("subs 2\n");
-        if (is_ipc_notify(ipc_status)) { /* received notification */
-        switch (_ENDPOINT_P(msg.m_source)) {
-          case HARDWARE: /* hardware interrupt notification */
-            if (msg.m_notify.interrupts & irq_set) {//code here
+        if (is_ipc_notify(ipc_status)) {
+          switch (_ENDPOINT_P(msg.m_source)) {
+          case HARDWARE:
+            if (msg.m_notify.interrupts & irq_set) {
              printf("kikikikik");
               mouse_ih();
-              if(!error){
-                if(packet_counter==0 && (received_data & A2_LINE)!=0){
-                    pp->bytes[0]=received_data;
-                    packet_counter++;
+              if(packet_counter==0){
+                if((received_data & A2_LINE)!=0){
+                  pp.bytes[0]=received_data;
+                  packet_counter++;
                 }
-                else if(packet_counter==1){
-                    pp->bytes[1]=received_data;
-                    packet_counter++;
-                }
-                else if(packet_counter==2){
-                    pp->bytes[2]=received_data;
-                    packet_counter=0;
-                    get_packet(pp);
-                    mouse_print_packet(pp);
-                    counter++;
-                }
-            }
+                else continue;
+              }
+              else if(packet_counter==1){
+                pp.bytes[1]=received_data;
+                packet_counter++;
+              }
+              else{
+                pp.bytes[2]=received_data;
+                packet_counter=0;
+                get_packet(&pp);
+                mouse_print_packet(&pp);
+                counter++;
+              }
             }
             break;
-            default:
+          default:
               break; /* no other notifications expected: do nothing */
         }
-      } else { /* received a standard message, not a notification */
-      /* no standard messages expected: do nothing */
       }
   }
-  mouse_unsubscribe_int();
+  if(mouse_unsubscribe_int()!=0) return 1;
   printf("jhjhjh");
-  mouse_disable_data_reporting(); //criar nossa
+  mouse_data_reporting(MOUSE_DISABLE);
   printf("popopo");
 
   return 0;

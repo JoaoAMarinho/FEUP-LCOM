@@ -9,12 +9,16 @@
 
 #define MOUSE_IRQ 12
 
+// Keyboard codes
+
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 #define ESC_KEY 0x81
+#define MAKE_CODE_VERIFY BIT(7)
+
+
 #define OUT_BUF 0x60
 #define STATUS_REGISTER 0x64 
 #define COMMAND_REGISTER 0x64
-#define MAKE_CODE_VERIFY BIT(7)
 
 // Status Register State
 
@@ -39,9 +43,9 @@
 
 // Mouse acknowledgments
 
-#define ACK 0xFA
-#define NACK 0xFE
-#define ERROR 0xFC
+#define ACK 0xFA   //if everything ok
+#define NACK 0xFE  //if byte is invalid
+#define ERROR 0xFC //if 2 consecutive bytes are invalid
 
 #define WRITE_MOUSE_BYTE 0xD4 	
 #define WRITE_CMD_BYTE   0x60
