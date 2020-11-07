@@ -6,7 +6,7 @@ extern uint8_t received_data;
 
 int(mouse_subscribe_int)(uint8_t* bit_n){
     *bit_n = hook_id;
-    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)!=0){
+    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)){
         printf("Irqpolicy fails");
     return 1;
   }
@@ -26,10 +26,9 @@ void (mouse_ih)(){
     util_sys_inb(STATUS_REGISTER, &stat);
     error = false;
     if( stat & OUTPUT_BUF_FULL ) {
-        if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR | AUX)) != 0 ) error=true; //Need to verify AUX as well
-        else
+        if ((stat &(PARITY_ERROR | TIMEOUT_ERROR)) != 0 ) {error=true;}
+        else { error=false; }
         util_sys_inb(OUT_BUF, &received_data);
-        error=false;
     }
     else error = true;
 }
@@ -46,7 +45,7 @@ void (get_packet)(struct packet *pp){
     if(x_msb) pp->delta_x=(pp->bytes[1]-256);
     else pp->delta_x=pp->bytes[1];
     if(y_msb) pp->delta_y=(pp->bytes[2]-256);
-    else pp->delta_x=pp->bytes[2];
+    else pp->delta_y=pp->bytes[2];
 }
 
 int (mouse_data_reporting)(uint32_t cmd){
