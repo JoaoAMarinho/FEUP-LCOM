@@ -1,12 +1,12 @@
 #include "mouse.h"
 
-int hook_id=MOUSE_IRQ;
+int mouse_hook_id=MOUSE_IRQ;
 extern bool error;
 extern uint8_t received_data;
 
 int(mouse_subscribe_int)(uint8_t* bit_n){
-    *bit_n = hook_id;
-    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &hook_id)){
+    *bit_n = mouse_hook_id;
+    if (sys_irqsetpolicy(MOUSE_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &mouse_hook_id)){
         printf("Irqpolicy fails");
     return 1;
   }
@@ -14,7 +14,7 @@ int(mouse_subscribe_int)(uint8_t* bit_n){
 }
 
 int (mouse_unsubscribe_int)(){
-    if (sys_irqrmpolicy(&hook_id)) {
+    if (sys_irqrmpolicy(&mouse_hook_id)) {
         printf("Irqrmpolicy fails");
     return 1;
   }
