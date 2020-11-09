@@ -118,14 +118,14 @@ int (kbd_test_poll) () {
 }
 
 int (kbd_test_timed_scan) (uint8_t n) {
-	int time_counter, ipc_status, r;
+	int ipc_status, r;
 	message msg;
 	uint8_t kb_irq_set, timer_irq_set;
 	uint8_t size=0;
   	uint8_t vect[2];
   	bool make;
-
-	if(keyboard_subscribe_int(&kb_irq_set)) return 1;
+  
+	if (keyboard_subscribe_int(&kb_irq_set)) return 1;
 
 	if (timer_subscribe_int(&timer_irq_set)) return 1;
 

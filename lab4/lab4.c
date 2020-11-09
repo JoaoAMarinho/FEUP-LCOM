@@ -40,6 +40,8 @@ int (mouse_test_packet)(uint32_t cnt) {
   int ipc_status, packet_counter=0;
   int r; 
 	uint8_t bit_no;
+  //int hooook = 12;
+  
   struct packet pp;
   uint32_t counter=0;
 
