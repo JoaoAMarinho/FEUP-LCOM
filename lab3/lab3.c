@@ -118,7 +118,7 @@ int (kbd_test_poll) () {
 }
 
 int (kbd_test_timed_scan) (uint8_t n) {
-	int time_counter, ipc_status, r;
+	int ipc_status, r;
 	message msg;
 	uint8_t kb_irq_set, timer_irq_set;
 	uint8_t size=0;
