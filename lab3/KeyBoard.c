@@ -30,10 +30,9 @@ void (kbc_ih)() {
   uint8_t stat;
   util_sys_inb(STATUS_REGISTER, &stat);
   if( stat & OUTPUT_BUF_FULL ) {
+    util_sys_inb(KEYBOARD_OUT_BUF, &data);
     if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR)) != 0 ) error=true;
-    else
-      util_sys_inb(KEYBOARD_OUT_BUF, &data);
-      error=false;
+    else error=false;
   }
   else
     error = true;
@@ -54,10 +53,9 @@ void(kbc_poll_ih)(){
   uint8_t stat;
   util_sys_inb(STATUS_REGISTER, &stat);
   if( stat & OUTPUT_BUF_FULL ) {
+    util_sys_inb(KEYBOARD_OUT_BUF, &data);
     if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR | AUX)) != 0 ) error=true; //Need to verify AUX as well
-    else
-      util_sys_inb(KEYBOARD_OUT_BUF, &data);
-      error=false;
+    else error=false;
   }
   else error = true;
   tickdelay(micros_to_ticks(DELAY));
