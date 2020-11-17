@@ -163,7 +163,6 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
 	int ipc_status, packet_counter=0;
 	int r; 
 	uint8_t bit_no;
-	//int hooook = 12;
 	
 	struct packet pp;
 	uint32_t counter=0;
@@ -207,7 +206,6 @@ int (mouse_test_gesture)(uint8_t x_len, uint8_t tolerance) {
 
 				mouse_event = mouse_get_event(&pp);
 				gesture_handler(&pp,x_len,tolerance,mouse_event,&done);
-				printf("%d", done);
 				}
 			}
 			break;
