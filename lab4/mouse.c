@@ -1,4 +1,5 @@
 #include "mouse.h"
+#include <math.h>
 
 int mouse_hook_id=MOUSE_IRQ;
 extern bool error;
@@ -75,3 +76,120 @@ int (mouse_data_reporting)(uint32_t cmd){
     }
     return 0;
 }
+
+int (mouse_polling)() {
+    struct packet pp;
+    uint8_t stat;
+
+    util_sys_inb(STATUS_REGISTER, &stat);
+    if ((stat & OUTPUT_BUF_FULL) != 1) return 1;
+    else if ((stat &(PARITY_ERROR | TIMEOUT_ERROR)) != 0 ) {return 1;}
+
+    
+    
+    for (int i = 0; i < 3; i++ ) {
+        util_sys_inb(OUT_BUF, &received_data);
+        if(i==0){
+            if((received_data & A2_LINE)!=0){
+                pp.bytes[0]=received_data;
+            }
+            else continue;
+        }
+        else if(i==1){
+            pp.bytes[1]=received_data;
+
+        }
+        else{
+            pp.bytes[2]=received_data;
+            get_packet(&pp);
+            mouse_print_packet(&pp);
+        }
+    }
+    return 0;
+}
+
+enum event (mouse_get_event)(struct packet *pp) {
+    enum event result=0;
+    if (pp->lb && !pp->mb && !pp->rb) {
+        result = L_DOWN;
+    }
+    else if (!pp->lb && !pp->mb && !pp->rb) {
+        result = B_UP;
+    }
+    else if (!pp->lb && !pp->mb && pp->rb) {
+        result = R_DOWN;
+    }
+    else if (!pp->lb && pp->mb && !pp->rb) {
+        result = M_DOWN;
+    }
+    return result;
+}
+
+void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum event m_event, bool *done) {
+    static uint16_t x_delta = 0, y_delta = 0;
+    static enum state current_state = INITIAL;
+
+
+    switch(current_state) {
+        case INITIAL: {
+            x_delta = 0;
+            y_delta = 0;
+            if (m_event == L_DOWN) {
+                current_state = MOVE_LEFT;
+            }
+            break;
+        }
+        case MOVE_LEFT: {
+            if (m_event == B_UP) {
+                if ((x_delta >= x_len) && (fabs(y_delta/(float)x_delta) > 1) ) {
+                    current_state = SWITCH_SIDE;
+                }
+                else {
+                    current_state = INITIAL;
+                }
+            }
+            else if (m_event == L_DOWN) {
+                if ((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
+                    x_delta += pp->delta_x;
+                    y_delta += pp->delta_y;
+                }
+                else current_state = INITIAL;
+            }
+            break;
+        }
+        case SWITCH_SIDE: {
+            x_delta = 0;
+            y_delta = 0;
+            if (m_event != R_DOWN) {
+                current_state = INITIAL;
+            }
+            else if (!((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance))) {
+                current_state = INITIAL;
+            }
+            else if (m_event == R_DOWN) {
+                current_state = MOVE_RIGHT;
+            }
+            break;
+        }
+        case MOVE_RIGHT: {
+            if (m_event == B_UP) {
+                if ((x_delta >= x_len) && (fabs(y_delta/(float)x_delta) > 1) ) {
+                    *done = true;
+                }
+                else {
+                    current_state = INITIAL;
+                }
+            }
+            else if (m_event == R_DOWN) {
+                if ((pp->delta_x > 0 && pp->delta_y < 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
+                    x_delta += pp->delta_x;
+                    y_delta += pp->delta_y;
+                }
+                else current_state = INITIAL;
+            }
+            break;
+        }
+    }
+
+}
+

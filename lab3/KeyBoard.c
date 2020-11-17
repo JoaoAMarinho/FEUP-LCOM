@@ -29,7 +29,7 @@ int (keyboard_unsubscribe_int)(){
 void (kbc_ih)() {
   uint8_t stat;
   util_sys_inb(STATUS_REGISTER, &stat);
-  if( stat & OUTPUT_BUF_FULL ) {
+  if(stat & OUTPUT_BUF_FULL) {
     util_sys_inb(KEYBOARD_OUT_BUF, &data);
     if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR)) != 0 ) error=true;
     else error=false;
@@ -54,7 +54,7 @@ void(kbc_poll_ih)(){
   util_sys_inb(STATUS_REGISTER, &stat);
   if( stat & OUTPUT_BUF_FULL ) {
     util_sys_inb(KEYBOARD_OUT_BUF, &data);
-    if ( (stat &(PARITY_ERROR | TIMEOUT_ERROR | AUX)) != 0 ) error=true; //Need to verify AUX as well
+    if ( (data &(PARITY_ERROR | TIMEOUT_ERROR | AUX)) != 0 ) error=true; //Need to verify AUX as well
     else error=false;
   }
   else error = true;
