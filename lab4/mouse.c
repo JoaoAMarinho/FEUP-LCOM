@@ -165,14 +165,12 @@ void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum
             }
             else if(pp->delta_x!=0 && pp->delta_y !=0){
                 current_state = INITIAL;
-                printf("alguma coisa\n");
             }
             /*else if (!((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance))) {
                 current_state = INITIAL;
             }*/
             else if (m_event == R_DOWN) {
                 current_state = MOVE_RIGHT;
-                printf("vou me mutar\n");
             }
             break;
         }
