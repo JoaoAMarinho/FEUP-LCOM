@@ -49,8 +49,6 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, 
   int ipc_status;
   uint16_t r;
   message msg;
-  uint8_t irq_set=0;
-  if(keyboard_subscribe_int(&irq_set)) return 1;
 
   //Map video RAM && Change to graphics "mode"
   vg_init(mode);
@@ -59,6 +57,10 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, 
     printf("Could not draw rectangle!");
     return 1;
   }
+
+  //Subscribe keyboard interrups
+  uint8_t irq_set=0;
+  if(keyboard_subscribe_int(&irq_set)) return 1;
   
   while( data!=ESC_KEY) { 
     if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {

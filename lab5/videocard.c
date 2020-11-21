@@ -76,8 +76,8 @@ void (map_mem)(){
 }
 
 int drawPixel(uint16_t x,uint16_t y, uint32_t color){
-    if (x >= horizontal_res || y >= vertical_res)
-		return 1;
+//    if (x >= horizontal_res || y >= vertical_res)
+//		return 1;
     uint8_t *adr = video_mem;
     adr += (horizontal_res * y * bytes_per_pixel); //Número de bytes que se percorre até ao ponto (x,y) 
   	adr += (x * bytes_per_pixel);
@@ -90,11 +90,12 @@ int drawPixel(uint16_t x,uint16_t y, uint32_t color){
 }
 
 int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color){
-    if (x >= horizontal_res || y >= vertical_res)
-		return 1;
+//    if (x >= horizontal_res || y >= vertical_res)
+//		return 1;
     //Change color of pixel in line
     for (size_t i = 0; i < len; i++)
 	{
+        if(x+i>horizontal_res) break;
 		drawPixel(x+i,y,color);
   	}
     return 0;
@@ -103,7 +104,8 @@ int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color){
 int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint32_t color){
     //Draw line by line (horizontal)
     for(size_t i=0; i<height; i++){
-        if(vg_draw_hline(x,y,width,color)!=0){
+        if(y+i>vertical_res) break;
+        if(vg_draw_hline(x,y+i,width,color)!=0){
             printf("Could not draw line!");
             return 1;
         }
