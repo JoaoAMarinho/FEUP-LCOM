@@ -8,7 +8,7 @@ extern bool error;
 
 // Subscribes keyboard
 int(keyboard_subscribe_int)(uint8_t* bit_no){
-  *bit_no = BIT(kb_hook_id);
+  *bit_no = kb_hook_id;
   if (sys_irqsetpolicy(KBD_IRQ ,IRQ_REENABLE|IRQ_EXCLUSIVE, &kb_hook_id)){
     printf("Irqpolicy fails");
     return 1;

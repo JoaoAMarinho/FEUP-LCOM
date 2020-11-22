@@ -46,21 +46,20 @@ int(video_test_init)(uint16_t mode, uint8_t delay) {
 }
 
 int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, uint16_t height, uint32_t color) {
-  int ipc_status;
-  uint16_t r;
-  message msg;
 
   //Map video RAM && Change to graphics "mode"
   vg_init(mode);
 
-  if(vg_draw_rectangle(x,y,width,height,color)){
-    printf("Could not draw rectangle!");
-    return 1;
-  }
+  vg_draw_rectangle(x,y,width,height,color);
 
   //Subscribe keyboard interrups
-  uint8_t irq_set=0;
-  if(keyboard_subscribe_int(&irq_set)) return 1;
+  int ipc_status;
+  uint16_t r;
+  message msg;
+  uint8_t bit_no;
+  keyboard_subscribe_int(&bit_no);
+
+  uint32_t irq_set = BIT(bit_no);
   
   while( data!=ESC_KEY) { 
     if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
@@ -84,16 +83,10 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, 
     }
   }
 
-  if(keyboard_unsubscribe_int()!=0){
-    printf("Failed to unsubscribe!");
-    return 1;
-  }
+  keyboard_unsubscribe_int();
 
   //Reset the video card to the text mode
-  if(vg_exit()!=0) {
-    printf("Failed to put vc in text mode!");
-    return 1;
-  }
+  vg_exit();
 
   return 0;
 }
