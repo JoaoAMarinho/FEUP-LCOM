@@ -13,6 +13,7 @@ static uint8_t bytes_per_pixel;
 static uint8_t RedMaskSize, RedFieldPosition, GreenMaskSize, GreenFieldPosition, BlueMaskSize, BlueFieldPosition;
 static uint16_t horizontal_res;
 static uint16_t vertical_res;
+static uint16_t new_mode;
 
 int (set_mode)(uint16_t mode){
     reg86_t reg;
@@ -34,7 +35,9 @@ void* (vg_init)(uint16_t mode){
     if(map_mem(mode)==NULL) return NULL;
     
     if(set_mode(mode)!=0) return NULL;
-    
+
+    new_mode=mode;
+
     return video_mem;
 }
 
@@ -122,6 +125,8 @@ int drawPixel(uint16_t x,uint16_t y, uint32_t color){
     adr += (horizontal_res * y * bytes_per_pixel); //Número de bytes que se percorre até ao ponto (x,y) 
   	adr += (x * bytes_per_pixel);
 
+    if (new_mode == 0x110) color = color & 0x7FFF;
+
     for (int i = 0; i < bytes_per_pixel; i++) { //Repeat the process until you finish the intire pixel
 		*adr = (color >> (i * 8)); //Change color of a certain adress
 		adr++;
@@ -167,23 +172,14 @@ void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectan
 	}
     else // Direct mode
 	{
-		uint8_t red_first = get_color_bits(first, RedMaskSize, RedFieldPosition);
-		uint8_t green_first = get_color_bits(first, GreenMaskSize, GreenFieldPosition);
-		uint8_t blue_first = get_color_bits(first, BlueMaskSize, BlueFieldPosition);
+        uint8_t red_first = first >> RedFieldPosition % BIT(RedMaskSize);
+        uint8_t green_first = first >> GreenFieldPosition % BIT(GreenMaskSize);
+        uint8_t blue_first = first >> BlueFieldPosition % BIT(BlueMaskSize);
 
 		uint32_t red = (red_first + column * step) % (1 << RedMaskSize);
-		uint32_t green = (green_first + column * step) % (1 << GreenMaskSize);
-		uint32_t blue = (blue_first + column * step) % (1 << BlueMaskSize);
+		uint32_t green = (green_first + row * step) % (1 << GreenMaskSize);
+		uint32_t blue = (blue_first + (row+column) * step) % (1 << BlueMaskSize);
 
 		*color = (red << RedFieldPosition) | (green << GreenFieldPosition) | (blue << BlueFieldPosition);
 	}
 }
-
-uint8_t get_color_bits(uint32_t color, unsigned mask_size, unsigned field_position) { //Returns the bits of a certain color in the field_position
-	uint32_t temp = color >> field_position;                                          //with size(mask_size).
-
-	uint32_t mask = pow(2, mask_size) - 1;
-
-	return (uint8_t)(temp & mask);
-}
-

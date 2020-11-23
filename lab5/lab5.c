@@ -106,7 +106,7 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 
     get_color(&color, i, j, no_rectangles, first, step);
 
-    vg_draw_rectangle(i*rectangleWidth,j*rectangleHeight,rectangleWidth,rectangleHeight,color);
+    vg_draw_rectangle(j*rectangleWidth,i*rectangleHeight,rectangleWidth,rectangleHeight,color);
 
     }
   }

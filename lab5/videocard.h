@@ -7,7 +7,6 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include <math.h>
 #include "i8042.h"
 #include "utils.h"
 
@@ -30,5 +29,3 @@ uint16_t getHorizontal();
 uint16_t getVertical();
 
 void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectangles, uint32_t first, uint8_t step);
-
-uint8_t get_color_bits(uint32_t color, unsigned mask_size, unsigned field_position);
