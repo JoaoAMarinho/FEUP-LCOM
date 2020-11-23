@@ -38,8 +38,46 @@ void* (vg_init)(uint16_t mode){
     return video_mem;
 }
 
+int get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p){
+    mmap_t map;
+    reg86_t reg;
+
+    memset(&reg, 0, sizeof(reg)); // Reset the construction
+
+    // Initialize the low memory area and check for success
+    /* if (lm_init() == NULL) {
+        printf("Failed to init\n");
+        return 1;
+    }*/
+
+    // Allocate the low memory block
+    if (lm_alloc(sizeof(vbe_mode_info_t), &map) == NULL) {
+        printf("failed alloc\n");
+        return 1;
+    }
+
+     // Get the mode information
+    phys_bytes buf = map.phys;
+
+    reg.ax = 0x4F01;        // VBE call, function 01
+    reg.es = PB2BASE(buf);
+    reg.di = PB2OFF(buf);
+    reg.cx = mode;
+    reg.intno = VIDEO_CARD;
+
+    if (sys_int86(&reg) != OK) {
+        panic("vbe_get_mode_info: sys_int86() failed \n");
+  }
+
+  // Put the memory buffer with the function returned data in vmi_p
+  *vmi_p = *(vbe_mode_info_t *) (map.virt);
+  lm_free(&map);
+
+  return 0;
+}
+
 void* (map_mem)(uint16_t mode){
-    if (vbe_get_mode_info(mode, &vmi_p) != 0){ 
+    if (get_vbe_mode_info(mode, &vmi_p) != 0){ 
     	printf("Failed to get mode \n");
     	return NULL;
   	}
