@@ -92,11 +92,62 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, 
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
-  /* To be completed */
-  printf("%s(0x%03x, %u, 0x%08x, %d): under construction\n", __func__,
-         mode, no_rectangles, first, step);
 
-  return 1;
+ //Map video RAM && Change to graphics "mode"
+  vg_init(mode);
+
+  unsigned rectangleWidth=getHorizontal()/no_rectangles;  //All the rectangles width 
+  unsigned rectangleHeight=getVertical()/no_rectangles;   //All the rectangles height
+
+   uint32_t color=first; // First color to be used
+
+  for(int i=0; i< no_rectangles ; i++){    //Rows
+    for(int j=0 ; j<no_rectangles ; j++){  //Columns
+
+    get_color(&color, i, j, no_rectangles, first, step);
+
+    vg_draw_rectangle(i*rectangleWidth,j*rectangleHeight,rectangleWidth,rectangleHeight,color);
+
+    }
+  }
+
+  //Subscribe keyboard interrups
+  int ipc_status;
+  uint16_t r;
+  message msg;
+  uint8_t bit_no;
+  keyboard_subscribe_int(&bit_no);
+
+  uint32_t irq_set = BIT(bit_no);
+  
+  while( data!=ESC_KEY) { 
+    if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+        printf("driver_receive failed with: %d", r);
+        continue;
+    }
+    if (is_ipc_notify(ipc_status)) { /* received notification */
+        switch (_ENDPOINT_P(msg.m_source)) {
+        case HARDWARE: /* hardware interrupt notification */
+          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
+            kbc_ih();
+          }
+          break;
+
+        default:
+            break; /* no other notifications expected: do nothing */
+        }
+    }
+    else { /* received a standard message, not a notification */
+    /* no standard messages expected: do nothing */
+    }
+  }
+
+  keyboard_unsubscribe_int();
+
+  //Reset the video card to the text mode
+  vg_exit();
+
+  return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {

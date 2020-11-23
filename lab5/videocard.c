@@ -29,7 +29,6 @@ int (set_mode)(uint16_t mode){
     return 0;
 }
 
-
 void* (vg_init)(uint16_t mode){
 
     if(map_mem(mode)==NULL) return NULL;
@@ -114,5 +113,39 @@ int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uin
     }
 
     return 0;
+}
+
+uint16_t getHorizontal() {
+	return horizontal_res;
+}
+
+uint16_t getVertical() {
+	return vertical_res;
+}
+
+void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectangles, uint32_t first, uint8_t step){
+    if (bits_per_pixel == 8) { // Indexed mode
+		*color = (first + (row * no_rectangles + column) * step) % (1 << bits_per_pixel);
+	}
+    else // Direct mode
+	{
+		uint8_t red_first = get_color_bits(first, RedMaskSize, RedFieldPosition);
+		uint8_t green_first = get_color_bits(first, GreenMaskSize, GreenFieldPosition);
+		uint8_t blue_first = get_color_bits(first, BlueMaskSize, BlueFieldPosition);
+
+		uint32_t red = (red_first + column * step) % (1 << RedMaskSize);
+		uint32_t green = (green_first + column * step) % (1 << GreenMaskSize);
+		uint32_t blue = (blue_first + column * step) % (1 << BlueMaskSize);
+
+		*color = (red << RedFieldPosition) | (green << GreenFieldPosition) | (blue << BlueFieldPosition);
+	}
+}
+
+uint8_t get_color_bits(uint32_t color, unsigned mask_size, unsigned field_position) { //Returns the bits of a certain color in the field_position
+	uint32_t temp = color >> field_position;                                          //with size(mask_size).
+
+	uint32_t mask = pow(2, mask_size) - 1;
+
+	return (uint8_t)(temp & mask);
 }
 
