@@ -182,24 +182,77 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
 					if (((xi % getHorizontal()) == xf && (yi % getVertical()) == yf) || xi > getHorizontal() || yi > getVertical())
               			continue;
 					if(speed<0){
+						timer_int_handler();
 						if (time_counter == abs(speed)){
-							memset(video_mem, 0, get_bytes_per_pixel() * getHorizontal() * getVertical());
-							/*if (xi == xf) {
-								yi += abs(speed);
+							memset(video_mem, 0, get_bytes_per_pixel() * getHorizontal() * getVertical());  //Clear the screen
+							if (xi == xf) {  //Move in the y axis
+								if(yf>yi){
+									yi += 1; //Go down
+								}else{
+									yi -= 1; //Go up
+								}
 							}
-							else { //yi == yf
-								xi += abs(speed);
-							}
+							else if(yi == yf) { //Move in the x axis
+								if(xf>xi){
+									xi += 1; //Go right
+								}else{
+									xi -= 1; //Go left
+								}
+							}/*
+							else{ //Move in both axis
+								if(yf>yi){
+									yi += 1; //Go down
+								}else{
+									yi -= 1; //Go up
+								}
+								if(xf>xi){
+									xi += 1; //Go right
+								}else{
+									xi -= 1; //Go left
+								}
+							}*/
 							sprite->x = xi;
-							sprite->y = yi;*/
+							sprite->y = yi;
 							draw_sprite(sprite, NULL);
 
 							time_counter=0;
 						}
-
+					}
+					else{
+						memset(video_mem, 0, get_bytes_per_pixel() * getHorizontal() * getVertical());  //Clear the screen
+						if (xi == xf) {  //Move in the y axis
+							if(abs(yf-yi)<speed) speed=abs(yf-yi); //Case it is the last displacement and the speed is higher than the movement
+							if(yf>yi){
+								yi += speed; //Go down
+							}else{
+								yi -= speed; //Go up
+							}
+						}
+						else if(yi == yf) { //Move in the x axis
+							if(abs(xf-xi)<speed) speed=abs(xf-xi); //Case it is the last displacement and the speed is higher than the movement
+							if(xf>xi){
+								xi += speed; //Go right
+							}else{
+								xi -= speed; //Go left
+							}
+						}/*
+						else{ //Move in both axis
+							if(yf>yi){
+								yi += speed; //Go down
+							}else{
+								yi -= speed; //Go up
+							}
+							if(xf>xi){
+								xi += speed; //Go right
+							}else{
+								xi -= speed; //Go left
+							}
+						}*/
+						sprite->x = xi;
+						sprite->y = yi;
+						draw_sprite(sprite, NULL);
 
 					}
-					timer_int_handler();
 				}	
               break;
           default:
