@@ -8,6 +8,7 @@
 
 #include "videocard.h"
 #include "keyboard.h"
+#include "sprite.h"
 
 // Any header files included below this line should have been created by you
 
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+int time_counter=0;
 uint8_t data;
 bool error=false;
 
@@ -83,87 +85,139 @@ int(video_test_rectangle)(uint16_t mode, uint16_t x, uint16_t y,uint16_t width, 
     }
   }
 
-  keyboard_unsubscribe_int();
+	keyboard_unsubscribe_int();
 
-  //Reset the video card to the text mode
-  vg_exit();
+	//Reset the video card to the text mode
+	vg_exit();
 
-  return 0;
+	return 0;
 }
 
 int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, uint8_t step) {
 
- //Map video RAM && Change to graphics "mode"
-  vg_init(mode);
+	//Map video RAM && Change to graphics "mode"
+	vg_init(mode);
 
-  unsigned rectangleWidth=getHorizontal()/no_rectangles;  //All the rectangles width 
-  unsigned rectangleHeight=getVertical()/no_rectangles;   //All the rectangles height
+	unsigned rectangleWidth=getHorizontal()/no_rectangles;  //All the rectangles width 
+	unsigned rectangleHeight=getVertical()/no_rectangles;   //All the rectangles height
 
-   uint32_t color=first; // First color to be used
+	uint32_t color=first; // First color to be used
 
-  for(int i=0; i< no_rectangles ; i++){    //Rows
-    for(int j=0 ; j<no_rectangles ; j++){  //Columns
+	for(int i=0; i< no_rectangles ; i++){    //Rows
+		for(int j=0 ; j<no_rectangles ; j++){  //Columns
 
-    get_color(&color, i, j, no_rectangles, first, step);
+		get_color(&color, i, j, no_rectangles, first, step);
 
-    vg_draw_rectangle(j*rectangleWidth,i*rectangleHeight,rectangleWidth,rectangleHeight,color);
+		vg_draw_rectangle(j*rectangleWidth,i*rectangleHeight,rectangleWidth,rectangleHeight,color);
+		}
+	}
 
-    }
-  }
+	getEsc();
 
-  //Subscribe keyboard interrups
-  int ipc_status;
-  uint16_t r;
-  message msg;
-  uint8_t bit_no;
-  keyboard_subscribe_int(&bit_no);
+	//Reset the video card to the text mode
+	vg_exit();
 
-  uint32_t irq_set = BIT(bit_no);
-  
-  while( data!=ESC_KEY) { 
-    if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
-        printf("driver_receive failed with: %d", r);
-        continue;
-    }
-    if (is_ipc_notify(ipc_status)) { /* received notification */
-        switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: /* hardware interrupt notification */
-          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
-            kbc_ih();
-          }
-          break;
-
-        default:
-            break; /* no other notifications expected: do nothing */
-        }
-    }
-    else { /* received a standard message, not a notification */
-    /* no standard messages expected: do nothing */
-    }
-  }
-
-  keyboard_unsubscribe_int();
-
-  //Reset the video card to the text mode
-  vg_exit();
-
-  return 0;
+	return 0;
 }
 
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u): under construction\n", __func__, xpm, x, y);
 
-  return 1;
+	vg_init(MODE1);
+
+	/* Function without sprites
+
+	xpm_image_t img;
+	
+	xpm_load(xpm, XPM_INDEXED, &img);
+
+	drawXpm(x,y,&img);
+	*/
+
+	Sprite* sprite=create_sprite(xpm, x, y, 0, 0, XPM_INDEXED);
+
+	draw_sprite(sprite,NULL);
+
+	getEsc();
+
+	destroy_sprite(sprite);
+
+	//Reset the video card to the text mode
+	vg_exit();
+
+	return 0;
 }
 
-int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,
-                     int16_t speed, uint8_t fr_rate) {
-  /* To be completed */
-  printf("%s(%8p, %u, %u, %u, %u, %d, %u): under construction\n",
-         __func__, xpm, xi, yi, xf, yf, speed, fr_rate);
+int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint16_t yf,int16_t speed, uint8_t fr_rate) {
 
-  return 1;
+	vg_init(MODE1);
+	Sprite* sprite=create_sprite(xpm, xi, yi, 0, 0, XPM_INDEXED);
+	draw_sprite(sprite,NULL);
+
+	int ipc_status, r;
+	message msg;
+	uint8_t kb_bit_no, timer_irq_set;
+
+	if(timer_set_frequency(0,fr_rate)) return 1;
+  
+	if (keyboard_subscribe_int(&kb_bit_no)) return 1;
+	uint32_t kb_irq_set = BIT(kb_bit_no);
+
+	if (timer_subscribe_int(&timer_irq_set)) return 1;
+
+	char *video_mem = get_video_mem();
+
+	while ( data!=ESC_KEY ) {
+		if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
+          	printf("driver_receive failed with: %d", r);
+          	continue;
+      	}
+		if (is_ipc_notify(ipc_status)) { 
+          	switch (_ENDPOINT_P(msg.m_source)) {
+          	case HARDWARE: /* hardware interrupt notification */
+				if (msg.m_notify.interrupts & kb_irq_set) { 
+					/* process it */
+					kbc_ih();
+				}
+				if (msg.m_notify.interrupts & timer_irq_set) {
+					if (((xi % getHorizontal()) == xf && (yi % getVertical()) == yf) || xi > getHorizontal() || yi > getVertical())
+              			continue;
+					if(speed<0){
+						if (time_counter == abs(speed)){
+							memset(video_mem, 0, get_bytes_per_pixel() * getHorizontal() * getVertical());
+							/*if (xi == xf) {
+								yi += abs(speed);
+							}
+							else { //yi == yf
+								xi += abs(speed);
+							}
+							sprite->x = xi;
+							sprite->y = yi;*/
+							draw_sprite(sprite, NULL);
+
+							time_counter=0;
+						}
+
+
+					}
+					timer_int_handler();
+				}	
+              break;
+          default:
+              break; /* no other notifications expected: do nothing */
+          }
+      } else { /* received a standard message, not a notification */
+      /* no standard messages expected: do nothing */
+      }
+	}
+	keyboard_unsubscribe_int();
+	timer_unsubscribe_int();
+
+	destroy_sprite(sprite);
+
+	//Reset the video card to the text mode
+	vg_exit();
+
+  	return 0;
 }
 
 int(video_test_controller)() {

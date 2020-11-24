@@ -23,3 +23,5 @@ void (kbc_ih)();
 void(kbc_poll_ih)();
 
 int (itrp_enable)();
+
+void (getEsc)();

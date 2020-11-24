@@ -3,7 +3,7 @@
 
 #include <lcom/lcf.h>
 
-#define BIT(n)    (1 << (n))
+//#define BIT(n)    (1 << (n))
 //#define PB2BASE(x) (((x) >> 4) & 0x0F000)
 //#define PB2OFF(x) ((x) & 0x0FFFF)
 

@@ -158,6 +158,14 @@ int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uin
     return 0;
 }
 
+char *get_video_mem(){
+    return video_mem;
+}
+
+unsigned get_bytes_per_pixel() {
+  return bytes_per_pixel;
+}
+
 uint16_t getHorizontal() {
 	return horizontal_res;
 }
@@ -182,4 +190,17 @@ void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectan
 
 		*color = (red << RedFieldPosition) | (green << GreenFieldPosition) | (blue << BlueFieldPosition);
 	}
+}
+
+int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img){
+    
+
+    for(size_t row = 0;row < img->height; row++){
+        for(size_t column = 0;column < img->width; column++){
+
+            drawPixel(x+column,y+row,img->bytes[img->width*row+column]);
+        }
+    }
+
+    return 0;
 }

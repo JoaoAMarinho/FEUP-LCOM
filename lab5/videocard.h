@@ -24,8 +24,14 @@ int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color);
 
 int drawPixel(uint16_t x,uint16_t y, uint32_t color);
 
+char *get_video_mem();
+
+unsigned get_bytes_per_pixel();
+
 uint16_t getHorizontal();
 
 uint16_t getVertical();
 
 void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectangles, uint32_t first, uint8_t step);
+
+int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img);
