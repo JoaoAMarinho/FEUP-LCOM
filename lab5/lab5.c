@@ -186,8 +186,8 @@ int(video_test_move)(xpm_map_t xpm, uint16_t xi, uint16_t yi, uint16_t xf, uint1
 						xi += 3; //Go right
 						sprite->x = xi;
 						draw_sprite(sprite, NULL);
-					}
-					*/
+					}*/
+					
 				}
 				if (msg.m_notify.interrupts & timer_irq_set) {
 					counter++;
