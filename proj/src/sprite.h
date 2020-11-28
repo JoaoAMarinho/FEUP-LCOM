@@ -13,7 +13,7 @@ typedef struct {
 	int x, y; // current position
 	int width, height; // dimensions
 	int xspeed, yspeed; // current speed
-	char* map; // the pixmap
+	char *map;
 } Sprite;
 
 Sprite* create_sprite(xpm_map_t pic, int x, int y, int xspeed, int yspeed,enum xpm_image_type xpm_type);

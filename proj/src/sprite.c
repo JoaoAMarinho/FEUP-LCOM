@@ -6,6 +6,7 @@
 * Does not draw the sprite on the screen
 * Returns NULL on invalid pixmap.
 */
+static uint16_t* map;
 Sprite *create_sprite(xpm_map_t pic, int x, int y,int xspeed, int yspeed, enum xpm_image_type xpm_type) {
     //allocate space for the "object"
     Sprite *sp = (Sprite *) malloc ( sizeof(Sprite));
@@ -15,7 +16,9 @@ Sprite *create_sprite(xpm_map_t pic, int x, int y,int xspeed, int yspeed, enum x
         return NULL;
     // read the sprite pixmap
     xpm_load(pic, xpm_type, &img);
-    sp->map=(char*)img.bytes;
+    map=(uint16_t*)img.bytes;
+    sp->map=(char *)img.bytes;
+   
     if( sp->map == NULL ) {
         free(sp);
         return NULL;
@@ -40,11 +43,12 @@ void destroy_sprite(Sprite *sp) {
 int animate_sprite(Sprite *sp) {return 1;}
 
 int draw_sprite(Sprite *sp, char *base) {
-    
     for(int row = 0;row < sp->height; row++){
         for(int column = 0;column < sp->width; column++){
 
-            drawPixel(sp->x+column,sp->y+row,sp->map[sp->width*row+column]);
+            //drawPixel(sp->x+column,sp->y+row,sp->map[sp->width*row+column]);
+            drawPixel(sp->x+column,sp->y+row,*(map+sp->width*row+column));
+
         }
     }
     return 0;

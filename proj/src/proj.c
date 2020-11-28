@@ -9,7 +9,7 @@
 #include "keyboard.h"
 #include "sprite.h"
 #include "i8254.h"
-#include "Pirate_bmp.xpm"
+#include "Player.h"
 #include "proj.h"
 
 // Any header files included below this line should have been created by you
@@ -43,12 +43,12 @@ uint8_t data;
 bool error=false;
 
 int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
-    int xi=0;
-    int yi=0;
-    xpm_map_t xpm=minix3_xpm;
-    vg_init(MODE3);
-	Sprite* sprite=create_sprite(xpm, xi, yi, 0, 0, XPM_8_8_8);
-	draw_sprite(sprite,NULL);
+  int xi=0;
+  int yi=0;
+
+  vg_init(MODE5);
+  Player* player=create_player(xi, yi, RIGHT);
+  draw_player(player);
 
 	int ipc_status, r;//counter=0;
 	message msg;
@@ -81,7 +81,8 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 	}
 	keyboard_unsubscribe_int();
 
-	destroy_sprite(sprite);
+  free(player);
+	//destroy_sprite(sprite);
 
 	//Reset the video card to the text mode
 	vg_exit();

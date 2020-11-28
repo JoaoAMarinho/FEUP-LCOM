@@ -10,6 +10,9 @@
 #include "i8042.h"
 #include "utils.h"
 
+//Sentido do player ou do enemy
+typedef enum {UP, DOWN, LEFT, RIGHT} Direction;
+
 int (set_mode)(uint16_t mode);
 
 void* (vg_init)(uint16_t mode);
@@ -35,3 +38,8 @@ uint16_t getVertical();
 void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectangles, uint32_t first, uint8_t step);
 
 int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img);
+
+void copy_to_vram();
+
+void free_mem();
+

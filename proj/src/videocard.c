@@ -8,6 +8,7 @@ struct minix_mem_range mr; /* physical memory range */
 static unsigned vram_base; /* VRAM  physical addresss */
 static unsigned	vram_size; /* VRAM size */
 static void* video_mem;
+static void *secondBuffer;
 static uint8_t bits_per_pixel;
 static uint8_t bytes_per_pixel;
 static uint8_t RedMaskSize, RedFieldPosition, GreenMaskSize, GreenFieldPosition, BlueMaskSize, BlueFieldPosition;
@@ -46,12 +47,6 @@ int get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p){
     reg86_t reg;
 
     memset(&reg, 0, sizeof(reg)); // Reset the construction
-
-    // Initialize the low memory area and check for success
-    /* if (lm_init() == NULL) {
-        printf("Failed to init\n");
-        return 1;
-    }*/
 
     // Allocate the low memory block
     if (lm_alloc(sizeof(vbe_mode_info_t), &map) == NULL) {
@@ -112,8 +107,11 @@ void* (map_mem)(uint16_t mode){
     
     // Map memory 
     video_mem = vm_map_phys(SELF, (void *)mr.mr_base, vram_size);
+
     if(video_mem == MAP_FAILED)
         panic("couldn’t map video memory");
+    
+    secondBuffer = malloc(vram_size);
     
     return video_mem;
 }
@@ -121,15 +119,17 @@ void* (map_mem)(uint16_t mode){
 int drawPixel(uint16_t x,uint16_t y, uint32_t color){
     if (x >= horizontal_res || y >= vertical_res)
 		return 1;
-    char *adr = video_mem;
+    uint8_t *adr = video_mem;
     adr += (horizontal_res * y * bytes_per_pixel); //Número de bytes que se percorre até ao ponto (x,y) 
   	adr += (x * bytes_per_pixel);
 
     if (new_mode == 0x110) color = color & 0x7FFF;
 
+    uint8_t temp_color;
     for (int i = 0; i < bytes_per_pixel; i++) { //Repeat the process until you finish the intire pixel
-		*adr = (color >> (i * 8)); //Change color of a certain adress
-		adr++;
+		temp_color=color & 0xFF;
+        *(adr+i) = temp_color; //Change color of a certain adress
+		color =color >> 8;
 	}
     return 0;
 }
@@ -203,4 +203,12 @@ int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img){
     }
 
     return 0;
+}
+
+void copy_to_vram(){
+    memcpy(video_mem, secondBuffer, vertical_res * horizontal_res * bytes_per_pixel);
+}
+
+void free_mem(){
+    free(secondBuffer);
 }
