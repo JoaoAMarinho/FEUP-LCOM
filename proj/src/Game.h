@@ -9,6 +9,8 @@
 #include "Videocard.h"
 #include "KeyBoard.h"
 #include "Player.h"
+#include "mouse.h"
+#include "timer.h"
 //#include "Bullet.h"
 //#include "DateTime.h"
 //#include "Menu.h"
@@ -21,13 +23,13 @@ enum Menu{MAIN=0, VICTORY, DEFEAT, /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚM
 
 //enum Task1{START=0, TRANSITION, END};
 
-enum Room{CAFETERIA=0, ADMIN, WEAPONS, NAVIGATION, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, PAUSE, END};
+enum Room{CAFETERIA=0, ADMIN, WEAPONS, NAVIGATION, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END};
 
 int gameLoop();
 
-void receiveInterrupt(Device device);
+void receiveInterrupt(enum Device device);
 
-void interruptHandler(Device device);
+void interruptHandler(enum Device device);
 
 //Tasks interrupt handlers
 //void task1IH(Device device);

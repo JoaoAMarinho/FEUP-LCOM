@@ -1,16 +1,16 @@
 #include "Game.h"
 
 //Device global variables
-
 //Timer
 unsigned int time_counter=0;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
 //Mouse
+uint8_t mouse_data;
 struct packet mouse_pack;
 int mouse_packet_index=0;
-struct mouse_ev mouse_event;
+//struct mouse_ev mouse_event;
 bool mouse_error=false;
 //Graphics card
 extern uint16_t horizontal_res, vertical_res;
@@ -42,10 +42,10 @@ int gameLoop(){
     if(mouse_data_reporting(MOUSE_ENABLE) !=0 ){return 1;}
     if (mouse_subscribe_int(&mouse_bit_no); != 0) {return 1;}
 
-    //uint32_t timer_irq_set = BIT(timer_bit_no);
-    //uint32_t kb_irq_set = BIT(kb_bit_no);
-    //uint32_t mouse_irq_set = BIT(mouse_bit_no);
-    //uint32_t rtc_irq_set = BIT(rtc_bit_no);
+    uint32_t timer_irq_set = BIT(timer_bit_no);
+    uint32_t kb_irq_set = BIT(kb_bit_no);
+    uint32_t mouse_irq_set = BIT(mouse_bit_no);
+    uint32_t rtc_irq_set = BIT(rtc_bit_no);
 
     uint8_t kb_bytes[2];
 
@@ -74,20 +74,20 @@ int gameLoop(){
                     //Mouse interrupt
                     if (msg.m_notify.interrupts & mouse_irq_set) {
                         mouse_ih();
-				        if(error) return 1;
+				        if(mouse_error) return 1;
 				        if(mouse_packet_index==0){
-				            if((received_data & A2_LINE)!=0){
-					            mouse_pack.bytes[0]=received_data;
+				            if((mouse_data & A2_LINE)!=0){
+					            mouse_pack.bytes[0]=mouse_data;
 					            mouse_packet_index++;
 				            }
 				            else continue;
 				        }
 				        else if(mouse_packet_index==1){
-				            mouse_pack.bytes[1]=received_data;
+				            mouse_pack.bytes[1]=mouse_data;
 				            mouse_packet_index++;
 				        }
 				        else{
-				            mouse_pack.bytes[2]=received_data;
+				            mouse_pack.bytes[2]=mouse_data;
 				            mouse_packet_index=0;
 				            //mouse_event = mouse_get_event(&pp);
 				            //gesture_handler(&pp,x_len,tolerance,mouse_event,&done);
@@ -96,8 +96,8 @@ int gameLoop(){
                     }
                     //RTC interrupt
                     if (msg.m_notify.interrupts & rtc_irq_set) {
-                        rtc_ih();
-                        receiveInterrupt(RTC);
+                        //rtc_ih();
+                        //receiveInterrupt(RTC);
                     }
                     //Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
@@ -116,9 +116,9 @@ int gameLoop(){
 
   //Unsubscribes
   if (mouse_unsubscribe_int() != 0) {return 1;}
-  if (mouse_disable_data_report() != 0) {return 1;}
-  if (rtc_unsubscribe_int() != 0) {return 1;}
-  if (kbd_unsubscribe_int() != 0) {return 1;}
+  if (mouse_data_reporting(MOUSE_DISABLE) != 0) {return 1;}
+  //if (rtc_unsubscribe_int() != 0) {return 1;}
+  if (keyboard_unsubscribe_int() != 0) {return 1;}
   if (timer_unsubscribe_int() != 0) {return 1;}
 
   //free(level);
@@ -128,6 +128,6 @@ int gameLoop(){
     
 }
 
-void receiveInterrupt(Device device);
+void receiveInterrupt(enum Device device){}
 
-void interruptHandler(Device device);
+void interruptHandler(enum Device device){}

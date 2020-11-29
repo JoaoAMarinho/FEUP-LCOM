@@ -2,8 +2,6 @@
 
 #include <lcom/lcf.h>
 
-#include <lcom/lab5.h>
-
 #include <stdint.h>
 #include <stdio.h>
 
@@ -17,11 +15,7 @@ int(keyboard_subscribe_int)(uint8_t* bit_no);
 // Unsubscribes keyboard
 int (keyboard_unsubscribe_int)();
 
-// Handles keyboard interrupt counter
+// Handles keyboard interrupts
 void (kbc_ih)();
-
-void(kbc_poll_ih)();
-
-int (itrp_enable)();
 
 void (getEsc)();

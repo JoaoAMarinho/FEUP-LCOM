@@ -76,7 +76,7 @@
 #define VIDEO_CARD 0x10
 #define PC_CONFIG 0x11
 #define MEMORY_CONFIG 0x12
-#define KEYBOARD 0x16
+#define KEYBOARD_SERVICE 0x16
 
 //Grafics mode
 

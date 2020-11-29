@@ -9,6 +9,8 @@
 // Any header files included below this line should have been created by you
 #include "Videocard.h"
 #include "keyboard.h"
+#include "mouse.h"
+#include "timer.h"
 #include "sprite.h"
 #include "i8254.h"
 #include "Player.h"
@@ -48,11 +50,11 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 
   vg_init(MODE3);
   Player* player1=create_player(xi, yi, LEFT);
-  Player* player2=create_player(xi+100, yi+100, UP);
-  Player* player3=create_player(xi+200, yi+200, RIGHT);
+  //Player* player2=create_player(xi+100, yi+100, UP);
+  //Player* player3=create_player(xi+200, yi+200, RIGHT);
   draw_player(player1);
-  draw_player(player2);
-  draw_player(player3);
+  //draw_player(player2);
+  //draw_player(player3);
 
 	int ipc_status, r;//counter=0;
 	message msg;
@@ -86,8 +88,8 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 	keyboard_unsubscribe_int();
 
   free(player1);
-  free(player2);
-  free(player3);
+  //free(player2);
+  //free(player3);
 	//destroy_sprite(sprite);
 
 	//Reset the video card to the text mode

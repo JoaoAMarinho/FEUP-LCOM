@@ -94,7 +94,7 @@ void draw_player(Player *player){
 void erase_player(Player* player){
     for(int i = player->x; i < player->img.width+player->x; ++i){
         for (int j = player->y; j < player->img.height+player->y; ++j) {
-            drawPixel(i,j,*(level->level_back + i + j /* * horizontal_res*/));
+            //drawPixel(i,j,*(level->level_back + i + j /* * horizontal_res*/));
         }
     }
 }
