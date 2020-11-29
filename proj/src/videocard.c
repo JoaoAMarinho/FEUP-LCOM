@@ -1,6 +1,6 @@
 #include <lcom/lcf.h>
 
-#include "videocard.h"
+#include "Videocard.h"
 
 vbe_mode_info_t vmi_p;
 int r1;
@@ -15,6 +15,8 @@ static uint8_t RedMaskSize, RedFieldPosition, GreenMaskSize, GreenFieldPosition,
 static uint16_t horizontal_res;
 static uint16_t vertical_res;
 static uint16_t new_mode;
+
+//---------------------------------------------------------------------------------------------
 
 int (set_mode)(uint16_t mode){
     reg86_t reg;

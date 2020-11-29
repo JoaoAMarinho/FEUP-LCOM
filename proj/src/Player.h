@@ -2,7 +2,7 @@
 
 #include <lcom/lcf.h>
 
-#include "videocard.h"
+#include "Videocard.h"
 
 #include "Xpms/Player/player_right0.xpm"
 #include "Xpms/Player/player_right1.xpm"
@@ -26,7 +26,7 @@ Player* create_player(int x, int y,Direction direction);
 
 void draw_player(Player *player);
 
-void destroy_player(Player* player);
+void erase_player(Player* player);
 
 int animate_player(Player *player);
 

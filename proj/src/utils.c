@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "utils.h"
 
-extern int cnt;
+//---------------------------------------------------------------------------------------------
 
 int(util_get_LSB)(uint16_t val, uint8_t *lsb) {
   if(lsb==NULL)return 1;
@@ -22,9 +22,6 @@ int(util_get_MSB)(uint16_t val, uint8_t *msb) {
 int (util_sys_inb)(int port, uint8_t *value) {
   uint32_t i32;
   if(sys_inb(port,&i32))return 1;
-  #ifdef LAB3
-  cnt++;
-  #endif
   *value=(uint8_t)i32;
   return 0;
 }

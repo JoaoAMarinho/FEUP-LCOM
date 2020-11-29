@@ -4,7 +4,7 @@ extern uint8_t data;
 int kb_hook_id = 1;
 extern bool error;
 
-
+//---------------------------------------------------------------------------------------------
 
 // Subscribes keyboard
 int(keyboard_subscribe_int)(uint8_t* bit_no){

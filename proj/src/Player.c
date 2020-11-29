@@ -1,8 +1,11 @@
 #include "Player.h"
 
-//extern unsigned int hres, vres;
+//extern uint16_t horizontal_res, vertical_res;
 //extern uint8_t kbd_data;
+//extern Level * level;
+//extern GameState gameState;
 
+//---------------------------------------------------------------------------------------------
 
 Player* create_player(int x, int y,Direction direction){
     Player * player = (Player *) malloc (sizeof(Player));
@@ -88,7 +91,13 @@ void draw_player(Player *player){
 }
 
 
-void destroy_player(Player* player){}
+void erase_player(Player* player){
+    for(int i = player->x; i < player->img.width+player->x; ++i){
+        for (int j = player->y; j < player->img.height+player->y; ++j) {
+            drawPixel(i,j,*(level->level_back + i + j /* * horizontal_res*/));
+        }
+    }
+}
 
 int animate_player(Player *player){return 0;}
 

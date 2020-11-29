@@ -7,11 +7,12 @@
 #include <stdint.h>
 
 // Any header files included below this line should have been created by you
-#include "videocard.h"
+#include "Videocard.h"
 #include "keyboard.h"
 #include "sprite.h"
 #include "i8254.h"
 #include "Player.h"
+#include "Game.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
