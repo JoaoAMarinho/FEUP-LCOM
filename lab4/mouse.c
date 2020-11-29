@@ -122,6 +122,9 @@ enum event (mouse_get_event)(struct packet *pp) {
     else if (!pp->lb && pp->mb && !pp->rb) {
         result = M_DOWN;
     }
+    else{
+        result = TWO_DOWN;
+    }
     return result;
 }
 
@@ -160,15 +163,15 @@ void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum
         case SWITCH_SIDE: {
             x_delta = 0;
             y_delta = 0;
-            if (m_event == L_DOWN || m_event == M_DOWN ) {
+            if(m_event==L_DOWN && pp->delta_x==0 && pp->delta_y ==0){
+                current_state = MOVE_LEFT;
+            }
+            else if (m_event == L_DOWN || m_event == M_DOWN || m_event == TWO_DOWN ) {
                 current_state = INITIAL;
             }
             else if(pp->delta_x!=0 && pp->delta_y !=0){
                 current_state = INITIAL;
             }
-            /*else if (!((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance))) {
-                current_state = INITIAL;
-            }*/
             else if (m_event == R_DOWN) {
                 current_state = MOVE_RIGHT;
             }
@@ -184,7 +187,7 @@ void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum
                 }
             }
             else if (m_event == R_DOWN) {
-                if ((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
+                if ((pp->delta_x > 0 && pp->delta_y < 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
                     x_delta += pp->delta_x;
                     y_delta += pp->delta_y;
                 }

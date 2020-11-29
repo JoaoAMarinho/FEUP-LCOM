@@ -20,6 +20,7 @@ enum event {
     L_DOWN=0,
     R_DOWN,
     M_DOWN,
+    TWO_DOWN,
     B_UP
 };
 // Subscribes mouse
