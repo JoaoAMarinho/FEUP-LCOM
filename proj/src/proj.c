@@ -45,9 +45,13 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
   int xi=0;
   int yi=0;
 
-  vg_init(MODE5);
-  Player* player=create_player(xi, yi, RIGHT);
-  draw_player(player);
+  vg_init(MODE3);
+  Player* player1=create_player(xi, yi, LEFT);
+  Player* player2=create_player(xi+100, yi+100, UP);
+  Player* player3=create_player(xi+200, yi+200, RIGHT);
+  draw_player(player1);
+  draw_player(player2);
+  draw_player(player3);
 
 	int ipc_status, r;//counter=0;
 	message msg;
@@ -80,7 +84,9 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 	}
 	keyboard_unsubscribe_int();
 
-  free(player);
+  free(player1);
+  free(player2);
+  free(player3);
 	//destroy_sprite(sprite);
 
 	//Reset the video card to the text mode

@@ -47,12 +47,6 @@ int get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p){
 
     memset(&reg, 0, sizeof(reg)); // Reset the construction
 
-    // Initialize the low memory area and check for success
-    /* if (lm_init() == NULL) {
-        printf("Failed to init\n");
-        return 1;
-    }*/
-
     // Allocate the low memory block
     if (lm_alloc(sizeof(vbe_mode_info_t), &map) == NULL) {
         printf("failed alloc\n");
@@ -94,7 +88,7 @@ void* (map_mem)(uint16_t mode){
 	RedMaskSize = vmi_p.RedMaskSize;
 	GreenMaskSize = vmi_p.GreenMaskSize;
 	BlueMaskSize = vmi_p.BlueMaskSize;
-
+    
 	RedFieldPosition = vmi_p.RedFieldPosition;
 	GreenFieldPosition = vmi_p.GreenFieldPosition;
 	BlueFieldPosition = vmi_p.BlueFieldPosition;

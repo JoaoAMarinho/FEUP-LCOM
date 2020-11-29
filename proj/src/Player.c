@@ -16,15 +16,15 @@ Player* create_player(int x, int y,Direction direction){
     xpm_image_t img;
 
     //Load player animations
-    xpm_load(player_right0, XPM_8_8_8, &img);
+    xpm_load(player_right0, XPM_8_8_8_8, &img);
     player->PlayerRight[0] = img;
-    xpm_load(player_right1, XPM_8_8_8, &img);
+    xpm_load(player_right1, XPM_8_8_8_8, &img);
     player->PlayerRight[1] = img;
-    xpm_load(player_right2, XPM_8_8_8, &img);
+    xpm_load(player_right2, XPM_8_8_8_8, &img);
     player->PlayerRight[2] = img;
-    xpm_load(player_right3, XPM_8_8_8, &img);
+    xpm_load(player_right3, XPM_8_8_8_8, &img);
     player->PlayerRight[3] = img;
-    xpm_load(player_right4, XPM_8_8_8, &img);
+    xpm_load(player_right4, XPM_8_8_8_8, &img);
     player->PlayerRight[4] = img;
 
     free(&img);
@@ -41,7 +41,7 @@ void draw_player(Player *player){
         {
         for(int i = 0; i < player->img.width; i++) {
             for (int j = 0; j < player->img.height; j++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8))
+            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
                 drawPixel(player->x+i,player->y+j,*(map + i + j*player->img.width));
             }
         }
@@ -52,7 +52,7 @@ void draw_player(Player *player){
         {
         for(int j = 0 ; j < player->img.height; j++) {
             for (int i = 0 ; i < player->img.width ; i++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8))
+            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
                 drawPixel(player->x + j,player->y + player->img.width - i ,*(map + i + j*player->img.width));
             }
         }
@@ -63,7 +63,7 @@ void draw_player(Player *player){
         {
         for(int i = 0; i < player->img.width; i++) {
             for (int j = 0; j < player->img.height; j++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8))
+            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
                 drawPixel(player->x + player->img.height - j,player->y + i,*(map + i + j*player->img.width));
             }
         }
@@ -76,7 +76,7 @@ void draw_player(Player *player){
 
         for(int i = 0; i < player->img.width; i++) {
             for (int j = 0; j < player->img.height; j++) {
-            if (*(map - i - j*player->img.width) != xpm_transparency_color(XPM_8_8_8))
+            if (*(map - i - j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
                 drawPixel(player->x+i,player->y+j,*(map - i - j*player->img.width));
             }
         }

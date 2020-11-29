@@ -4,11 +4,11 @@
 
 #include "videocard.h"
 
-#include "Xpms/Player_right/player_right0.xpm"
-#include "Xpms/Player_right/player_right1.xpm"
-#include "Xpms/Player_right/player_right2.xpm"
-#include "Xpms/Player_right/player_right3.xpm"
-#include "Xpms/Player_right/player_right4.xpm"
+#include "Xpms/Player/player_right0.xpm"
+#include "Xpms/Player/player_right1.xpm"
+#include "Xpms/Player/player_right2.xpm"
+#include "Xpms/Player/player_right3.xpm"
+#include "Xpms/Player/player_right4.xpm"
 
 typedef struct {
     xpm_image_t img;
