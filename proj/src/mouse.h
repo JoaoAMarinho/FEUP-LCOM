@@ -8,6 +8,12 @@
 #include "i8042.h"
 #include "utils.h"
 
+#include "Xpms/Cursor.xpm"
+
+typedef struct {
+    xpm_image_t img;
+    int x, y;
+} Cursor;
 /*
 enum state {
     INITIAL=0,
@@ -41,5 +47,20 @@ int (mouse_data_reporting)(uint32_t cmd);
 void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum event m_event, bool *done);
 
 enum event (mouse_get_event)(struct packet *pp);
+
+//Cursor
+Cursor * create_cursor();
+
+void update_cursor(struct packet * mouse_pack);
+
+void draw_cursor();
+
+void erase_cursor();
+
+//unsigned int check_collision_main_menu ();
+
+//unsigned int check_collision_pause_menu ();
+
+//unsigned int check_collision_won_menu();
 
 

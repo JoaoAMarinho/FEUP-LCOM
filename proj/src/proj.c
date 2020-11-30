@@ -10,11 +10,10 @@
 #include "Videocard.h"
 #include "keyboard.h"
 #include "mouse.h"
-#include "timer.h"
-#include "sprite.h"
 #include "i8254.h"
 #include "Player.h"
-#include "Game.h"
+//#include "Game.h"
+#include "Xpms/Main_Menu/BackGround.xpm"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -41,20 +40,29 @@ int main(int argc, char *argv[]) {
 }
 
 int time_counter=0;
-uint8_t data;
-bool error=false;
+uint8_t keyboard_data;
+bool kb_error=false;
 
 int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
   int xi=0;
   int yi=0;
 
   vg_init(MODE3);
+
+  xpm_image_t img;
+	
+	xpm_load(MainBackGround, XPM_8_8_8_8, &img);
+  uint32_t* map=(uint32_t*)img.bytes;
+  for(int i = 0; i < 800; i++) {
+    for (int j = 0; j < 600; j++) {
+      if (*(map + i + j*800) != xpm_transparency_color(XPM_8_8_8_8))
+        drawPixel(xi+i,yi+j,*(map + i + j*800));
+    }
+  }
+  free(&img);
+
   Player* player1=create_player(xi, yi, LEFT);
-  //Player* player2=create_player(xi+100, yi+100, UP);
-  //Player* player3=create_player(xi+200, yi+200, RIGHT);
   draw_player(player1);
-  //draw_player(player2);
-  //draw_player(player3);
 
 	int ipc_status, r;//counter=0;
 	message msg;
@@ -65,7 +73,7 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 
 	//char *video_mem = get_video_mem();
 
-	while ( data!=ESC_KEY ) {
+	while ( keyboard_data!=ESC_KEY ) {
 		if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
           	printf("driver_receive failed with: %d", r);
           	continue;
@@ -76,6 +84,7 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 				if (msg.m_notify.interrupts & kb_irq_set) { 
 					/* process it */
 					kbc_ih();
+          animate_player(player1);
 				}	
                 break;
             default:
@@ -88,14 +97,25 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 	keyboard_unsubscribe_int();
 
   free(player1);
-  //free(player2);
-  //free(player3);
-	//destroy_sprite(sprite);
 
 	//Reset the video card to the text mode
 	vg_exit();
 
     return 0;
 }
+/*
+int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])) {
+  
+  if (vg_init(MODE3) != 0) {vg_exit(); return 1;}
+
+  if (gameLoop() != 0) {return 1;}
+
+  vg_exit();
+
+  free_memory();
+
+  return 0;
+}
+*/
 
 

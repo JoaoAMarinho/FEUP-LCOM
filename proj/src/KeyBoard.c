@@ -48,7 +48,7 @@ void (getEsc)(){
 
   uint32_t irq_set = BIT(bit_no);
   
-  while( data!=ESC_KEY) { 
+  while( keyboard_data!=ESC_KEY) { 
     if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
         printf("driver_receive failed with: %d", r);
         continue;

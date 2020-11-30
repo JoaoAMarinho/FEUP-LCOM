@@ -10,7 +10,6 @@
 #include "KeyBoard.h"
 #include "Player.h"
 #include "mouse.h"
-#include "timer.h"
 //#include "Bullet.h"
 //#include "DateTime.h"
 //#include "Menu.h"
@@ -19,7 +18,7 @@
 
 enum Device {TIMER=0, KEYBOARD, MOUSE, RTC};
 
-enum Menu{MAIN=0, VICTORY, DEFEAT, /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, TRANSITION, HELP, FINAL};
+enum Menu{MAIN=0, PLAYING, BESTSCORES , INSTRUCTIONS, /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, TRANSITION, VICTORY, DEFEAT, FINAL};
 
 //enum Task1{START=0, TRANSITION, END};
 
@@ -29,7 +28,7 @@ int gameLoop();
 
 void receiveInterrupt(enum Device device);
 
-void interruptHandler(enum Device device);
+void Play_ih(Device device);
 
 //Tasks interrupt handlers
 //void task1IH(Device device);

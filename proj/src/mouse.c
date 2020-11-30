@@ -4,6 +4,11 @@
 int mouse_hook_id=MOUSE_IRQ;
 extern bool mouse_error;
 extern uint8_t mouse_data;
+extern uint16_t horizontal_res, vertical_res;
+//extern xpm_image_t background_menu; background image so that the cursor is deleted
+//extern Room * room;
+
+Cursor *cursor;
 
 //---------------------------------------------------------------------------------------------
 
@@ -168,5 +173,71 @@ void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum
         }
     }
 
+}
+
+//Cursor
+Cursor * create_cursor(){
+    cursor = (Cursor *) malloc(sizeof(Cursor));
+
+    xpm_load(cursor_img, XPM_8_8_8_8, &cursor->img);
+
+    cursor->x = 400;
+    cursor->y = 300;
+
+  return cursor;
+}
+
+void update_cursor(struct packet * mouse_pack){
+    //Apagar o cursor
+    erase_cursor();
+
+    if (mouse_pack->delta_x > 0) {
+        if (cursor->x + mouse_pack->delta_x > (int)horizontal_res - cursor->img.width)
+            cursor->x = (int)horizontal_res - cursor->img.width;
+        else
+            cursor->x += mouse_pack->delta_x;
+    }
+    else if (mouse_pack->delta_x < 0) {
+        if (cursor->x + mouse_pack->delta_x < 0)
+            cursor->x = 0;
+        else
+            cursor->x += mouse_pack->delta_x;
+    }
+    if (mouse_pack->delta_y < 0) {
+        if (cursor->y + cursor->img.height - mouse_pack->delta_y > (int)vertical_res)
+            cursor->y = (int)vertical_res - cursor->img.height;
+        else
+            cursor->y -= mouse_pack->delta_y;
+    }
+    else if (mouse_pack->delta_y > 0) {
+        if (cursor->y - mouse_pack->delta_y < 0)
+            cursor->y = 0;
+        else
+            cursor->y -= mouse_pack->delta_y;
+    }
+
+    draw_mouse_cursor();
+}
+
+void draw_cursor(){
+    uint32_t* map = (uint32_t*) cursor->img.bytes;
+
+    for(int i = 0; i < cursor->img.width; i++) {
+        for (int j = 0; j < cursor->img.height; j++) {
+          if (*(map + i + j*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
+            drawPixel(cursor->x+i,cursor->y+j,*(map + i + j*cursor->img.width));
+    }
+  }
+}
+
+void erase_cursor(){
+    uint32_t* map = (uint32_t*) background_menu.bytes;
+
+    for (int i = cursor->x; i <= cursor->x + cursor->img.width; i++) {
+        for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
+            if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
+                //drawPixel(i,j,*(room->back + i + j * horizontal_res));
+    }
+  }
 }
 

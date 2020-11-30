@@ -2,19 +2,17 @@
 
 #include "Videocard.h"
 
+static void* video_mem;
+static void *secondBuffer;
+
 vbe_mode_info_t vmi_p;
 int r1;
 struct minix_mem_range mr; /* physical memory range */
 static unsigned vram_base; /* VRAM  physical addresss */
 static unsigned	vram_size; /* VRAM size */
-static void* video_mem;
-static void *secondBuffer;
-static uint8_t bits_per_pixel;
-static uint8_t bytes_per_pixel;
 static uint8_t RedMaskSize, RedFieldPosition, GreenMaskSize, GreenFieldPosition, BlueMaskSize, BlueFieldPosition;
-static uint16_t horizontal_res;
-static uint16_t vertical_res;
-static uint16_t new_mode;
+static uint16_t horizontal_res, vertical_res;
+static uint8_t bits_per_pixel, bytes_per_pixel;
 
 //---------------------------------------------------------------------------------------------
 
@@ -121,17 +119,14 @@ void* (map_mem)(uint16_t mode){
 int drawPixel(uint16_t x,uint16_t y, uint32_t color){
     if (x >= horizontal_res || y >= vertical_res)
 		return 1;
-    uint8_t *adr = video_mem;
+    uint8_t *adr = secondBuffer;
     adr += (horizontal_res * y * bytes_per_pixel); //Número de bytes que se percorre até ao ponto (x,y) 
   	adr += (x * bytes_per_pixel);
 
-    if (new_mode == 0x110) color = color & 0x7FFF;
-
     uint8_t temp_color;
     for (int i = 0; i < bytes_per_pixel; i++) { //Repeat the process until you finish the intire pixel
-		temp_color=color & 0xFF;
-        *(adr+i) = temp_color; //Change color of a certain adress
-		color =color >> 8;
+		*adr = (color >> (i * 8)); //Change color of a certain adress
+		adr++;
 	}
     return 0;
 }
@@ -160,10 +155,6 @@ int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uin
     return 0;
 }
 
-char *get_video_mem(){
-    return video_mem;
-}
-
 unsigned get_bytes_per_pixel() {
   return bytes_per_pixel;
 }
@@ -174,37 +165,6 @@ uint16_t getHorizontal() {
 
 uint16_t getVertical() {
 	return vertical_res;
-}
-
-void get_color(uint32_t *color, unsigned row, unsigned column, uint8_t no_rectangles, uint32_t first, uint8_t step){
-    if (bits_per_pixel == 8) { // Indexed mode
-		*color = (first + (row * no_rectangles + column) * step) % (1 << bits_per_pixel);
-	}
-    else // Direct mode
-	{
-        uint8_t red_first = first >> RedFieldPosition % BIT(RedMaskSize);
-        uint8_t green_first = first >> GreenFieldPosition % BIT(GreenMaskSize);
-        uint8_t blue_first = first >> BlueFieldPosition % BIT(BlueMaskSize);
-
-		uint32_t red = (red_first + column * step) % (1 << RedMaskSize);
-		uint32_t green = (green_first + row * step) % (1 << GreenMaskSize);
-		uint32_t blue = (blue_first + (row+column) * step) % (1 << BlueMaskSize);
-
-		*color = (red << RedFieldPosition) | (green << GreenFieldPosition) | (blue << BlueFieldPosition);
-	}
-}
-
-int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img){
-    
-
-    for(size_t row = 0;row < img->height; row++){
-        for(size_t column = 0;column < img->width; column++){
-
-            drawPixel(x+column,y+row,img->bytes[img->width*row+column]);
-        }
-    }
-
-    return 0;
 }
 
 void copy_to_vram(){
