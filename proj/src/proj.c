@@ -12,8 +12,7 @@
 #include "mouse.h"
 #include "i8254.h"
 #include "Player.h"
-//#include "Game.h"
-#include "Xpms/Main_Menu/BackGround.xpm"
+#include "Game.h"
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -39,9 +38,24 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
+int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])) {
+  
+  if (vg_init(MODE3) != 0) {vg_exit(); return 1;}
+
+  if (gameLoop() != 0) {return 1;}
+
+  vg_exit();
+
+  free_mem();
+
+  return 0;
+}
+
+/*
+test_func
 int time_counter=0;
 uint8_t keyboard_data;
-bool kb_error=false;
+bool kb_errorr=false;
 
 int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
   int xi=0;
@@ -80,18 +94,18 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
       	}
 		if (is_ipc_notify(ipc_status)) { 
           	switch (_ENDPOINT_P(msg.m_source)) {
-          	case HARDWARE: /* hardware interrupt notification */
+          	case HARDWARE: 
 				if (msg.m_notify.interrupts & kb_irq_set) { 
-					/* process it */
+					
 					kbc_ih();
           animate_player(player1);
 				}	
                 break;
             default:
-              break; /* no other notifications expected: do nothing */
+              break; 
           }
-      } else { /* received a standard message, not a notification */
-      /* no standard messages expected: do nothing */
+      } else { 
+      
       }
 	}
 	keyboard_unsubscribe_int();
@@ -103,19 +117,7 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 
     return 0;
 }
-/*
-int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])) {
-  
-  if (vg_init(MODE3) != 0) {vg_exit(); return 1;}
-
-  if (gameLoop() != 0) {return 1;}
-
-  vg_exit();
-
-  free_memory();
-
-  return 0;
-}
 */
+
 
 

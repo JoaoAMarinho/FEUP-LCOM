@@ -11,7 +11,7 @@ struct minix_mem_range mr; /* physical memory range */
 static unsigned vram_base; /* VRAM  physical addresss */
 static unsigned	vram_size; /* VRAM size */
 static uint8_t RedMaskSize, RedFieldPosition, GreenMaskSize, GreenFieldPosition, BlueMaskSize, BlueFieldPosition;
-static uint16_t horizontal_res, vertical_res;
+extern uint16_t horizontal_res, vertical_res;
 static uint8_t bits_per_pixel, bytes_per_pixel;
 
 //---------------------------------------------------------------------------------------------
@@ -36,8 +36,6 @@ void* (vg_init)(uint16_t mode){
     if(map_mem(mode)==NULL) return NULL;
     
     if(set_mode(mode)!=0) return NULL;
-
-    new_mode=mode;
 
     return video_mem;
 }
@@ -123,7 +121,6 @@ int drawPixel(uint16_t x,uint16_t y, uint32_t color){
     adr += (horizontal_res * y * bytes_per_pixel); //Número de bytes que se percorre até ao ponto (x,y) 
   	adr += (x * bytes_per_pixel);
 
-    uint8_t temp_color;
     for (int i = 0; i < bytes_per_pixel; i++) { //Repeat the process until you finish the intire pixel
 		*adr = (color >> (i * 8)); //Change color of a certain adress
 		adr++;

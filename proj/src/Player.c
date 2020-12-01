@@ -1,6 +1,6 @@
 #include "Player.h"
 
-//extern uint16_t horizontal_res, vertical_res;
+extern uint16_t horizontal_res, vertical_res;
 extern uint8_t keyboard_data;
 //extern Room * room;
 //extern Menu gameMenu;
@@ -156,7 +156,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
     else if (!up && !right && left && !down) 
         player->direction = LEFT;
 
-    if (up && !check_wall_collision(player,UP) && !player->isReloading) {
+    if (up && !check_wall_collision(player,UP)) {
         /*if (!player->hasAmmo && check_collision_ammo(player,UP)) {
         player->hasAmmo = true;
         player->isReloading = true;
@@ -165,7 +165,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
 
         player->isIdle = false;
         */
-        clean_player(player);
+        erase_player(player);
         if (player->y - player->yspeed < 0)
         player->y = 0;
         else  
@@ -207,9 +207,9 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         } 
         draw_player(player);
     }
-    else if (down && !check_wall_collision(player,DOWN) && !player->isReloading) {
+    else if (down && !check_wall_collision(player,DOWN)) {
 
-        clean_player(player);
+        erase_player(player);
         if (player->y + player->yspeed > (int)vertical_res - player->img.height - 4)
             player->y = (int)vertical_res - player->img.height - 4;
         else  
@@ -229,8 +229,8 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         }
         draw_player(player);
     }
-    else if (right && !check_wall_collision(player,RIGHT) && !player->isReloading) {
-        clean_player(player);
+    else if (right && !check_wall_collision(player,RIGHT)) {
+        erase_player(player);
         if (player->x + player->xspeed + player->img.width > (int)horizontal_res)
             player->x = (int)horizontal_res - player->img.width;
         else  
@@ -244,8 +244,8 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         }
         draw_player(player);
     }
-    else if (left && !check_wall_collision(player, LEFT) && !player->isReloading) {
-        clean_player(player);
+    else if (left && !check_wall_collision(player, LEFT)) {
+        erase_player(player);
         if (player->x - player->xspeed < 0)
             player->x = 0;
         else  
@@ -264,4 +264,4 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
 
 bool check_wall_collision(Player * player, Direction direction){return false;}
 
-bool check_enemy_collision(Player * player, Direction direction, Enemy ** enemies, unsigned int numEnemies){return false;}
+//bool check_enemy_collision(Player * player, Direction direction, Enemy ** enemies, unsigned int numEnemies){return false;}

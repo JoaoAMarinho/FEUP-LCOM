@@ -2,24 +2,24 @@
 
 //Device global variables
 //Timer
-extern unsigned int time_counter=0;
+unsigned int time_counter=0;
 //KeyBoard
-extern uint8_t keyboard_data;
-extern bool kb_error=false;
+uint8_t keyboard_data;
+bool kb_error=false;
 //Mouse
-extern uint8_t mouse_data;
+uint8_t mouse_data;
 struct packet mouse_pack;
 int mouse_packet_index=0;
 //struct mouse_ev mouse_event;
-extern bool mouse_error=false;
+bool mouse_error=false;
 //Graphics card
-extern uint16_t horizontal_res, vertical_res;
+uint16_t horizontal_res, vertical_res;
 
 //Game global variables
 static Player * player;
-extern Room * room;
+//extern Room * room;
 extern Cursor * cursor;
-extern Date * date;
+//extern Date * date;
 Menu gameMenu = MAIN;
 
 //static Lever * leverBeingUsed;
@@ -31,16 +31,16 @@ Menu gameMenu = MAIN;
 
 int gameLoop(){
     int ipc_status, r;
-	message msg;
+  	message msg;
 
-    uint8_t timer_bit_no, kb_bit_no, mouse_bit_no, rtc_bit_no;
+    uint8_t timer_bit_no, kb_bit_no, mouse_bit_no, rtc_bit_no=0;
 
     //Subscribes
     if (timer_subscribe_int(&timer_bit_no) != 0) {return 1;}
     if (keyboard_subscribe_int(&kb_bit_no) != 0) {return 1;}
     //if (rtc_subscribe_int(&rtc_bit_no) != 0) {return 1;}
     if(mouse_data_reporting(MOUSE_ENABLE) !=0 ){return 1;}
-    if (mouse_subscribe_int(&mouse_bit_no); != 0) {return 1;}
+    if (mouse_subscribe_int(&mouse_bit_no) != 0) {return 1;}
 
     uint32_t timer_irq_set = BIT(timer_bit_no);
     uint32_t kb_irq_set = BIT(kb_bit_no);
@@ -53,7 +53,7 @@ int gameLoop(){
 
     uint8_t kb_bytes[2];
 
-    while(gameMenu != FINAL) {
+    while(gameMenu != FINAL && keyboard_data != ESC_KEY) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
         printf("driver_receive failed with: %d", r);
         continue;
@@ -66,7 +66,7 @@ int gameLoop(){
 					            kbc_ih();
 					            if(!kb_error){
 						            kb_bytes[0]=keyboard_data;
-						            if(data==TWO_BYTES){
+						            if(keyboard_data==TWO_BYTES){
 						              kbc_ih();
 						              kb_bytes[1]=keyboard_data;
 					              }
@@ -123,14 +123,14 @@ int gameLoop(){
   if (keyboard_unsubscribe_int() != 0) {return 1;}
   if (timer_unsubscribe_int() != 0) {return 1;}
 
-  free(room);
+  //free(room);
 
   return 0;
 
     
 }
 
-void receiveInterrupt(enum Device device){
+void receiveInterrupt(Device device){
     switch (gameMenu){
         case MAIN:
             Main_ih(device);
@@ -151,9 +151,9 @@ void receiveInterrupt(enum Device device){
         case PAUSE:
             Pause_ih(device);
             break;
-        //case TRANSITION:             Transição entre rooms a mostrar qual está (black screen com o nome da sala)
+        case TRANSITION:             //Transição entre rooms a mostrar qual está (black screen com o nome da sala)
         //    Transition_ih(device);
-        //    break;
+            break;
         case VICTORY:
             Victory_ih(device);
             break;
@@ -165,7 +165,7 @@ void receiveInterrupt(enum Device device){
   }
 }
 
-void Play_ih(enum Device device){
+void Play_ih(Device device){
     //static Bullet * playerBullet;
     //static bool bulletOnMap = false;
     //static int checkLever;
@@ -274,7 +274,7 @@ void Play_ih(enum Device device){
 
     case KEYBOARD:
         //PAUSE MENU
-        if (keyboard_data == ESC) {
+        if (keyboard_data == ESC_KEY) {
             gameMenu = PAUSE;
             //LoadRtc();
             //LoadPauseMenu();
@@ -282,7 +282,7 @@ void Play_ih(enum Device device){
         }
 
         //SHOOT
-        if (keyboard_data == SPACEBAR && player->numberBullets!=0) {
+        if (keyboard_data == 0xB9 /*Spacebar make-code*/ && player->numberBullets!=0) {
         //playerBullet = shoot(player);
         //draw_ammo_level();
         //bulletOnMap = true;
@@ -300,7 +300,7 @@ void Play_ih(enum Device device){
         */
 
         //UPDATE MOVING DIRECTION
-        change_direction(player, keyboard_data, &up, &down, &left, &right);
+        change_direction(player, &up, &down, &left, &right);
         break;
 
     case MOUSE: //Não fazer nada ou clicar no map e pode vê-lo

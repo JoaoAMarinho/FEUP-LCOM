@@ -36,7 +36,7 @@ void (mouse_ih)(){
     if( stat & OUTPUT_BUF_FULL ) {
         if ((stat &(PARITY_ERROR | TIMEOUT_ERROR)) != 0 ) {mouse_error=true;}
         else { mouse_error=false; }
-        util_sys_inb(OUT_BUF, &mouse_data);
+        util_sys_inb(MOUSE_OUT_BUF, &mouse_data);
     }
     else mouse_error = true;
 }
@@ -84,97 +84,6 @@ int (mouse_data_reporting)(uint32_t cmd){
     return 0;
 }
 
-enum event (mouse_get_event)(struct packet *pp) {
-    enum event result=0;
-    if (pp->lb && !pp->mb && !pp->rb) {
-        result = L_DOWN;
-    }
-    else if (!pp->lb && !pp->mb && !pp->rb) {
-        result = B_UP;
-    }
-    else if (!pp->lb && !pp->mb && pp->rb) {
-        result = R_DOWN;
-    }
-    else if (!pp->lb && pp->mb && !pp->rb) {
-        result = M_DOWN;
-    }
-    else{
-        result = TWO_DOWN;
-    }
-    return result;
-}
-
-void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum event m_event, bool *done) {
-    static uint16_t x_delta = 0, y_delta = 0;
-    static enum state current_state = INITIAL;
-
-
-    switch(current_state) {
-        case INITIAL: {
-            x_delta = 0;
-            y_delta = 0;
-            if (m_event == L_DOWN) {
-                current_state = MOVE_LEFT;
-            }
-            break;
-        }
-        case MOVE_LEFT: {
-            if (m_event == B_UP) {
-                if ((x_delta >= x_len) && (fabs(y_delta/(float)x_delta) > 1) ) {
-                    current_state = SWITCH_SIDE;
-                }
-                else {
-                    current_state = INITIAL;
-                }
-            }
-            else if (m_event == L_DOWN) {
-                if ((pp->delta_x > 0 && pp->delta_y > 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
-                    x_delta += pp->delta_x;
-                    y_delta += pp->delta_y;
-                }
-                else current_state = INITIAL;
-            }
-            break;
-        }
-        case SWITCH_SIDE: {
-            x_delta = 0;
-            y_delta = 0;
-            if(m_event==L_DOWN && pp->delta_x==0 && pp->delta_y ==0){
-                current_state = MOVE_LEFT;
-            }
-            else if (m_event == L_DOWN || m_event == M_DOWN || m_event == TWO_DOWN ) {
-                current_state = INITIAL;
-            }
-            else if(pp->delta_x!=0 && pp->delta_y !=0){
-                current_state = INITIAL;
-            }
-            else if (m_event == R_DOWN) {
-                current_state = MOVE_RIGHT;
-            }
-            break;
-        }
-        case MOVE_RIGHT: {
-            if (m_event == B_UP) {
-                if ((x_delta >= x_len) && (fabs(y_delta/(float)x_delta) > 1) ) {
-                    *done = true;
-                }
-                else {
-                    current_state = INITIAL;
-                }
-            }
-            else if (m_event == R_DOWN) {
-                if ((pp->delta_x > 0 && pp->delta_y < 0) || (abs(pp->delta_x) <= tolerance && abs(pp->delta_y) <= tolerance)) {
-                    x_delta += pp->delta_x;
-                    y_delta += pp->delta_y;
-                }
-                else current_state = INITIAL;
-            }
-            break;
-        }
-    }
-
-}
-
 //Cursor
 Cursor * create_cursor(){
     cursor = (Cursor *) malloc(sizeof(Cursor));
@@ -216,7 +125,7 @@ void update_cursor(struct packet * mouse_pack){
             cursor->y -= mouse_pack->delta_y;
     }
 
-    draw_mouse_cursor();
+    draw_cursor();
 }
 
 void draw_cursor(){
@@ -231,12 +140,13 @@ void draw_cursor(){
 }
 
 void erase_cursor(){
-    uint32_t* map = (uint32_t*) background_menu.bytes;
+    //uint32_t* map = (uint32_t*) background_menu.bytes;
 
     for (int i = cursor->x; i <= cursor->x + cursor->img.width; i++) {
         for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
             if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
                 //drawPixel(i,j,*(room->back + i + j * horizontal_res));
+                break; //Só para make purposes
     }
   }
 }

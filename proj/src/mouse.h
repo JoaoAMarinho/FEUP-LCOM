@@ -7,6 +7,8 @@
 
 #include "i8042.h"
 #include "utils.h"
+#include "Videocard.h"
+#include "KeyBoard.h"
 
 #include "Xpms/Cursor.xpm"
 
@@ -43,10 +45,6 @@ void (mouse_ih)();
 void (get_packet)(struct packet *pp);
 
 int (mouse_data_reporting)(uint32_t cmd);
-
-void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum event m_event, bool *done);
-
-enum event (mouse_get_event)(struct packet *pp);
 
 //Cursor
 Cursor * create_cursor();

@@ -8,7 +8,7 @@ extern Menu gameMenu;
 extern Player * player;
 extern Room * room;
 extern Cursor * cursor;
-extern Date * date;
+//extern Date * date;
 
 //xpm_image_t background_menu;
 //xpm_image_t clean_background_menu;
@@ -19,14 +19,14 @@ extern Date * date;
 
 //---------------------------------------------------------------------------------------------
 
-void Main_ih(Device device){}
+void Main_ih(Device device){return;}
 
-void Bestscores_ih(Device device);
+void Bestscores_ih(Device device){return;}
 
-void Instructions_ih(Device device);
+void Instructions_ih(Device device){return;}
 
-void Pause_ih(Device device);
+void Pause_ih(Device device){return;}
 
-void Victory_ih(Device device);
+void Victory_ih(Device device){return;}
 
-void Defeat_ih(Device device);
+void Defeat_ih(Device device){return;}

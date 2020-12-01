@@ -8,25 +8,26 @@
 #include "i8254.h"
 #include "Videocard.h"
 #include "KeyBoard.h"
-#include "Player.h"
 #include "mouse.h"
+
+typedef enum {TIMER, KEYBOARD, MOUSE, RTC} Device;
+
+typedef enum {MAIN, PLAYING, BESTSCORES , INSTRUCTIONS, /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, TRANSITION, VICTORY, DEFEAT, FINAL} Menu;
+
+//typedef enum {START, TRANSITION, END} Task1;
+
+typedef enum {CAFETERIA, ADMIN, WEAPONS, NAVIGATION, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END} Room;
+
+#include "Player.h"
+#include "Menus.h"
 //#include "Bullet.h"
 //#include "DateTime.h"
-//#include "Menu.h"
 //#include "MultiPlayer.h"
 //#include "Level.h"
 
-enum Device {TIMER=0, KEYBOARD, MOUSE, RTC};
-
-enum Menu{MAIN=0, PLAYING, BESTSCORES , INSTRUCTIONS, /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, TRANSITION, VICTORY, DEFEAT, FINAL};
-
-//enum Task1{START=0, TRANSITION, END};
-
-enum Room{CAFETERIA=0, ADMIN, WEAPONS, NAVIGATION, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END};
-
 int gameLoop();
 
-void receiveInterrupt(enum Device device);
+void receiveInterrupt(Device device);
 
 void Play_ih(Device device);
 

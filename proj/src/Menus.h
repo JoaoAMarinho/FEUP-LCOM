@@ -5,10 +5,10 @@
 #include "i8254.h"
 #include "Videocard.h"
 #include "mouse.h"
-//#include "rtc.h"
-#include "Lever.h"
 #include "Game.h"
-#include "Date.h"
+//#include "rtc.h"
+//#include "Lever.h"
+//#include "Date.h"
 //#include "Button.h"
 
 //Include das images dos menus
@@ -26,4 +26,3 @@ void Pause_ih(Device device);
 void Victory_ih(Device device);
 
 void Defeat_ih(Device device);
-

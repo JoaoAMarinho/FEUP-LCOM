@@ -19,7 +19,7 @@
 #define ESC_KEY 0x81
 #define MAKE_CODE_VERIFY BIT(7)
 
-
+#define MOUSE_OUT_BUF 0x60
 #define KEYBOARD_OUT_BUF 0x60
 #define STATUS_REGISTER 0x64 
 #define COMMAND_REGISTER 0x64
