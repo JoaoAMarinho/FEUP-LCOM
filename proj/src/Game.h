@@ -46,9 +46,6 @@ void Play_ih(Device device);
 //Verificar se o player está perto o suficiente da task
 //int check_task_position();
 
-/**
- struct mouse_ev * mouse_events(struct packet * pack);
- */
 
 //Controlo de todas as task
 //bool task1Handler(int * xlen, LeverState * state, struct mouse_ev * mouse_event);

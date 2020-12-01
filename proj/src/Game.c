@@ -10,7 +10,7 @@ bool kb_error=false;
 uint8_t mouse_data;
 struct packet mouse_pack;
 int mouse_packet_index=0;
-//struct mouse_ev mouse_event;
+Mouse_event m_event;
 bool mouse_error=false;
 //Graphics card
 uint16_t horizontal_res, vertical_res;
@@ -311,3 +311,4 @@ void Play_ih(Device device){
 }
 
 //Interrupt handler das tasks
+

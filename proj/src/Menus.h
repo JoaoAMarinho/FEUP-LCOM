@@ -6,10 +6,10 @@
 #include "Videocard.h"
 #include "mouse.h"
 #include "Game.h"
+#include "Buttons.h"
 //#include "rtc.h"
 //#include "Lever.h"
 //#include "Date.h"
-//#include "Button.h"
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"

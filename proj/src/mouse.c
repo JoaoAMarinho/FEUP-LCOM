@@ -4,6 +4,7 @@
 int mouse_hook_id=MOUSE_IRQ;
 extern bool mouse_error;
 extern uint8_t mouse_data;
+extern Mouse_event m_event;
 extern uint16_t horizontal_res, vertical_res;
 //extern xpm_image_t background_menu; background image so that the cursor is deleted
 //extern Room * room;
@@ -82,6 +83,39 @@ int (mouse_data_reporting)(uint32_t cmd){
 		}
     }
     return 0;
+}
+
+Mouse_event * get_mouse_event(struct packet * mouse_pack){
+	static bool lb_down = false, mb_down = false, rb_down = false;
+
+	if (!lb_down && !rb_down && !mb_down && mouse_pack->lb && !mouse_pack->mb && !mouse_pack->rb) {
+		lb_down = true;
+		m_event=L_DOWN;
+	}
+	else if (!lb_down && !rb_down && !mb_down && mouse_pack->rb && !mouse_pack->mb && !mouse_pack->lb) {
+		rb_down = true;
+		m_event=R_DOWN;
+	}
+	else if (lb_down && !rb_down && !mb_down && !mouse_pack->lb && !mouse_pack->mb && !mouse_pack->rb) {
+		lb_down = false;
+		m_event=L_UP;
+	}
+	else if (!lb_down && rb_down && !mb_down && !mouse_pack->lb && !mouse_pack->mb && !mouse_pack->rb){
+		rb_down = false;
+		m_event=R_UP;
+	}
+	else if (!mb_down && mouse_pack->mb) {
+		mb_down = true;
+		m_event=MIDLE;
+	}
+	else if(mb_down && !mouse_pack->mb) {
+		mb_down = false;
+		m_event=MIDLE;
+	}
+	else 
+		m_event=MOVE;
+
+  	return &m_event;
 }
 
 //Cursor

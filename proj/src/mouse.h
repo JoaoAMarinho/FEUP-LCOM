@@ -23,15 +23,16 @@ enum state {
     SWITCH_SIDE,
     MOVE_RIGHT,
 };
-
-enum event {
-    L_DOWN=0,
-    R_DOWN,
-    M_DOWN,
-    TWO_DOWN,
-    B_UP
-};
 */
+typedef enum{
+    L_DOWN,
+    R_DOWN,
+    L_UP,
+    R_UP,
+    MIDLE,
+    MOVE,
+} Mouse_event;
+
 
 // Subscribes mouse
 int(mouse_subscribe_int)(uint8_t* bit_n);
@@ -45,6 +46,8 @@ void (mouse_ih)();
 void (get_packet)(struct packet *pp);
 
 int (mouse_data_reporting)(uint32_t cmd);
+
+Mouse_event * get_mouse_event(struct packet * mouse_pack);
 
 //Cursor
 Cursor * create_cursor();

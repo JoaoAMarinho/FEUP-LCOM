@@ -10,16 +10,21 @@ extern Room * room;
 extern Cursor * cursor;
 //extern Date * date;
 
-//xpm_image_t background_menu;
+xpm_image_t current_background;
 //xpm_image_t clean_background_menu;
 
-//static Button ** pauseMenuButtons;
-//static Button ** mainMenuButtons;
+//static Button ** mainButtons;
+//static Button ** pauseButtons;
 //static Button * continueButton;
 
 //---------------------------------------------------------------------------------------------
 
-void Main_ih(Device device){return;}
+void Main_ih(Device device){
+    //static Mouse_event * mouseEvent;
+    //static bool overExit = false, overSingleplayer = false, overMultiplayer = false, overHelp = false;
+    //bool clickedExit = false, clickedSingleplayer = false, clickedMultiplayer = false, clickedHelp = false;   
+    return;
+}
 
 void Bestscores_ih(Device device){return;}
 
