@@ -26,3 +26,5 @@ void Pause_ih(Device device);
 void Victory_ih(Device device);
 
 void Defeat_ih(Device device);
+
+void LoadMain(bool firstLoad);

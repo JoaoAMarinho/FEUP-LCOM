@@ -185,3 +185,17 @@ void erase_cursor(){
   }
 }
 
+char checkOverMain(){
+    //Verificar se o cursor está nalgum botão
+    if (cursor->x > 112 && cursor->x < 432 && cursor->y > 400 && cursor->y < 464)
+        return 'P';
+    else if (cursor->x > 560 && cursor->x < 880 && cursor->y > 400 && cursor->y < 464)
+        return 'I';  
+    else if (cursor->x > 112 && cursor->x < 432 && cursor->y > 592 && cursor->y < 656)  
+        return 'B';
+    else if (cursor->x > 560 && cursor->x < 880 && cursor->y > 592 && cursor->y < 656)
+        return 'E';
+    else 
+        return 'N';
+}
+

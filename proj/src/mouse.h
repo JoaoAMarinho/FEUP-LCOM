@@ -58,7 +58,7 @@ void draw_cursor();
 
 void erase_cursor();
 
-//unsigned int check_collision_main_menu ();
+char checkOverMain();
 
 //unsigned int check_collision_pause_menu ();
 

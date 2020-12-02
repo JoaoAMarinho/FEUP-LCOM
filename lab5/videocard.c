@@ -193,6 +193,7 @@ int drawXpm(uint16_t x,uint16_t y, xpm_image_t *img){
         for(size_t column = 0;column < img->width; column++){
 
             drawPixel(x+column,y+row,img->bytes[img->width*row+column]);
+            //drawPixel(x+column,y+row,*(img->bytes+img->width*row+column));
         }
     }
 
