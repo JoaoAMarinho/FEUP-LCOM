@@ -34,7 +34,7 @@ void Main_ih(Device device){
                         erase_button(mainButtons[0]);
                         mainButtons[0]->isMouseOver = false;
                         //add_button(mainButtons[0]);
-                        draw_button(mainButtons[0]);
+                        //draw_button(mainButtons[0]);
                     }
                     else if (overInstructions) {
                         overInstructions = false;
@@ -164,10 +164,10 @@ void LoadMain(){
 
     mainButtons = (Button **) malloc(4 * sizeof(Button *));
 
-    mainButtons[0] = createButton(PLAY_B,570,110);
-    mainButtons[1] = createButton(INSTRUCTIONS_B,570,170);
-    mainButtons[2] = createButton(BESTSCORES_B,570,230);
-    mainButtons[3] = createButton(EXIT_B,570,290);
+    mainButtons[0] = createButton(PLAY_B,500,110);
+    mainButtons[1] = createButton(INSTRUCTIONS_B,500,170);
+    mainButtons[2] = createButton(BESTSCORES_B,500,230);
+    mainButtons[3] = createButton(EXIT_B,500,290);
 
     
     add_button(mainButtons[0]);

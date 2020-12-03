@@ -45,7 +45,7 @@ void draw_button(Button * button){
         for(int i = 0; i < button->buttonClicked.width; i++) {
             for (int j = 0; j < button->buttonClicked.height; j++) {
                 if (*(map + i + j*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
-                    drawPixel(button->x+i-26,button->y+j-23,*(map + i + j*button->buttonClicked.width));
+                    drawPixel(button->x+i,button->y+j,*(map + i + j*button->buttonClicked.width));
             }
         }
     }
@@ -94,7 +94,7 @@ void add_button(Button * button){
         for(int i = 0; i < button->buttonClicked.width; i++) {
             for (int j = 0; j < button->buttonClicked.height; j++) {
                 if (*(buttonMap + i + j*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
-                    *(backgroundMap + (button->x + i-26) + (button->y + j-23) * horizontal_res) = *(buttonMap + i + j*button->buttonClicked.width);
+                    *(backgroundMap + (button->x + i) + (button->y + j) * horizontal_res) = *(buttonMap + i + j*button->buttonClicked.width);
             }
         }
     }

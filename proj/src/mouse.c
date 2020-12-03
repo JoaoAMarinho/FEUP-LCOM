@@ -175,24 +175,32 @@ void draw_cursor(){
 
 void erase_cursor(){
     uint32_t* map = (uint32_t*) current_background.bytes;
-
+    uint32_t*cursorMap=(uint32_t*) cursor->img.bytes;
+    /*
     for (int i = cursor->x; i <= cursor->x + cursor->img.width; i++) {
         for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
-            if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
+            if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1){
                 drawPixel(i,j,*(map  + i + j * horizontal_res));
+            }        
+        }
+  }*/
+  for(int i = cursor->x; i <= cursor->x + cursor->img.width; i++){
+        for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
+            if (*(cursorMap + (i-cursor->x) + (j-cursor->y)*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(i,j,*(map  + i + j * horizontal_res));
+        }
     }
-  }
 }
 
 char checkOverMain(){
     //Verificar se o cursor está nalgum botão
-    if (cursor->x > 580 && cursor->x < 756 && cursor->y > 189 && cursor->y < 230)
+    if (cursor->x > 545 && cursor->x < 735 && cursor->y > 180 && cursor->y < 230)
         return 'P';
-    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 245 && cursor->y < 285)
+    else if (cursor->x > 545 && cursor->x < 735 && cursor->y > 240 && cursor->y < 290)
         return 'I';  
-    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 300 && cursor->y < 340)  
+    else if (cursor->x > 545 && cursor->x < 735 && cursor->y > 300 && cursor->y < 350)  
         return 'B';
-    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 355 && cursor->y < 395)
+    else if (cursor->x > 545 && cursor->x < 735 && cursor->y > 360 && cursor->y < 410)
         return 'E';
     else 
         return 'N';
