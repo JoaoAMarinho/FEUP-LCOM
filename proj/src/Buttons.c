@@ -45,7 +45,7 @@ void draw_button(Button * button){
         for(int i = 0; i < button->buttonClicked.width; i++) {
             for (int j = 0; j < button->buttonClicked.height; j++) {
                 if (*(map + i + j*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
-                    drawPixel(button->x+i,button->y+j,*(map + i + j*button->buttonClicked.width));
+                    drawPixel(button->x+i-26,button->y+j-23,*(map + i + j*button->buttonClicked.width));
             }
         }
     }
@@ -61,31 +61,52 @@ void draw_button(Button * button){
     }
 }
 
-/*
-void change_background_map(Button * button){
-    uint32_t * map, * buttonMap;
+void erase_button(Button * button){
+    uint32_t* map = (uint32_t*) current_background.bytes;
+    
+   if (button->isMouseOver) {
 
-    map = (uint32_t *)background_menu.bytes;
-
-    if (!button->mouseOver) {
-        buttonMap = (uint32_t *)button->buttonImg.bytes;
-
-        for(int i = 0; i < button->buttonImg.width; i++) {
-        for (int j = 0; j < button->buttonImg.height; j++) {
-            if (*(buttonMap + i + j*button->buttonImg.width) != xpm_transparency_color(XPM_8_8_8_8))
-            *(map + (button->x + i) + (button->y + j) * hres) = *(buttonMap + i + j*button->buttonImg.width);
-        }
+        for(int i = button->x; i <= button->x+button->buttonClicked.width; i++) {
+            for (int j = button->y; j < button->y + button->buttonClicked.height; j++) {
+                if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
+                    drawPixel(i,j,*(map  + i + j * horizontal_res));
+            }
         }
     }
     else {
-        buttonMap = (uint32_t *)button->highlightedImg.bytes;
-
-        for(int i = 0; i < button->highlightedImg.width; i++) {
-        for (int j = 0; j < button->highlightedImg.height; j++) {
-            if (*(buttonMap + i + j*button->highlightedImg.width) != xpm_transparency_color(XPM_8_8_8_8))
-            *(map + (button->x + i) + (button->y + j) * hres) = *(buttonMap + i + j*button->buttonImg.width);
-        }
+        for(int i = button->x; i <= button->x+button->buttonNotClicked.width; i++) {
+            for (int j = button->y; j < button->y + button->buttonNotClicked.height; j++) {
+                if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
+                    drawPixel(i,j,*(map  + i + j * horizontal_res));
+            }
         }
     }
 }
-*/
+
+void add_button(Button * button){
+    uint32_t * backgroundMap, * buttonMap;
+
+    backgroundMap = (uint32_t *)current_background.bytes;
+
+    if (button->isMouseOver) {
+        buttonMap = (uint32_t *)button->buttonClicked.bytes;
+
+        for(int i = 0; i < button->buttonClicked.width; i++) {
+            for (int j = 0; j < button->buttonClicked.height; j++) {
+                if (*(buttonMap + i + j*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
+                    *(backgroundMap + (button->x + i-26) + (button->y + j-23) * horizontal_res) = *(buttonMap + i + j*button->buttonClicked.width);
+            }
+        }
+    }
+    else {
+        buttonMap = (uint32_t *)button->buttonNotClicked.bytes;
+
+        for(int i = 0; i < button->buttonNotClicked.width; i++) {
+            for (int j = 0; j < button->buttonNotClicked.height; j++) {
+                if (*(buttonMap + i + j*button->buttonNotClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
+                    *(backgroundMap + (button->x + i) + (button->y + j) * horizontal_res) = *(buttonMap + i + j*button->buttonNotClicked.width);
+            }
+        }    
+    }
+}
+

@@ -11,8 +11,11 @@
 #include "keyboard.h"
 #include "mouse.h"
 #include "i8254.h"
-#include "Player.h"
+#include "i8042.h"
 #include "Game.h"
+#include "Menus.h"
+#include "Player.h"
+
 
 int main(int argc, char *argv[]) {
   // sets the language of LCF messages (can be either EN-US or PT-PT)
@@ -39,9 +42,9 @@ int main(int argc, char *argv[]) {
 }
 
 int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])) {
-  
-  if (vg_init(MODE3) != 0) {vg_exit(); return 1;}
 
+  if (vg_init(MODE3) == NULL) {vg_exit(); return 1;}
+  
   if (gameLoop() != 0) {return 1;}
 
   vg_exit();
@@ -116,8 +119,8 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
 	vg_exit();
 
     return 0;
-}
-*/
+}*/
+
 
 
 

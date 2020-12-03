@@ -30,6 +30,7 @@ Menu gameMenu = MAIN;
 //---------------------------------------------------------------------------------------------
 
 int gameLoop(){
+  
     int ipc_status, r;
   	message msg;
 
@@ -47,6 +48,7 @@ int gameLoop(){
     uint32_t mouse_irq_set = BIT(mouse_bit_no);
     uint32_t rtc_irq_set = BIT(rtc_bit_no);
 
+    LoadMain();
     //Other loads (tasks and other things)
     //date = load_date();
     //LoadRtc();

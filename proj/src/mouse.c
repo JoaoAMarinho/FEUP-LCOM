@@ -6,7 +6,7 @@ extern bool mouse_error;
 extern uint8_t mouse_data;
 extern Mouse_event m_event;
 extern uint16_t horizontal_res, vertical_res;
-//extern xpm_image_t background_menu; background image so that the cursor is deleted
+extern xpm_image_t current_background; //background image so that the cursor is deleted
 //extern Room * room;
 
 Cursor *cursor;
@@ -174,26 +174,25 @@ void draw_cursor(){
 }
 
 void erase_cursor(){
-    //uint32_t* map = (uint32_t*) background_menu.bytes;
+    uint32_t* map = (uint32_t*) current_background.bytes;
 
     for (int i = cursor->x; i <= cursor->x + cursor->img.width; i++) {
         for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
             if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
-                //drawPixel(i,j,*(room->back + i + j * horizontal_res));
-                break; //Só para make purposes
+                drawPixel(i,j,*(map  + i + j * horizontal_res));
     }
   }
 }
 
 char checkOverMain(){
     //Verificar se o cursor está nalgum botão
-    if (cursor->x > 112 && cursor->x < 432 && cursor->y > 400 && cursor->y < 464)
+    if (cursor->x > 580 && cursor->x < 756 && cursor->y > 189 && cursor->y < 230)
         return 'P';
-    else if (cursor->x > 560 && cursor->x < 880 && cursor->y > 400 && cursor->y < 464)
+    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 245 && cursor->y < 285)
         return 'I';  
-    else if (cursor->x > 112 && cursor->x < 432 && cursor->y > 592 && cursor->y < 656)  
+    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 300 && cursor->y < 340)  
         return 'B';
-    else if (cursor->x > 560 && cursor->x < 880 && cursor->y > 592 && cursor->y < 656)
+    else if (cursor->x > 580 && cursor->x < 756 && cursor->y > 355 && cursor->y < 395)
         return 'E';
     else 
         return 'N';

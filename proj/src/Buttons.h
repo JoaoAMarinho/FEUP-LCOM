@@ -37,4 +37,6 @@ Button * createButton(ButtonInfo buttonInfo, int x, int y);
 
 void draw_button(Button * button);
 
-//void change_background_map(Button * button);  //Colocar o map do background com o botão
+void erase_button(Button * button);
+
+void add_button(Button * button);  //Colocar o botão no current background

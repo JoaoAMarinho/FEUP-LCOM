@@ -14,7 +14,7 @@
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
 
-
+//Interrupt handlers
 void Main_ih(Device device);
 
 void Bestscores_ih(Device device);
@@ -27,4 +27,8 @@ void Victory_ih(Device device);
 
 void Defeat_ih(Device device);
 
-void LoadMain(bool firstLoad);
+//Load menus
+void LoadMain();
+
+//Draw menus
+void draw_Main();

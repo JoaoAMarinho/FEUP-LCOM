@@ -11,6 +11,7 @@
 #include "sprite.h"
 #include "i8254.h"
 
+
 // Any header files included below this line should have been created by you
 
 int main(int argc, char *argv[]) {
@@ -124,7 +125,6 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
 	vg_init(MODE1);
-
 	/* Function without sprites
 
 	xpm_image_t img;
