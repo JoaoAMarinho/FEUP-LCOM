@@ -62,6 +62,9 @@ void Main_ih(Device device){
                     if ( *mouseEvent == L_UP) {
                         playClicked = true;
                         break;
+                    }else if(overPlay) {
+                        draw_button(mainButtons[0]);
+                        update_cursor(&mouse_pack);
                     }
                     else if (!overPlay) {
                         overPlay = true;
@@ -116,7 +119,7 @@ void Main_ih(Device device){
 
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
-            update_cursor(&mouse_pack);
+            //update_cursor(&mouse_pack);
             break;
         case RTC:
             //clean_clock();
