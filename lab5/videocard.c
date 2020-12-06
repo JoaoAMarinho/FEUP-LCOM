@@ -140,7 +140,7 @@ int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color){
   	}
     return 0;
 }
-
+/*
 int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint32_t color){
     //Draw line by line (horizontal)
     for(int i=0; i<height; i++){
@@ -149,6 +149,27 @@ int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uin
         vg_draw_hline(x,y+i,width,color);
     }
 
+    return 0;
+}
+*/
+int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint32_t color){
+    int x1=x,y1=0,x2=x+width,y2=0,x3=x+width/2,y3=height;
+    //int half=x+width/2;
+    float total_area=width*height/2;
+    for(int i=0; i<height; i++){
+        for(int j=0; j<width; j++){
+            //Current pos: x+j,y-height+i
+            int Px=x+j;
+            int Py=height-i;
+            float a1,a2,a3;
+            a1 = abs((x1*(Py-y3) + Px*(y3-y1)+ x3*(y1-Py))/2.0);
+            a2 = abs((Px*(y2-y3) + x2*(y3-Py)+ x3*(Py-y2))/2.0);
+            a3 = abs((x1*(y2-Py) + x2*(Py-y1)+ Px*(y1-y2))/2.0);
+            if(a1+a2+a3==total_area){
+                drawPixel(x+j,y-height+i,color);
+            }
+        }
+    }
     return 0;
 }
 

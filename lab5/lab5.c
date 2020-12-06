@@ -10,7 +10,7 @@
 #include "keyboard.h"
 #include "sprite.h"
 #include "i8254.h"
-
+#include "Untitled-1.xpm"
 
 // Any header files included below this line should have been created by you
 
@@ -125,6 +125,20 @@ int(video_test_pattern)(uint16_t mode, uint8_t no_rectangles, uint32_t first, ui
 int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
 	vg_init(MODE1);
+	/*
+	vg_init(MODE3);
+	xpm_image_t img1;
+
+    xpm_load(img, XPM_8_8_8_8, &img1);
+	uint32_t* map=(uint32_t*)img1.bytes;
+
+	for(int i = 0; i < img1.width; i++) {
+            for (int j = 0; j < img1.height; j++) {
+            if (*(map + i + j*img1.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(i,j,*(map + i + j*img1.width));
+            }
+        }
+	*/
 	/* Function without sprites
 
 	xpm_image_t img;
