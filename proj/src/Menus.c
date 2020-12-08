@@ -33,29 +33,21 @@ void Main_ih(Device device){
                         overPlay = false;
                         erase_button(mainButtons[0]);
                         mainButtons[0]->isMouseOver = false;
-                        //add_button(mainButtons[0]);
-                        //draw_button(mainButtons[0]);
                     }
                     else if (overInstructions) {
                         overInstructions = false;
                         erase_button(mainButtons[1]);
                         mainButtons[1]->isMouseOver = false;
-                        add_button(mainButtons[1]);
-                        draw_button(mainButtons[1]);
                     }
                     else if (overBestscores) {
                         overBestscores = false;
                         erase_button(mainButtons[2]);
                         mainButtons[2]->isMouseOver = false;
-                        add_button(mainButtons[2]);
-                        draw_button(mainButtons[2]);
                     }
                     else if (overExit) {
                         overExit = false;
                         erase_button(mainButtons[3]);
                         mainButtons[3]->isMouseOver = false;
-                        add_button(mainButtons[3]);
-                        draw_button(mainButtons[3]);
                     }
                     break;
                 case 'P':
@@ -64,13 +56,13 @@ void Main_ih(Device device){
                         break;
                     }else if(overPlay) {
                         draw_button(mainButtons[0]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
                         update_cursor(&mouse_pack);
                     }
                     else if (!overPlay) {
                         overPlay = true;
-                        erase_button(mainButtons[0]);
                         mainButtons[0]->isMouseOver = true;
-                        //add_button(mainButtons[0]);
                         draw_button(mainButtons[0]);
                     }
                     break;
@@ -78,12 +70,15 @@ void Main_ih(Device device){
                     if (*mouseEvent == L_UP){
                         instructionsClicked = true;
                         break;
+                    }else if(overInstructions) {
+                        draw_button(mainButtons[1]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        update_cursor(&mouse_pack);
                     }
                     else if (!overInstructions) {
                         overInstructions = true;
-                        erase_button(mainButtons[1]);
                         mainButtons[1]->isMouseOver = true;
-                        //add_button(mainButtons[1]);
                         draw_button(mainButtons[1]);
                     }
                     break;
@@ -91,11 +86,15 @@ void Main_ih(Device device){
                     if (*mouseEvent == L_UP) {
                         bestscoresClicked = true;
                         break;
+                    }else if(overBestscores) {
+                        draw_button(mainButtons[2]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        update_cursor(&mouse_pack);
                     }
                     else if (!overBestscores) {
                         overBestscores = true;
                         mainButtons[2]->isMouseOver = true;
-                        //add_button(mainButtons[2]);
                         draw_button(mainButtons[2]);
                     }
                     break;
@@ -103,11 +102,15 @@ void Main_ih(Device device){
                     if (*mouseEvent == L_UP) {
                         exitClicked = true;
                         break;
+                    }else if(overExit) {
+                        draw_button(mainButtons[3]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        update_cursor(&mouse_pack);
                     }
                     else if (!overExit) {
                         overExit = true;
                         mainButtons[3]->isMouseOver = true;
-                        //add_button(mainButtons[3]);
                         draw_button(mainButtons[3]);
                     }
                     break;
@@ -116,10 +119,9 @@ void Main_ih(Device device){
 
         case KEYBOARD: //Nada
             break;
-
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
-            //update_cursor(&mouse_pack);
+            update_cursor(&mouse_pack);
             break;
         case RTC:
             //clean_clock();
