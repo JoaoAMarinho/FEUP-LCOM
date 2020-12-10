@@ -26,7 +26,7 @@ typedef struct {
 
 } Player;
 
-Player* create_player(int x, int y,Direction direction);
+Player* create_player();
 
 void draw_player(Player *player);
 

@@ -11,7 +11,7 @@ extern Cursor * cursor;
 //extern Date * date;
 
 xpm_image_t current_background;
-xpm_image_t empty_background;
+//xpm_image_t empty_background;
 
 static Button ** mainButtons;
 //static Button ** pauseButtons;
@@ -132,17 +132,18 @@ void Main_ih(Device device){
 
     if (exitClicked) // Sair
         gameMenu = FINAL;
-    else if (playClicked) { // Entrar no modo Singleplayer
+    else if (playClicked) { // Começar o jogo
         gameMenu = PLAYING;
+        player=create_player();
         //clean_clock();
         //LoadSinglePLayer(1,true);
     }
-    else if (instructionsClicked) { // Entrar no modo Multiplayer
+    else if (instructionsClicked) { // Instruções
         gameMenu = INSTRUCTIONS;
         //clean_clock();
         //Desenhar instruçoes();
     }
-    else if (bestscoresClicked) { // Entrar no Help
+    else if (bestscoresClicked) { // Mostrar best scores
         gameMenu = BESTSCORES;
         //desenhar bestscores();
     }
@@ -163,7 +164,7 @@ void Defeat_ih(Device device){return;}
 
 void LoadMain(){
     xpm_load(MainBackGround, XPM_8_8_8_8, &current_background);
-    xpm_load(MainBackGround, XPM_8_8_8_8, &empty_background);
+    //xpm_load(MainBackGround, XPM_8_8_8_8, &empty_background);
 
     cursor = create_cursor();
 

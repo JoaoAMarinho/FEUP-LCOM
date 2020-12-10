@@ -10,7 +10,6 @@
 #include "keyboard.h"
 #include "sprite.h"
 #include "i8254.h"
-#include "Untitled-1.xpm"
 
 // Any header files included below this line should have been created by you
 
@@ -126,7 +125,7 @@ int(video_test_xpm)(xpm_map_t xpm, uint16_t x, uint16_t y) {
 
 	vg_init(MODE1);
 	/*
-	vg_init(MODE3);
+	vg_init(MODE5);
 	xpm_image_t img1;
 
     xpm_load(img, XPM_8_8_8_8, &img1);

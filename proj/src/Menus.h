@@ -2,9 +2,6 @@
 
 #include <lcom/lcf.h>
 
-#include "i8254.h"
-#include "Videocard.h"
-#include "mouse.h"
 #include "Game.h"
 #include "Buttons.h"
 //#include "rtc.h"

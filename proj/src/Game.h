@@ -16,14 +16,14 @@ typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES , /*TAREFAS: ALAVANCA, LIG
 
 //typedef enum {START, TRANSITION, END} Task1;
 
-typedef enum {CAFETERIA, ADMIN, WEAPONS, NAVIGATION, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END} Room;
+typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END} Room_number;
 
 #include "Player.h"
 #include "Menus.h"
+#include "Rooms.h"
 //#include "Bullet.h"
 //#include "DateTime.h"
 //#include "MultiPlayer.h"
-//#include "Level.h"
 
 int gameLoop();
 
@@ -35,7 +35,7 @@ void Play_ih(Device device);
 //void task1IH(Device device);
 
 //Load de cada room
-//void loadRoom(bool begin);
+void LoadPlay(Room_number previousRoom);
 
 //Load das tasks
 //void loadtaskXPM();

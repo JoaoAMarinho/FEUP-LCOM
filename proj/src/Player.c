@@ -5,16 +5,17 @@ extern uint8_t keyboard_data;
 //extern Room * room;
 //extern Menu gameMenu;
 
+Player * player;
+
 //---------------------------------------------------------------------------------------------
 
-Player* create_player(int x, int y,Direction direction){
-    Player * player = (Player *) malloc (sizeof(Player));
+Player* create_player(){
+    player = (Player *) malloc (sizeof(Player));
 
-    player->x = x;
-    player->y = y;
+    player->x = 0;
+    player->y = 0;
     player->xspeed = 3;
     player->yspeed = 3;
-    player->direction=direction;
     player->numberBullets=3;
     player->alive=true;
 
