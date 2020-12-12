@@ -153,8 +153,8 @@ void receiveInterrupt(Device device){
         case PAUSE:
             Pause_ih(device);
             break;
-        case TRANSITION:             //Transição entre rooms a mostrar qual está (black screen com o nome da sala)
-        //    Transition_ih(device);
+        case GAMEMAP:             //Transição entre rooms a mostrar qual está (black screen com o nome da sala)
+        //    Map_ih(device);
             break;
         case VICTORY:
             Victory_ih(device);
@@ -431,7 +431,7 @@ bool roomTransition(){
 	switch (room->currentRoom) {
 		case CAFETERIA:
 			if(player->direction==RIGHT && player->x>=724 && player->y > 280 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
-			else if(player->direction==LEFT && player->x+player->img.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
+			else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
 			break;

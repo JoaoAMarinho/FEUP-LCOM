@@ -3,7 +3,7 @@
 #include <lcom/lcf.h>
 #include "Videocard.h"
 //#include "Enemy.h"
-#include "Menu.h"
+#include "Menus.h"
 
 #include "Xpms/Projectiles/Projectile.xpm"
 #include "Xpms/Projectiles/Projectileanim1.xpm"
@@ -15,12 +15,12 @@ typedef struct {
     int x;
     int y;
     xpm_image_t projectileImg;
-    xpm_image_t projectileAnimations[2];
+    xpm_image_t projectileAnimations[3];
     int projectileSpeed;
     Direction direction;
     //bool active;
 
-} Bullet;
+} Projectile;
 
 Projectile* create_projectile(Player * player);
 
@@ -28,10 +28,14 @@ void draw_projectile(Projectile *projectile);
 
 void erase_projectile(Projectile* projectile);
 
-void animate_projectile(Projectile *projectile);
+bool animate_projectile(Projectile *projectile /*,Enemy ** enemies, int enemyNum*/);
 
-Bullet * blast(Player * player);
+Projectile * blast(Player * player);
 
-//bool enemyBulletAnimation(Bullet * bullet, Player * player);
+bool projectileCollision(Projectile *projectile); //Colisões Com paredes ou inimigos
+//void enemy_shoot(Enemy * enemy); //Tiro do inimigo
 
-//bool check_collision_with_player(Bullet * bullet, Player * player);
+//bool enemyBulletAnimation(Bullet * bullet, Player * player); //Animação da bala do inimigo
+
+//bool check_collision_with_player(Bullet * bullet, Player * player); //Verifica se o inimigo matou o player
+
