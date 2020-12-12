@@ -17,7 +17,7 @@ Player* create_player(){
     player->direction=DOWN;
     player->xspeed = 3;
     player->yspeed = 3;
-    player->numberBullets=3;
+    player->numberProjectiles=3;
     player->alive=true;
 
     xpm_image_t img;
@@ -41,21 +41,21 @@ Player* create_player(){
     player->PlayerRight[7] = img;
 
     free(&img);
-    player->img = player->PlayerRight[0];
+    player->playerImg = player->PlayerRight[0];
 
     return player;
 }
 
 void draw_player(Player *player){
-    uint32_t* map=(uint32_t*)player->img.bytes;
+    uint32_t* map=(uint32_t*)player->playerImg.bytes;
 
     switch(player->direction) {
         case RIGHT:
         {
-        for(int i = 0; i < player->img.width; i++) {
-            for (int j = 0; j < player->img.height; j++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(player->x+i,player->y+j,*(map + i + j*player->img.width));
+        for(int i = 0; i < player->playerImg.width; i++) {
+            for (int j = 0; j < player->playerImg.height; j++) {
+            if (*(map + i + j*player->playerImg.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(player->x+i,player->y+j,*(map + i + j*player->playerImg.width));
             }
         }
         break;
@@ -63,10 +63,10 @@ void draw_player(Player *player){
 
         case UP:
         {
-        for(int j = 0 ; j < player->img.height; j++) {
-            for (int i = 0 ; i < player->img.width ; i++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(player->x + j,player->y + player->img.width - i ,*(map + i + j*player->img.width));
+        for(int j = 0 ; j < player->playerImg.height; j++) {
+            for (int i = 0 ; i < player->playerImg.width ; i++) {
+            if (*(map + i + j*player->playerImg.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(player->x + j,player->y + player->playerImg.width - i ,*(map + i + j*player->playerImg.width));
             }
         }
         break;
@@ -74,10 +74,10 @@ void draw_player(Player *player){
 
         case DOWN:
         {
-        for(int i = 0; i < player->img.width; i++) {
-            for (int j = 0; j < player->img.height; j++) {
-            if (*(map + i + j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(player->x + player->img.height - j,player->y + i,*(map + i + j*player->img.width));
+        for(int i = 0; i < player->playerImg.width; i++) {
+            for (int j = 0; j < player->playerImg.height; j++) {
+            if (*(map + i + j*player->playerImg.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(player->x + player->playerImg.height - j,player->y + i,*(map + i + j*player->playerImg.width));
             }
         }
         break;
@@ -85,12 +85,12 @@ void draw_player(Player *player){
 
         case LEFT:
         {
-        map += player->img.height * player->img.width;
+        map += player->playerImg.height * player->playerImg.width;
 
-        for(int i = 0; i < player->img.width; i++) {
-            for (int j = 0; j < player->img.height; j++) {
-            if (*(map - i - j*player->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(player->x+i,player->y+j,*(map - i - j*player->img.width));
+        for(int i = 0; i < player->playerImg.width; i++) {
+            for (int j = 0; j < player->playerImg.height; j++) {
+            if (*(map - i - j*player->playerImg.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(player->x+i,player->y+j,*(map - i - j*player->playerImg.width));
             }
         }
         break;
@@ -102,8 +102,8 @@ void draw_player(Player *player){
 
 void erase_player(Player* player){
     uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
-    for(int i = player->x; i < player->img.width+player->x; ++i){
-        for (int j = player->y; j < player->img.height+player->y; ++j) {
+    for(int i = player->x; i < player->playerImg.width+player->x; ++i){
+        for (int j = player->y; j < player->playerImg.height+player->y; ++j) {
             drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
         }
     }
@@ -114,7 +114,7 @@ void animate_player(Player *player){
 
     erase_player(player);
     draw_player(player);
-    player->img = player->PlayerRight[animationNumber];
+    player->playerImg = player->PlayerRight[animationNumber];
     animationNumber++;
     if (animationNumber == 7) {
         animationNumber = 0;
@@ -160,14 +160,6 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         player->direction = LEFT;
 
     if (up && !room_player_collision(player)) {
-        /*if (!player->hasAmmo && check_collision_ammo(player,UP)) {
-        player->hasAmmo = true;
-        player->isReloading = true;
-        player->isIdle = false;
-        }
-
-        player->isIdle = false;
-        */
         erase_player(player);
         if (player->y - player->yspeed < 0)
         player->y = 0;
@@ -175,8 +167,8 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         player->y -= player->yspeed;
 
         if (right && !room_player_collision(player)) {
-            if (player->x + player->xspeed + player->img.width > (int)horizontal_res)
-                player->x = (int)horizontal_res - player->img.width;
+            if (player->x + player->xspeed + player->playerImg.width > (int)horizontal_res)
+                player->x = (int)horizontal_res - player->playerImg.width;
             else  
                 player->x += player->xspeed;
         }
@@ -187,8 +179,8 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
                 player->x -= player->xspeed;
         }
         if (down && !room_player_collision(player)) {
-            if (player->y + player->yspeed > (int)vertical_res - player->img.height - 4)
-                player->y = (int)vertical_res - player->img.height - 4;
+            if (player->y + player->yspeed > (int)vertical_res - player->playerImg.height - 4)
+                player->y = (int)vertical_res - player->playerImg.height - 4;
             else  
                 player->y += player->yspeed;
         } 
@@ -197,14 +189,14 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
     else if (down && !room_player_collision(player)) {
 
         erase_player(player);
-        if (player->y + player->yspeed > (int)vertical_res - player->img.height - 4)
-            player->y = (int)vertical_res - player->img.height - 4;
+        if (player->y + player->yspeed > (int)vertical_res - player->playerImg.height - 4)
+            player->y = (int)vertical_res - player->playerImg.height - 4;
         else  
             player->y += player->yspeed;
         
         if (right && !room_player_collision(player)) {
-            if (player->x + player->xspeed > (int)horizontal_res - player->img.width)
-                player->x = (int)horizontal_res - player->img.width;
+            if (player->x + player->xspeed > (int)horizontal_res - player->playerImg.width)
+                player->x = (int)horizontal_res - player->playerImg.width;
             else  
                 player->x += player->xspeed;
         }
@@ -218,8 +210,8 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
     }
     else if (right && !room_player_collision(player)) {
         erase_player(player);
-        if (player->x + player->xspeed + player->img.width > (int)horizontal_res)
-            player->x = (int)horizontal_res - player->img.width;
+        if (player->x + player->xspeed + player->playerImg.width > (int)horizontal_res)
+            player->x = (int)horizontal_res - player->playerImg.width;
         else  
             player->x += player->xspeed;
         
@@ -252,9 +244,9 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
 bool room_player_collision(Player* player){
     uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
     if(player->direction==UP){
-        if (player->y + player->img.width >= horizontal_res)
-            player->y = horizontal_res - player->img.width - 5;
-        for (int i = player->x + 3; i <= player->x + player->img.width - 3; i++) {
+        if (player->y + player->playerImg.width >= horizontal_res)
+            player->y = horizontal_res - player->playerImg.width - 5;
+        for (int i = player->x + 3; i <= player->x + player->playerImg.width - 3; i++) {
             for (int j = player->y; j >= player->y - player->yspeed; j--) {
                 if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
                     return true;
@@ -262,30 +254,30 @@ bool room_player_collision(Player* player){
         }
     }
     else if(player->direction==DOWN){
-        if (player->y + player->img.width >= (int) horizontal_res)
-            player->y = horizontal_res - player->img.width - 5;
-        for (int i = player->x + 3; i <= player->x + player->img.width - 3; i++) {
-            for (int j = player->y + player->img.height; j <= player->y + player->img.height + player->yspeed; j++) {
+        if (player->y + player->playerImg.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->playerImg.width - 5;
+        for (int i = player->x + 3; i <= player->x + player->playerImg.width - 3; i++) {
+            for (int j = player->y + player->playerImg.height; j <= player->y + player->playerImg.height + player->yspeed; j++) {
                 if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
                     return true;
             }
         }
     }
     else if(player->direction==RIGHT){
-        if (player->y + player->img.width >= (int) horizontal_res)
-            player->y = horizontal_res - player->img.width - 5;
-        for (int i = player->x + player->img.width; i <= player->x + player->xspeed + player->img.width; i++) {
-            for (int j = player->y + 3; j <= player->y + player->img.height - 3; j++) {
+        if (player->y + player->playerImg.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->playerImg.width - 5;
+        for (int i = player->x + player->playerImg.width; i <= player->x + player->xspeed + player->playerImg.width; i++) {
+            for (int j = player->y + 3; j <= player->y + player->playerImg.height - 3; j++) {
                 if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
                     return true;
             }
         }
     }
     else if(player->direction==LEFT){
-        if (player->y + player->img.width >= (int) horizontal_res)
-            player->y = horizontal_res - player->img.width - 5;
+        if (player->y + player->playerImg.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->playerImg.width - 5;
         for (int i = player->x; i >= player->x - player->xspeed; i--) {
-            for (int j = player->y + 3; j <= player->y + player->img.height - 3; j++) {
+            for (int j = player->y + 3; j <= player->y + player->playerImg.height - 3; j++) {
                 if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
                     return true;
             }

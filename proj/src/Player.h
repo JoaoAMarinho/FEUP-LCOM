@@ -13,13 +13,13 @@
 #include "Xpms/Player/player_right4.xpm"
 
 typedef struct {
-    xpm_image_t img;
+    xpm_image_t playerImg;
 
 	int x, y; // current position
 	int width, height; // dimensions
 	int xspeed, yspeed; // current speed
     bool alive;
-    int numberBullets;
+    int numberProjectiles;
 
     xpm_image_t PlayerRight[8];
     Direction direction;

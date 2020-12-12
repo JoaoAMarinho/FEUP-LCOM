@@ -1,0 +1,27 @@
+/* XPM */
+static xpm_row_t const projectile_anim3_xpm[] = {
+/* columns rows colors chars-per-pixel */
+"18 18 3 1 ",
+"  c #A3BF88",
+". c #ECFFA8",
+"X c None",
+/* pixels */
+"XXXXXXXXXXXXXXXXXX",
+"XXXXXX .... XXXXXX",
+"XXXX ........ XXXX",
+"XXX... XXXX ...XXX",
+"XX ..XXXXXXXX.. XX",
+"XX..XXXXXXXXXX..XX",
+"X . XXXXXXXXXX . X",
+"X..XXXXXXXXXXXX..X",
+"X..XXXXXXXXXXXX..X",
+"X..XXXXXXXXXXXX..X",
+"X..XXXXXXXXXXXX..X",
+"X . XXXXXXXXXX . X",
+"XX..XXXXXXXXXX..XX",
+"XX ..XXXXXXXX.. XX",
+"XXX... XXXX ...XXX",
+"XXXX ........ XXXX",
+"XXXXXX .... XXXXXX",
+"XXXXXXXXXXXXXXXXXX"
+};

@@ -179,22 +179,13 @@ void Play_ih(Device device){
         case TIMER:
 			if (!player->alive) {
 				gameMenu = DEFEAT;
-				//up = false; down = false; left = false; right = false;
-				//move_player(player, up, down, left, right); //Não é necessário talvez
 				//Draw lost menu
 				break;
 			}
 
 			//Verificar se está na posição de troca de sala
 			if (roomTransition()) {
-				printf("INN");
-				//enemyShoot = true;
-				//up = false; down = false; left = false; right = false;
-				//move_player(player, &up, &down, &left, &right);
-				if(player->direction==RIGHT) 
-					LoadPlay(HALLWAY1);
-				else if(player->direction==LEFT)
-					LoadPlay(HALLWAY2);
+				LoadPlay(room->currentRoom);
 				break;
 			}
 			/*
@@ -215,7 +206,7 @@ void Play_ih(Device device){
 			//Animação do player
 			if (time_counter % 7 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
 				animate_player(player);
-			if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x40))
+			if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x4D))
 				animate_player(player);
 
 			//Change the player position
@@ -268,8 +259,6 @@ void Play_ih(Device device){
 			*/
 
 			if (gameMenu == DEFEAT) {
-				//up = false; down = false; left = false; right = false;
-				//move_player(player, up, down, left, right);
 				//Draw lost menu
 			}
       		break;
@@ -284,7 +273,7 @@ void Play_ih(Device device){
         }
 
         //SHOOT
-        if (keyboard_data == 0xB9 /*Spacebar make-code*/ && player->numberBullets!=0) {
+        if (keyboard_data == 0xB9 /*Spacebar make-code*/ && player->numberProjectiles!=0) {
         //playerBullet = shoot(player);
         //draw_ammo_level();
         //bulletOnMap = true;
@@ -324,10 +313,9 @@ void LoadPlay(Room_number currentRoom){
 		switch (currentRoom) {
 			case CAFETERIA:
 				if(previousRoom==HALLWAY1){
-					//Player fica no lado direito
 					player->direction = LEFT;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 0;
+					player->y = 204;
 				}else if(previousRoom==HALLWAY2){
 					//Player fica no lado esquerdo
 					player->direction = RIGHT;
@@ -338,10 +326,9 @@ void LoadPlay(Room_number currentRoom){
 				break;
 			case HALLWAY1:
 				if(previousRoom==CAFETERIA){
-					//Player fica no lado esquerdo
 					player->direction = RIGHT;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 0;
+					player->y = 204;
 				}else if(previousRoom==WEAPONS){
 					//Player fica em cima
 					player->direction = DOWN;
@@ -443,8 +430,8 @@ void LoadPlay(Room_number currentRoom){
 bool roomTransition(){
 	switch (room->currentRoom) {
 		case CAFETERIA:
-			if(player->direction==RIGHT && player->x>725 && player->y > 280 && player->y < 305)return true;
-			else if(player->direction==LEFT && player->x+player->img.width<50 && player->y>276 && player->y<300) return true;
+			if(player->direction==RIGHT && player->x>=724 && player->y > 280 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
+			else if(player->direction==LEFT && player->x+player->img.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
 			break;
