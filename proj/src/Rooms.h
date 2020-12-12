@@ -10,7 +10,8 @@
 //#include "Lever.h"
 
 //Include dos xpm dos rooms
-
+#include "Xpms/Rooms/Cafeteria.xpm"
+#include "Xpms/Rooms/Hallway1.xpm"
 //#include "Images/ammo.xpm"
 
 
@@ -23,18 +24,24 @@ typedef struct {
 typedef struct {
     Room_number currentRoom;
 
-    //xpm_image_t level_background;
-    //xpm_image_t level_walls_xpm;
-
-    //uint32_t * level_back;
-    //uint32_t * level_walls;
+    xpm_image_t roomBackground;
 
     FinalPos *finalPos;
 
     //Task ** taskList;
-    unsigned int taksNumber;
+    int taksNumber;
     
     //Enemy ** enemyList;
-    unsigned int enemiesNumber;
+    int enemiesNumber;
 
 } Room;
+
+Room * load_room(Room_number roomNumber);
+
+void delete_room();
+
+void draw_room();
+
+void draw_room_enemies();
+
+void draw_room_tasks();

@@ -180,7 +180,7 @@ void Play_ih(Device device){
         if (!player->alive) {
             gameMenu = DEFEAT;
             up = false; down = false; left = false; right = false;
-            move_player(player, up, down, left, right);
+            move_player(player, up, down, left, right); //Não é necessário talvez
             //Draw lost menu
             break;
         }
@@ -423,17 +423,14 @@ void LoadPlay(Room_number currentRoom){
 				break;
 		}
 		if (gameMenu == PLAYING) {
-			//room = load_room(levelNum);
-			//player->hasAmmo = false;
+			room = load_room(currentRoom);
 		}
  	}
-  	else { //Caso de pausa, ver o mapa ou fazer uma task
-    //draw_level_background();
-    //draw_enemies_level();
+  else { //Caso de pausa, ver o mapa ou fazer uma task ou início
+   if(room==NULL) room = load_room(currentRoom);
+    draw_room();
+    draw_room_enemies();
     draw_player(player);
-
-    //if (!player->hasAmmo)
-      //draw_ammo_level();
   }
 
   //scancode = 0x00;

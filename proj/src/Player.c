@@ -2,7 +2,7 @@
 
 extern uint16_t horizontal_res, vertical_res;
 extern uint8_t keyboard_data;
-//extern Room * room;
+extern Room * room;
 //extern Menu gameMenu;
 
 Player * player;
@@ -100,9 +100,10 @@ void draw_player(Player *player){
 }
 
 void erase_player(Player* player){
+    uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
     for(int i = player->x; i < player->img.width+player->x; ++i){
         for (int j = player->y; j < player->img.height+player->y; ++j) {
-            //drawPixel(i,j,*(room->back + i + j * horizontal_res));
+            drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
         }
     }
 }

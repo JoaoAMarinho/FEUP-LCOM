@@ -136,7 +136,7 @@ void Main_ih(Device device){
         gameMenu = PLAYING;
         player=create_player();
         //clean_clock();
-        //LoadSinglePLayer(1,true);
+        LoadPlay(CAFETERIA);
     }
     else if (instructionsClicked) { // Instruções
         gameMenu = INSTRUCTIONS;
