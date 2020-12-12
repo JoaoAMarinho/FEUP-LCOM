@@ -14,7 +14,6 @@
 #include "i8042.h"
 #include "Game.h"
 #include "Menus.h"
-#include "Player.h"
 
 
 int main(int argc, char *argv[]) {
@@ -53,73 +52,6 @@ int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])) {
 
   return 0;
 }
-
-/*
-test_func
-int time_counter=0;
-uint8_t keyboard_data;
-bool kb_errorr=false;
-
-int(proj_main_loop)(int UNUSED(argc), char *UNUSED(argv[])){
-  int xi=0;
-  int yi=0;
-
-  vg_init(MODE3);
-
-  xpm_image_t img;
-	
-	xpm_load(MainBackGround, XPM_8_8_8_8, &img);
-  uint32_t* map=(uint32_t*)img.bytes;
-  for(int i = 0; i < 800; i++) {
-    for (int j = 0; j < 600; j++) {
-      if (*(map + i + j*800) != xpm_transparency_color(XPM_8_8_8_8))
-        drawPixel(xi+i,yi+j,*(map + i + j*800));
-    }
-  }
-  free(&img);
-
-  Player* player1=create_player(xi, yi, LEFT);
-  draw_player(player1);
-
-	int ipc_status, r;//counter=0;
-	message msg;
-	uint8_t kb_bit_no;//timer_bit_no;
-  
-	if (keyboard_subscribe_int(&kb_bit_no)) return 1;
-	uint32_t kb_irq_set = BIT(kb_bit_no);
-
-	//char *video_mem = get_video_mem();
-
-	while ( keyboard_data!=ESC_KEY ) {
-		if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
-          	printf("driver_receive failed with: %d", r);
-          	continue;
-      	}
-		if (is_ipc_notify(ipc_status)) { 
-          	switch (_ENDPOINT_P(msg.m_source)) {
-          	case HARDWARE: 
-				if (msg.m_notify.interrupts & kb_irq_set) { 
-					
-					kbc_ih();
-          animate_player(player1);
-				}	
-                break;
-            default:
-              break; 
-          }
-      } else { 
-      
-      }
-	}
-	keyboard_unsubscribe_int();
-
-  free(player1);
-
-	//Reset the video card to the text mode
-	vg_exit();
-
-    return 0;
-}*/
 
 
 

@@ -12,8 +12,9 @@ Player * player;
 Player* create_player(){
     player = (Player *) malloc (sizeof(Player));
 
-    player->x = 0;
-    player->y = 0;
+    player->x = 420;
+    player->y = 240;
+    player->direction=DOWN;
     player->xspeed = 3;
     player->yspeed = 3;
     player->numberBullets=3;
@@ -158,7 +159,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
     else if (!up && !right && left && !down) 
         player->direction = LEFT;
 
-    if (up && !check_wall_collision(player,UP)) {
+    if (up && !room_player_collision(player)) {
         /*if (!player->hasAmmo && check_collision_ammo(player,UP)) {
         player->hasAmmo = true;
         player->isReloading = true;
@@ -173,35 +174,19 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         else  
         player->y -= player->yspeed;
 
-        if (right && !check_wall_collision(player,RIGHT)) {
-            /*if (!player->hasAmmo && check_collision_ammo(player,RIGHT)) {
-                player->hasAmmo = true;
-                player->isReloading = true;
-                player->isIdle = false;
-            }*/
+        if (right && !room_player_collision(player)) {
             if (player->x + player->xspeed + player->img.width > (int)horizontal_res)
                 player->x = (int)horizontal_res - player->img.width;
             else  
                 player->x += player->xspeed;
         }
-        if (left && !check_wall_collision(player,LEFT)) {
-        /*
-        if (!player->hasAmmo && check_collision_ammo(player,LEFT)) {
-            player->hasAmmo = true;
-            player->isReloading = true;
-            player->isIdle = false;
-        }*/
+        if (left && !room_player_collision(player)) {
             if (player->x - player->xspeed < 0)
                 player->x = 0;
             else  
                 player->x -= player->xspeed;
         }
-        if (down && !check_wall_collision(player,DOWN)) {/*
-        if (!player->hasAmmo && check_collision_ammo(player,DOWN)) {
-            player->hasAmmo = true;
-            player->isReloading = true;
-            player->isIdle = false;
-        }*/
+        if (down && !room_player_collision(player)) {
             if (player->y + player->yspeed > (int)vertical_res - player->img.height - 4)
                 player->y = (int)vertical_res - player->img.height - 4;
             else  
@@ -209,7 +194,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         } 
         draw_player(player);
     }
-    else if (down && !check_wall_collision(player,DOWN)) {
+    else if (down && !room_player_collision(player)) {
 
         erase_player(player);
         if (player->y + player->yspeed > (int)vertical_res - player->img.height - 4)
@@ -217,13 +202,13 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         else  
             player->y += player->yspeed;
         
-        if (right && !check_wall_collision(player,RIGHT)) {
+        if (right && !room_player_collision(player)) {
             if (player->x + player->xspeed > (int)horizontal_res - player->img.width)
                 player->x = (int)horizontal_res - player->img.width;
             else  
                 player->x += player->xspeed;
         }
-        if (left && !check_wall_collision(player,LEFT)) {
+        if (left && !room_player_collision(player)) {
             if (player->x - player->xspeed < 0)
                 player->x = 0;
             else  
@@ -231,14 +216,14 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         }
         draw_player(player);
     }
-    else if (right && !check_wall_collision(player,RIGHT)) {
+    else if (right && !room_player_collision(player)) {
         erase_player(player);
         if (player->x + player->xspeed + player->img.width > (int)horizontal_res)
             player->x = (int)horizontal_res - player->img.width;
         else  
             player->x += player->xspeed;
         
-        if (left && !check_wall_collision(player,LEFT)) {
+        if (left && !room_player_collision(player)) {
             if (player->x - player->xspeed < 0)
                 player->x = 0;
             else  
@@ -246,7 +231,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         }
         draw_player(player);
     }
-    else if (left && !check_wall_collision(player, LEFT)) {
+    else if (left && !room_player_collision(player)) {
         erase_player(player);
         if (player->x - player->xspeed < 0)
             player->x = 0;
@@ -264,6 +249,49 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
     */
 }
 
-bool check_wall_collision(Player * player, Direction direction){return false;}
+bool room_player_collision(Player* player){
+    uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+    if(player->direction==UP){
+        if (player->y + player->img.width >= horizontal_res)
+            player->y = horizontal_res - player->img.width - 5;
+        for (int i = player->x + 3; i <= player->x + player->img.width - 3; i++) {
+            for (int j = player->y; j >= player->y - player->yspeed; j--) {
+                if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
+                    return true;
+            }
+        }
+    }
+    else if(player->direction==DOWN){
+        if (player->y + player->img.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->img.width - 5;
+        for (int i = player->x + 3; i <= player->x + player->img.width - 3; i++) {
+            for (int j = player->y + player->img.height; j <= player->y + player->img.height + player->yspeed; j++) {
+                if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
+                    return true;
+            }
+        }
+    }
+    else if(player->direction==RIGHT){
+        if (player->y + player->img.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->img.width - 5;
+        for (int i = player->x + player->img.width; i <= player->x + player->xspeed + player->img.width; i++) {
+            for (int j = player->y + 3; j <= player->y + player->img.height - 3; j++) {
+                if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
+                    return true;
+            }
+        }
+    }
+    else if(player->direction==LEFT){
+        if (player->y + player->img.width >= (int) horizontal_res)
+            player->y = horizontal_res - player->img.width - 5;
+        for (int i = player->x; i >= player->x - player->xspeed; i--) {
+            for (int j = player->y + 3; j <= player->y + player->img.height - 3; j++) {
+                if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
+                    return true;
+            }
+        }
+    }
+    return false;
+}
 
 //bool check_enemy_collision(Player * player, Direction direction, Enemy ** enemies, unsigned int numEnemies){return false;}

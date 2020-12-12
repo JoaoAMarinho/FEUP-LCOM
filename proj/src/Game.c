@@ -170,109 +170,109 @@ void receiveInterrupt(Device device){
 void Play_ih(Device device){
     //static Bullet * playerBullet;
     //static bool bulletOnMap = false;
-    //static int checkLever;
+    //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
     static bool up = false, down = false, left = false, right = false;
 
     switch (device) {
         case TIMER:
-        if (!player->alive) {
-            gameMenu = DEFEAT;
-            up = false; down = false; left = false; right = false;
-            move_player(player, up, down, left, right); //Não é necessário talvez
-            //Draw lost menu
-            break;
-        }
+			if (!player->alive) {
+				gameMenu = DEFEAT;
+				//up = false; down = false; left = false; right = false;
+				//move_player(player, up, down, left, right); //Não é necessário talvez
+				//Draw lost menu
+				break;
+			}
 
-      //Verificar se está na posição de troca de sala
-      /*
-      if (check_final_position() || scancode == 0x19 USED FOR DEBUGGING) {
-        enemyShoot = true;
-        up = false; down = false; left = false; right = false;
-        check_movement(player, &up, &down, &left, &right);
-        LoadSinglePLayer(level->levelnum + 1, true);
-        break;
-      }
+			//Verificar se está na posição de troca de sala
+			if (roomTransition()) {
+				printf("INN");
+				//enemyShoot = true;
+				//up = false; down = false; left = false; right = false;
+				//move_player(player, &up, &down, &left, &right);
+				if(player->direction==RIGHT) 
+					LoadPlay(HALLWAY1);
+				else if(player->direction==LEFT)
+					LoadPlay(HALLWAY2);
+				break;
+			}
+			/*
+			Remover tasks do vetor de tasks
+			for (unsigned int i = 0; i < level->numLevers; i++) {
+				if (level->leverList[i]->active && level->doorList[i]->active) {
+				if (level->levelnum == 1) {
+					remove_door_background(level->doorList[i+1]);
+					clean_door(level->doorList[i+1]);
+					level->doorList[i+1]->active = false;
+				}
+				remove_door_background(level->doorList[i]);
+				clean_door(level->doorList[i]);
+				level->doorList[i]->active = false;
+				}
+			}*/
 
-      for (unsigned int i = 0; i < level->numLevers; i++) {
-        if (level->leverList[i]->active && level->doorList[i]->active) {
-          if (level->levelnum == 1) {
-            remove_door_background(level->doorList[i+1]);
-            clean_door(level->doorList[i+1]);
-            level->doorList[i+1]->active = false;
-          }
-          remove_door_background(level->doorList[i]);
-          clean_door(level->doorList[i]);
-          level->doorList[i]->active = false;
-        }
-      }
-      */
+			//Animação do player
+			if (time_counter % 7 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
+				animate_player(player);
+			if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x40))
+				animate_player(player);
 
-      //Player animatioon
-        if (time_counter % 10 == 0)
-            animate_player(player);
-      /*
-      else if (counter % 5 == 0 && player->isReloading)
-        reload_animation(player);  
-      else if (counter % 3 == 0 && player->isShooting)
-        shoot_animation(player); 
-      */
-      
-      //BULLET ANIMATION
-      /*if (bulletOnMap) {
-        bulletOnMap = bulletAnimation(playerBullet, level->enemyList, level->numEnemies);
-        if (!playerBullet->active)
-          clean_bullet(playerBullet);
-      }*/
+			//Change the player position
+			move_player(player, up, down, left, right);
 
-      //Verificar se está perto de uma task
-      //checkLever = check_lever_position();
+			//BULLET ANIMATION
+			/*if (bulletOnMap) {
+				bulletOnMap = bulletAnimation(playerBullet, level->enemyList, level->numEnemies);
+				if (!playerBullet->active)
+				clean_bullet(playerBullet);
+			}*/
 
-      //Change the player position
-        move_player(player, up, down, left, right);
+			//Verificar se está perto de uma task
+			//checkLever = check_lever_position();
 
-      //ENEMY ANIMATION AND SHOOTS
-      /*
-      for (unsigned int i = 0; i < level->numEnemies; i++) {
-        if (level->enemyList[i]->bullet->active && level->enemyList[i]->isStatic)
-          enemyBulletAnimation(level->enemyList[i]->bullet, player);
 
-        if (level->enemyList[i]->dead)
-          continue;
+			//Coisas dos enimigos e tiros
+			/*
+			for (unsigned int i = 0; i < level->numEnemies; i++) {
+				if (level->enemyList[i]->bullet->active && level->enemyList[i]->isStatic)
+				enemyBulletAnimation(level->enemyList[i]->bullet, player);
 
-        if (counter % 10 == 0 && !level->enemyList[i]->isReloading)
-          enemy_idle_animation(level->enemyList[i]);
-        else if (counter % 5 == 0 && level->enemyList[i]->isReloading)
-          enemy_reload_animation(level->enemyList[i]);
+				if (level->enemyList[i]->dead)
+				continue;
 
-        enemy_movement(level->enemyList[i]);
+				if (counter % 10 == 0 && !level->enemyList[i]->isReloading)
+				enemy_idle_animation(level->enemyList[i]);
+				else if (counter % 5 == 0 && level->enemyList[i]->isReloading)
+				enemy_reload_animation(level->enemyList[i]);
 
-        if (counter == randomTimeShoot && level->enemyList[i]->isStatic) {
-          enemy_shoot(level->enemyList[i]);
-          enemyShoot = true;
-        }
-      }
+				enemy_movement(level->enemyList[i]);
 
-      if (enemyShoot) {
-        randomTimeShoot = counter + (rand() % 280) + 120;
-        enemyShoot = false;
-      }
-      */
+				if (counter == randomTimeShoot && level->enemyList[i]->isStatic) {
+				enemy_shoot(level->enemyList[i]);
+				enemyShoot = true;
+				}
+			}
 
-      //CHECKS IF IT COLLIDED WITH ANY ENEMY
-      /*
-      if (check_collision_enemy(player, player->direction, level->enemyList, level->numEnemies)) {
-        gameMenu = DEFEAT;
-      }
-      */
+			if (enemyShoot) {
+				randomTimeShoot = counter + (rand() % 280) + 120;
+				enemyShoot = false;
+			}
+			*/
 
-      if (gameMenu == DEFEAT) {
-        up = false; down = false; left = false; right = false;
-        move_player(player, up, down, left, right);
-        //Draw lost menu
-      }
-      break;
+			//CHECKS IF IT COLLIDED WITH ANY ENEMY
+			/*
+			if (check_collision_enemy(player, player->direction, level->enemyList, level->numEnemies)) {
+				gameMenu = DEFEAT;
+			}
+			*/
+
+			if (gameMenu == DEFEAT) {
+				//up = false; down = false; left = false; right = false;
+				//move_player(player, up, down, left, right);
+				//Draw lost menu
+			}
+      		break;
 
     case KEYBOARD:
         //PAUSE MENU
@@ -300,6 +300,8 @@ void Play_ih(Device device){
         LoadLever(0,level->leverList[checkLever - 1]);
         }
         */
+
+		//Ver mapa;
 
         //UPDATE MOVING DIRECTION
         change_direction(player, &up, &down, &left, &right);
@@ -437,3 +439,36 @@ void LoadPlay(Room_number currentRoom){
 
 }
 
+//Verificar se o player está na zona de transição de sala
+bool roomTransition(){
+	switch (room->currentRoom) {
+		case CAFETERIA:
+			if(player->direction==RIGHT && player->x>725 && player->y > 280 && player->y < 305)return true;
+			else if(player->direction==LEFT && player->x+player->img.width<50 && player->y>276 && player->y<300) return true;
+			break;
+		case HALLWAY1:
+			break;
+		case ADMIN:
+			break;
+		case WEAPONS:
+			break;
+		case NAVIGATION:
+			break;
+		case HALLWAY2:
+			break;
+		case MEDBAY:
+			break;
+		case ELETRICAL:
+			break;
+		case UPPERENG:
+			break;
+		case LOWERENG:
+			break;
+		case REACTOR:
+			break;
+		//o resto dos rooms
+		default:
+			break;
+	}
+	return false;
+}

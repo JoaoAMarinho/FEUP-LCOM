@@ -43,6 +43,8 @@ void LoadPlay(Room_number previousRoom);
 //Load da task conforme o room
 //void Loadtask(unsigned int state, Lever * lever);
 
+//Verificar se o player está na zona de transição de sala
+bool roomTransition();
 //Verificar se o player está perto o suficiente da task
 //int check_task_position();
 

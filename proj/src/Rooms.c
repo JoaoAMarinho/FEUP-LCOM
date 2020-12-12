@@ -13,6 +13,7 @@ Room * load_room(Room_number roomNumber){
     //CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END
     if(roomNumber==CAFETERIA){
         xpm_load(Cafeteria_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(CafeteriaObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
 
         room->taksNumber = 0;    //número de tasks
         room->enemiesNumber = 0; //número de enimigos

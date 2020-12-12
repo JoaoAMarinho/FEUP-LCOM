@@ -32,12 +32,12 @@ void draw_player(Player *player);
 
 void erase_player(Player* player);
 
-void change_direction(Player * player, /*uint8_t scancode,*/ bool * up, bool * down, bool * left, bool * right);
+void change_direction(Player * player, bool * up, bool * down, bool * left, bool * right);
 
 void animate_player(Player *player);
 
 void move_player(Player * player, bool up, bool down, bool left, bool right);
 
-bool check_wall_collision(Player * player, Direction direction);
+bool room_player_collision(Player* player);
 
 //bool check_enemy_collision(Player * player, Direction direction, Enemy ** enemies, unsigned int numEnemies);

@@ -11,6 +11,7 @@
 
 //Include dos xpm dos rooms
 #include "Xpms/Rooms/Cafeteria.xpm"
+#include "Xpms/Rooms/CafeteriaObstacles.xpm"
 #include "Xpms/Rooms/Hallway1.xpm"
 //#include "Images/ammo.xpm"
 
@@ -23,10 +24,10 @@ typedef struct {
 
 typedef struct {
     Room_number currentRoom;
-
+    xpm_image_t roomObstacles;
     xpm_image_t roomBackground;
 
-    FinalPos *finalPos;
+    //FinalPos *finalPos;
 
     //Task ** taskList;
     int taksNumber;
@@ -45,3 +46,4 @@ void draw_room();
 void draw_room_enemies();
 
 void draw_room_tasks();
+
