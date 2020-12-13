@@ -33,6 +33,7 @@ Room * load_room(Room_number roomNumber){
     }
     else if(roomNumber==HALLWAY1){
         xpm_load(Hallway1_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(Hallway1Obstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
 
         room->taksNumber = 0;    //número de tasks
         room->enemiesNumber = 0; //número de enimigos
@@ -84,10 +85,11 @@ Room * load_room(Room_number roomNumber){
 
 void draw_room(){
     uint32_t* map=(uint32_t*)room->roomBackground.bytes;
-    for(int i = 0; i < room->roomBackground.width; i++) {
-        for (int j = 0; j < room->roomBackground.height; j++) {
-            if (*(map + i + j*horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(i,j,*(map + i + j*horizontal_res));
+    
+    for(int row = 0;row < room->roomBackground.height; row++){
+        for(int column = 0;column < room->roomBackground.width; column++){
+            if (*(map + column + row*room->roomBackground.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(column,row,*(map + column + row*room->roomBackground.width));
         }
     }
 }

@@ -47,6 +47,7 @@ void draw_projectile(Projectile *projectile){
             }
             break;
         case UP:
+            
             for(int j = 0 ; j < projectile->projectileImg.height; j++) {
                 for (int i = 0 ; i < projectile->projectileImg.width ; i++) {
                     if (*(projectileMap + i + j*projectile->projectileImg.width) != xpm_transparency_color(XPM_8_8_8_8))
@@ -85,34 +86,34 @@ void erase_projectile(Projectile* projectile){
     }
 }
 
-bool animate_projectile(Projectile *projectile /*,Enemy ** enemies, int enemyNum*/);{
+bool animate_projectile(Projectile *projectile){
     erase_projectile(projectile);
 
     switch (projectile->direction) {
         case DOWN:
-            if (projectileCollision(projectile)) {
-                projectile->y += projectile->speed;
+            if (!projectileCollision(projectile)) {
+                projectile->y += projectile->projectileSpeed;
                 draw_projectile(projectile);
                 return true;
             }
             break;
         case UP:
-            if (projectileCollision(projectile)) {
-                projectile->y -= projectile->speed;
+            if (!projectileCollision(projectile)) {
+                projectile->y -= projectile->projectileSpeed;
                 draw_projectile(projectile);
                 return true;
             }
             break;
         case RIGHT:
-            if (projectileCollision(projectile)) {
-                projectile->x += projectile->speed;
+            if (!projectileCollision(projectile)) {
+                projectile->x += projectile->projectileSpeed;
                 draw_projectile(projectile);
                 return true;
             }
             break;
         case LEFT:
-            if (projectileCollision(projectile)) {
-                projectile->x -= projectile->speed;
+            if (!projectileCollision(projectile)) {
+                projectile->x -= projectile->projectileSpeed;
                 draw_projectile(projectile);
                 return true;
             }
@@ -145,39 +146,57 @@ Projectile * blast(Player * player){
     return projectile;
 }
 
-//Ajeitar função
+//Falta::Colisão com inimigos
 bool projectileCollision(Projectile *projectile){
     if(projectile->direction==UP){
-        // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x; i <= (int)bullet->x + (int)bullet->img.width; i++) {
-        for (int j = bullet->y; j >= (int)bullet->y - (int)bullet->speed; j--) {
-          for (unsigned int k = 0; k < numEnemies; k++) {
-            if (enemies[k]->dead)
-              continue;
-            if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
-                j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
-                  enemy_death(enemies[k]);
-                  bullet->active = false;
-                  return true;
-            }
-          }
-        }
-      }
 
-      // CHECK COLLISIONS WITH WALLS
-      for (unsigned int i = bullet->x; i <= bullet->x + bullet->img.width; i++) {
-        for (unsigned int j = bullet->y; j >= bullet->y - bullet->speed; j--) {
-          if(*(level->level_walls + i + j * hres) == 0) {
-            bullet->y = j + 1;
-            bullet->active = false;
-            return true;
-          }
-        }
-      }
+		// Collisions with walls
+		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+			for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
+				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+					projectile->y = j + 1; //Não sei porque?
+					projectile->exists = false;
+					return true;
+				}
+			}
+		}
+
+		// CHECK COLLISIONS WITH ENEMIES
+		/*
+		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+			for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
+			for (unsigned int k = 0; k < numEnemies; k++) {
+				if (room->enemies[k]->dead)
+				continue;
+				if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
+					j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
+					enemy_death(enemies[k]);
+					projectile->exists = false;
+					return true;
+				}
+			}
+			}
+		}*/
+		
     }else if(projectile->direction==DOWN){
+
+		// Collisions with walls
+		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+			for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
+				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+					projectile->y = j - 1;
+					projectile->exists = false;
+					return true;
+				}
+			}
+		}
+
+		/*
         // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x; i <= (int)bullet->x + (int)bullet->img.width; i++) {
-        for (int j = bullet->y + bullet->img.height; j <= (int)bullet->y + (int)bullet->img.height + (int)bullet->speed; j++) {
+      for (int i = bullet->x; i <= bullet->x + bullet->img.width; i++) {
+        for (int j = bullet->y + bullet->img.height; j <= bullet->y + bullet->img.height + bullet->speed; j++) {
           for (unsigned int k = 0; k < numEnemies; k++) {
             if (enemies[k]->dead)
               continue;
@@ -189,20 +208,25 @@ bool projectileCollision(Projectile *projectile){
             }
           }
         }
-      }
+      }*/
 
-      // CHECK COLLISIONS WITH WALLS
-      for (unsigned int i = bullet->x; i <= bullet->x + bullet->img.width; i++) {
-        for (unsigned int j = bullet->y + bullet->img.height; j <= bullet->y + bullet->img.height + (int)bullet->speed; j++) {
-          if(*(level->level_walls + i + j * hres) == 0) {
-            bullet->y = j - 1;
-            bullet->active = false;
-            return true;
-          }
-        }
-      }
+      
 
     }else if(projectile->direction==LEFT){
+
+		// Collisions with walls
+		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+		for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
+			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+					projectile->x = i - 1;
+					projectile->exists = false;
+					return true;
+				}
+			}
+		}
+
+		/*
         // CHECK COLLISIONS WITH ENEMIES
       for (int i = bullet->x; i >= (int)bullet->x - (int)bullet->speed; i--) {
         for (int j = bullet->y; j <= (int)bullet->y + (int)bullet->img.height; j++) {
@@ -217,21 +241,25 @@ bool projectileCollision(Projectile *projectile){
             }
           }
         }
-      }
+      }*/
 
-      // CHECK COLLISIONS WITH WALLS
-      for (unsigned int i = bullet->x; i >= bullet->x - bullet->speed; i--) {
-        for (unsigned int j = bullet->y; j <= bullet->y + bullet->img.height; j++) {
-          if(*(level->level_walls + i + j * hres) == 0) {
-            bullet->x = i - 1;
-            bullet->active = false;
-            return true;
-          }
-        }
-      }
+      
     }else if(projectile->direction==RIGHT){
+
+		// Collisions with walls
+		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+		for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileSpeed + projectile->projectileImg.width; i++) {
+			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+			if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+				projectile->x = i + 1;
+				projectile->exists = false;
+				return true;
+			}
+			}
+		}
+		/*
         // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x + bullet->img.width; i <= (int)bullet->x + (int)bullet->speed + bullet->img.width; i++) {
+      for (int i = bullet->x + bullet->img.width; i <= (int)bullet->x + (int)bullet->projectileSpeed + bullet->img.width; i++) {
         for (int j = bullet->y; j <= (int)bullet->y + (int)bullet->img.height; j++) {
           for (unsigned int k = 0; k < numEnemies; k++) {
             if (enemies[k]->dead)
@@ -244,19 +272,11 @@ bool projectileCollision(Projectile *projectile){
             }
           }
         }
-      }
+      }*/
 
-      // CHECK COLLISIONS WITH WALLS
-      for (unsigned int i = bullet->x + bullet->img.width; i <= bullet->x + bullet->speed + bullet->img.width; i++) {
-        for (unsigned int j = bullet->y; j <= bullet->y + bullet->img.height; j++) {
-          if(*(level->level_walls + i + j * hres) == 0) {
-            bullet->x = i + 1;
-            bullet->active = false;
-            return true;
-          }
-        }
-      }
+      
     }
+
     //No collision
     return false;
 }

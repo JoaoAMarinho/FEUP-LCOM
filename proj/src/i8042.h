@@ -17,6 +17,7 @@
 
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
 #define ESC_KEY 0x81
+#define SPACEBAR_KEY 0xB9
 #define MAKE_CODE_VERIFY BIT(7)
 
 #define MOUSE_OUT_BUF 0x60

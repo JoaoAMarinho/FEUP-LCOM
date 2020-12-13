@@ -1,9 +1,9 @@
 #pragma once
 
 #include <lcom/lcf.h>
-#include "Videocard.h"
+#include "Player.h"
 //#include "Enemy.h"
-#include "Menus.h"
+//#include "Menus.h"
 
 #include "Xpms/Projectiles/Projectile.xpm"
 #include "Xpms/Projectiles/Projectileanim1.xpm"
@@ -18,7 +18,7 @@ typedef struct {
     xpm_image_t projectileAnimations[3];
     int projectileSpeed;
     Direction direction;
-    //bool active;
+    bool exists;
 
 } Projectile;
 
@@ -28,11 +28,12 @@ void draw_projectile(Projectile *projectile);
 
 void erase_projectile(Projectile* projectile);
 
-bool animate_projectile(Projectile *projectile /*,Enemy ** enemies, int enemyNum*/);
+bool animate_projectile(Projectile *projectile);
 
 Projectile * blast(Player * player);
 
 bool projectileCollision(Projectile *projectile); //Colisões Com paredes ou inimigos
+
 //void enemy_shoot(Enemy * enemy); //Tiro do inimigo
 
 //bool enemyBulletAnimation(Bullet * bullet, Player * player); //Animação da bala do inimigo

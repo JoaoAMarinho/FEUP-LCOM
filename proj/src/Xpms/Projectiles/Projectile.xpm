@@ -72,7 +72,7 @@ static xpm_row_t const projectile_xpm[] = {
 "K c #FEFFEE",
 "L c #FBFEF2",
 "P c #FFFEFF",
-"I c white",
+"I c #FFFFFF",
 "U c None",
 /* pixels */
 "UUUUUUUUUUUUUUUUUUU",

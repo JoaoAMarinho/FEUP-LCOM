@@ -2,7 +2,7 @@
 static xpm_row_t const CafeteriaObstacles_xpm[] = {
 /* columns rows colors chars-per-pixel */
 "800 600 2 1 ",
-"  c #FFFFFF",
+"  c #000000",
 ". c None",
 /* pixels */
 "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ",

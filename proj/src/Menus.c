@@ -184,15 +184,135 @@ void LoadMain(){
 }
 
 //---------------------------------------------------------------------------------------------
+//Load Rooms
+
+void LoadPlay(Room_number currentRoom){
+	static Room_number previousRoom = CAFETERIA;
+
+	if (previousRoom!=currentRoom) {
+		switch (currentRoom) {
+			case CAFETERIA:
+				if(previousRoom==HALLWAY1){
+					player->direction = LEFT;
+					player->x = 0;
+					player->y = 204;
+				}else if(previousRoom==HALLWAY2){
+					//Player fica no lado esquerdo
+					player->direction = RIGHT;
+					//player->x = 105;
+					//player->y = 650;
+				}
+				previousRoom = CAFETERIA;
+				break;
+			case HALLWAY1:
+				if(previousRoom==CAFETERIA){
+					player->direction = RIGHT;
+					player->x = 0;
+					player->y = 204;
+				}else if(previousRoom==WEAPONS){
+					//Player fica em cima
+					player->direction = DOWN;
+					//player->x = 105;
+					//player->y = 650;
+				}else if(previousRoom==NAVIGATION){
+					//Player fica no lado direito
+					player->direction = LEFT;
+					//player->x = 105;
+					//player->y = 650;
+				}else if(previousRoom==ADMIN){
+					//Player fica em baixo
+					player->direction = UP;
+					//player->x = 105;
+					//player->y = 650;
+				}
+				previousRoom = HALLWAY1;
+				break;
+			case ADMIN:
+				previousRoom = ADMIN;
+				player->direction = DOWN;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case WEAPONS:
+				previousRoom = WEAPONS;
+				player->direction = UP;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case NAVIGATION:
+				previousRoom = NAVIGATION;
+				player->direction = RIGHT;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case HALLWAY2:
+				//If(){}
+				previousRoom = HALLWAY2;
+				player->direction = RIGHT;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case MEDBAY:
+				previousRoom = MEDBAY;
+				player->direction = UP;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case ELETRICAL:
+				previousRoom = ELETRICAL;
+				player->direction = DOWN;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case UPPERENG:
+				previousRoom = UPPERENG;
+				player->direction = UP;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case LOWERENG:
+				previousRoom = LOWERENG;
+				player->direction = DOWN;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			case REACTOR:
+				previousRoom = REACTOR;
+				player->direction = LEFT;
+				//player->x = 479;
+				//player->y = 690;
+				break;
+			//o resto dos rooms
+			case END:
+				gameMenu = VICTORY;
+				free(player);
+				//LoadWonMenu();
+				break;
+			default:
+				break;
+		}
+		if (gameMenu == PLAYING) {
+			room = load_room(currentRoom);
+		}
+ 	}
+  else { //Caso de pausa, ver o mapa ou fazer uma task ou início
+   if(room==NULL) room = load_room(currentRoom);
+    draw_room();
+    draw_room_enemies();
+    draw_player(player);
+  }
+}
+
+//---------------------------------------------------------------------------------------------
 //Draw menus
 
 void draw_Main() {
 
     uint32_t* map = (uint32_t*) current_background.bytes;
-
-    for(unsigned int i = 0; i < current_background.width; i++) {
-        for (unsigned int j = 0; j < current_background.height; j++) {
-            drawPixel(i,j,*(map + i + j*horizontal_res));
+      
+    for(int row = 0;row < current_background.height; row++){
+        for(int column = 0;column < current_background.width; column++){
+            drawPixel(column,row,*(map + column + row*current_background.width));
         }
     }
 }

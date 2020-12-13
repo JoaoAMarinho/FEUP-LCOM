@@ -41,21 +41,21 @@ void draw_button(Button * button){
     uint32_t * map;
     if (button->isMouseOver) {
         map = (uint32_t *)button->buttonClicked.bytes;
-
-        for(int i = 0; i < button->buttonClicked.width; i++) {
-            for (int j = 0; j < button->buttonClicked.height; j++) {
-                if (*(map + i + j*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
-                    drawPixel(button->x+i,button->y+j,*(map + i + j*button->buttonClicked.width));
+        
+        for(int row = 0;row < button->buttonClicked.height; row++){
+            for(int column = 0;column < button->buttonClicked.width; column++){
+                if (*(map + column + row*button->buttonClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
+                    drawPixel(button->x+column,button->y+row,*(map + column + row*button->buttonClicked.width));
             }
         }
     }
     else {
         map = (uint32_t *)button->buttonNotClicked.bytes;
 
-        for(int i = 0; i < button->buttonNotClicked.width; i++) {
-            for (int j = 0; j < button->buttonNotClicked.height; j++) {
-                if (*(map + i + j*button->buttonNotClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
-                    drawPixel(button->x+i,button->y+j,*(map + i + j*button->buttonNotClicked.width));
+        for(int row = 0;row < button->buttonNotClicked.height; row++){
+            for(int column = 0;column < button->buttonNotClicked.width; column++){
+                if (*(map + column + row*button->buttonNotClicked.width) != xpm_transparency_color(XPM_8_8_8_8))
+                    drawPixel(button->x+column,button->y+row,*(map + column + row*button->buttonNotClicked.width));
             }
         }
     }

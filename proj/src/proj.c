@@ -7,13 +7,7 @@
 #include <stdint.h>
 
 // Any header files included below this line should have been created by you
-#include "Videocard.h"
-#include "keyboard.h"
-#include "mouse.h"
-#include "i8254.h"
-#include "i8042.h"
 #include "Game.h"
-#include "Menus.h"
 
 
 int main(int argc, char *argv[]) {

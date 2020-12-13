@@ -5,7 +5,7 @@
 
 // Any header files included below this line should have been created by you
 
-#include "Game.h"
+#include "Videocard.h"
 //#include "Enemy.h"
 //#include "Lever.h"
 
@@ -13,8 +13,10 @@
 #include "Xpms/Rooms/Cafeteria.xpm"
 #include "Xpms/Rooms/CafeteriaObstacles.xpm"
 #include "Xpms/Rooms/Hallway1.xpm"
+#include "Xpms/Rooms/Hallway1Obstacles.xpm"
 //#include "Images/ammo.xpm"
 
+typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, BREAK/*dont know if needed yet*/, END} Room_number;
 
 typedef struct {
     int posfinalx;
@@ -36,6 +38,7 @@ typedef struct {
     int enemiesNumber;
 
 } Room;
+
 
 Room * load_room(Room_number roomNumber);
 

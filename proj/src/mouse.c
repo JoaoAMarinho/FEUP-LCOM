@@ -136,7 +136,7 @@ void update_cursor(struct packet * mouse_pack){
 
     if (mouse_pack->delta_x > 0) {
         if (cursor->x + mouse_pack->delta_x > (int)horizontal_res - cursor->img.width)
-            cursor->x = (int)horizontal_res - cursor->img.width;
+            cursor->x = horizontal_res - cursor->img.width;
         else
             cursor->x += mouse_pack->delta_x;
     }
@@ -147,8 +147,8 @@ void update_cursor(struct packet * mouse_pack){
             cursor->x += mouse_pack->delta_x;
     }
     if (mouse_pack->delta_y < 0) {
-        if (cursor->y + cursor->img.height - mouse_pack->delta_y > (int)vertical_res)
-            cursor->y = (int)vertical_res - cursor->img.height;
+        if (cursor->y + cursor->img.height - mouse_pack->delta_y > vertical_res)
+            cursor->y = vertical_res - cursor->img.height;
         else
             cursor->y -= mouse_pack->delta_y;
     }
@@ -165,12 +165,12 @@ void update_cursor(struct packet * mouse_pack){
 void draw_cursor(){
     uint32_t* map = (uint32_t*) cursor->img.bytes;
 
-    for(int i = 0; i < cursor->img.width; i++) {
-        for (int j = 0; j < cursor->img.height; j++) {
-          if (*(map + i + j*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-            drawPixel(cursor->x+i,cursor->y+j,*(map + i + j*cursor->img.width));
+    for(int row = 0;row < cursor->img.height; row++){
+        for(int column = 0;column < cursor->img.width; column++){
+            if (*(map + column + row*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(cursor->x+column,cursor->y+row,*(map + column + row*cursor->img.width));
+        }
     }
-  }
 }
 
 void erase_cursor(){
