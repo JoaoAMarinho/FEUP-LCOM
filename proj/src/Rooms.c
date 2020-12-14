@@ -39,13 +39,25 @@ Room * load_room(Room_number roomNumber){
         room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==ADMIN){
-        return NULL;
+        xpm_load(Admin_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(AdminObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
+
+        room->taksNumber = 0;    //número de tasks
+        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==WEAPONS){
-        return NULL;
+        xpm_load(Weapons_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(WeaponsObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
+
+        room->taksNumber = 0;    //número de tasks
+        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==NAVIGATION){
-        return NULL;
+        xpm_load(Navigation_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(NavigationObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
+
+        room->taksNumber = 0;    //número de tasks
+        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==HALLWAY2){
         return NULL;

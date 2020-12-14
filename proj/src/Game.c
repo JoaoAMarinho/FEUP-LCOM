@@ -95,7 +95,7 @@ int gameLoop(){
 				              else{
 				                mouse_pack.bytes[2]=mouse_data;
 				                mouse_packet_index=0;
-                        get_packet(&mouse_pack);
+                        		get_packet(&mouse_pack);
 				                receiveInterrupt(MOUSE);
 				              }
                     }
@@ -309,15 +309,22 @@ bool roomTransition(){
 	switch (room->currentRoom) {
 		case CAFETERIA:
 			if(player->direction==RIGHT && player->x>=724 && player->y > 280 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
-			else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
+			//else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
+			if(player->direction==LEFT && player->x <=1 && player->y >= 168 && player->y <= 235){room->currentRoom=CAFETERIA; return true;}
+			else if(player->direction==RIGHT && player->x >=724 && player->y>=332 && player->y<=403){room->currentRoom=NAVIGATION; return true;}
+			else if(player->direction==UP && player->x>=87 && player->x <=205 && player->y<=1){room->currentRoom=WEAPONS; return true;}
+			else if(player->direction==DOWN && player->x>=400 && player->x <=520 && player->y>=524){room->currentRoom=ADMIN; return true;}
 			break;
 		case ADMIN:
+			if(player->direction==UP && player->x>=57 && player->x <=138 && player->y<=1){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case WEAPONS:
+			if(player->direction==DOWN && player->x>=200 && player->x <=295 && player->y>=598){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case NAVIGATION:
+			if(player->direction==LEFT && player->x <=1 && player->y >= 276 && player->y <= 352){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case HALLWAY2:
 			break;

@@ -210,40 +210,37 @@ void LoadPlay(Room_number currentRoom){
 					player->x = 0;
 					player->y = 204;
 				}else if(previousRoom==WEAPONS){
-					//Player fica em cima
 					player->direction = DOWN;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 146;
+					player->y = 0;
 				}else if(previousRoom==NAVIGATION){
-					//Player fica no lado direito
 					player->direction = LEFT;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 725;
+					player->y = 365;
 				}else if(previousRoom==ADMIN){
-					//Player fica em baixo
 					player->direction = UP;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 462;
+					player->y = 525;
 				}
 				previousRoom = HALLWAY1;
 				break;
 			case ADMIN:
 				previousRoom = ADMIN;
 				player->direction = DOWN;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 107;
+				player->y = 0;
 				break;
 			case WEAPONS:
 				previousRoom = WEAPONS;
 				player->direction = UP;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 179;
+				player->y = 525;
 				break;
 			case NAVIGATION:
 				previousRoom = NAVIGATION;
 				player->direction = RIGHT;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 0;
+				player->y = 315;
 				break;
 			case HALLWAY2:
 				//If(){}
