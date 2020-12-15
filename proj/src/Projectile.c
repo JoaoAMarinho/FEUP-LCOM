@@ -16,6 +16,7 @@ Projectile* create_projectile(Player * player){
     projectile->y = player->y;
     projectile->direction = player->direction;
     projectile->projectileSpeed = 15;
+    projectile->exists = true;
     
     xpm_image_t img;
     //Load pprojectile animations
@@ -81,6 +82,7 @@ void erase_projectile(Projectile* projectile){
     uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
     for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
         for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+          if(j<vertical_res && i<horizontal_res)
             drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
         }
     }
@@ -121,8 +123,6 @@ bool animate_projectile(Projectile *projectile){
         default: 
             break;
     }
-
-    draw_projectile(projectile);
     return false;
 }
 
@@ -154,11 +154,11 @@ bool projectileCollision(Projectile *projectile){
 		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
 		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
 			for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
-				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-					projectile->y = j + 1; //Não sei porque?
-					projectile->exists = false;
-					return true;
-				}
+        //Will always hit the clock bar
+          if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+            projectile->exists = false;
+            return true;
+          }
 			}
 		}
 
@@ -185,11 +185,14 @@ bool projectileCollision(Projectile *projectile){
 		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
 		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
 			for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
-				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-					projectile->y = j - 1;
-					projectile->exists = false;
-					return true;
-				}
+          if(j>=vertical_res){
+            projectile->exists = false;
+            return true;
+          }
+          if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+            projectile->exists = false;
+            return true;
+          }
 			}
 		}
 
@@ -218,11 +221,14 @@ bool projectileCollision(Projectile *projectile){
 		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
 		for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
 			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
-				if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-					projectile->x = i - 1;
-					projectile->exists = false;
-					return true;
-				}
+          if(i<=0){
+            projectile->exists = false;
+            return true;
+          }
+          if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+            projectile->exists = false;
+            return true;
+          }
 			}
 		}
 
@@ -250,11 +256,14 @@ bool projectileCollision(Projectile *projectile){
 		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
 		for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileSpeed + projectile->projectileImg.width; i++) {
 			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
-			if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-				projectile->x = i + 1;
-				projectile->exists = false;
-				return true;
-			}
+        if(i>=horizontal_res){
+          projectile->exists = false;
+          return true;
+        }
+        if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+          projectile->exists = false;
+          return true;
+        }
 			}
 		}
 		/*

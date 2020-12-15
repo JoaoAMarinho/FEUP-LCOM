@@ -194,8 +194,8 @@ void LoadPlay(Room_number currentRoom){
 			case CAFETERIA:
 				if(previousRoom==HALLWAY1){
 					player->direction = LEFT;
-					player->x = 0;
-					player->y = 204;
+					player->x = 723;
+					player->y = 290;
 				}else if(previousRoom==HALLWAY2){
 					//Player fica no lado esquerdo
 					player->direction = RIGHT;

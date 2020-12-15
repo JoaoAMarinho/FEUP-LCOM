@@ -169,7 +169,7 @@ void receiveInterrupt(Device device){
 
 void Play_ih(Device device){
     static Projectile * playerProjectile;
-    static bool projectileOnMap = false;
+	static bool pr_exists=false , canBlast=true;
     //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
@@ -213,10 +213,12 @@ void Play_ih(Device device){
 			move_player(player, up, down, left, right);
 
 			//Projectile animation
-			if (projectileOnMap) {
-        		projectileOnMap = animate_projectile(playerProjectile);
-        		if (!playerProjectile->exists)
+			if (pr_exists) {
+        		pr_exists=animate_projectile(playerProjectile);
+        		if (!playerProjectile->exists){
+					canBlast=true;
          			erase_projectile(playerProjectile);
+				}
       		}
 
 			//Verificar se está perto de uma task
@@ -273,9 +275,10 @@ void Play_ih(Device device){
         }
 
         //SHOOT
-        if (keyboard_data == SPACEBAR_KEY && player->numberProjectiles!=0/*Pra já não perde balas*/) {
-        	playerProjectile = blast(player);
-        	projectileOnMap = true;
+        if (keyboard_data == SPACEBAR_KEY && player->numberProjectiles!=0 && canBlast/*Pra já não perde balas*/) {
+			playerProjectile = blast(player);
+			pr_exists=true;
+			canBlast=false;
         }
 
         //Ativar tasks
@@ -312,16 +315,16 @@ bool roomTransition(){
 			//else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
-			if(player->direction==LEFT && player->x <=1 && player->y >= 168 && player->y <= 235){room->currentRoom=CAFETERIA; return true;}
-			else if(player->direction==RIGHT && player->x >=724 && player->y>=332 && player->y<=403){room->currentRoom=NAVIGATION; return true;}
-			else if(player->direction==UP && player->x>=87 && player->x <=205 && player->y<=1){room->currentRoom=WEAPONS; return true;}
+			if(player->direction==LEFT && player->x <=2 && player->y >= 168 && player->y <= 235){room->currentRoom=CAFETERIA; return true;}
+			else if(player->direction==RIGHT && player->x >=722 && player->y>=330 && player->y<=468){room->currentRoom=NAVIGATION; return true;}
+			else if(player->direction==UP && player->x>=87 && player->x <=205 && player->y<=2){room->currentRoom=WEAPONS; return true;}
 			else if(player->direction==DOWN && player->x>=400 && player->x <=520 && player->y>=524){room->currentRoom=ADMIN; return true;}
 			break;
 		case ADMIN:
 			if(player->direction==UP && player->x>=57 && player->x <=138 && player->y<=1){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case WEAPONS:
-			if(player->direction==DOWN && player->x>=200 && player->x <=295 && player->y>=598){room->currentRoom=HALLWAY1; return true;}
+			if(player->direction==DOWN && player->x>=139 && player->x <=224 && player->y>=524){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case NAVIGATION:
 			if(player->direction==LEFT && player->x <=1 && player->y >= 276 && player->y <= 352){room->currentRoom=HALLWAY1; return true;}
