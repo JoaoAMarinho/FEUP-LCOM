@@ -88,7 +88,7 @@ void draw_player(Player *player){
         map += player->playerImg.height * player->playerImg.width;
 
         for(int i = 0; i < player->playerImg.width; i++) {
-            for (int j = 0; j < player->playerImg.height; j++) {
+            for (int j = 1; j < player->playerImg.height; j++) {
             if (*(map - i - j*player->playerImg.width) != xpm_transparency_color(XPM_8_8_8_8))
                 drawPixel(player->x+i,player->y+j,*(map - i - j*player->playerImg.width));
             }
@@ -102,9 +102,17 @@ void draw_player(Player *player){
 
 void erase_player(Player* player){
     uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
-    for(int i = player->x; i < player->playerImg.width+player->x; ++i){
-        for (int j = player->y; j < player->playerImg.height+player->y; ++j) {
-            drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
+    if(player->direction==UP || player->direction==DOWN){
+        for(int i = player->x; i < player->playerImg.height+player->x; ++i){
+            for (int j = player->y; j < player->playerImg.width+player->y; ++j) {
+                drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
+            }
+        }
+    }else{ //Left or right direction
+        for(int i = player->x; i < player->playerImg.width+player->x; ++i){
+            for (int j = player->y; j < player->playerImg.height+player->y; ++j) {
+                drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
+            }
         }
     }
 }
@@ -124,19 +132,19 @@ void animate_player(Player *player){
 void change_direction(Player * player, /*uint8_t keyboard_data,*/ bool * up, bool * down, bool * left, bool * right){
     if (keyboard_data == 0x11 /*Make-code W*/ || keyboard_data == 0x48 /*Make-code Up-arrow*/) {
         *up = true;
-        player->direction = UP;
+        //player->direction = UP;
     }
     else if (keyboard_data == 0x1E /*Make-code A*/ || keyboard_data == 0x4B /*Make-code Left-arrow*/) {
         *left = true;
-        player->direction = LEFT;
+        //player->direction = LEFT;
     }
     else if (keyboard_data == 0x1F /*Make-code S*/ || keyboard_data == 0x50 /*Make-code Down-arrow*/) {
         *down = true;
-        player->direction = DOWN;
+        //player->direction = DOWN;
     }
     else if (keyboard_data == 0x20 /*Make-code D*/ || keyboard_data == 0x4D /*Make-code Right-arrow*/) {
         *right = true;
-        player->direction = RIGHT;
+        //player->direction = RIGHT;
     }
     else if (keyboard_data == 0x91 /*Break-code W*/ || keyboard_data == 0xC8 /*Break-code Up-arrow*/)
         *up = false;
@@ -149,7 +157,7 @@ void change_direction(Player * player, /*uint8_t keyboard_data,*/ bool * up, boo
 }
 
 void move_player(Player * player, bool up, bool down, bool left, bool right){ 
-
+    erase_player(player);
     if (up && !right && !left && !down)
         player->direction = UP;
     else if (down && !right && !left && !up) 
@@ -160,7 +168,7 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         player->direction = LEFT;
 
     if (up && !room_player_collision(player)) {
-        erase_player(player);
+        //erase_player(player);
         if (player->y - player->yspeed < 0)
         player->y = 0;
         else  
@@ -184,11 +192,11 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
             else  
                 player->y += player->yspeed;
         } 
-        draw_player(player);
+        //draw_player(player);
     }
     else if (down && !room_player_collision(player)) {
 
-        erase_player(player);
+        //erase_player(player);
         if (player->y + player->yspeed > (int)vertical_res - player->playerImg.height - 4)
             player->y = (int)vertical_res - player->playerImg.height - 4;
         else  
@@ -206,10 +214,10 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
             else  
                 player->x -= player->xspeed;
         }
-        draw_player(player);
+        //draw_player(player);
     }
     else if (right && !room_player_collision(player)) {
-        erase_player(player);
+        //erase_player(player);
         if (player->x + player->xspeed + player->playerImg.width > (int)horizontal_res)
             player->x = (int)horizontal_res - player->playerImg.width;
         else  
@@ -221,16 +229,17 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
             else  
                 player->x -= player->xspeed;
         }
-        draw_player(player);
+        //draw_player(player);
     }
     else if (left && !room_player_collision(player)) {
-        erase_player(player);
+        //erase_player(player);
         if (player->x - player->xspeed < 0)
             player->x = 0;
         else  
             player->x -= player->xspeed;
-        draw_player(player);
+        //draw_player(player);
     }
+    draw_player(player);
     /*
     if (check_enemy_collision(player, player->direction, level->enemyList, level->numEnemies)) {
         up = false;

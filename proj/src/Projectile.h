@@ -15,7 +15,7 @@ typedef struct {
     int x;
     int y;
     xpm_image_t projectileImg;
-    xpm_image_t projectileAnimations[3];
+    xpm_image_t projectileAnimations[4];
     int projectileSpeed;
     Direction direction;
     bool exists;
@@ -29,6 +29,8 @@ void draw_projectile(Projectile *projectile);
 void erase_projectile(Projectile* projectile);
 
 bool animate_projectile(Projectile *projectile);
+
+void explode_projectile(Projectile* projectile, int index);
 
 Projectile * blast(Player * player);
 

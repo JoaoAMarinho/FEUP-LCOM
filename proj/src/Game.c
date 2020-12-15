@@ -169,7 +169,8 @@ void receiveInterrupt(Device device){
 
 void Play_ih(Device device){
     static Projectile * playerProjectile;
-	static bool pr_exists=false , canBlast=true;
+	static bool pr_exists=false , canBlast=true, projectile_anim=false;
+	static int index=0;
     //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
@@ -216,10 +217,22 @@ void Play_ih(Device device){
 			if (pr_exists) {
         		pr_exists=animate_projectile(playerProjectile);
         		if (!playerProjectile->exists){
-					canBlast=true;
-         			erase_projectile(playerProjectile);
+					//canBlast=true;
+         			//erase_projectile(playerProjectile);
+					projectile_anim=true;
 				}
       		}
+			if(projectile_anim && time_counter%3==0){
+				index++;
+				erase_projectile(playerProjectile);
+				explode_projectile(playerProjectile, index);
+				if(index==3){
+					erase_projectile(playerProjectile);
+					canBlast=true;
+					projectile_anim=false;
+					index=0;
+				}
+			}
 
 			//Verificar se está perto de uma task
 			//checkLever = check_lever_position();
@@ -311,12 +324,12 @@ void Play_ih(Device device){
 bool roomTransition(){
 	switch (room->currentRoom) {
 		case CAFETERIA:
-			if(player->direction==RIGHT && player->x>=724 && player->y > 280 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
+			if(player->direction==RIGHT && player->x>=722 && player->y > 275 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
 			//else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
 			if(player->direction==LEFT && player->x <=2 && player->y >= 168 && player->y <= 235){room->currentRoom=CAFETERIA; return true;}
-			else if(player->direction==RIGHT && player->x >=722 && player->y>=330 && player->y<=468){room->currentRoom=NAVIGATION; return true;}
+			else if(player->direction==RIGHT && player->x >=719 && player->y>=300 && player->y<=450){room->currentRoom=NAVIGATION; return true;}
 			else if(player->direction==UP && player->x>=87 && player->x <=205 && player->y<=2){room->currentRoom=WEAPONS; return true;}
 			else if(player->direction==DOWN && player->x>=400 && player->x <=520 && player->y>=524){room->currentRoom=ADMIN; return true;}
 			break;

@@ -20,14 +20,15 @@ Projectile* create_projectile(Player * player){
     
     xpm_image_t img;
     //Load pprojectile animations
+	xpm_load(projectile_xpm, XPM_8_8_8_8, &projectile->projectileImg);
+	projectile->projectileAnimations[0] = projectile->projectileImg;
     xpm_load(projectile_anim1_xpm, XPM_8_8_8_8, &img);
-    projectile->projectileAnimations[0] = img;
-    xpm_load(projectile_anim2_xpm, XPM_8_8_8_8, &img);
     projectile->projectileAnimations[1] = img;
-    xpm_load(projectile_anim3_xpm, XPM_8_8_8_8, &img);
+    xpm_load(projectile_anim2_xpm, XPM_8_8_8_8, &img);
     projectile->projectileAnimations[2] = img;
+    xpm_load(projectile_anim3_xpm, XPM_8_8_8_8, &img);
+    projectile->projectileAnimations[3] = img;
     free(&img);
-    //bullet->active = true;
 
     xpm_load(projectile_xpm, XPM_8_8_8_8, &projectile->projectileImg);
 
@@ -80,11 +81,19 @@ void draw_projectile(Projectile *projectile){
 
 void erase_projectile(Projectile* projectile){
     uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
-    for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+    if(projectile->direction==UP || projectile->direction==DOWN){
+        for(int i = projectile->x; i < projectile->projectileImg.height+projectile->x; ++i){
+            for (int j = projectile->y; j < projectile->projectileImg.width+projectile->y; ++j) {
+                drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
+            }
+        }
+    }else{
+      for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
         for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
           if(j<vertical_res && i<horizontal_res)
             drawPixel(i,j,*(backgroundMap + i + j * horizontal_res));
         }
+    }
     }
 }
 
@@ -124,6 +133,19 @@ bool animate_projectile(Projectile *projectile){
             break;
     }
     return false;
+}
+
+void explode_projectile(Projectile* projectile, int index){
+	if(index!=3){
+		projectile->projectileImg=projectile->projectileAnimations[index];
+		draw_projectile(projectile);
+		//erase_projectile(projectile);
+	}else{
+		projectile->projectileImg=projectile->projectileAnimations[index];
+		//erase_projectile(projectile);
+		draw_projectile(projectile);
+		projectile->projectileImg=projectile->projectileAnimations[0];
+	}
 }
 
 Projectile * blast(Player * player){

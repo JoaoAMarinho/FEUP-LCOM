@@ -176,18 +176,11 @@ void draw_cursor(){
 void erase_cursor(){
     uint32_t* map = (uint32_t*) current_background.bytes;
     uint32_t*cursorMap=(uint32_t*) cursor->img.bytes;
-    /*
-    for (int i = cursor->x; i <= cursor->x + cursor->img.width; i++) {
-        for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
-            if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1){
-                drawPixel(i,j,*(map  + i + j * horizontal_res));
-            }        
-        }
-  }*/
-  for(int i = cursor->x; i <= cursor->x + cursor->img.width; i++){
-        for (int j = cursor->y; j <= cursor->y + cursor->img.height; j++) {
-            if (*(cursorMap + (i-cursor->x) + (j-cursor->y)*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(i,j,*(map  + i + j * horizontal_res));
+        
+    for(int row =0;row < cursor->img.height; row++){
+        for(int column = 0; column < cursor->img.width; column++){
+            if (*(cursorMap + column + row*cursor->img.width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(cursor->x+column,cursor->y+row,*(map + (cursor->x+column) + (cursor->y+row)*horizontal_res));
         }
     }
 }

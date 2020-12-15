@@ -77,12 +77,12 @@ static xpm_row_t const projectile_xpm[] = {
 /* pixels */
 "UUUUUUUUUUUUUUUUUUU",
 "UUUUUUUUUUUUUUUUUUU",
-"UUU@O$-e39gCvVs2UUU",
-"U@@+%:t40lZvSDFzUUU",
-"@@@.;y6,fAnjHPPIUUU",
-"U@@o*8w1amBxGLKJUUU",
-"UU@# &5q>pbNckhuUUU",
-"UUU@@X=r7<dCMZiUUUU",
+"UUUU@O$-e39gCvVs2UU",
+"UU@@+%:t40lZvSDFzUU",
+"U@@@.;y6,fAnjHPPIUU",
+"UU@@o*8w1amBxGLKJUU",
+"UUU@# &5q>pbNckhuUU",
+"UUUU@@X=r7<dCMZiUUU",
 "UUUUUUUUUUUUUUUUUUU",
 "UUUUUUUUUUUUUUUUUUU"
 };
