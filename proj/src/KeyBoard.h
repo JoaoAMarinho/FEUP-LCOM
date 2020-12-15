@@ -19,3 +19,5 @@ int (keyboard_unsubscribe_int)();
 void (kbc_ih)();
 
 void (getEsc)();
+
+bool (checkBuffer)();

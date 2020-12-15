@@ -136,16 +136,8 @@ bool animate_projectile(Projectile *projectile){
 }
 
 void explode_projectile(Projectile* projectile, int index){
-	if(index!=3){
 		projectile->projectileImg=projectile->projectileAnimations[index];
 		draw_projectile(projectile);
-		//erase_projectile(projectile);
-	}else{
-		projectile->projectileImg=projectile->projectileAnimations[index];
-		//erase_projectile(projectile);
-		draw_projectile(projectile);
-		projectile->projectileImg=projectile->projectileAnimations[0];
-	}
 }
 
 Projectile * blast(Player * player){

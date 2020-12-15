@@ -3,6 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
+//unsigned int game_counter=3;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -178,6 +179,15 @@ void Play_ih(Device device){
 
     switch (device) {
         case TIMER:
+			//Count down do jogo
+			/*if(time_counter%60==0){
+				game_counter--;
+			}
+			if(game_counter==0){
+				gameMenu = DEFEAT;
+			}*/
+
+			//Morte do player
 			if (!player->alive) {
 				gameMenu = DEFEAT;
 				//Draw lost menu
@@ -222,7 +232,7 @@ void Play_ih(Device device){
 					projectile_anim=true;
 				}
       		}
-			if(projectile_anim && time_counter%3==0){
+			if(projectile_anim && time_counter%2==0){
 				index++;
 				erase_projectile(playerProjectile);
 				explode_projectile(playerProjectile, index);
@@ -231,6 +241,7 @@ void Play_ih(Device device){
 					canBlast=true;
 					projectile_anim=false;
 					index=0;
+					playerProjectile->projectileImg=playerProjectile->projectileAnimations[index];
 				}
 			}
 
