@@ -2,7 +2,7 @@
 
 extern uint16_t horizontal_res, vertical_res;
 
-Task * taskList[2];
+Task ** gameTasks;
 
 //---------------------------------------------------------------------------------------------
 

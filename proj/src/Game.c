@@ -20,7 +20,8 @@ uint16_t horizontal_res, vertical_res;
 extern Player * player;
 extern Room * room;
 extern Cursor * cursor;
-extern Task * taskList[2];
+extern Task ** gameTasks;
+extern Opponent ** gameOpponents;
 //extern Date * date;
 Menu gameMenu = MAIN;
 
