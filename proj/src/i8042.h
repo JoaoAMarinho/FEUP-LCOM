@@ -11,6 +11,7 @@
 
 #define MOUSE_IRQ 12
 #define KBD_IRQ 0x01
+//#define RTC_IRQ 0x08
 
 //Some Break codes
 #define ESC_KEY 0x81
@@ -88,5 +89,7 @@
 #define MODE3 0x115 //800x600, bits per pixel: 24(8:8:8)
 #define MODE4 0x11A //1280x1024, bits per pixel: 16(5:6:5)
 #define MODE5 0x14C //1152x864, bits per pixel: 32((8:)8:8:8)
+
+//RTC defines
 
 #endif /*_LCOM_I8042_H*/

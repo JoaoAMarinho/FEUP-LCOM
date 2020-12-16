@@ -8,7 +8,6 @@
 #include "i8042.h"
 #include "utils.h"
 #include "Videocard.h"
-#include "KeyBoard.h"
 
 #include "Xpms/Cursor.xpm"
 

@@ -195,6 +195,8 @@ char checkOverMain(){
         return 'B';
     else if (cursor->x > 545 && cursor->x < 735 && cursor->y > 360 && cursor->y < 410)
         return 'E';
+    else if(cursor->x >= 26 && cursor->x <= 73 && cursor->y >= 527 && cursor->y <= 576)
+        return 'C';
     else 
         return 'N';
 }

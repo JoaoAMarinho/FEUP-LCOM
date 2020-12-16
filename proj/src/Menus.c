@@ -24,7 +24,7 @@ static Button ** mainButtons;
 void Main_ih(Device device){
     static Mouse_event * mouseEvent;
     bool playClicked = false, instructionsClicked = false, bestscoresClicked = false, exitClicked = false;
-    static bool overPlay = false, overInstructions = false, overBestscores = false, overExit = false;
+    static bool overPlay = false, overInstructions = false, overBestscores = false, overExit = false, overCalendar = false;
 
     switch (device) {
         case TIMER:
@@ -49,6 +49,11 @@ void Main_ih(Device device){
                         overExit = false;
                         erase_button(mainButtons[3]);
                         mainButtons[3]->isMouseOver = false;
+                    }
+                    else if (overCalendar) {
+                        overCalendar = false;
+                        erase_button(mainButtons[4]);
+                        mainButtons[4]->isMouseOver = false;
                     }
                     break;
                 case 'P':
@@ -113,6 +118,20 @@ void Main_ih(Device device){
                         overExit = true;
                         mainButtons[3]->isMouseOver = true;
                         draw_button(mainButtons[3]);
+                    }
+                    break;
+                case 'C':
+                    if(overCalendar) {
+                        draw_button(mainButtons[4]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        //Desenhar data
+                        update_cursor(&mouse_pack);
+                    }
+                    else if (!overCalendar) {
+                        overCalendar = true;
+                        mainButtons[4]->isMouseOver = true;
+                        draw_button(mainButtons[4]);
                     }
                     break;
             }
@@ -193,18 +212,21 @@ void LoadMain(){
 
     cursor = create_cursor();
 
-    mainButtons = (Button **) malloc(4 * sizeof(Button *));
+    mainButtons = (Button **) malloc(5 * sizeof(Button *));
 
     mainButtons[0] = createButton(PLAY_B,500,110);
     mainButtons[1] = createButton(INSTRUCTIONS_B,500,170);
     mainButtons[2] = createButton(BESTSCORES_B,500,230);
     mainButtons[3] = createButton(EXIT_B,500,290);
+    mainButtons[4] = createButton(CALENDAR_B,27,524);
+    
 
     
     add_button(mainButtons[0]);
     add_button(mainButtons[1]);
     add_button(mainButtons[2]);
     add_button(mainButtons[3]);
+    add_button(mainButtons[4]);
     draw_Menu();
 }
 

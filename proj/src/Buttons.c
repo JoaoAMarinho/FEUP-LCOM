@@ -31,7 +31,13 @@ Button * createButton(ButtonInfo buttonInfo, int x, int y){
             xpm_load(Exit_not_clicked, XPM_8_8_8_8, &button->buttonNotClicked);
             xpm_load(Exit_clicked, XPM_8_8_8_8, &button->buttonClicked);
             break;
+        case CALENDAR_B:
+            xpm_load(Calendar_not_clicked, XPM_8_8_8_8, &button->buttonNotClicked);
+            xpm_load(Calendar_clicked, XPM_8_8_8_8, &button->buttonClicked);
+            break;
         //Others
+        default:
+            break;
   }
 
   return button;
