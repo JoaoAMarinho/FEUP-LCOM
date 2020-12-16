@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-unsigned int game_counter=10;
+unsigned int game_counter=999;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -56,6 +56,7 @@ int gameLoop(){
 	LoadGameTimer();
     //Other loads (tasks and other things)
 	//LoadTasks(); dá load para o vetor de tasks
+	//LoadOpponents(); dá load para o array de opponents
     //date = load_date();
     //LoadRtc();
 

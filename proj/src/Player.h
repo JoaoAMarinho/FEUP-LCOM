@@ -15,7 +15,6 @@ typedef struct {
     xpm_image_t playerImg;
 
 	int x, y; // current position
-	int width, height; // dimensions
 	int xspeed, yspeed; // current speed
     bool alive;
     int numberProjectiles;

@@ -8,18 +8,27 @@
 #include "Rooms.h"
 
 //Include dos xpm dos Opponents
+#include "Xpms/Opponent/Opponent_anim0.xpm"
+#include "Xpms/Opponent/Opponent_anim1.xpm"
+#include "Xpms/Opponent/Opponent_anim2.xpm"
+#include "Xpms/Opponent/Opponent_anim3.xpm"
+#include "Xpms/Opponent/Opponent_anim4.xpm"
 
 typedef struct {
     Room_number opponentRoom;
     xpm_image_t opponentImg;
 
     int x, y; // current position
-	int width, height; // dimensions //NOT NEEDED
 	int xspeed, yspeed; // current speed
     bool alive;
 
-    xpm_image_t opponentAnimations[5];
+    xpm_image_t opponentAnimations[8];
 
     Direction direction;
 
 } Opponent;
+
+
+void LoadOpponents();
+
+Opponent* create_opponent(int x, int y, Direction direction, Room_number currentRoom);

@@ -6,7 +6,6 @@
 // Any header files included below this line should have been created by you
 
 #include "Videocard.h"
-//#include "Enemy.h"
 //#include "Lever.h"
 
 //Include dos xpm dos rooms

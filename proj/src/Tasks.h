@@ -23,4 +23,6 @@ typedef struct {
 } Task;
 
 
-//void LoadTasks();
+void LoadTasks();
+
+Task* create_task();

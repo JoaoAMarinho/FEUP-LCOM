@@ -6,4 +6,8 @@ Task ** gameTasks;
 
 //---------------------------------------------------------------------------------------------
 
-//void LoadTasks();
+void LoadTasks(){
+    gameTasks = (Task **) malloc(5 * sizeof(Task *));
+}
+
+Task* create_task();
