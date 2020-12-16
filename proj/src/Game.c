@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-//unsigned int game_counter=10;
+unsigned int game_counter=10;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -22,6 +22,7 @@ extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
 extern Opponent ** gameOpponents;
+extern GameTimer* gameTimer;
 //extern Date * date;
 Menu gameMenu = MAIN;
 
@@ -52,6 +53,7 @@ int gameLoop(){
     uint32_t rtc_irq_set = BIT(rtc_bit_no);
 
     LoadMain();
+	LoadGameTimer();
     //Other loads (tasks and other things)
 	//LoadTasks(); dá load para o vetor de tasks
     //date = load_date();
@@ -183,12 +185,14 @@ void Play_ih(Device device){
     switch (device) {
         case TIMER:
 			//Count down do jogo
-			/*if(time_counter%60==0){
+			if(time_counter%60==0){
 				game_counter--;
+				erase_GameTimer();
+				draw_GameTimer();
 			}
 			if(game_counter==0){
-				gameMenu = DEFEAT;
-			}*/
+				gameMenu = FINAL; //Vai para defeat
+			}
 
 			//Morte do player
 			if (!player->alive) {

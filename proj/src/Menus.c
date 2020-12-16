@@ -14,6 +14,7 @@ extern Cursor * cursor;
 xpm_image_t current_background;
 //xpm_image_t empty_background;
 
+GameTimer* gameTimer;
 static Button ** mainButtons;
 //static Button ** pauseButtons;
 //static Button * continueButton;
@@ -178,12 +179,14 @@ void Pause_ih(Device device){return;}
 void GameMap_ih(Device device){
     switch (device) {
         case TIMER:
-            /*if(time_counter%60==0){
+            if(time_counter%60==0){
 				game_counter--;
+                erase_GameTimer();
+                draw_GameTimer();
 			}
 			if(game_counter==0){
-				gameMenu = FINAL;
-			}*/
+				gameMenu = FINAL; //Vai para defeat
+			}
             break;
 
         case KEYBOARD:
@@ -234,6 +237,39 @@ void LoadMain(){
 void LoadGameMap(){
     xpm_load(gameMap_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
+    draw_GameTimer();
+}
+
+void LoadGameTimer(){
+
+    gameTimer=(GameTimer*) malloc(sizeof(GameTimer));
+
+    xpm_image_t img;
+
+    //Load numbers
+    xpm_load(Number0_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[0] = img;
+    xpm_load(Number1_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[1] = img;
+    xpm_load(Number2_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[2] = img;
+    xpm_load(Number3_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[3] = img;
+    xpm_load(Number4_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[4] = img;
+    xpm_load(Number5_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[5] = img;
+    xpm_load(Number6_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[6] = img;
+    xpm_load(Number7_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[7] = img;
+    xpm_load(Number8_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[8] = img;
+    xpm_load(Number9_xpm, XPM_8_8_8_8, &img);
+    gameTimer->Numbers[9] = img;
+
+    free(&img);
+
 }
 
 //---------------------------------------------------------------------------------------------
@@ -343,12 +379,15 @@ void LoadPlay(Room_number currentRoom){
 		}
 		if (gameMenu == PLAYING) {
 			room = load_room(currentRoom);
+            draw_room();
+            draw_GameTimer();
             //Desenhar inimigos e tasks dessa room
 		}
  	}
-  else { //Caso de pausa, ver o mapa ou fazer uma task ou início
-        if(room==NULL) room = load_room(currentRoom);
+  else { //Pausa, GameMap ou Task
+        if(room==NULL) room = load_room(currentRoom); //Primeiro load
         draw_room();
+        draw_GameTimer();
         //Desenhar inimigos e tasks dessa room
         //draw_room_enemies();
         draw_player(player);
@@ -368,3 +407,49 @@ void draw_Menu() {
         }
     }
 }
+
+void draw_GameTimer(){
+    unsigned int counter=game_counter;
+    int n;
+    if(counter>100){ //3 digits
+        n=counter%10;
+        draw_Number(423,4,n);
+        counter=counter/10;
+        n=counter%10;
+        draw_Number(398,4,n);
+        counter=counter/10;
+        n=counter%10;
+        draw_Number(373,4,n);
+    }else if(counter>10){ //2 digits
+        n=counter%10;
+        draw_Number(412,4,n);
+        counter=counter/10;
+        n=counter%10;
+        draw_Number(387,4,n);
+    }else{ //1 digit
+        n=counter%10;
+        draw_Number(403,4,n);
+    }
+}
+
+void erase_GameTimer(){//Limpar desde y=3 até y=34 e desde x=372 até 460 
+    uint32_t* map = (uint32_t*) room->roomBackground.bytes;
+
+    for(int i = 372; i < 460; i++) {
+            for (int j = 3; j < 35; j++) {
+                drawPixel(i,j,*(map  + i + j * horizontal_res));
+            }
+        }
+}
+
+void draw_Number(int x, int y, int n){
+    uint32_t* map=(uint32_t*)gameTimer->Numbers[n].bytes;
+    
+    for(int row = 0;row < gameTimer->Numbers[n].height; row++){
+        for(int column = 0;column < gameTimer->Numbers[n].width; column++){
+            if (*(map + column + row*gameTimer->Numbers[n].width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(x+column,y+row,*(map + column + row*gameTimer->Numbers[n].width));
+        }
+    }
+}
+
