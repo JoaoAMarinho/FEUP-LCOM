@@ -11,6 +11,7 @@
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
+#include "Xpms/GameMap.xpm"
 
 typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES , /*TAREFAS: ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
 
@@ -25,6 +26,8 @@ void Instructions_ih(Device device);
 
 void Pause_ih(Device device);
 
+void GameMap_ih(Device device);
+
 void Victory_ih(Device device);
 
 void Defeat_ih(Device device);
@@ -32,8 +35,11 @@ void Defeat_ih(Device device);
 //Load menus
 void LoadMain();
 
+
+void LoadGameMap();
+
 //Load de cada room
 void LoadPlay(Room_number previousRoom);
 
 //Draw menus
-void draw_Main();
+void draw_Menu();

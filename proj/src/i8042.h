@@ -12,12 +12,14 @@
 #define MOUSE_IRQ 12
 #define KBD_IRQ 0x01
 
-
+//Some Break codes
+#define ESC_KEY 0x81
+#define SPACEBAR_KEY 0xB9
+#define M_KEY 0xB2
 // Keyboard codes
 
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
-#define ESC_KEY 0x81
-#define SPACEBAR_KEY 0xB9
+
 #define MAKE_CODE_VERIFY BIT(7)
 
 #define MOUSE_OUT_BUF 0x60

@@ -88,8 +88,8 @@ Room * load_room(Room_number roomNumber){
         add_final_position_background(&level->finalPos->posfinalx, &level->finalPos->posfinaly, &level->finalPos->lado);*/
 
     draw_room();
-
-    draw_room_enemies();
+    //Após desenhar room desenhar inimigos e possíveis tasks, terá que ser chamado fora desta função
+    //draw_room_enemies();
 
     return room;
     

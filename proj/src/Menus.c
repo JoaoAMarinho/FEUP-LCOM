@@ -1,5 +1,6 @@
 #include "Menus.h"
 
+extern unsigned int time_counter,game_counter;
 extern uint16_t horizontal_res, vertical_res;
 extern uint8_t keyboard_data;
 extern struct packet mouse_pack;
@@ -155,6 +156,30 @@ void Instructions_ih(Device device){return;}
 
 void Pause_ih(Device device){return;}
 
+void GameMap_ih(Device device){
+    switch (device) {
+        case TIMER:
+            /*if(time_counter%60==0){
+				game_counter--;
+			}
+			if(game_counter==0){
+				gameMenu = FINAL;
+			}*/
+            break;
+
+        case KEYBOARD:
+            if (keyboard_data == M_KEY || keyboard_data==ESC_KEY) {
+        	    gameMenu = PLAYING;
+        	    LoadPlay(room->currentRoom);
+      	    }
+            break;
+        case MOUSE: //Nada
+            break;
+        case RTC:
+            break;
+    }
+}
+
 void Victory_ih(Device device){return;}
 
 void Defeat_ih(Device device){return;}
@@ -180,7 +205,13 @@ void LoadMain(){
     add_button(mainButtons[1]);
     add_button(mainButtons[2]);
     add_button(mainButtons[3]);
-    draw_Main();
+    draw_Menu();
+}
+
+
+void LoadGameMap(){
+    xpm_load(gameMap_xpm, XPM_8_8_8_8, &current_background);
+    draw_Menu();
 }
 
 //---------------------------------------------------------------------------------------------
@@ -290,20 +321,22 @@ void LoadPlay(Room_number currentRoom){
 		}
 		if (gameMenu == PLAYING) {
 			room = load_room(currentRoom);
+            //Desenhar inimigos e tasks dessa room
 		}
  	}
   else { //Caso de pausa, ver o mapa ou fazer uma task ou início
-   if(room==NULL) room = load_room(currentRoom);
-    draw_room();
-    draw_room_enemies();
-    draw_player(player);
+        if(room==NULL) room = load_room(currentRoom);
+        draw_room();
+        //Desenhar inimigos e tasks dessa room
+        //draw_room_enemies();
+        draw_player(player);
   }
 }
 
 //---------------------------------------------------------------------------------------------
 //Draw menus
 
-void draw_Main() {
+void draw_Menu() {
 
     uint32_t* map = (uint32_t*) current_background.bytes;
       

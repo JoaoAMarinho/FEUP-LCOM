@@ -20,7 +20,6 @@
 #include "Xpms/Rooms/NavigationObstacles.xpm"
 #include "Xpms/Rooms/Weapons.xpm"
 #include "Xpms/Rooms/WeaponsObstacles.xpm"
-//#include "Images/ammo.xpm"
 
 typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, BREAK/*dont know if needed yet*/, END} Room_number;
 

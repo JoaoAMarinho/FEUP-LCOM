@@ -27,8 +27,6 @@ void Play_ih(Device device);
 
 
 
-//Load das tasks
-//void loadtaskXPM();
 
 //Load da task conforme o room
 //void Loadtask(unsigned int state, Lever * lever);

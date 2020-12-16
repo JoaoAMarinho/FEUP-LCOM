@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-//unsigned int game_counter=3;
+//unsigned int game_counter=10;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -20,6 +20,7 @@ uint16_t horizontal_res, vertical_res;
 extern Player * player;
 extern Room * room;
 extern Cursor * cursor;
+extern Task * taskList[2];
 //extern Date * date;
 Menu gameMenu = MAIN;
 
@@ -51,6 +52,7 @@ int gameLoop(){
 
     LoadMain();
     //Other loads (tasks and other things)
+	//LoadTasks(); dá load para o vetor de tasks
     //date = load_date();
     //LoadRtc();
 
@@ -154,8 +156,8 @@ void receiveInterrupt(Device device){
         case PAUSE:
             Pause_ih(device);
             break;
-        case GAMEMAP:             //Transição entre rooms a mostrar qual está (black screen com o nome da sala)
-        //    Map_ih(device);
+        case GAMEMAP:
+            GameMap_ih(device);
             break;
         case VICTORY:
             Victory_ih(device);
@@ -316,7 +318,11 @@ void Play_ih(Device device){
         }
         */
 
-		//Ver mapa;
+		//Ver mapa
+		if (keyboard_data == M_KEY) {
+        	gameMenu = GAMEMAP;
+        	LoadGameMap();
+      	}
 
         //UPDATE MOVING DIRECTION
         change_direction(player, &up, &down, &left, &right);
