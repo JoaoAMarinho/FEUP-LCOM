@@ -225,7 +225,7 @@ static xpm_row_t const opponent_anim3_xpm[] = {
 "iX c #DDE1E9",
 "pX c #E8E6E9",
 "aX c #FFFFE2",
-"sX c white",
+"sX c #FFFFFF",
 "dX c #F4F3F8",
 "fX c None",
 /* pixels */

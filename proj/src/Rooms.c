@@ -113,12 +113,6 @@ void delete_room(){
     }
 }
 
-void draw_room_enemies(){
-  for (int i = 0; i < room->enemiesNumber; i++)
-    continue;
-    //draw_enemy(room->enemyList[i]);
-}
-
 void draw_room_tasks(){
   for (int i = 0; i < room->taksNumber; i++)
     continue;

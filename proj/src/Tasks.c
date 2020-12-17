@@ -3,6 +3,7 @@
 extern uint16_t horizontal_res, vertical_res;
 
 Task ** gameTasks;
+int n_tasks=5;
 
 //---------------------------------------------------------------------------------------------
 

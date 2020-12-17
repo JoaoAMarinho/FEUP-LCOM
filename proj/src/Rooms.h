@@ -42,7 +42,5 @@ void delete_room();
 
 void draw_room();
 
-void draw_room_enemies();
-
 void draw_room_tasks();
 

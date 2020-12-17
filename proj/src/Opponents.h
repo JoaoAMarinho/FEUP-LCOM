@@ -4,7 +4,7 @@
 #include <lcom/lcf.h>
 
 // Any header files included below this line should have been created by you
-
+#include "i8042.h"
 #include "Rooms.h"
 
 //Include dos xpm dos Opponents
@@ -20,7 +20,6 @@ typedef struct {
 
     int x, y; // current position
 	int xspeed, yspeed; // current speed
-    bool alive;
 
     xpm_image_t opponentAnimations[8];
 
@@ -32,3 +31,11 @@ typedef struct {
 void LoadOpponents();
 
 Opponent* create_opponent(int x, int y, Direction direction, Room_number currentRoom);
+
+void draw_opponent(Opponent* opponent);
+
+void erase_opponent(Opponent* opponent);
+
+void kill_opponent(Opponent* opponent);
+
+void draw_current_opponents();

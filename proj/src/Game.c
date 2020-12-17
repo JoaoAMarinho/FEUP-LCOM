@@ -56,7 +56,7 @@ int gameLoop(){
 	LoadGameTimer();
     //Other loads (tasks and other things)
 	//LoadTasks(); dá load para o vetor de tasks
-	//LoadOpponents(); dá load para o array de opponents
+	LoadOpponents(); //dá load para o array de opponents
     //date = load_date();
     //LoadRtc();
 
@@ -132,7 +132,7 @@ int gameLoop(){
   if (keyboard_unsubscribe_int() != 0) {return 1;}
   if (timer_unsubscribe_int() != 0) {return 1;}
 
-  //free(room);
+  delete_room(room);
 
   return 0;
 
