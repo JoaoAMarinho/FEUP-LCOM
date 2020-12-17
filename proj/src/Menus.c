@@ -382,6 +382,7 @@ void LoadPlay(Room_number currentRoom){
             draw_room();
             draw_GameTimer();
             //Desenhar inimigos e tasks dessa room
+            draw_current_opponents();
 		}
  	}
   else { //Pausa, GameMap ou Task
@@ -389,7 +390,7 @@ void LoadPlay(Room_number currentRoom){
         draw_room();
         draw_GameTimer();
         //Desenhar inimigos e tasks dessa room
-        //draw_room_enemies();
+        draw_current_opponents();
         draw_player(player);
   }
 }

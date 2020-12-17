@@ -36,6 +36,6 @@ void draw_opponent(Opponent* opponent);
 
 void erase_opponent(Opponent* opponent);
 
-void kill_opponent(Opponent* opponent);
+void kill_opponent(int index);
 
 void draw_current_opponents();

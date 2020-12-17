@@ -2,6 +2,8 @@
 
 extern Player * player;
 extern Room * room;
+extern Opponent ** gameOpponents;
+extern int n_opponents;
 
 //extern GameState gameState;
 
@@ -164,78 +166,112 @@ Projectile * blast(Player * player){
 bool projectileCollision(Projectile *projectile){
     if(projectile->direction==UP){
 
-		// Collisions with walls
-		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
-		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
-			for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
-        //Will always hit the clock bar
-          if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-            projectile->exists = false;
-            return true;
-          }
-			}
-		}
+      // Collisions with walls
+      uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+      for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+        for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
+            if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+              projectile->exists = false;
+              return true;
+            }
+        }
+      }
 
-		// CHECK COLLISIONS WITH ENEMIES
-		/*
-		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
-			for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
-			for (unsigned int k = 0; k < numEnemies; k++) {
-				if (room->enemies[k]->dead)
-				continue;
-				if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
-					j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
-					enemy_death(enemies[k]);
-					projectile->exists = false;
-					return true;
-				}
-			}
-			}
-		}*/
+      // Collisions with opponents
+      bool found=false;
+      for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+        for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
+          for (int k = 0; k < n_opponents; k++)
+            if(gameOpponents[k]==NULL) continue;
+            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+              found=true;
+              if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                kill_opponent(k);
+                projectile->exists = false;
+                return true;
+              }
+            }
+            else if(found) break;
+        }
+      }
 		
     }else if(projectile->direction==DOWN){
 
-		// Collisions with walls
-		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
-		for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
-			for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
-          if(j>=vertical_res){
-            projectile->exists = false;
-            return true;
-          }
-          if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-            projectile->exists = false;
-            return true;
-          }
-			}
-		}
-
-		/*
-        // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x; i <= bullet->x + bullet->img.width; i++) {
-        for (int j = bullet->y + bullet->img.height; j <= bullet->y + bullet->img.height + bullet->speed; j++) {
-          for (unsigned int k = 0; k < numEnemies; k++) {
-            if (enemies[k]->dead)
-              continue;
-            if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
-                j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
-                  enemy_death(enemies[k]);
-                  bullet->active = false;
-                  return true;
+      // Collisions with walls
+      uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+      for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+        for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
+            if(j>=vertical_res){
+              projectile->exists = false;
+              return true;
             }
-          }
+            if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+              projectile->exists = false;
+              return true;
+            }
         }
-      }*/
+      }
 
-      
+      // Collisions with opponents
+      bool found=false;
+      for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
+        for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
+          for (int k = 0; k < n_opponents; k++)
+            if(gameOpponents[k]==NULL) continue;
+            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+              found=true;
+              if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                kill_opponent(k);
+                projectile->exists = false;
+                return true;
+              }
+            }
+            else if(found) break;
+        }
+      }
 
     }else if(projectile->direction==LEFT){
 
-		// Collisions with walls
-		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
-		for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
-			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
-          if(i<=0){
+      // Collisions with walls
+      uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+      for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
+        for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+            if(i<=0){
+              projectile->exists = false;
+              return true;
+            }
+            if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
+              projectile->exists = false;
+              return true;
+            }
+        }
+      }
+
+      // Collisions with opponents
+      bool found=false;
+      for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
+        for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+          for (int k = 0; k < n_opponents; k++)
+            if(gameOpponents[k]==NULL) continue;
+            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+              found=true;
+              if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                kill_opponent(k);
+                projectile->exists = false;
+                return true;
+              }
+            }
+            else if(found) break;
+        }
+      }
+      
+    }else if(projectile->direction==RIGHT){
+
+      // Collisions with walls
+      uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
+      for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileSpeed + projectile->projectileImg.width; i++) {
+        for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+          if(i>=horizontal_res){
             projectile->exists = false;
             return true;
           }
@@ -243,60 +279,26 @@ bool projectileCollision(Projectile *projectile){
             projectile->exists = false;
             return true;
           }
-			}
-		}
+        }
+      }
 
-		/*
-        // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x; i >= (int)bullet->x - (int)bullet->speed; i--) {
-        for (int j = bullet->y; j <= (int)bullet->y + (int)bullet->img.height; j++) {
-          for (unsigned int k = 0; k < numEnemies; k++) {
-            if (enemies[k]->dead)
-              continue;
-            if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
-                j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
-                  enemy_death(enemies[k]);
-                  bullet->active = false;
-                  return true;
+      // Collisions with opponents
+      bool found=false;
+      for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileImg.width + projectile->projectileSpeed; i++) {
+        for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
+          for (int k = 0; k < n_opponents; k++)
+            if(gameOpponents[k]==NULL) continue;
+            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+              found=true;
+              if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                kill_opponent(k);
+                projectile->exists = false;
+                return true;
+              }
             }
-          }
+            else if(found) break;
         }
-      }*/
-
-      
-    }else if(projectile->direction==RIGHT){
-
-		// Collisions with walls
-		uint32_t* obstaclesMap=(uint32_t*)room->roomObstacles.bytes;
-		for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileSpeed + projectile->projectileImg.width; i++) {
-			for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
-        if(i>=horizontal_res){
-          projectile->exists = false;
-          return true;
-        }
-        if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8)) {
-          projectile->exists = false;
-          return true;
-        }
-			}
-		}
-		/*
-        // CHECK COLLISIONS WITH ENEMIES
-      for (int i = bullet->x + bullet->img.width; i <= (int)bullet->x + (int)bullet->projectileSpeed + bullet->img.width; i++) {
-        for (int j = bullet->y; j <= (int)bullet->y + (int)bullet->img.height; j++) {
-          for (unsigned int k = 0; k < numEnemies; k++) {
-            if (enemies[k]->dead)
-              continue;
-            if (i > enemies[k]->x && i < enemies[k]->x + enemies[k]->img.width &&
-                j > enemies[k]->y && j < enemies[k]->y + enemies[k]->img.height) {
-                  enemy_death(enemies[k]);
-                  bullet->active = false;
-                  return true;
-            }
-          }
-        }
-      }*/
-
+      }
       
     }
 

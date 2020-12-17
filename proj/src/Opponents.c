@@ -4,15 +4,16 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Opponent ** gameOpponents;
-int n_opponents=1;
+int n_opponents=2;
 
 //---------------------------------------------------------------------------------------------
 
 void LoadOpponents(){
-    gameOpponents = (Opponent **) malloc(1 * sizeof(Opponent *));
+    gameOpponents = (Opponent **) malloc(n_opponents * sizeof(Opponent *));
 
     //Opponents ordered by their room
-    gameOpponents[0] = create_opponent(500,110,UP,CAFETERIA);
+    gameOpponents[0] = create_opponent(129,468,UP,CAFETERIA);
+    gameOpponents[1] = create_opponent(102,89,DOWN,CAFETERIA);
     //gameOpponents[1] = create_opponent(500,170,DOWN,HALLWAY1);
     //gameOpponents[2] = create_opponent(500,230,LEFT,NAVIGATION);
 
@@ -130,12 +131,10 @@ void erase_opponent(Opponent* opponent){
     }
 }
 
-void kill_opponent(Opponent* opponent) {
-  erase_opponent(opponent);
-  if (opponent != NULL){
-        free(opponent->opponentImg.bytes);
-        free(opponent);
-        opponent = NULL; 
+void kill_opponent(int index) {
+  erase_opponent(gameOpponents[index]);
+  if (gameOpponents[index] != NULL){
+        gameOpponents[index] = NULL; 
     }
 }
 
