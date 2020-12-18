@@ -19,19 +19,25 @@
 #include "Xpms/Rooms/NavigationObstacles.xpm"
 #include "Xpms/Rooms/Weapons.xpm"
 #include "Xpms/Rooms/WeaponsObstacles.xpm"
+#include "Xpms/Rooms/Eletrical.xpm"
+#include "Xpms/Rooms/EletricalObstacles.xpm"
+#include "Xpms/Rooms/Hallway2.xpm"
+#include "Xpms/Rooms/Hallway2Obstacles.xpm"
+#include "Xpms/Rooms/Hallway3.xpm"
+#include "Xpms/Rooms/Hallway3Obstacles.xpm"
+#include "Xpms/Rooms/Medbay.xpm"
+#include "Xpms/Rooms/MedbayObstacles.xpm"
+#include "Xpms/Rooms/Reactor.xpm"
+#include "Xpms/Rooms/ReactorObstacles.xpm"
+#include "Xpms/Rooms/UpperEngine.xpm"
+#include "Xpms/Rooms/UpperEngineObstacles.xpm"
 
-typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, BREAK/*dont know if needed yet*/, END} Room_number;
+typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, HALLWAY3, LOWERENG, REACTOR, SECURITY, BREAK/*dont know if needed yet*/, END} Room_number;
 
 typedef struct {
     Room_number currentRoom;
     xpm_image_t roomObstacles;
     xpm_image_t roomBackground;
-
-    //Task ** taskList;
-    int taksNumber;
-    
-    //Enemy ** enemyList;
-    int enemiesNumber;
 
 } Room;
 
@@ -41,6 +47,4 @@ Room * load_room(Room_number roomNumber);
 void delete_room();
 
 void draw_room();
-
-void draw_room_tasks();
 

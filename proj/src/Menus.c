@@ -286,12 +286,10 @@ void LoadPlay(Room_number currentRoom){
 					player->x = 723;
 					player->y = 290;
 				}else if(previousRoom==HALLWAY2){
-					//Player fica no lado esquerdo
 					player->direction = RIGHT;
-					//player->x = 105;
-					//player->y = 650;
+					player->x = 8;
+					player->y = 289;
 				}
-				previousRoom = CAFETERIA;
 				break;
 			case HALLWAY1:
 				if(previousRoom==CAFETERIA){
@@ -311,63 +309,93 @@ void LoadPlay(Room_number currentRoom){
 					player->x = 462;
 					player->y = 525;
 				}
-				previousRoom = HALLWAY1;
 				break;
 			case ADMIN:
-				previousRoom = ADMIN;
 				player->direction = DOWN;
 				player->x = 107;
 				player->y = 0;
 				break;
 			case WEAPONS:
-				previousRoom = WEAPONS;
 				player->direction = UP;
 				player->x = 179;
 				player->y = 525;
 				break;
 			case NAVIGATION:
-				previousRoom = NAVIGATION;
 				player->direction = RIGHT;
 				player->x = 0;
 				player->y = 315;
 				break;
 			case HALLWAY2:
-				//If(){}
-				previousRoom = HALLWAY2;
-				player->direction = RIGHT;
-				//player->x = 479;
-				//player->y = 690;
+				if(previousRoom==CAFETERIA){
+                    player->direction=LEFT;
+                    player->x=713;
+                    player->y=364;
+                }else if(previousRoom==ELETRICAL){
+                    player->direction = UP;
+				    player->x = 449;
+				    player->y = 515;
+                }else if(previousRoom==UPPERENG){
+                    player->direction = RIGHT;
+				    player->x = 21;
+				    player->y = 365;
+                }else if(previousRoom==MEDBAY){
+                    player->direction = DOWN;
+				    player->x = 167;
+				    player->y = 34;
+                }
 				break;
 			case MEDBAY:
-				previousRoom = MEDBAY;
 				player->direction = UP;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 217;
+				player->y = 518;
 				break;
 			case ELETRICAL:
-				previousRoom = ELETRICAL;
 				player->direction = DOWN;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 421;
+				player->y = 55;
 				break;
 			case UPPERENG:
-				previousRoom = UPPERENG;
-				player->direction = UP;
-				//player->x = 479;
-				//player->y = 690;
+                if(previousRoom==HALLWAY2){
+                    player->direction=LEFT;
+                    player->x=709;
+                    player->y=275;
+                }else if(previousRoom==HALLWAY3){
+                    player->direction = UP;
+			        player->x = 326;
+				    player->y = 520;
+                }
 				break;
+            case HALLWAY3:
+                if(previousRoom==LOWERENG){
+                    player->direction=UP;
+                    player->x=368;
+                    player->y=517;
+                }else if(previousRoom==REACTOR){
+                    player->direction = RIGHT;
+				    player->x = 25;
+				    player->y = 334;
+                }else if(previousRoom==UPPERENG){
+                    player->direction = DOWN;
+				    player->x = 379;
+				    player->y = 56;
+                }else if(previousRoom==SECURITY){
+                    player->direction = LEFT;
+				    player->x = 709;
+				    player->y = 349;
+                }
+                break;
 			case LOWERENG:
-				previousRoom = LOWERENG;
 				player->direction = DOWN;
 				//player->x = 479;
 				//player->y = 690;
 				break;
 			case REACTOR:
-				previousRoom = REACTOR;
 				player->direction = LEFT;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 721;
+				player->y = 311;
 				break;
+            case SECURITY:
+                break;
 			//o resto dos rooms
 			case END:
 				gameMenu = VICTORY;
@@ -385,14 +413,15 @@ void LoadPlay(Room_number currentRoom){
             draw_current_opponents();
 		}
  	}
-  else { //Pausa, GameMap ou Task
+    else { //Pausa, GameMap ou Task
         if(room==NULL) room = load_room(currentRoom); //Primeiro load
         draw_room();
         draw_GameTimer();
         //Desenhar inimigos e tasks dessa room
         draw_current_opponents();
         draw_player(player);
-  }
+    }
+    previousRoom = currentRoom;
 }
 
 //---------------------------------------------------------------------------------------------

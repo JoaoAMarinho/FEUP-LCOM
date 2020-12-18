@@ -14,68 +14,55 @@ Room * load_room(Room_number roomNumber){
     if(roomNumber==CAFETERIA){
         xpm_load(Cafeteria_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(CafeteriaObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
-
-        room->taksNumber = 0;    //número de tasks
-        room->enemiesNumber = 0; //número de enimigos
-        
-        //Posição de troca de sala
-        //level->finalPos = createFinalPos(832,64,6);
         
         //Criar as tarefas
         //level->leverList = (Lever **) malloc (level->numLevers * sizeof(Lever *));
         //level->leverList[0] = createLever(384,704);
         //add_lever_background(level->leverList[0]);
-
-        //Criar enemys
-        //level->enemyList = (Enemy **) malloc (level->numEnemies * sizeof(Enemy *));
-        //level->enemyList[0] = createEnemy(40,100,DOWN,false);
-        //level->enemyList[1] = createEnemy(775,50,DOWN,false);
     }
     else if(roomNumber==HALLWAY1){
         xpm_load(Hallway1_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(Hallway1Obstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
-
-        room->taksNumber = 0;    //número de tasks
-        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==ADMIN){
         xpm_load(Admin_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(AdminObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
-
-        room->taksNumber = 0;    //número de tasks
-        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==WEAPONS){
         xpm_load(Weapons_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(WeaponsObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
 
-        room->taksNumber = 0;    //número de tasks
-        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==NAVIGATION){
         xpm_load(Navigation_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(NavigationObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
-
-        room->taksNumber = 0;    //número de tasks
-        room->enemiesNumber = 0; //número de enimigos
     }
     else if(roomNumber==HALLWAY2){
-        return NULL;
+        xpm_load(Hallway2_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(Hallway2Obstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==MEDBAY){
-        return NULL;
+        xpm_load(Medbay_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(MedbayObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==ELETRICAL){
-        return NULL;
+        xpm_load(Eletrical_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(EletricalObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==UPPERENG){
-        return NULL;
+        xpm_load(UpperEngine_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(UpperEngineObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
+    }
+    else if(roomNumber==HALLWAY3){
+        xpm_load(Hallway3_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(Hallway3Obstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==LOWERENG){
         return NULL;
     }
     else if(roomNumber==REACTOR){
-        return NULL;
+        xpm_load(Reactor_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(ReactorObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==SECURITY){
         return NULL;
@@ -113,8 +100,3 @@ void delete_room(){
     }
 }
 
-void draw_room_tasks(){
-  for (int i = 0; i < room->taksNumber; i++)
-    continue;
-    //draw_task(room->leverList[i]);
-}

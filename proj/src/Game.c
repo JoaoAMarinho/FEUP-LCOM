@@ -348,7 +348,7 @@ bool roomTransition(){
 	switch (room->currentRoom) {
 		case CAFETERIA:
 			if(player->direction==RIGHT && player->x>=722 && player->y > 275 && player->y < 305){room->currentRoom=HALLWAY1; return true;}
-			//else if(player->direction==LEFT && player->x+player->playerImg.width<50 && player->y>276 && player->y<300){room->currentRoom=HALLWAY2; return true;}
+			else if(player->direction==LEFT && player->x <=2 && player->y >= 270 && player->y <= 310){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case HALLWAY1:
 			if(player->direction==LEFT && player->x <=2 && player->y >= 168 && player->y <= 235){room->currentRoom=CAFETERIA; return true;}
@@ -366,16 +366,33 @@ bool roomTransition(){
 			if(player->direction==LEFT && player->x <=1 && player->y >= 276 && player->y <= 352){room->currentRoom=HALLWAY1; return true;}
 			break;
 		case HALLWAY2:
+			if(player->direction==LEFT && player->x <=2 && player->y >= 300 && player->y <= 440){room->currentRoom=UPPERENG; return true;}
+			else if(player->direction==RIGHT && player->x >=720 && player->y>=300 && player->y<=450){room->currentRoom=CAFETERIA; return true;}
+			else if(player->direction==UP && player->x>=100 && player->x <=226 && player->y<=27){room->currentRoom=MEDBAY; return true;}
+			else if(player->direction==DOWN && player->x>=387 && player->x <=512 && player->y>=524){room->currentRoom=ELETRICAL; return true;}
 			break;
 		case MEDBAY:
+			if(player->direction==DOWN && player->x>=174 && player->x <=266 && player->y>=524){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case ELETRICAL:
+			if(player->direction==UP && player->x>=383 && player->x <=477 && player->y<=41){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case UPPERENG:
+			if(player->direction==RIGHT && player->x>=722 && player->y > 235 && player->y < 300){room->currentRoom=HALLWAY2; return true;}
+			else if(player->direction==DOWN && player->x>=285 && player->x <=375 && player->y>=524){room->currentRoom=HALLWAY3; return true;}
+			break;
+		case HALLWAY3:
+			if(player->direction==LEFT && player->x <=2 && player->y >= 275 && player->y <= 405){room->currentRoom=REACTOR; return true;}
+			//else if(player->direction==RIGHT && player->x >=722 && player->y>=265 && player->y<=405){room->currentRoom=SECURITY; return true;}
+			else if(player->direction==UP && player->x>=259 && player->x <=480 && player->y<=42){room->currentRoom=MEDBAY; return true;}
+			//else if(player->direction==DOWN && player->x>=260 && player->x <=495 && player->y>=524){room->currentRoom=LOWERENG; return true;}
 			break;
 		case LOWERENG:
 			break;
 		case REACTOR:
+			if(player->direction==RIGHT && player->x>=720 && player->y > 290 && player->y < 325){room->currentRoom=HALLWAY3; return true;}
+			break;
+		case SECURITY:
 			break;
 		//o resto dos rooms
 		default:
