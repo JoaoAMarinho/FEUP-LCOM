@@ -259,6 +259,7 @@ void Play_ih(Device device){
 					found=true;
 					if (time_counter % 7 == 0 && gameOpponents[index]->isMoving) //Update opponent animation
 						animate_opponent(gameOpponents[index]);
+						
 					move_opponent(gameOpponents[index]); //Move opponent
 				}
         		else if(found) break;
@@ -267,7 +268,7 @@ void Play_ih(Device device){
 
 			//Player collision with opponent
 			if(player->alive){
-				opponent_index=opponent_collision(player);
+				opponent_index=player_opponent_collision(player);
 				if (opponent_index!=-1) {
 					player->alive=false;
 					gameOpponents[opponent_index]->isMoving=false;

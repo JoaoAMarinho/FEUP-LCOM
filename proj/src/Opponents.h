@@ -55,3 +55,5 @@ void opponent_atack(Opponent* opponent, int index);
 void kill_opponent(int index);
 
 bool room_opponent_collision(Opponent* opponent);
+
+bool opponent_opponent_colision(Opponent* opponent);

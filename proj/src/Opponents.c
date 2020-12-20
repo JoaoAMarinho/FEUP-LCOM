@@ -4,7 +4,7 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Opponent ** gameOpponents;
-int n_opponents=2;
+int n_opponents=3;
 
 //---------------------------------------------------------------------------------------------
 
@@ -14,6 +14,7 @@ void LoadOpponents(){
     //Opponents ordered by their room
     gameOpponents[0] = create_opponent(129,510,RIGHT,CAFETERIA, true);
     gameOpponents[1] = create_opponent(102,200,DOWN,CAFETERIA, true);
+    gameOpponents[2] = create_opponent(400,400,RIGHT,CAFETERIA, true);
     //gameOpponents[1] = create_opponent(500,170,DOWN,HALLWAY1);
     //gameOpponents[2] = create_opponent(500,230,LEFT,NAVIGATION);
 
@@ -151,7 +152,7 @@ void move_opponent(Opponent* opponent){
     erase_opponent(opponent);
     switch(opponent->direction) {
         case LEFT:
-            if(!room_opponent_collision(opponent)) {
+            if(!room_opponent_collision(opponent) && !opponent_opponent_colision(opponent)) {
                 if (opponent->x - opponent->xspeed < 0) {
                     opponent->direction = RIGHT;
                     opponent->x = 0;
@@ -165,7 +166,7 @@ void move_opponent(Opponent* opponent){
             }
             break;
         case RIGHT:
-            if(!room_opponent_collision(opponent)) {
+            if(!room_opponent_collision(opponent)&& !opponent_opponent_colision(opponent)) {
                 if (opponent->x + opponent->opponentImg.width + opponent->xspeed > horizontal_res) {
                     opponent-> direction=LEFT;
                     opponent->x=horizontal_res-opponent->opponentImg.width-1;
@@ -179,14 +180,14 @@ void move_opponent(Opponent* opponent){
             }
             break;
         case UP:
-            if(!room_opponent_collision(opponent)) {
+            if(!room_opponent_collision(opponent)&& !opponent_opponent_colision(opponent)) {
                 opponent->y -= opponent->yspeed;
             }else{
                 opponent->direction = DOWN;
             }
             break;
         case DOWN:
-            if(!room_opponent_collision(opponent)) {
+            if(!room_opponent_collision(opponent)&& !opponent_opponent_colision(opponent)) {
                 if (opponent->y + opponent->yspeed > vertical_res - opponent->opponentImg.height) {
                     opponent->direction = UP;
                     opponent->y = vertical_res - opponent->opponentImg.height - 1;
@@ -255,6 +256,66 @@ bool room_opponent_collision(Opponent* opponent){
             for (int j = opponent->y; j <= opponent->y + opponent->opponentImg.height; j++) {
                 if(*(obstaclesMap + i + j * horizontal_res) != xpm_transparency_color(XPM_8_8_8_8))
                     return true;
+            }
+        }
+    }
+    return false;
+}
+
+bool opponent_opponent_colision(Opponent* opponent){
+    if(opponent->direction==UP){
+        for (int i = opponent->x; i <= opponent->x + opponent->opponentImg.width; i++) {
+            for (int j = opponent->y; j >= opponent->y - opponent->yspeed; j--) {
+                for(int k=0; k < n_opponents; k++){
+                    if(gameOpponents[k]==NULL) continue;
+                    else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
+                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width &&j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(opponent->direction==DOWN){
+        for (int i = opponent->x; i <= opponent->x + opponent->opponentImg.width; i++) {
+            for (int j = opponent->y + opponent->opponentImg.height; j <= opponent->y + opponent->opponentImg.height + opponent->yspeed; j++) {
+                for(int k=0; k < n_opponents; k++){
+                    if(gameOpponents[k]==NULL) continue;
+                    else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
+                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(opponent->direction==RIGHT){
+        for (int i = opponent->x + opponent->opponentImg.width; i <= opponent->x + opponent->xspeed + opponent->opponentImg.width; i++) {
+            for (int j = opponent->y; j <= opponent->y + opponent->opponentImg.height; j++) {
+                for(int k=0; k < n_opponents; k++){
+                    if(gameOpponents[k]==NULL) continue;
+                    else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
+                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(opponent->direction==LEFT){
+        for (int i = opponent->x; i >= opponent->x - opponent->xspeed; i--) {
+            for (int j = opponent->y; j <= opponent->y + opponent->opponentImg.height; j++) {
+                for(int k=0; k < n_opponents; k++){
+                    if(gameOpponents[k]==NULL) continue;
+                    else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
+                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
+                            return true;
+                        }
+                    }
+                }
             }
         }
     }

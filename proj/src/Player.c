@@ -284,7 +284,7 @@ bool room_player_collision(Player* player){
     return false;
 }
 
-int opponent_collision(Player * player){
+int player_opponent_collision(Player * player){
     if(player->direction==UP){
         for (int i = player->x + 3; i <= player->x + player->playerImg.width - 3; i++) {
             for (int j = player->y; j >= player->y - player->yspeed; j--) {

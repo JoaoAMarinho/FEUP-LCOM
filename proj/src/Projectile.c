@@ -33,7 +33,7 @@ Projectile* create_projectile(Player * player){
     free(&img);
 
     xpm_load(projectile_xpm, XPM_8_8_8_8, &projectile->projectileImg);
-
+    
     return projectile;
 }
 
