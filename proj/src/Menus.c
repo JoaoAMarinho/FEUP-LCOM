@@ -386,8 +386,8 @@ void LoadPlay(Room_number currentRoom){
                 break;
 			case LOWERENG:
 				player->direction = DOWN;
-				//player->x = 479;
-				//player->y = 690;
+				player->x = 425;
+				player->y = 60;
 				break;
 			case REACTOR:
 				player->direction = LEFT;

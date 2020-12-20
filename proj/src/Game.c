@@ -378,16 +378,17 @@ bool roomTransition(){
 			if(player->direction==UP && player->x>=383 && player->x <=477 && player->y<=41){room->currentRoom=HALLWAY2; return true;}
 			break;
 		case UPPERENG:
-			if(player->direction==RIGHT && player->x>=722 && player->y > 235 && player->y < 300){room->currentRoom=HALLWAY2; return true;}
+			if(player->direction==RIGHT && player->x>=720 && player->y>= 235 && player->y <= 300){room->currentRoom=HALLWAY2; return true;}
 			else if(player->direction==DOWN && player->x>=285 && player->x <=375 && player->y>=524){room->currentRoom=HALLWAY3; return true;}
 			break;
 		case HALLWAY3:
 			if(player->direction==LEFT && player->x <=2 && player->y >= 275 && player->y <= 405){room->currentRoom=REACTOR; return true;}
 			//else if(player->direction==RIGHT && player->x >=722 && player->y>=265 && player->y<=405){room->currentRoom=SECURITY; return true;}
-			else if(player->direction==UP && player->x>=259 && player->x <=480 && player->y<=42){room->currentRoom=MEDBAY; return true;}
-			//else if(player->direction==DOWN && player->x>=260 && player->x <=495 && player->y>=524){room->currentRoom=LOWERENG; return true;}
+			else if(player->direction==UP && player->x>=259 && player->x <=480 && player->y<=42){room->currentRoom=UPPERENG; return true;}
+			else if(player->direction==DOWN && player->x>=260 && player->x <=495 && player->y>=524){room->currentRoom=LOWERENG; return true;}
 			break;
 		case LOWERENG:
+			if(player->direction==UP && player->x>=350 && player->x <=485 && player->y<=42){room->currentRoom=HALLWAY3; return true;}
 			break;
 		case REACTOR:
 			if(player->direction==RIGHT && player->x>=720 && player->y > 290 && player->y < 325){room->currentRoom=HALLWAY3; return true;}

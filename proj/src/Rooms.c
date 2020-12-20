@@ -58,7 +58,8 @@ Room * load_room(Room_number roomNumber){
         xpm_load(Hallway3Obstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==LOWERENG){
-        return NULL;
+        xpm_load(LowerEngine_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(LowerEngineObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==REACTOR){
         xpm_load(Reactor_xpm, XPM_8_8_8_8, &room->roomBackground);
@@ -67,15 +68,6 @@ Room * load_room(Room_number roomNumber){
     else if(roomNumber==SECURITY){
         return NULL;
     }
-
-    //level->level_back = (uint32_t*) level->level_background.bytes;
-
-
-    /*if (levelNum != 0)
-        add_final_position_background(&level->finalPos->posfinalx, &level->finalPos->posfinaly, &level->finalPos->lado);*/
-
-    //Após desenhar room desenhar inimigos e possíveis tasks, terá que ser chamado fora desta função
-    //draw_room_enemies();
 
     return room;
     
