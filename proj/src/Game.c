@@ -22,6 +22,7 @@ extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
 extern Opponent ** gameOpponents;
+extern int n_opponents;
 extern GameTimer* gameTimer;
 //extern Date * date;
 Menu gameMenu = MAIN;
@@ -176,8 +177,8 @@ void receiveInterrupt(Device device){
 
 void Play_ih(Device device){
     static Projectile * playerProjectile;
-	static bool pr_exists=false , canBlast=true, projectile_anim=false;
-	static int index=0;
+	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false;
+	static int projectile_index=0,opponent_anim_index=0, opponent_index;
     //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
@@ -186,7 +187,7 @@ void Play_ih(Device device){
     switch (device) {
         case TIMER:
 			//Count down do jogo
-			if(time_counter%60==0){
+			if(time_counter%60==0 && player->alive){
 				game_counter--;
 				erase_GameTimer();
 				draw_GameTimer();
@@ -195,18 +196,12 @@ void Play_ih(Device device){
 				gameMenu = FINAL; //Vai para defeat
 			}
 
-			//Morte do player
-			if (!player->alive) {
-				gameMenu = DEFEAT;
-				//Draw lost menu
-				break;
-			}
-
-			//Verificar se está na posição de troca de sala
+			//Change of rooms
 			if (roomTransition()) {
 				LoadPlay(room->currentRoom);
 				break;
 			}
+
 			/*
 			Remover tasks do vetor de tasks
 			for (unsigned int i = 0; i < level->numLevers; i++) {
@@ -222,34 +217,33 @@ void Play_ih(Device device){
 				}
 			}*/
 
-			//Animação do player
-			if (time_counter % 7 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
-				animate_player(player);
-			if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x4D))
-				animate_player(player);
-
-			//Change the player position
+			//Player Animation
+			if(player->alive){
+				if (time_counter % 7 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
+					animate_player(player);
+				if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x4D))
+					animate_player(player);
+			}
+			//Move player
 			move_player(player, up, down, left, right);
 
 			//Projectile animation
 			if (pr_exists) {
         		pr_exists=animate_projectile(playerProjectile);
         		if (!playerProjectile->exists){
-					//canBlast=true;
-         			//erase_projectile(playerProjectile);
 					projectile_anim=true;
 				}
       		}
 			if(projectile_anim && time_counter%2==0){
-				index++;
+				projectile_index++;
 				erase_projectile(playerProjectile);
-				explode_projectile(playerProjectile, index);
-				if(index==3){
+				explode_projectile(playerProjectile, projectile_index);
+				if(projectile_index==3){
 					erase_projectile(playerProjectile);
 					canBlast=true;
 					projectile_anim=false;
-					index=0;
-					playerProjectile->projectileImg=playerProjectile->projectileAnimations[index];
+					projectile_index=0;
+					playerProjectile->projectileImg=playerProjectile->projectileAnimations[projectile_index];
 				}
 			}
 
@@ -257,40 +251,59 @@ void Play_ih(Device device){
 			//checkLever = check_lever_position();
 
 
-			//Coisas dos inimigos e tiros
-			/*
-			for (unsigned int i = 0; i < level->numEnemies; i++) {
-				if (level->enemyList[i]->bullet->active && level->enemyList[i]->isStatic)
-				enemyBulletAnimation(level->enemyList[i]->bullet, player);
+			//Move opponents
+			bool found=false;
+			for (int index = 0; index < n_opponents; index++) {
+				if(gameOpponents[index]==NULL) continue;
+       	 		else if(gameOpponents[index]->opponentRoom==room->currentRoom){
+					found=true;
+					if (time_counter % 7 == 0 && gameOpponents[index]->isMoving) //Update opponent animation
+						animate_opponent(gameOpponents[index]);
+					move_opponent(gameOpponents[index]); //Move opponent
+				}
+        		else if(found) break;
+			}
+			
 
-				if (level->enemyList[i]->dead)
-				continue;
-
-				if (counter % 10 == 0 && !level->enemyList[i]->isReloading)
-				enemy_idle_animation(level->enemyList[i]);
-				else if (counter % 5 == 0 && level->enemyList[i]->isReloading)
-				enemy_reload_animation(level->enemyList[i]);
-
-				enemy_movement(level->enemyList[i]);
-
-				if (counter == randomTimeShoot && level->enemyList[i]->isStatic) {
-				enemy_shoot(level->enemyList[i]);
-				enemyShoot = true;
+			//Player collision with opponent
+			if(player->alive){
+				opponent_index=opponent_collision(player);
+				if (opponent_index!=-1) {
+					player->alive=false;
+					gameOpponents[opponent_index]->isMoving=false;
 				}
 			}
 
-			if (enemyShoot) {
-				randomTimeShoot = counter + (rand() % 280) + 120;
-				enemyShoot = false;
+			//Player Death
+			if (!player->alive && !opponent_anim) {
+				erase_opponent(gameOpponents[opponent_index]);
+				if(player->direction==UP){
+					gameOpponents[opponent_index]->direction=DOWN;
+				}
+				else if(player->direction==DOWN){
+					gameOpponents[opponent_index]->direction=UP;
+				}
+				else if(player->direction==RIGHT){
+					gameOpponents[opponent_index]->direction=LEFT;
+				}
+				else if(player->direction==LEFT){
+					gameOpponents[opponent_index]->direction=RIGHT;
+				}
+				draw_opponent(gameOpponents[opponent_index]);
+				opponent_anim=true;
 			}
-			*/
-
-			//CHECKS IF IT COLLIDED WITH ANY ENEMY
-			/*
-			if (check_collision_enemy(player, player->direction, level->enemyList, level->numEnemies)) {
-				gameMenu = DEFEAT;
+			//Death Animation
+			if(opponent_anim && time_counter%(5+15*opponent_anim_index)==0){
+				opponent_anim_index++;
+				erase_opponent(gameOpponents[opponent_index]);
+				if(opponent_anim_index==2){
+					erase_player(player);
+				}
+				opponent_atack(gameOpponents[opponent_index], opponent_anim_index);
+				if(opponent_anim_index == 3){
+					gameMenu=FINAL;
+				}
 			}
-			*/
 
 			if (gameMenu == DEFEAT) {
 				//Draw lost menu
@@ -299,7 +312,7 @@ void Play_ih(Device device){
 
     case KEYBOARD:
         //PAUSE MENU
-        if (keyboard_data == ESC_KEY) {
+        if (keyboard_data == ESC_KEY && player->alive) {
             gameMenu = PAUSE;
             //LoadRtc();
             //LoadPauseMenu();
@@ -307,7 +320,7 @@ void Play_ih(Device device){
         }
 
         //SHOOT
-        if (keyboard_data == SPACEBAR_KEY && player->numberProjectiles!=0 && canBlast/*Pra já não perde balas*/) {
+        if (keyboard_data == SPACEBAR_KEY && player->alive && canBlast/*Pra já não perde balas*/) {
 			playerProjectile = blast(player);
 			pr_exists=true;
 			canBlast=false;
@@ -325,13 +338,14 @@ void Play_ih(Device device){
         */
 
 		//Ver mapa
-		if (keyboard_data == M_KEY) {
+		if (keyboard_data == M_KEY && player->alive) {
         	gameMenu = GAMEMAP;
         	LoadGameMap();
       	}
 
         //UPDATE MOVING DIRECTION
-        change_direction(player, &up, &down, &left, &right);
+		if(player->alive)
+        	change_direction(player, &up, &down, &left, &right);
         break;
 
     case MOUSE: //Não fazer nada ou clicar no map e pode vê-lo

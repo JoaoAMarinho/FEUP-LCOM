@@ -38,4 +38,4 @@ void move_player(Player * player, bool up, bool down, bool left, bool right);
 
 bool room_player_collision(Player* player);
 
-//bool check_enemy_collision(Player * player, Direction direction, Enemy ** enemies, unsigned int numEnemies);
+int opponent_collision(Player * player);
