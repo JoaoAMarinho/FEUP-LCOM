@@ -15,14 +15,7 @@ typedef struct {
     xpm_image_t img;
     int x, y;
 } Cursor;
-/*
-enum state {
-    INITIAL=0,
-    MOVE_LEFT,
-    SWITCH_SIDE,
-    MOVE_RIGHT,
-};
-*/
+
 typedef enum{
     L_DOWN,
     R_DOWN,

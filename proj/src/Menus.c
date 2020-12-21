@@ -238,6 +238,7 @@ void LoadGameMap(){
     xpm_load(gameMap_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
     draw_GameTimer();
+    draw_warnings();
 }
 
 void LoadGameTimer(){

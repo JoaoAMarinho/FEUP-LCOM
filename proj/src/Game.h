@@ -10,8 +10,6 @@
 
 #include "Menus.h"
 
-//typedef enum {START, TRANSITION, END} Task1;
-
 
 //#include "DateTime.h"
 //#include "MultiPlayer.h"

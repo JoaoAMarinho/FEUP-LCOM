@@ -329,15 +329,17 @@ void Play_ih(Device device){
         }
 
         //Ativar tasks
-        /*
-        if (checkLever != 0 && keyboard_data == E) {
-        enemyShoot = true;
-        up = false; down = false; left = false; right = false;
-        check_movement(player, &up, &down, &left, &right);
-        gameState = LEVER;
-        LoadLever(0,level->leverList[checkLever - 1]);
+        if (keyboard_data == E_KEY){
+			int index=near_task(player->x,player->y);
+			if(index!=-1){
+				finish_task(index);
+			}
+        	//enemyShoot = true;
+        	//up = false; down = false; left = false; right = false;
+        	//check_movement(player, &up, &down, &left, &right);
+        	//gameState = LEVER;
+        	//LoadLever(0,level->leverList[checkLever - 1]);
         }
-        */
 
 		//Ver mapa
 		if (keyboard_data == M_KEY && player->alive) {

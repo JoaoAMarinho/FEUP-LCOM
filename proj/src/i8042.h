@@ -17,6 +17,7 @@
 #define ESC_KEY 0x81
 #define SPACEBAR_KEY 0xB9
 #define M_KEY 0xB2
+#define E_KEY 0x92
 // Keyboard codes
 
 #define TIMER0_IRQ 0 /**< @brief Timer 0 IRQ line */
