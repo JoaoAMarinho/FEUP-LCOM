@@ -21,6 +21,7 @@ extern Player * player;
 extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
+extern int n_tasks;
 extern Opponent ** gameOpponents;
 extern int n_opponents;
 extern GameTimer* gameTimer;
@@ -56,8 +57,8 @@ int gameLoop(){
     LoadMain();
 	LoadGameTimer();
     //Other loads (tasks and other things)
-	//LoadTasks(); dá load para o vetor de tasks
-	LoadOpponents(); //dá load para o array de opponents
+	LoadOpponents(); //Load to gameOpponents array
+	LoadTasks(); //Load to gameTasks array
     //date = load_date();
     //LoadRtc();
 

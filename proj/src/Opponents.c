@@ -35,7 +35,7 @@ Opponent* create_opponent(int x, int y, Direction direction, Room_number current
 
     xpm_image_t img;
 
-    //Load opponent animations
+    //Load opponent movement animations
     xpm_load(opponent_anim0_xpm, XPM_8_8_8_8, &img);
     opponent->opponentAnimations[0] = img;
     xpm_load(opponent_anim1_xpm, XPM_8_8_8_8, &img);
@@ -53,6 +53,7 @@ Opponent* create_opponent(int x, int y, Direction direction, Room_number current
     xpm_load(opponent_anim3_xpm, XPM_8_8_8_8, &img);
     opponent->opponentAnimations[7] = img;
 
+    //Load opponent atack animations
     xpm_load(opponent_atack0_xpm, XPM_8_8_8_8, &img);
     opponent->opponentAtack[0] = img;
     xpm_load(opponent_atack1_xpm, XPM_8_8_8_8, &img);

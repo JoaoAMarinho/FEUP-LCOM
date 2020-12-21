@@ -8,21 +8,32 @@
 #include "Opponents.h"
 
 //Include dos xpm das tasks
+#include "Xpms/Tasks/TaskArrow.xpm"
 
 
 typedef enum {T1,T2,T3} Task_type; //Ajeitar dps
 
 typedef struct {
     Room_number taskRoom;
-    xpm_image_t taskBackground;
+    Task_type taskType;
+
+    int x, y;
+    xpm_image_t taskImg;
 
     xpm_image_t taskAnimations[5];
-    
-    bool taskFinished;
+    unsigned int animationIndex;
 
 } Task;
 
 
 void LoadTasks();
 
-Task* create_task();
+Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom);
+
+void draw_task_arrow(Task* task,xpm_image_t img);
+
+//void erase_task_arrow(Task* task);
+
+void draw_current_tasks();
+
+void finish_task(int index);

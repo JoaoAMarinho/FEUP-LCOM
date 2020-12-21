@@ -409,16 +409,18 @@ void LoadPlay(Room_number currentRoom){
 			room = load_room(currentRoom);
             draw_room();
             draw_GameTimer();
-            //Desenhar inimigos e tasks dessa room
+            //Draw room opponents and tasks
             draw_current_opponents();
+            draw_current_tasks();
 		}
  	}
     else { //Pausa, GameMap ou Task
         if(room==NULL) room = load_room(currentRoom); //Primeiro load
         draw_room();
         draw_GameTimer();
-        //Desenhar inimigos e tasks dessa room
+        //Draw room opponents and tasks
         draw_current_opponents();
+        draw_current_tasks();
         draw_player(player);
     }
     previousRoom = currentRoom;
