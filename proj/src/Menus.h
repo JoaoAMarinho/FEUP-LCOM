@@ -23,7 +23,7 @@
 #include "Xpms/Numbers/Number8.xpm"
 #include "Xpms/Numbers/Number9.xpm"
 
-typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES , /*TASKS: CARDTASK ,ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/ PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
+typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES , ICETASK/*TASKS: ICETASK, CARDTASK ,ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
 
 typedef enum {TIMER, KEYBOARD, MOUSE, RTC} Device;
 
@@ -49,6 +49,7 @@ void Victory_ih(Device device);
 void Defeat_ih(Device device);
 
 //Tasks interrupt handlers
+void Ice_ih(Device device);
 //void CardIH
 
 
@@ -58,6 +59,9 @@ void LoadMain();
 void LoadGameMap();
 
 void LoadGameTimer();
+
+//Load de cada task
+//void LoadTask(int index);
 
 //Load de cada room
 void LoadPlay(Room_number previousRoom);

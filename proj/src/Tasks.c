@@ -12,7 +12,7 @@ void LoadTasks(){
     gameTasks = (Task **) malloc(n_tasks * sizeof(Task *));
 
     //Tasks ordered by room
-    gameTasks[0] = create_task(570,356,T1,ADMIN);
+    gameTasks[0] = create_task(570,356,ICE,WEAPONS);
 }
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
@@ -29,17 +29,23 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
 
     //Load task animation
     switch(task->taskType){
-        case T1:
-        /*
-            //xpm_load(gameMap_xpm, XPM_8_8_8_8, &img);
+        case ICE:
+            xpm_load(Icetask0_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[0] = img;
-            //xpm_load(opponent_anim1_xpm, XPM_8_8_8_8, &img);
+            xpm_load(Icetask1_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[1] = img;
-            //xpm_load(opponent_anim2_xpm, XPM_8_8_8_8, &img);
+            xpm_load(Icetask2_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[2] = img;
-            //xpm_load(opponent_anim1_xpm, XPM_8_8_8_8, &img);
+            xpm_load(Icetask3_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[3] = img;
-        */
+            xpm_load(Icetask4_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[4] = img;
+            xpm_load(Icetask5_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[5] = img;
+            xpm_load(Icetask6_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[6] = img;
+            xpm_load(Icetask7_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[7] = img;
             break;
         case CARD:
             break;
@@ -54,6 +60,10 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
     //task->taskImg = task->taskAnimations[0];
 
     return task;
+}
+
+void draw_task(Task* task){
+
 }
 
 void draw_current_tasks(){

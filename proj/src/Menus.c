@@ -20,7 +20,7 @@ static Button ** mainButtons;
 //static Button * continueButton;
 
 //---------------------------------------------------------------------------------------------
-//Interrupt handlers
+//Menu interrupt handlers
 
 void Main_ih(Device device){
     static Mouse_event * mouseEvent;
@@ -207,6 +207,12 @@ void Victory_ih(Device device){return;}
 void Defeat_ih(Device device){return;}
 
 //---------------------------------------------------------------------------------------------
+//Tasks interrupt handlers
+void Ice_ih(Device device){
+
+}
+
+//---------------------------------------------------------------------------------------------
 //Load menus
 
 void LoadMain(){
@@ -232,7 +238,10 @@ void LoadMain(){
     add_button(mainButtons[4]);
     draw_Menu();
 }
-
+//Loadvictory
+//Loaddefeat
+//Load bestscores
+//Load instructions
 
 void LoadGameMap(){
     xpm_load(gameMap_xpm, XPM_8_8_8_8, &current_background);
@@ -272,6 +281,11 @@ void LoadGameTimer(){
     free(&img);
 
 }
+
+//---------------------------------------------------------------------------------------------
+//Load tasks
+
+//void Load tasks();
 
 //---------------------------------------------------------------------------------------------
 //Load Rooms

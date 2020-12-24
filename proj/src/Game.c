@@ -156,6 +156,9 @@ void receiveInterrupt(Device device){
             Instructions_ih(device);
             break;
         /*Tasks cases*/
+		case ICETASK:
+			Ice_ih(device);
+			break;
         //case LEVER:
         //    LeverInterruptHandler(device);
         //    break;
@@ -179,7 +182,7 @@ void receiveInterrupt(Device device){
 void Play_ih(Device device){
     static Projectile * playerProjectile;
 	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false;
-	static int projectile_index=0,opponent_anim_index=0, opponent_index;
+	static int projectile_index=0, opponent_anim_index=0, opponent_index, task_index;
     //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
@@ -247,10 +250,6 @@ void Play_ih(Device device){
 					playerProjectile->projectileImg=playerProjectile->projectileAnimations[projectile_index];
 				}
 			}
-
-			//Verificar se está perto de uma task
-			//checkLever = check_lever_position();
-
 
 			//Move opponents
 			bool found=false;
@@ -330,15 +329,20 @@ void Play_ih(Device device){
 
         //Ativar tasks
         if (keyboard_data == E_KEY){
-			int index=near_task(player->x,player->y);
-			if(index!=-1){
-				finish_task(index);
+			task_index=near_task(player->x,player->y);
+			if(task_index!=-1){
+				/*
+				switch(gameTasks[task_index]->taskType){
+					case ICE:
+						gameMenu=ICETASK;
+						break;
+					//Resto das tasks
+					default:
+						break;
+				}*/
+				//DrawTASK(gameTasks[task_index]);
+				finish_task(task_index);
 			}
-        	//enemyShoot = true;
-        	//up = false; down = false; left = false; right = false;
-        	//check_movement(player, &up, &down, &left, &right);
-        	//gameState = LEVER;
-        	//LoadLever(0,level->leverList[checkLever - 1]);
         }
 
 		//Ver mapa

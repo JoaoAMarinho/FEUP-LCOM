@@ -12,11 +12,21 @@
 #include "Xpms/Tasks/TaskArrow.xpm"
 #include "Xpms/Tasks/TaskWarning.xpm"
 
+//Ice task xpms
+#include "Xpms/Tasks/Ice-task/Icetask0.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask1.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask2.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask3.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask4.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask5.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask6.xpm"
+#include "Xpms/Tasks/Ice-task/Icetask7.xpm"
+
 //Task names
-typedef enum {T1,CARD,T3} Task_type; //Ajeitar dps
+typedef enum {ICE,CARD,T3} Task_type; //Ajeitar dps
 
 //Task States
-//typedef enum {START, TRANSITION, END} Task1;
+//typedef enum {START, TRANSITION, END} Ice_state;
 
 typedef struct {
     Room_number taskRoom;
@@ -25,7 +35,7 @@ typedef struct {
     int x, y;
     xpm_image_t taskImg;
 
-    xpm_image_t taskAnimations[5];
+    xpm_image_t taskAnimations[10];
     unsigned int animationIndex;
 
 } Task;
@@ -34,6 +44,8 @@ typedef struct {
 void LoadTasks();
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom);
+
+void draw_task(Task* task);
 
 void draw_current_tasks();
 
