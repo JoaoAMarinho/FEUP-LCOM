@@ -33,6 +33,8 @@
 #include "Xpms/Rooms/UpperEngineObstacles.xpm"
 #include "Xpms/Rooms/LowerEngine.xpm"
 #include "Xpms/Rooms/LowerEngineObstacles.xpm"
+#include "Xpms/Rooms/Security.xpm"
+#include "Xpms/Rooms/SecurityObstacles.xpm"
 
 
 typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, HALLWAY3, LOWERENG, REACTOR, SECURITY, BREAK/*dont know if needed yet*/, END} Room_number;

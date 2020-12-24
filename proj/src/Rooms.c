@@ -14,11 +14,6 @@ Room * load_room(Room_number roomNumber){
     if(roomNumber==CAFETERIA){
         xpm_load(Cafeteria_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(CafeteriaObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
-        
-        //Criar as tarefas
-        //level->leverList = (Lever **) malloc (level->numLevers * sizeof(Lever *));
-        //level->leverList[0] = createLever(384,704);
-        //add_lever_background(level->leverList[0]);
     }
     else if(roomNumber==HALLWAY1){
         xpm_load(Hallway1_xpm, XPM_8_8_8_8, &room->roomBackground);
@@ -66,7 +61,8 @@ Room * load_room(Room_number roomNumber){
         xpm_load(ReactorObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
     else if(roomNumber==SECURITY){
-        return NULL;
+        xpm_load(Security_xpm, XPM_8_8_8_8, &room->roomBackground);
+        xpm_load(SecurityObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);
     }
 
     return room;

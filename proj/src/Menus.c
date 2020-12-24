@@ -396,6 +396,9 @@ void LoadPlay(Room_number currentRoom){
 				player->y = 311;
 				break;
             case SECURITY:
+                player->direction=RIGHT;
+                player->x=17;
+                player->y=347;
                 break;
 			//o resto dos rooms
 			case END:
