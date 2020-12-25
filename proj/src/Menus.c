@@ -14,7 +14,7 @@ int task_index;
 //extern Date * date;
 
 xpm_image_t current_background;
-//xpm_image_t empty_background;
+xpm_image_t background_obstacles;
 
 GameTimer* gameTimer;
 static Button ** mainButtons;
@@ -220,7 +220,7 @@ void Ice_ih(Device device){
 
     switch (device) {
         case TIMER:
-            if(time_counter%60==0){
+            if(time_counter%60==0 && game_counter!=0){
 				game_counter--;
                 erase_GameTimer();
                 draw_GameTimer();
@@ -304,7 +304,7 @@ void Ice_ih(Device device){
 
 void LoadMain(){
     xpm_load(MainBackGround, XPM_8_8_8_8, &current_background);
-    //xpm_load(MainBackGround, XPM_8_8_8_8, &empty_background);
+    xpm_load(MainBackGroundObstacles, XPM_8_8_8_8, &background_obstacles);
 
     cursor = create_cursor();
 
@@ -373,6 +373,7 @@ void LoadGameTimer(){
 //Load tasks
 
 void LoadTask(int index){
+    xpm_load(tasksObstacles_xpm, XPM_8_8_8_8, &background_obstacles);
     task_index=index;
     current_background=gameTasks[index]->taskImg;
     draw_Menu();

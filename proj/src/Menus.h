@@ -11,6 +11,8 @@
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
+#include "Xpms/Main_Menu/BackGroundObstacles.xpm"
+#include "Xpms/Tasks/TasksObstacles.xpm"
 #include "Xpms/GameMap.xpm"
 #include "Xpms/Numbers/Number0.xpm"
 #include "Xpms/Numbers/Number1.xpm"

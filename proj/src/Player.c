@@ -173,15 +173,14 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
         player->direction = LEFT;
 
     if (up && !room_player_collision(player)) {
-        //erase_player(player);
         if (player->y - player->yspeed < 0)
         player->y = 0;
         else  
         player->y -= player->yspeed;
 
         if (right && !room_player_collision(player)) {
-            if (player->x + player->xspeed + player->playerImg.width > (int)horizontal_res)
-                player->x = (int)horizontal_res - player->playerImg.width;
+            if (player->x + player->xspeed + player->playerImg.width > horizontal_res)
+                player->x = horizontal_res - player->playerImg.width;
             else  
                 player->x += player->xspeed;
         }
@@ -192,24 +191,22 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
                 player->x -= player->xspeed;
         }
         if (down && !room_player_collision(player)) {
-            if (player->y + player->yspeed > (int)vertical_res - player->playerImg.height - 4)
-                player->y = (int)vertical_res - player->playerImg.height - 4;
+            if (player->y + player->yspeed > vertical_res - player->playerImg.height - 4)
+                player->y = vertical_res - player->playerImg.height - 4;
             else  
                 player->y += player->yspeed;
         } 
-        //draw_player(player);
     }
     else if (down && !room_player_collision(player)) {
 
-        //erase_player(player);
-        if (player->y + player->yspeed > (int)vertical_res - player->playerImg.height - 4)
-            player->y = (int)vertical_res - player->playerImg.height - 4;
+        if (player->y + player->yspeed > vertical_res - player->playerImg.height - 4)
+            player->y = vertical_res - player->playerImg.height - 4;
         else  
             player->y += player->yspeed;
         
         if (right && !room_player_collision(player)) {
-            if (player->x + player->xspeed > (int)horizontal_res - player->playerImg.width)
-                player->x = (int)horizontal_res - player->playerImg.width;
+            if (player->x + player->xspeed > horizontal_res - player->playerImg.width)
+                player->x = horizontal_res - player->playerImg.width;
             else  
                 player->x += player->xspeed;
         }
@@ -219,12 +216,10 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
             else  
                 player->x -= player->xspeed;
         }
-        //draw_player(player);
     }
     else if (right && !room_player_collision(player)) {
-        //erase_player(player);
-        if (player->x + player->xspeed + player->playerImg.width > (int)horizontal_res)
-            player->x = (int)horizontal_res - player->playerImg.width;
+        if (player->x + player->xspeed + player->playerImg.width > horizontal_res)
+            player->x = horizontal_res - player->playerImg.width;
         else  
             player->x += player->xspeed;
         
@@ -234,15 +229,12 @@ void move_player(Player * player, bool up, bool down, bool left, bool right){
             else  
                 player->x -= player->xspeed;
         }
-        //draw_player(player);
     }
     else if (left && !room_player_collision(player)) {
-        //erase_player(player);
         if (player->x - player->xspeed < 0)
             player->x = 0;
         else  
             player->x -= player->xspeed;
-        //draw_player(player);
     }
     draw_player(player);
 }

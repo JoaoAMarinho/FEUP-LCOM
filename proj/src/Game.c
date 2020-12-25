@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-unsigned int game_counter=999;
+unsigned int game_counter=300;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -181,7 +181,7 @@ void receiveInterrupt(Device device){
 
 void Play_ih(Device device){
     static Projectile * playerProjectile;
-	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false;
+	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false, victory;
 	static int projectile_index=0, opponent_anim_index=0, opponent_index;
     //static int checkLever; //Task à qual está perto
 
@@ -190,6 +190,25 @@ void Play_ih(Device device){
 
     switch (device) {
         case TIMER:
+			//Verificar vitória
+			victory=false; //ALTERAR PARA TRUE
+			for(int index=0; index<n_tasks; index++){
+				if(gameTasks[index]==NULL){
+					continue;
+				}else{
+					victory=false;
+					break;
+				}
+			}
+			if(victory){
+				//gameMenu=VICTORY;
+				//Loadvictory();
+				gameMenu=GAMEMAP;
+				game_counter=20;
+				LoadGameMap();
+				break;
+			}
+
 			//Count down do jogo
 			if(time_counter%60==0 && player->alive){
 				game_counter--;
@@ -205,21 +224,6 @@ void Play_ih(Device device){
 				LoadPlay(room->currentRoom);
 				break;
 			}
-
-			/*
-			Remover tasks do vetor de tasks
-			for (unsigned int i = 0; i < level->numLevers; i++) {
-				if (level->leverList[i]->active && level->doorList[i]->active) {
-				if (level->levelnum == 1) {
-					remove_door_background(level->doorList[i+1]);
-					clean_door(level->doorList[i+1]);
-					level->doorList[i+1]->active = false;
-				}
-				remove_door_background(level->doorList[i]);
-				clean_door(level->doorList[i]);
-				level->doorList[i]->active = false;
-				}
-			}*/
 
 			//Player Animation
 			if(player->alive){
@@ -343,7 +347,6 @@ void Play_ih(Device device){
 						break;
 				}
 				LoadTask(index);
-				//finish_task(task_index);
 			}
         }
 
