@@ -135,7 +135,7 @@ void update_cursor(struct packet * mouse_pack){
     erase_cursor();
 
     if (mouse_pack->delta_x > 0) {
-        if (cursor->x + mouse_pack->delta_x > (int)horizontal_res - cursor->img.width)
+        if (cursor->x + mouse_pack->delta_x > horizontal_res - cursor->img.width)
             cursor->x = horizontal_res - cursor->img.width;
         else
             cursor->x += mouse_pack->delta_x;

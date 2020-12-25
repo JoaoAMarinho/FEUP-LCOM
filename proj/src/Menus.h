@@ -61,7 +61,7 @@ void LoadGameMap();
 void LoadGameTimer();
 
 //Load de cada task
-//void LoadTask(int index);
+void LoadTask(int index);
 
 //Load de cada room
 void LoadPlay(Room_number previousRoom);

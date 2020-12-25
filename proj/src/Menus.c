@@ -9,6 +9,8 @@ extern Menu gameMenu;
 extern Player * player;
 extern Room * room;
 extern Cursor * cursor;
+extern Task ** gameTasks;
+int task_index;
 //extern Date * date;
 
 xpm_image_t current_background;
@@ -190,10 +192,14 @@ void GameMap_ih(Device device){
             break;
 
         case KEYBOARD:
-            if (keyboard_data == M_KEY || keyboard_data==ESC_KEY) {
+            if (keyboard_data == M_KEY) {
         	    gameMenu = PLAYING;
         	    LoadPlay(room->currentRoom);
       	    }
+
+            if(keyboard_data == ESC_KEY){
+                //gameMenu=PAUSE;
+            }
             break;
         case MOUSE: //Nada
             break;
@@ -209,7 +215,51 @@ void Defeat_ih(Device device){return;}
 //---------------------------------------------------------------------------------------------
 //Tasks interrupt handlers
 void Ice_ih(Device device){
+    static Mouse_event * mouseEvent;
+    static bool ice1_clicked = false, ice2_clicked = false, ice3_clicked = false;
 
+    switch (device) {
+        case TIMER:
+            if(time_counter%60==0){
+				game_counter--;
+                erase_GameTimer();
+                draw_GameTimer();
+			}
+			if(game_counter==0){
+				gameMenu = FINAL; //Vai para defeat
+			}
+            //Parte de teste
+            //Rato não pode passar por cima do timer
+            if(cursor->x >=352 && cursor->x <= 431 && cursor->y>=261 && cursor->y<=401 && !ice1_clicked){ //Over middle ice
+                if ( *mouseEvent == L_UP) {
+                    ice1_clicked = true;
+                    ice2_clicked=false;
+                    ice3_clicked=false;
+                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                    LoadTask(task_index);
+                }
+            }
+
+
+            break;
+
+        case KEYBOARD:
+            if (keyboard_data == E_KEY) {
+        	    gameMenu = PLAYING;
+        	    LoadPlay(room->currentRoom);
+      	    }
+
+            if(keyboard_data == ESC_KEY){
+                //gameMenu=PAUSE;
+            }
+            break;
+        case MOUSE:
+            mouseEvent = get_mouse_event(&mouse_pack);
+            update_cursor(&mouse_pack);
+            break;
+        case RTC:
+            break;
+    }
 }
 
 //---------------------------------------------------------------------------------------------
@@ -285,7 +335,13 @@ void LoadGameTimer(){
 //---------------------------------------------------------------------------------------------
 //Load tasks
 
-//void Load tasks();
+void LoadTask(int index){
+    task_index=index;
+    current_background=gameTasks[index]->taskImg;
+    draw_Menu();
+    draw_GameTimer();
+    draw_cursor();
+}
 
 //---------------------------------------------------------------------------------------------
 //Load Rooms

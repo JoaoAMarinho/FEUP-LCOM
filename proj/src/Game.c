@@ -182,7 +182,7 @@ void receiveInterrupt(Device device){
 void Play_ih(Device device){
     static Projectile * playerProjectile;
 	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false;
-	static int projectile_index=0, opponent_anim_index=0, opponent_index, task_index;
+	static int projectile_index=0, opponent_anim_index=0, opponent_index;
     //static int checkLever; //Task à qual está perto
 
     //The way the player is facing
@@ -329,19 +329,21 @@ void Play_ih(Device device){
 
         //Ativar tasks
         if (keyboard_data == E_KEY){
-			task_index=near_task(player->x,player->y);
-			if(task_index!=-1){
-				/*
-				switch(gameTasks[task_index]->taskType){
+			int index=-1;
+			if(player->direction==RIGHT) index=near_task(player->x+player->playerImg.width,player->y);	
+			else if(player->direction==DOWN) index=near_task(player->x,player->y+player->playerImg.height);
+			else index=near_task(player->x,player->y);
+			if(index!=-1){
+				switch(gameTasks[index]->taskType){
 					case ICE:
 						gameMenu=ICETASK;
 						break;
 					//Resto das tasks
 					default:
 						break;
-				}*/
-				//DrawTASK(gameTasks[task_index]);
-				finish_task(task_index);
+				}
+				LoadTask(index);
+				//finish_task(task_index);
 			}
         }
 

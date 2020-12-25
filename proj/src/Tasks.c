@@ -12,7 +12,7 @@ void LoadTasks(){
     gameTasks = (Task **) malloc(n_tasks * sizeof(Task *));
 
     //Tasks ordered by room
-    gameTasks[0] = create_task(570,356,ICE,WEAPONS);
+    gameTasks[0] = create_task(442,310,ICE,WEAPONS);
 }
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
@@ -57,7 +57,7 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
     }
 
     free(&img);
-    //task->taskImg = task->taskAnimations[0];
+    task->taskImg = task->taskAnimations[0];
 
     return task;
 }
@@ -116,6 +116,8 @@ void draw_task_warning(Room_number room,xpm_image_t img){
             y=328;
             break;
         case WEAPONS:
+            x=629;
+            y=210;
             break;
         case NAVIGATION:
             break;
