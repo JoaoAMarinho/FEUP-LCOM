@@ -28,10 +28,6 @@ extern GameTimer* gameTimer;
 //extern Date * date;
 Menu gameMenu = MAIN;
 
-//static Lever * leverBeingUsed;
-//static xpm_image_t LeverPositions[7];
-//static xpm_image_t LeverColors[2];
-//static xpm_image_t CleanLever;
 
 //---------------------------------------------------------------------------------------------
 
@@ -158,6 +154,9 @@ void receiveInterrupt(Device device){
         /*Tasks cases*/
 		case ICETASK:
 			Ice_ih(device);
+			break;
+		case SHIPTASK:
+			Ship_ih(device);
 			break;
         //case LEVER:
         //    LeverInterruptHandler(device);
@@ -341,6 +340,9 @@ void Play_ih(Device device){
 				switch(gameTasks[index]->taskType){
 					case ICE:
 						gameMenu=ICETASK;
+						break;
+					case SHIP:
+						gameMenu=SHIPTASK;
 						break;
 					//Resto das tasks
 					default:

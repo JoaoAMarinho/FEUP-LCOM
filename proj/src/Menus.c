@@ -14,7 +14,7 @@ int task_index;
 //extern Date * date;
 
 xpm_image_t current_background;
-xpm_image_t background_obstacles;
+//xpm_image_t background_obstacles;
 
 GameTimer* gameTimer;
 static Button ** mainButtons;
@@ -228,7 +228,7 @@ void Ice_ih(Device device){
 			if(game_counter==0 && !task_finished){
 				gameMenu = FINAL; //Vai para defeat
 			}
-            //Rato não pode passar por cima do timer
+            //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
             if(checkOverIce()==1 && !ice1_clicked){ //Over middle ice
                 if ( *mouseEvent == L_UP) {
                     ice1_clicked = true;
@@ -244,7 +244,7 @@ void Ice_ih(Device device){
                     }
                     LoadTask(task_index);
                 }
-            }else if(checkOverIce()==2 && !ice2_clicked){
+            }else if(checkOverIce()==2 && !ice2_clicked){ //Over top ice
                 if ( *mouseEvent == L_UP) {
                     ice2_clicked = true;
                     if(!ice1_clicked && !ice3_clicked)
@@ -259,7 +259,7 @@ void Ice_ih(Device device){
                     }
                     LoadTask(task_index);
                 }
-            }else if(checkOverIce()==3 && !ice3_clicked){
+            }else if(checkOverIce()==3 && !ice3_clicked){ //Over bottom ice
                 if ( *mouseEvent == L_UP) {
                     ice3_clicked = true;
                     if(!ice1_clicked && !ice2_clicked)
@@ -299,12 +299,55 @@ void Ice_ih(Device device){
     }
 }
 
+void Ship_ih(Device device){
+    static bool task_finished= false;
+    static Mouse_event* mouseEvent;
+
+    switch (device) {
+        case TIMER:
+            if(time_counter%60==0 && game_counter!=0){
+				game_counter--;
+                erase_GameTimer();
+                draw_GameTimer();
+			}
+			if(game_counter==0 && !task_finished){
+				gameMenu = FINAL; //Vai para defeat
+			}
+            //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
+            
+            //End task
+            if(task_finished)
+                finish_task(task_index);
+            
+            break;
+
+        case KEYBOARD:
+            if (keyboard_data == E_KEY) {
+        	    gameMenu = PLAYING;
+        	    LoadPlay(room->currentRoom);
+      	    }
+
+            if(keyboard_data == ESC_KEY){
+                //gameMenu=PAUSE;
+            }
+            break;
+        case MOUSE:
+            mouseEvent = get_mouse_event(&mouse_pack);
+            update_cursor(&mouse_pack);
+            if(!task_finished)
+                task_finished=ship_gesture_handler(mouseEvent);
+            break;
+        case RTC:
+            break;
+    } 
+}
+
 //---------------------------------------------------------------------------------------------
 //Load menus
 
 void LoadMain(){
     xpm_load(MainBackGround, XPM_8_8_8_8, &current_background);
-    xpm_load(MainBackGroundObstacles, XPM_8_8_8_8, &background_obstacles);
+    //xpm_load(MainBackGroundObstacles, XPM_8_8_8_8, &background_obstacles);
 
     cursor = create_cursor();
 
@@ -373,7 +416,7 @@ void LoadGameTimer(){
 //Load tasks
 
 void LoadTask(int index){
-    xpm_load(tasksObstacles_xpm, XPM_8_8_8_8, &background_obstacles);
+    //xpm_load(tasksObstacles_xpm, XPM_8_8_8_8, &background_obstacles);
     task_index=index;
     current_background=gameTasks[index]->taskImg;
     draw_Menu();
@@ -596,4 +639,67 @@ void draw_Number(int x, int y, int n){
         }
     }
 }
+
+//---------------------------------------------------------------------------------------------
+//Gesture handlers
+
+bool ship_gesture_handler(Mouse_event* mouseEvent){
+    static int x_delta = 0, y_delta = 0;
+    static Ship_state shipState = START_STATE;
+    
+    switch(shipState){
+        case START_STATE:
+            gameTasks[task_index]->animationIndex=0;
+            gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+            LoadTask(task_index);
+            x_delta = 0;
+            y_delta = 0;
+            if (mouseEvent == L_DOWN ) {
+                printf("IN");
+                shipState = TRANSITION_STATE;
+            }
+            break;
+        case TRANSITION_STATE:
+            //printf("SOMEWHERE  ");
+            if(mouseEvent!=L_DOWN){
+                shipState=START_STATE;
+            }
+            else{ //Left button pressed
+                if(gameTasks[task_index]->animationIndex==0){ //Didn't reach checkpoint1
+                    if ((mouse_pack.delta_x > 0 && mouse_pack.delta_y < 0) || (abs(mouse_pack.delta_x) <= 3 && abs(mouse_pack.delta_y) <= 3)) { //Se o movimento for feito na direção certa ou for menor que a tolerância
+                        x_delta += mouse_pack.delta_x;
+                        y_delta += mouse_pack.delta_y;
+                    }
+                    else if ((x_delta >= 88) && (fabs(y_delta/(float)x_delta) >= 1.8) && (fabs(y_delta/(float)x_delta) < 1.85) ) {
+                        x_delta = 0;
+                        y_delta = 0;
+                        gameTasks[task_index]->animationIndex=1;
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                        LoadTask(task_index);
+                    }
+                    else {
+                        shipState = START_STATE;
+                    }
+
+                }else if(gameTasks[task_index]->animationIndex==1){ //Didn't reach checkpoint2
+
+                }else if(gameTasks[task_index]->animationIndex==2){ //Didn't reach checkpoint3
+
+                }else if(gameTasks[task_index]->animationIndex==3){ //Didn't reach checkpoint4
+
+                }
+            }
+            break;
+        case END_STATE:
+            gameTasks[task_index]->animationIndex=4;
+            gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
+            LoadTask(task_index);
+            return true;
+            break;
+        default:
+            break; 
+    }
+    return false;
+}
+
 

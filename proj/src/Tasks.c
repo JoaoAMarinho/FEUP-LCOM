@@ -4,7 +4,7 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Task ** gameTasks;
-int n_tasks=1;
+int n_tasks=2;
 
 //---------------------------------------------------------------------------------------------
 
@@ -12,7 +12,8 @@ void LoadTasks(){
     gameTasks = (Task **) malloc(n_tasks * sizeof(Task *));
 
     //Tasks ordered by room
-    gameTasks[0] = create_task(442,310,ICE,WEAPONS);
+    gameTasks[0] = create_task(442,307,ICE,WEAPONS);
+    gameTasks[1] = create_task(590,146,SHIP,NAVIGATION);
 }
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
@@ -47,7 +48,17 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
             xpm_load(Icetask7_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[7] = img;
             break;
-        case CARD:
+        case SHIP:
+            xpm_load(Shiptask0_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[0] = img;
+            xpm_load(Shiptask1_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[1] = img;
+            xpm_load(Shiptask2_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[2] = img;
+            xpm_load(Shiptask3_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[3] = img;
+            xpm_load(Shiptask4_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[4] = img;
             break;
         case T3:
             break;
@@ -60,10 +71,6 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
     task->taskImg = task->taskAnimations[0];
 
     return task;
-}
-
-void draw_task(Task* task){
-
 }
 
 void draw_current_tasks(){
@@ -81,7 +88,7 @@ void draw_task_arrow(Task* task,xpm_image_t img){
     for(int row = 0;row < img.height; row++){
         for(int column = 0;column < img.width; column++){
             if (*(arrowMap + column + row*img.width) != xpm_transparency_color(XPM_8_8_8_8))
-                drawPixel(task->x+column-64,task->y+row,*(arrowMap + column + row*img.width));
+                drawPixel(task->x+column-50,task->y+row,*(arrowMap + column + row*img.width));
         }
     }
 }
@@ -120,6 +127,8 @@ void draw_task_warning(Room_number room,xpm_image_t img){
             y=210;
             break;
         case NAVIGATION:
+            x=739;
+            y=274;
             break;
         case HALLWAY2:
             break;

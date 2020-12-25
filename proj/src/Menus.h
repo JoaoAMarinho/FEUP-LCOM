@@ -11,8 +11,8 @@
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
-#include "Xpms/Main_Menu/BackGroundObstacles.xpm"
-#include "Xpms/Tasks/TasksObstacles.xpm"
+//#include "Xpms/Main_Menu/BackGroundObstacles.xpm"
+//#include "Xpms/Tasks/TasksObstacles.xpm"
 #include "Xpms/GameMap.xpm"
 #include "Xpms/Numbers/Number0.xpm"
 #include "Xpms/Numbers/Number1.xpm"
@@ -25,7 +25,7 @@
 #include "Xpms/Numbers/Number8.xpm"
 #include "Xpms/Numbers/Number9.xpm"
 
-typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES , ICETASK/*TASKS: ICETASK, CARDTASK ,ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
+typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK/*TASKS: ICETASK, CARDTASK ,ALAVANCA, LIGAR FIOS, COLOCAR NÚMEROS ETC*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
 
 typedef enum {TIMER, KEYBOARD, MOUSE, RTC} Device;
 
@@ -52,6 +52,8 @@ void Defeat_ih(Device device);
 
 //Tasks interrupt handlers
 void Ice_ih(Device device);
+
+void Ship_ih(Device device);
 //void CardIH
 
 
@@ -76,3 +78,6 @@ void draw_Menu();
 void draw_GameTimer(); //Draw countdown time
 void erase_GameTimer(); //Erase countdown time
 void draw_Number(int x, int y, int n);
+
+//Gesture handlers
+bool ship_gesture_handler(Mouse_event* mouseEvent);

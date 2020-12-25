@@ -7,6 +7,7 @@ extern uint8_t mouse_data;
 extern Mouse_event m_event;
 extern uint16_t horizontal_res, vertical_res;
 extern xpm_image_t current_background; //background image so that the cursor is deleted
+//extern xpm_image_t background_obstacles;
 //extern Room * room;
 
 Cursor *cursor;
@@ -133,7 +134,6 @@ Cursor * create_cursor(){
 void update_cursor(struct packet * mouse_pack){
     //Apagar o cursor
     erase_cursor();
-
     if (mouse_pack->delta_x > 0) {
         if (cursor->x + mouse_pack->delta_x > horizontal_res - cursor->img.width)
             cursor->x = horizontal_res - cursor->img.width;
@@ -158,7 +158,6 @@ void update_cursor(struct packet * mouse_pack){
         else
             cursor->y -= mouse_pack->delta_y;
     }
-
     draw_cursor();
 }
 

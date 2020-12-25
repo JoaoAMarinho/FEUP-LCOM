@@ -22,11 +22,18 @@
 #include "Xpms/Tasks/Ice-task/Icetask6.xpm"
 #include "Xpms/Tasks/Ice-task/Icetask7.xpm"
 
+//Ship task xpms
+#include "Xpms/Tasks/Ship-task/Shiptask0.xpm"
+#include "Xpms/Tasks/Ship-task/Shiptask1.xpm"
+#include "Xpms/Tasks/Ship-task/Shiptask2.xpm"
+#include "Xpms/Tasks/Ship-task/Shiptask3.xpm"
+#include "Xpms/Tasks/Ship-task/Shiptask4.xpm"
+
 //Task names
-typedef enum {ICE,CARD,T3} Task_type; //Ajeitar dps
+typedef enum {ICE,SHIP,T3} Task_type; //Ajeitar dps
 
 //Task States
-//typedef enum {START, TRANSITION, END} Ice_state;
+typedef enum {START_STATE, TRANSITION_STATE, END_STATE} Ship_state;
 
 typedef struct {
     Room_number taskRoom;
@@ -44,8 +51,6 @@ typedef struct {
 void LoadTasks();
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom);
-
-void draw_task(Task* task);
 
 void draw_current_tasks();
 
