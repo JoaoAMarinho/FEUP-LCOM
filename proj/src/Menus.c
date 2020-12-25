@@ -216,7 +216,7 @@ void Defeat_ih(Device device){return;}
 //Tasks interrupt handlers
 void Ice_ih(Device device){
     static Mouse_event * mouseEvent;
-    static bool ice1_clicked = false, ice2_clicked = false, ice3_clicked = false;
+    static bool ice1_clicked = false, ice2_clicked = false, ice3_clicked = false, task_finished= false;
 
     switch (device) {
         case TIMER:
@@ -225,22 +225,59 @@ void Ice_ih(Device device){
                 erase_GameTimer();
                 draw_GameTimer();
 			}
-			if(game_counter==0){
+			if(game_counter==0 && !task_finished){
 				gameMenu = FINAL; //Vai para defeat
 			}
-            //Parte de teste
             //Rato não pode passar por cima do timer
-            if(cursor->x >=352 && cursor->x <= 431 && cursor->y>=261 && cursor->y<=401 && !ice1_clicked){ //Over middle ice
+            if(checkOverIce()==1 && !ice1_clicked){ //Over middle ice
                 if ( *mouseEvent == L_UP) {
                     ice1_clicked = true;
-                    ice2_clicked=false;
-                    ice3_clicked=false;
-                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                    if(!ice2_clicked && !ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                    else if(ice2_clicked && !ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[5];
+                    else if(!ice2_clicked && ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[6];
+                    else if(ice2_clicked && ice3_clicked){
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[7];
+                        task_finished=true;
+                    }
+                    LoadTask(task_index);
+                }
+            }else if(checkOverIce()==2 && !ice2_clicked){
+                if ( *mouseEvent == L_UP) {
+                    ice2_clicked = true;
+                    if(!ice1_clicked && !ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[3];
+                    else if(ice1_clicked && !ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[5];
+                    else if(!ice1_clicked && ice3_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
+                    else if(ice2_clicked && ice3_clicked){
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[7];
+                        task_finished=true;
+                    }
+                    LoadTask(task_index);
+                }
+            }else if(checkOverIce()==3 && !ice3_clicked){
+                if ( *mouseEvent == L_UP) {
+                    ice3_clicked = true;
+                    if(!ice1_clicked && !ice2_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[2];
+                    else if(ice1_clicked && !ice2_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[6];
+                    else if(!ice1_clicked && ice2_clicked)
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
+                    else if(ice2_clicked && ice3_clicked){
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[7];
+                        task_finished=true;
+                    }
                     LoadTask(task_index);
                 }
             }
-
-
+            //End task
+            if(task_finished)
+                finish_task(task_index);
             break;
 
         case KEYBOARD:

@@ -201,3 +201,48 @@ char checkOverMain(){
         return 'N';
 }
 
+int checkOverIce(){
+    int temp_x=cursor->x-315;
+    int temp_y=cursor->y;
+    //Over button 1
+    if(cursor->x >=352 && cursor->x <= 431 && cursor->y>=261 && cursor->y<=401)
+        return 1;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>=331+(temp_x*(-1.89)) && temp_y<=331)
+        return 1;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>331 && temp_y<=331+(temp_x*(1.89)))
+        return 1;
+    temp_x=cursor->x-431;
+    if(temp_x>=0 && temp_x<=37 && temp_y>=261+(temp_x*(1.89)) && temp_y<=331)
+        return 1;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>331 && temp_y<=401+(temp_x*(-1.89)))
+        return 1;
+    //Over button 2
+    temp_x=cursor->x-444;
+    if(cursor->x >=481 && cursor->x <= 563 && cursor->y>=188 && cursor->y<=328)
+        return 2;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>=258+(temp_x*(-1.89)) && temp_y<=258)
+        return 2;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>258 && temp_y<=258+(temp_x*(1.89)))
+        return 2;
+    temp_x=cursor->x-563;
+    if(temp_x>=0 && temp_x<=37 && temp_y>=188+(temp_x*(1.89)) && temp_y<=258)
+        return 2;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>258 && temp_y<=328+(temp_x*(-1.89)))
+        return 2;
+    //Over button 3
+    temp_x=cursor->x-446;
+    if(cursor->x >=483 && cursor->x <= 562 && cursor->y>=338 && cursor->y<=478)
+        return 3;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>=408+(temp_x*(-1.89)) && temp_y<=408)
+        return 3;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>408 && temp_y<=408+(temp_x*(1.89)))
+        return 3;
+    temp_x=cursor->x-562;
+    if(temp_x>=0 && temp_x<=37 && temp_y>=338+(temp_x*(1.89)) && temp_y<=408)
+        return 3;
+    else if(temp_x>=0 && temp_x<=37 && temp_y>408 && temp_y<=478+(temp_x*(-1.89)))
+        return 3;
+    //Not over any button
+    return -1;
+}
+
