@@ -41,5 +41,3 @@ int (mouse_polling)();
 void (gesture_handler)(struct packet *pp, uint8_t x_len, uint8_t tolerance, enum event m_event, bool *done);
 
 enum event (mouse_get_event)(struct packet *pp);
-
-

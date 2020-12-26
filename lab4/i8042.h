@@ -6,6 +6,7 @@
 #define BIT(n)    (1 << (n))
 
 #define DELAY 20000
+#define MODE3 0x115 //800x600, bits per pixel: 24(8:8:8)
 
 #define MOUSE_IRQ 12
 
