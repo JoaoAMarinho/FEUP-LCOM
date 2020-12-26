@@ -654,23 +654,22 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
             LoadTask(task_index);
             x_delta = 0;
             y_delta = 0;
-            if (mouseEvent == L_DOWN ) {
-                printf("IN");
+            if (*mouseEvent == L_DOWN ) {
                 shipState = TRANSITION_STATE;
             }
             break;
         case TRANSITION_STATE:
-            //printf("SOMEWHERE  ");
-            if(mouseEvent!=L_DOWN){
+            if(*mouseEvent!=L_DOWN){
                 shipState=START_STATE;
             }
             else{ //Left button pressed
                 if(gameTasks[task_index]->animationIndex==0){ //Didn't reach checkpoint1
-                    if ((mouse_pack.delta_x > 0 && mouse_pack.delta_y < 0) || (abs(mouse_pack.delta_x) <= 3 && abs(mouse_pack.delta_y) <= 3)) { //Se o movimento for feito na direção certa ou for menor que a tolerância
+                    /*if ((mouse_pack.delta_x > 0 && mouse_pack.delta_y < 0) || (abs(mouse_pack.delta_x) <= 5 && abs(mouse_pack.delta_y) <= 5)) { //Se o movimento for feito na direção certa ou for menor que a tolerância
                         x_delta += mouse_pack.delta_x;
                         y_delta += mouse_pack.delta_y;
                     }
                     else if ((x_delta >= 88) && (fabs(y_delta/(float)x_delta) >= 1.8) && (fabs(y_delta/(float)x_delta) < 1.85) ) {
+                        printf("REached");
                         x_delta = 0;
                         y_delta = 0;
                         gameTasks[task_index]->animationIndex=1;
@@ -678,6 +677,22 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
                         LoadTask(task_index);
                     }
                     else {
+                        shipState = START_STATE;
+                    }*/
+                    if(x_delta%10==0)
+                        printf("x: %d  ", x_delta);
+                        printf("y: %d  ", y_delta);
+                    if ((x_delta >= 88) && (fabs(y_delta/(float)x_delta) >= 1.8) && (fabs(y_delta/(float)x_delta) < 1.85) ) {
+                        printf("REached");
+                        x_delta = 0;
+                        y_delta = 0;
+                        gameTasks[task_index]->animationIndex=1;
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                        LoadTask(task_index);
+                    }else if ((mouse_pack.delta_x > 0 && mouse_pack.delta_y < 0) || (abs(mouse_pack.delta_x) <= 5 && abs(mouse_pack.delta_y) <= 5)){
+                        x_delta += mouse_pack.delta_x;
+                        y_delta += mouse_pack.delta_y;
+                    }else {
                         shipState = START_STATE;
                     }
 

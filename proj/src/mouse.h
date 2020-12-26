@@ -17,12 +17,12 @@ typedef struct {
 } Cursor;
 
 typedef enum{
+    MOVE=0,
     L_DOWN,
     R_DOWN,
     L_UP,
     R_UP,
     MIDLE,
-    MOVE,
 } Mouse_event;
 
 
