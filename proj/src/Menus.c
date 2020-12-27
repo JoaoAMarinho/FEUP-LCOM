@@ -292,7 +292,10 @@ void Ice_ih(Device device){
             break;
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
-            update_cursor(&mouse_pack);
+            update_cursor_without_draw(&mouse_pack);
+            draw_GameTimer();
+            draw_cursor();
+            //update_cursor(&mouse_pack);
             break;
         case RTC:
             break;
@@ -333,7 +336,9 @@ void Ship_ih(Device device){
             break;
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
-            update_cursor(&mouse_pack);
+            update_cursor_without_draw(&mouse_pack);
+            draw_GameTimer();
+            draw_cursor();
             if(!task_finished)
                 task_finished=ship_gesture_handler(mouseEvent);
             break;

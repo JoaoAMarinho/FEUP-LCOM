@@ -286,6 +286,7 @@ int player_opponent_collision(Player * player){
                         if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width &&j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
                             return k;
                         }
+
                     }
                 }
             }
@@ -333,5 +334,28 @@ int player_opponent_collision(Player * player){
             }
         }
     }
+    /*if(player->direction==UP || player->direction==DOWN){
+        for(int k=0; k < n_opponents; k++){
+            if(gameOpponents[k]==NULL) continue;
+            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+                //Collision from all directions
+                if(gameOpponents[k]==UP){
+                    if(gameOpponents[k]->y-gameOpponents[k]->yspeed < player->y+player->playerImg.width && gameOpponents[k]->x+gameOpponents[k]->opponentImg.height>player->x && gameOpponents[k]->x+gameOpponents[k]->opponentImg.height<player->x+player->playerImg.height) return k;
+                    //gameOpponents[k]->y-gameOpponents[k]->opponentImg.width )
+                }
+                if(player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width && (player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.height || player->x+player->playerImg.height>gameOpponents[k]->x))
+                {
+                    return k;
+                }else if(player->y+player->playerImg.width > gameOpponents[k]->y && (player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.height || player->x+player->playerImg.height>gameOpponents[k]->x)){
+                    return k;
+                }
+                else if(player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.width && ( player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width || player->y + player->playerImg.width > gameOpponents[k]->y)){
+                    return k;
+                }else if(player->x+player->playerImg.height > gameOpponents[k]->x && ( player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width || player->y + player->playerImg.width > gameOpponents[k]->y)){
+                    return k;
+                }
+            }
+        }
+    }*/
     return -1;
 }

@@ -46,6 +46,8 @@ Cursor * create_cursor();
 
 void update_cursor(struct packet * mouse_pack);
 
+void update_cursor_without_draw(struct packet * mouse_pack);
+
 void draw_cursor();
 
 void erase_cursor();

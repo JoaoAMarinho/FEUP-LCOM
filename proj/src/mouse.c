@@ -161,6 +161,34 @@ void update_cursor(struct packet * mouse_pack){
     draw_cursor();
 }
 
+void update_cursor_without_draw(struct packet * mouse_pack){
+    erase_cursor();
+    if (mouse_pack->delta_x > 0) {
+        if (cursor->x + mouse_pack->delta_x > horizontal_res - cursor->img.width)
+            cursor->x = horizontal_res - cursor->img.width;
+        else
+            cursor->x += mouse_pack->delta_x;
+    }
+    else if (mouse_pack->delta_x < 0) {
+        if (cursor->x + mouse_pack->delta_x < 0)
+            cursor->x = 0;
+        else
+            cursor->x += mouse_pack->delta_x;
+    }
+    if (mouse_pack->delta_y < 0) {
+        if (cursor->y + cursor->img.height - mouse_pack->delta_y > vertical_res)
+            cursor->y = vertical_res - cursor->img.height;
+        else
+            cursor->y -= mouse_pack->delta_y;
+    }
+    else if (mouse_pack->delta_y > 0) {
+        if (cursor->y - mouse_pack->delta_y < 0)
+            cursor->y = 0;
+        else
+            cursor->y -= mouse_pack->delta_y;
+    }
+}
+
 void draw_cursor(){
     uint32_t* map = (uint32_t*) cursor->img.bytes;
 
