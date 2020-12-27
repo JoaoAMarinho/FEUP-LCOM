@@ -654,7 +654,7 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
             LoadTask(task_index);
             x_delta = 0;
             y_delta = 0;
-            if (*mouseEvent == L_DOWN ) {
+            if (*mouseEvent == L_DOWN && cursor->x >=172 && cursor->y >= 199 && cursor->x <=205 && cursor->y <=221 ) {
                 shipState = TRANSITION_STATE;
             }
             break;
@@ -676,13 +676,44 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
                     }else {
                         shipState = START_STATE;
                     }
-
                 }else if(gameTasks[task_index]->animationIndex==1){ //Didn't reach checkpoint2
-                    
+                    if(cursor->y>374) shipState = START_STATE;
+                    if ((x_delta >= 98) && (fabs(y_delta/(float)x_delta) >= 0.45) && (fabs(y_delta/(float)x_delta) < 0.9) ) {
+                        x_delta = 0;
+                        y_delta = 0;
+                        gameTasks[task_index]->animationIndex=2;
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[2];
+                        LoadTask(task_index);
+                    }else if ((mouse_pack.delta_x >= 0 && mouse_pack.delta_y >= 0) || (abs(mouse_pack.delta_x) <= 3 && abs(mouse_pack.delta_y) <= 3)){
+                        x_delta += mouse_pack.delta_x;
+                        y_delta += mouse_pack.delta_y;
+                    }else {
+                        shipState = START_STATE;
+                    }
                 }else if(gameTasks[task_index]->animationIndex==2){ //Didn't reach checkpoint3
-                    printf("index2");
+                    if(cursor->y<192) shipState = START_STATE;
+                    if ((x_delta >= 90) && (fabs(y_delta/(float)x_delta) >= 0.45) && (fabs(y_delta/(float)x_delta) < 0.65) ) {
+                        x_delta = 0;
+                        y_delta = 0;
+                        gameTasks[task_index]->animationIndex=3;
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[3];
+                        LoadTask(task_index);
+                    }else if ((mouse_pack.delta_x >= 0 && mouse_pack.delta_y >= 0) || (abs(mouse_pack.delta_x) <= 3 && abs(mouse_pack.delta_y) <= 3)){
+                        x_delta += mouse_pack.delta_x;
+                        y_delta += mouse_pack.delta_y;
+                    }else {
+                        shipState = START_STATE;
+                    }
                 }else if(gameTasks[task_index]->animationIndex==3){ //Didn't reach checkpoint4
-                    printf("index3");
+                    if(cursor->y<192 || cursor->y > 401) shipState = START_STATE;
+                    if ((x_delta >= 80) && (fabs(y_delta/(float)x_delta) >= 0.85) && (fabs(y_delta/(float)x_delta) <= 1.6) ) {
+                        shipState=END_STATE;
+                    }else if ((mouse_pack.delta_x >= 0 && mouse_pack.delta_y <= 0) || (abs(mouse_pack.delta_x) <= 3 && abs(mouse_pack.delta_y) <= 3)){
+                        x_delta += mouse_pack.delta_x;
+                        y_delta += mouse_pack.delta_y;
+                    }else {
+                        shipState = START_STATE;
+                    }
                 }
             }
             break;

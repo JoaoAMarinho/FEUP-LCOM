@@ -4,7 +4,7 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Opponent ** gameOpponents;
-int n_opponents=3;
+int n_opponents=4;
 
 //---------------------------------------------------------------------------------------------
 
@@ -14,7 +14,8 @@ void LoadOpponents(){
     //Opponents ordered by their room
     gameOpponents[0] = create_opponent(129,510,RIGHT,CAFETERIA, true);
     gameOpponents[1] = create_opponent(102,200,DOWN,CAFETERIA, true);
-    gameOpponents[2] = create_opponent(400,400,RIGHT,CAFETERIA, true);
+    gameOpponents[2] = create_opponent(477,207,LEFT,HALLWAY1, true);
+    gameOpponents[3] = create_opponent(452,515,UP,HALLWAY1, true);
     //gameOpponents[1] = create_opponent(500,170,DOWN,HALLWAY1);
     //gameOpponents[2] = create_opponent(500,230,LEFT,NAVIGATION);
 
@@ -189,9 +190,9 @@ void move_opponent(Opponent* opponent){
             break;
         case DOWN:
             if(!room_opponent_collision(opponent)&& !opponent_opponent_colision(opponent)) {
-                if (opponent->y + opponent->yspeed > vertical_res - opponent->opponentImg.height) {
+                if (opponent->y + opponent->yspeed > vertical_res - opponent->opponentImg.width) {
                     opponent->direction = UP;
-                    opponent->y = vertical_res - opponent->opponentImg.height - 1;
+                    opponent->y = vertical_res - opponent->opponentImg.width - 1;
                 }
                 else{
                     opponent->y += opponent->yspeed;
