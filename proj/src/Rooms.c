@@ -10,7 +10,7 @@ Room * load_room(Room_number roomNumber){
     free(room);
     room = (Room *) malloc (sizeof(room));
     room->currentRoom=roomNumber;
-    //CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, LOWERENG, REACTOR, SECURITY, END
+    //CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, HALLWAY3, LOWERENG, REACTOR, SECURITY, END
     if(roomNumber==CAFETERIA){
         xpm_load(Cafeteria_xpm, XPM_8_8_8_8, &room->roomBackground);
         xpm_load(CafeteriaObstacles_xpm, XPM_8_8_8_8, &room->roomObstacles);

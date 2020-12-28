@@ -160,7 +160,7 @@ void Main_ih(Device device){
         keyboard_data = 0x00;
         player=create_player();
         //clean_clock();
-        LoadPlay(CAFETERIA);
+        LoadPlay(CAFETERIA,false);
     }
     else if (instructionsClicked) { // Instruções
         gameMenu = INSTRUCTIONS;
@@ -212,7 +212,7 @@ void GameMap_ih(Device device){
         case KEYBOARD:
             if (keyboard_data == M_KEY) {
         	    gameMenu = PLAYING;
-        	    LoadPlay(room->currentRoom);
+        	    LoadPlay(room->currentRoom,false);
       	    }
 
             if(keyboard_data == ESC_KEY){
@@ -322,7 +322,7 @@ void Ice_ih(Device device){
                 *mouseEvent=MOVE;
                 ice1_clicked = false; ice2_clicked = false; ice3_clicked = false; task_finished= false;
                 gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
-        	    LoadPlay(room->currentRoom);
+        	    LoadPlay(room->currentRoom,false);
       	    }
 
             if(keyboard_data == ESC_KEY){
@@ -368,7 +368,7 @@ void Ship_ih(Device device){
                 task_finished= false;
                 gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
                 *mouseEvent=MOVE;
-        	    LoadPlay(room->currentRoom);
+        	    LoadPlay(room->currentRoom,false);
       	    }
 
             if(keyboard_data == ESC_KEY){
@@ -486,159 +486,167 @@ void LoadTask(int index){
 //---------------------------------------------------------------------------------------------
 //Load Rooms
 
-void LoadPlay(Room_number currentRoom){
+void LoadPlay(Room_number currentRoom, bool reset){
 	static Room_number previousRoom = CAFETERIA;
 
-	if (previousRoom!=currentRoom) {
-		switch (currentRoom) {
-			case CAFETERIA:
-				if(previousRoom==HALLWAY1){
-					player->direction = LEFT;
-					player->x = 723;
-					player->y = 290;
-				}else if(previousRoom==HALLWAY2){
-					player->direction = RIGHT;
-					player->x = 8;
-					player->y = 289;
-				}
-				break;
-			case HALLWAY1:
-				if(previousRoom==CAFETERIA){
-					player->direction = RIGHT;
-					player->x = 0;
-					player->y = 204;
-				}else if(previousRoom==WEAPONS){
-					player->direction = DOWN;
-					player->x = 146;
-					player->y = 0;
-				}else if(previousRoom==NAVIGATION){
-					player->direction = LEFT;
-					player->x = 725;
-					player->y = 365;
-				}else if(previousRoom==ADMIN){
-					player->direction = UP;
-					player->x = 462;
-					player->y = 525;
-				}
-				break;
-			case ADMIN:
-				player->direction = DOWN;
-				player->x = 107;
-				player->y = 0;
-				break;
-			case WEAPONS:
-				player->direction = UP;
-				player->x = 179;
-				player->y = 525;
-				break;
-			case NAVIGATION:
-				player->direction = RIGHT;
-				player->x = 0;
-				player->y = 315;
-				break;
-			case HALLWAY2:
-				if(previousRoom==CAFETERIA){
-                    player->direction=LEFT;
-                    player->x=713;
-                    player->y=364;
-                }else if(previousRoom==ELETRICAL){
-                    player->direction = UP;
-				    player->x = 449;
-				    player->y = 515;
-                }else if(previousRoom==UPPERENG){
-                    player->direction = RIGHT;
-				    player->x = 21;
-				    player->y = 365;
-                }else if(previousRoom==MEDBAY){
+    if(!reset){
+        if (previousRoom!=currentRoom) {
+            switch (currentRoom) {
+                case CAFETERIA:
+                    if(previousRoom==HALLWAY1){
+                        player->direction = LEFT;
+                        player->x = 723;
+                        player->y = 290;
+                    }else if(previousRoom==HALLWAY2){
+                        player->direction = RIGHT;
+                        player->x = 8;
+                        player->y = 289;
+                    }
+                    break;
+                case HALLWAY1:
+                    if(previousRoom==CAFETERIA){
+                        player->direction = RIGHT;
+                        player->x = 0;
+                        player->y = 204;
+                    }else if(previousRoom==WEAPONS){
+                        player->direction = DOWN;
+                        player->x = 146;
+                        player->y = 0;
+                    }else if(previousRoom==NAVIGATION){
+                        player->direction = LEFT;
+                        player->x = 725;
+                        player->y = 365;
+                    }else if(previousRoom==ADMIN){
+                        player->direction = UP;
+                        player->x = 462;
+                        player->y = 525;
+                    }
+                    break;
+                case ADMIN:
                     player->direction = DOWN;
-				    player->x = 167;
-				    player->y = 34;
-                }
-				break;
-			case MEDBAY:
-				player->direction = UP;
-				player->x = 217;
-				player->y = 518;
-				break;
-			case ELETRICAL:
-				player->direction = DOWN;
-				player->x = 421;
-				player->y = 55;
-				break;
-			case UPPERENG:
-                if(previousRoom==HALLWAY2){
-                    player->direction=LEFT;
-                    player->x=709;
-                    player->y=275;
-                }else if(previousRoom==HALLWAY3){
+                    player->x = 107;
+                    player->y = 0;
+                    break;
+                case WEAPONS:
                     player->direction = UP;
-			        player->x = 326;
-				    player->y = 520;
-                }
-				break;
-            case HALLWAY3:
-                if(previousRoom==LOWERENG){
-                    player->direction=UP;
-                    player->x=368;
-                    player->y=517;
-                }else if(previousRoom==REACTOR){
+                    player->x = 179;
+                    player->y = 525;
+                    break;
+                case NAVIGATION:
                     player->direction = RIGHT;
-				    player->x = 25;
-				    player->y = 334;
-                }else if(previousRoom==UPPERENG){
+                    player->x = 0;
+                    player->y = 315;
+                    break;
+                case HALLWAY2:
+                    if(previousRoom==CAFETERIA){
+                        player->direction=LEFT;
+                        player->x=713;
+                        player->y=364;
+                    }else if(previousRoom==ELETRICAL){
+                        player->direction = UP;
+                        player->x = 449;
+                        player->y = 515;
+                    }else if(previousRoom==UPPERENG){
+                        player->direction = RIGHT;
+                        player->x = 21;
+                        player->y = 365;
+                    }else if(previousRoom==MEDBAY){
+                        player->direction = DOWN;
+                        player->x = 167;
+                        player->y = 34;
+                    }
+                    break;
+                case MEDBAY:
+                    player->direction = UP;
+                    player->x = 217;
+                    player->y = 518;
+                    break;
+                case ELETRICAL:
                     player->direction = DOWN;
-				    player->x = 379;
-				    player->y = 56;
-                }else if(previousRoom==SECURITY){
+                    player->x = 421;
+                    player->y = 55;
+                    break;
+                case UPPERENG:
+                    if(previousRoom==HALLWAY2){
+                        player->direction=LEFT;
+                        player->x=709;
+                        player->y=275;
+                    }else if(previousRoom==HALLWAY3){
+                        player->direction = UP;
+                        player->x = 326;
+                        player->y = 520;
+                    }
+                    break;
+                case HALLWAY3:
+                    if(previousRoom==LOWERENG){
+                        player->direction=UP;
+                        player->x=368;
+                        player->y=517;
+                    }else if(previousRoom==REACTOR){
+                        player->direction = RIGHT;
+                        player->x = 25;
+                        player->y = 334;
+                    }else if(previousRoom==UPPERENG){
+                        player->direction = DOWN;
+                        player->x = 379;
+                        player->y = 56;
+                    }else if(previousRoom==SECURITY){
+                        player->direction = LEFT;
+                        player->x = 709;
+                        player->y = 349;
+                    }
+                    break;
+                case LOWERENG:
+                    player->direction = DOWN;
+                    player->x = 425;
+                    player->y = 60;
+                    break;
+                case REACTOR:
                     player->direction = LEFT;
-				    player->x = 709;
-				    player->y = 349;
-                }
-                break;
-			case LOWERENG:
-				player->direction = DOWN;
-				player->x = 425;
-				player->y = 60;
-				break;
-			case REACTOR:
-				player->direction = LEFT;
-				player->x = 721;
-				player->y = 311;
-				break;
-            case SECURITY:
-                player->direction=RIGHT;
-                player->x=17;
-                player->y=347;
-                break;
-			//o resto dos rooms
-			case END:
-				gameMenu = VICTORY;
-				free(player);
-				//LoadWonMenu();
-				break;
-			default:
-				break;
-		}
-		if (gameMenu == PLAYING) {
-			room = load_room(currentRoom);
+                    player->x = 721;
+                    player->y = 311;
+                    break;
+                case SECURITY:
+                    player->direction=RIGHT;
+                    player->x=17;
+                    player->y=347;
+                    break;
+                //o resto dos rooms
+                case END:
+                    gameMenu = VICTORY;
+                    free(player);
+                    //LoadWonMenu();
+                    break;
+                default:
+                    break;
+            }
+            if (gameMenu == PLAYING) {
+                room = load_room(currentRoom);
+                draw_room();
+                draw_GameTimer();
+                //Draw room opponents and tasks
+                draw_current_opponents();
+                draw_current_tasks();
+            }
+        }
+        else { //Pausa, GameMap ou Task
+            if(room==NULL) room = load_room(currentRoom); //Primeiro load
             draw_room();
             draw_GameTimer();
             //Draw room opponents and tasks
             draw_current_opponents();
             draw_current_tasks();
-		}
- 	}
-    else { //Pausa, GameMap ou Task
-        if(room==NULL) room = load_room(currentRoom); //Primeiro load
-        draw_room();
-        draw_GameTimer();
-        //Draw room opponents and tasks
-        draw_current_opponents();
-        draw_current_tasks();
-        draw_player(player);
+            draw_player(player);
+        }
+        previousRoom = currentRoom;
+        keyboard_data = 0x00;
+
+    }else{
+        //CurrentRoom == CAFETERIA
+        room = load_room(currentRoom);
+        previousRoom=currentRoom;
     }
-    previousRoom = currentRoom;
-    keyboard_data = 0x00;
+	
 }
 
 //---------------------------------------------------------------------------------------------

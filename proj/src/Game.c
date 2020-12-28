@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-unsigned int game_counter=300;
+unsigned int game_counter=200;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -218,7 +218,7 @@ void Play_ih(Device device){
 
 			//Change of rooms
 			if (roomTransition()) {
-				LoadPlay(room->currentRoom);
+				LoadPlay(room->currentRoom,false);
 				break;
 			}
 
@@ -448,7 +448,8 @@ void ResetGame(){
 			gameOpponents[index]->opponentImg=gameOpponents[index]->opponentAnimations[0];
 		}
 	}
+	LoadPlay(CAFETERIA,true);
 	free(player);
 	time_counter=0;
-	game_counter=300; //Trocar para tempo normal
+	game_counter=200; //Trocar para tempo normal
 }

@@ -33,7 +33,7 @@ typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK/*TASKS:
 typedef enum {TIMER, KEYBOARD, MOUSE, RTC} Device;
 
 typedef struct {
-    bool alive;
+    //bool showing;
     xpm_image_t Numbers[10];
 
 } GameTimer;
@@ -75,7 +75,7 @@ void LoadGameTimer();
 void LoadTask(int index);
 
 //Load de cada room
-void LoadPlay(Room_number previousRoom);
+void LoadPlay(Room_number previousRoom,bool reset);
 
 //Draw menus
 void draw_Menu();
