@@ -107,10 +107,10 @@ Date* create_date(){
 
     xpm_image_t img;
 
-    //xpm_load(colon_xpm, XPM_8_8_8_8, &img);
-    date->symbols[0] = img;
-    //xpm_load(barra_xpm, XPM_8_8_8_8, &img);
-    date->symbols[1] = img;
+    xpm_load(Slash_xpm, XPM_8_8_8_8, &img);
+    date->Symbols[0] = img;
+
+    free(&img);
 
     return date;
 }

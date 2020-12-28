@@ -3,13 +3,14 @@
 #include <lcom/lcf.h>
 
 #include "i8042.h"
+//#include "Videocard.c"
 
 //Xpms
+#include "Xpms/Numbers/Slash.xpm"
 
 typedef struct {
-    xpm_image_t img;
     unsigned int day,month,year;
-    xpm_image_t symbols[2];
+    xpm_image_t Symbols[1];
 } Date;
 
 int (rtc_subscribe_int)(uint8_t *bit_n);

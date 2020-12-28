@@ -62,6 +62,7 @@ int gameLoop(){
 	LoadTasks(); //Load to gameTasks array
     date = create_date();
     LoadRTC();
+	updateDate();
     uint8_t kb_bytes[2];
 
     while(gameMenu != FINAL ) {

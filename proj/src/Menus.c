@@ -11,7 +11,7 @@ extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
 int task_index;
-//extern Date * date;
+extern Date * date;
 
 xpm_image_t current_background;
 //xpm_image_t background_obstacles;
@@ -57,6 +57,7 @@ void Main_ih(Device device){
                     else if (overCalendar) {
                         overCalendar = false;
                         erase_button(mainButtons[4]);
+                        eraseDate();
                         mainButtons[4]->isMouseOver = false;
                     }
                     break;
@@ -790,9 +791,38 @@ void draw_Number(int x, int y, int n){
 //Draw Date
 
 void draw_Date(){
+    draw_Number(100,538,date->day/10);
+    draw_Number(121,538,date->day%10);
+    draw_Symbol(143,538,0);
+    draw_Number(148,538,date->month/10);
+    draw_Number(162,538,date->month%10);
+    draw_Symbol(182,538,0);
+    draw_Number(191,538,2);
+    draw_Number(212,538,0);
+    draw_Number(232,538,date->year/10);
+    draw_Number(254,538,date->year%10);
 }
 
-void eraseDate(){}
+void eraseDate(){
+    uint32_t* map = (uint32_t*) current_background.bytes;
+
+    for(int i = 100; i < 290; i++) {
+        for (int j = 538; j < 570; j++) {
+            drawPixel(i,j,*(map  + i + j * horizontal_res));
+        }
+    }
+}
+
+void draw_Symbol(int x, int y, int n){
+    uint32_t* map=(uint32_t*)date->Symbols[n].bytes;
+    
+    for(int row = 0;row < date->Symbols[n].height; row++){
+        for(int column = 0;column < date->Symbols[n].width; column++){
+            if (*(map + column + row*date->Symbols[n].width) != xpm_transparency_color(XPM_8_8_8_8))
+                drawPixel(x+column,y+row,*(map + column + row*date->Symbols[n].width));
+        }
+    }
+}
 
 //---------------------------------------------------------------------------------------------
 //Gesture handlers

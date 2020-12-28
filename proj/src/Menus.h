@@ -93,6 +93,7 @@ void draw_Number(int x, int y, int n);
 //Date
 void draw_Date();
 void eraseDate();
+void draw_Symbol();
 
 //Gesture handlers
 bool ship_gesture_handler(Mouse_event* mouseEvent,bool reset);
