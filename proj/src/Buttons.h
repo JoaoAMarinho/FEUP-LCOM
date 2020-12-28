@@ -17,12 +17,14 @@
 #include "Xpms/Main_Menu/Buttons/Calendar_clicked.xpm"
 #include "Xpms/Main_Menu/Buttons/Calendar_not_clicked.xpm"
 
-//Map button 
-//Resume button para o menu de pausa
-//Leave button para o menu de pausa
+#include "Xpms/Pause_Menu/Buttons/Resume_clicked.xpm"
+#include "Xpms/Pause_Menu/Buttons/Resume_not_clicked.xpm"
+#include "Xpms/Pause_Menu/Buttons/Menu_clicked.xpm"
+#include "Xpms/Pause_Menu/Buttons/Menu_not_clicked.xpm"
+
 //Outros possíveis buttons
 
-typedef enum {PLAY_B, BESTSCORES_B, INSTRUCTIONS_B, EXIT_B, CALENDAR_B} ButtonInfo; //Adicionar os restantes.
+typedef enum {PLAY_B, BESTSCORES_B, INSTRUCTIONS_B, EXIT_B, CALENDAR_B, RESUME_B, MENU_B} ButtonInfo; //Adicionar os restantes.
 
 typedef struct {
     xpm_image_t buttonNotClicked;

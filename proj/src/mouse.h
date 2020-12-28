@@ -54,9 +54,9 @@ void erase_cursor();
 
 char checkOverMain();
 
-int checkOverIce();
+char checkOverPause();
 
-//unsigned int check_collision_pause_menu ();
+int checkOverIce();
 
 //unsigned int check_collision_won_menu();
 

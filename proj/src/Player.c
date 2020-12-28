@@ -133,7 +133,7 @@ void animate_player(Player *player){
     }
 }
 
-void change_direction(Player * player, /*uint8_t keyboard_data,*/ bool * up, bool * down, bool * left, bool * right){
+void change_direction(Player * player, bool * up, bool * down, bool * left, bool * right){
     if (keyboard_data == 0x11 /*Make-code W*/ || keyboard_data == 0x48 /*Make-code Up-arrow*/) {
         *up = true;
     }

@@ -19,13 +19,8 @@ void receiveInterrupt(Device device);
 
 void Play_ih(Device device);
 
-//Tasks interrupt handlers
-//void task1IH(Device device);
-
 //Verificar se o player está na zona de transição de sala
 bool roomTransition();
-//Verificar se o player está perto o suficiente da task
-//int check_task_position();
 
 //Reset game conditions
 void ResetGame();

@@ -228,6 +228,16 @@ char checkOverMain(){
         return 'N';
 }
 
+char checkOverPause(){
+    //Verificar se o cursor está nalgum botão
+    if (cursor->x > 566 && cursor->x < 753 && cursor->y > 222 && cursor->y < 268)
+        return 'R';
+    else if (cursor->x > 566 && cursor->x < 753 && cursor->y > 312 && cursor->y < 358)
+        return 'M';  
+    else 
+        return 'N';
+}
+
 int checkOverIce(){
     int temp_x=cursor->x-315;
     int temp_y=cursor->y;

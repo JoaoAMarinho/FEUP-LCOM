@@ -5,18 +5,17 @@
 #include "mouse.h"
 #include "Projectile.h"
 #include "Buttons.h"
-//#include "rtc.h"
-//#include "Lever.h"
-//#include "Date.h"
+#include "Rtc.h"
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
+//Bestscores
 #include "Xpms/Instructions.xpm"
-
-#include "Xpms/Defeat.xpm"
-//#include "Xpms/Main_Menu/BackGroundObstacles.xpm"
-//#include "Xpms/Tasks/TasksObstacles.xpm"
+#include "Xpms/Pause_Menu/PauseBackground.xpm"
 #include "Xpms/GameMap.xpm"
+//Victory
+#include "Xpms/Defeat.xpm"
+
 #include "Xpms/Numbers/Number0.xpm"
 #include "Xpms/Numbers/Number1.xpm"
 #include "Xpms/Numbers/Number2.xpm"
@@ -63,13 +62,18 @@ void Ship_ih(Device device);
 //Load menus
 void LoadMain();
 
+//LoadBestscores();
+
 void LoadInstructions();
 
-void LoadDefeat();
+void LoadPause();
 
 void LoadGameMap();
 
-void LoadGameTimer();
+//Load victory
+void LoadDefeat();
+
+void LoadNumbers();
 
 //Load de cada task
 void LoadTask(int index);
@@ -86,6 +90,10 @@ void draw_GameTimer(); //Draw countdown time
 void erase_GameTimer(); //Erase countdown time
 void draw_Number(int x, int y, int n);
 
+//Date
+void draw_Date();
+void eraseDate();
+
 //Gesture handlers
-bool ship_gesture_handler(Mouse_event* mouseEvent);
+bool ship_gesture_handler(Mouse_event* mouseEvent,bool reset);
 

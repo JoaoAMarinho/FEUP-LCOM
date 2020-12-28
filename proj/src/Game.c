@@ -15,6 +15,8 @@ Mouse_event m_event;
 bool mouse_error=false;
 //Graphics card
 uint16_t horizontal_res, vertical_res;
+//Rtc
+uint8_t rtc_date[3];
 
 //Game global variables
 extern Player * player;
@@ -25,8 +27,10 @@ extern int n_tasks;
 extern Opponent ** gameOpponents;
 extern int n_opponents;
 extern GameTimer* gameTimer;
-//extern Date * date;
+extern Date * date;
 Menu gameMenu = MAIN;
+extern Button ** mainButtons;
+extern Button ** pauseButtons;
 
 
 //---------------------------------------------------------------------------------------------
@@ -41,7 +45,7 @@ int gameLoop(){
     //Subscribes
     if (timer_subscribe_int(&timer_bit_no) != 0) {return 1;}
     if (keyboard_subscribe_int(&kb_bit_no) != 0) {return 1;}
-    //if (rtc_subscribe_int(&rtc_bit_no) != 0) {return 1;}
+    if (rtc_subscribe_int(&rtc_bit_no) != 0) {return 1;}
     if(mouse_data_reporting(MOUSE_ENABLE) !=0 ){return 1;}
     if (mouse_subscribe_int(&mouse_bit_no) != 0) {return 1;}
 
@@ -51,19 +55,18 @@ int gameLoop(){
     uint32_t rtc_irq_set = BIT(rtc_bit_no);
 
     LoadMain();
-	LoadGameTimer();
+	LoadNumbers();
+	//LoadLetters();
     //Other loads (tasks and other things)
 	LoadOpponents(); //Load to gameOpponents array
 	LoadTasks(); //Load to gameTasks array
-    //date = load_date();
-    //LoadRtc();
-
+    date = create_date();
+    LoadRTC();
     uint8_t kb_bytes[2];
 
-    while(gameMenu != FINAL && keyboard_data!=0x90 ) {
+    while(gameMenu != FINAL ) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
-        printf("driver_receive failed with: %d", r);
-        continue;
+        	continue;
         }
         if (is_ipc_notify(ipc_status)) {
             switch (_ENDPOINT_P(msg.m_source)) {
@@ -76,10 +79,8 @@ int gameLoop(){
 						            if(keyboard_data==TWO_BYTES){
 						              kbc_ih();
 						              kb_bytes[1]=keyboard_data;
-					              }
-					              /*if(data & MAKE_CODE_VERIFY) {make = false;} break code
-					              else make = true;                           make code*/
-                        receiveInterrupt(KEYBOARD);
+					                }
+                        			receiveInterrupt(KEYBOARD);
 					            }
                     }
                     //Mouse interrupt
@@ -106,8 +107,7 @@ int gameLoop(){
                     }
                     //RTC interrupt
                     if (msg.m_notify.interrupts & rtc_irq_set) {
-                        //rtc_ih();
-                        //receiveInterrupt(RTC);
+                        receiveInterrupt(RTC);
                     }
                     //Timer interrupt
                     if (msg.m_notify.interrupts & timer_irq_set) {
@@ -121,12 +121,11 @@ int gameLoop(){
             }
         }
     }
-  //addToTransmitQueue(VM_DISCONNECTED);
 
   //Unsubscribes
   if (mouse_unsubscribe_int() != 0) {return 1;}
   if (mouse_data_reporting(MOUSE_DISABLE) != 0) {return 1;}
-  //if (rtc_unsubscribe_int() != 0) {return 1;}
+  if (rtc_unsubscribe_int() != 0) {return 1;}
   if (keyboard_unsubscribe_int() != 0) {return 1;}
   if (timer_unsubscribe_int() != 0) {return 1;}
 
@@ -318,8 +317,9 @@ void Play_ih(Device device){
         //PAUSE MENU
         if (keyboard_data == ESC_KEY && player->alive) {
             gameMenu = PAUSE;
+			free(pauseButtons);
             //LoadRtc();
-            //LoadPauseMenu();
+            LoadPause();
             break;
         }
 
@@ -361,6 +361,7 @@ void Play_ih(Device device){
         //UPDATE MOVING DIRECTION
 		if(player->alive)
         	change_direction(player, &up, &down, &left, &right);
+
         break;
 
     case MOUSE: //Não fazer nada ou clicar no map e pode vê-lo

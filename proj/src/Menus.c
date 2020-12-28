@@ -17,10 +17,11 @@ xpm_image_t current_background;
 //xpm_image_t background_obstacles;
 
 GameTimer* gameTimer;
-static Button ** mainButtons;
-//static Button ** pauseButtons;
+Button ** mainButtons;
+Button ** pauseButtons;
 //static Button * continueButton;
 
+void ResetGame();
 //---------------------------------------------------------------------------------------------
 //Menu interrupt handlers
 
@@ -128,28 +129,26 @@ void Main_ih(Device device){
                         draw_button(mainButtons[4]);
                         mouse_pack.delta_x=0;
                         mouse_pack.delta_y=0;
-                        //Desenhar data
                         update_cursor(&mouse_pack);
                     }
                     else if (!overCalendar) {
                         overCalendar = true;
                         mainButtons[4]->isMouseOver = true;
                         draw_button(mainButtons[4]);
+                        draw_Date();
                     }
                     break;
             }
             break;
 
-        case KEYBOARD: //Nada
+        case KEYBOARD:
             break;
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
             update_cursor(&mouse_pack);
             break;
         case RTC:
-            //clean_clock();
-            //updateDateTime();
-            //draw_clock();
+            updateDate();
             break;
     }
 
@@ -159,12 +158,10 @@ void Main_ih(Device device){
         gameMenu = PLAYING;
         keyboard_data = 0x00;
         player=create_player();
-        //clean_clock();
         LoadPlay(CAFETERIA,false);
     }
     else if (instructionsClicked) { // Instruções
         gameMenu = INSTRUCTIONS;
-        //clean_clock();
         LoadInstructions();
     }
     else if (bestscoresClicked) { // Mostrar best scores
@@ -194,7 +191,84 @@ void Instructions_ih(Device device){
   }
 }
 
-void Pause_ih(Device device){return;}
+void Pause_ih(Device device){
+    static Mouse_event * mouseEvent;
+    bool resumeClicked = false, menuClicked = false;
+    static bool overResume = false, overMenu = false;
+
+    switch (device) {
+        case TIMER:
+            switch(checkOverPause()){
+                case 'N':
+                    if (overResume) {
+                        overResume = false;
+                        erase_button(pauseButtons[0]);
+                        pauseButtons[0]->isMouseOver = false;
+                    }
+                    else if (overMenu) {
+                        overMenu = false;
+                        erase_button(pauseButtons[1]);
+                        pauseButtons[1]->isMouseOver = false;
+                    }
+                    break;
+                case 'R':
+                    if ( *mouseEvent == L_UP) {
+                        resumeClicked = true;
+                        break;
+                    }else if(overResume) {
+                        draw_button(pauseButtons[0]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        update_cursor(&mouse_pack);
+                    }
+                    else if (!overResume) {
+                        overResume = true;
+                        pauseButtons[0]->isMouseOver = true;
+                        draw_button(pauseButtons[0]);
+                    }
+                    break;
+                case 'M':
+                    if (*mouseEvent == L_UP){
+                        menuClicked = true;
+                        break;
+                    }else if(overMenu) {
+                        draw_button(pauseButtons[1]);
+                        mouse_pack.delta_x=0;
+                        mouse_pack.delta_y=0;
+                        update_cursor(&mouse_pack);
+                    }
+                    else if (!overMenu) {
+                        overMenu = true;
+                        pauseButtons[1]->isMouseOver = true;
+                        draw_button(pauseButtons[1]);
+                    }
+                    break;
+            }
+            break;
+
+        case KEYBOARD:
+            break;
+        case MOUSE:
+            mouseEvent = get_mouse_event(&mouse_pack);
+            update_cursor(&mouse_pack);
+            break;
+        case RTC:
+            break;
+    }
+
+    if (resumeClicked) { // Começar o jogo
+        overResume = false, overMenu = false;
+        gameMenu = PLAYING;
+        LoadPlay(room->currentRoom,false);
+    }
+    else if (menuClicked) { // Instruções
+        overResume = false, overMenu = false;
+        gameMenu = MAIN;
+        ResetGame();
+        //LoadRtc();
+        LoadMain();
+    }
+}
 
 void GameMap_ih(Device device){
     switch (device) {
@@ -210,14 +284,10 @@ void GameMap_ih(Device device){
             break;
 
         case KEYBOARD:
-            if (keyboard_data == M_KEY) {
+            if (keyboard_data == M_KEY || keyboard_data == ESC_KEY) {
         	    gameMenu = PLAYING;
         	    LoadPlay(room->currentRoom,false);
       	    }
-
-            if(keyboard_data == ESC_KEY){
-                //gameMenu=PAUSE;
-            }
             break;
         case MOUSE: //Nada
             break;
@@ -263,7 +333,7 @@ void Ice_ih(Device device){
 			if(game_counter==0 && !task_finished){
 				gameMenu = DEFEAT;
 			}
-            //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
+
             if(checkOverIce()==1 && !ice1_clicked){ //Over middle ice
                 if ( *mouseEvent == L_UP) {
                     ice1_clicked = true;
@@ -317,17 +387,13 @@ void Ice_ih(Device device){
             break;
 
         case KEYBOARD:
-            if (keyboard_data == E_KEY) {
+            if (keyboard_data==E_KEY || keyboard_data==ESC_KEY) {
         	    gameMenu = PLAYING;
-                *mouseEvent=MOVE;
                 ice1_clicked = false; ice2_clicked = false; ice3_clicked = false; task_finished= false;
+                *mouseEvent=MOVE;
                 gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
         	    LoadPlay(room->currentRoom,false);
       	    }
-
-            if(keyboard_data == ESC_KEY){
-                //gameMenu=PAUSE;
-            }
             break;
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
@@ -354,8 +420,7 @@ void Ship_ih(Device device){
 			if(game_counter==0 && !task_finished){
 				gameMenu = DEFEAT;
 			}
-            //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
-            
+
             //End task
             if(task_finished)
                 finish_task(task_index);
@@ -363,17 +428,14 @@ void Ship_ih(Device device){
             break;
 
         case KEYBOARD:
-            if (keyboard_data == E_KEY) {
+            if (keyboard_data == E_KEY || keyboard_data == ESC_KEY) {
         	    gameMenu = PLAYING;
                 task_finished= false;
                 gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+                ship_gesture_handler(mouseEvent,true);
                 *mouseEvent=MOVE;
         	    LoadPlay(room->currentRoom,false);
       	    }
-
-            if(keyboard_data == ESC_KEY){
-                //gameMenu=PAUSE;
-            }
             break;
         case MOUSE:
             mouseEvent = get_mouse_event(&mouse_pack);
@@ -381,7 +443,7 @@ void Ship_ih(Device device){
             draw_GameTimer();
             draw_cursor();
             if(!task_finished)
-                task_finished=ship_gesture_handler(mouseEvent);
+                task_finished=ship_gesture_handler(mouseEvent,false);
             break;
         case RTC:
             break;
@@ -423,6 +485,19 @@ void LoadInstructions(){
     }
 }
 
+void LoadPause(){
+    xpm_load(PauseBackGround, XPM_8_8_8_8, &current_background);
+
+    pauseButtons = (Button **) malloc(2 * sizeof(Button *));
+
+    pauseButtons[0] = createButton(RESUME_B,510,146);
+    pauseButtons[1] = createButton(MENU_B,510,236);
+
+    add_button(pauseButtons[0]);
+    add_button(pauseButtons[1]);
+    draw_Menu();
+}
+
 void LoadDefeat(){
     xpm_load(Defeat_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
@@ -439,7 +514,7 @@ void LoadGameMap(){
     draw_warnings();
 }
 
-void LoadGameTimer(){
+void LoadNumbers(){
 
     gameTimer=(GameTimer*) malloc(sizeof(GameTimer));
 
@@ -629,7 +704,7 @@ void LoadPlay(Room_number currentRoom, bool reset){
                 draw_current_tasks();
             }
         }
-        else { //Pausa, GameMap ou Task
+        else { //Pause, GameMap or Task
             if(room==NULL) room = load_room(currentRoom); //Primeiro load
             draw_room();
             draw_GameTimer();
@@ -662,6 +737,9 @@ void draw_Menu() {
         }
     }
 }
+
+//---------------------------------------------------------------------------------------------
+//Draw GameTimer
 
 void draw_GameTimer(){
     unsigned int counter=game_counter;
@@ -709,11 +787,25 @@ void draw_Number(int x, int y, int n){
 }
 
 //---------------------------------------------------------------------------------------------
+//Draw Date
+
+void draw_Date(){
+}
+
+void eraseDate(){}
+
+//---------------------------------------------------------------------------------------------
 //Gesture handlers
 
-bool ship_gesture_handler(Mouse_event* mouseEvent){
+bool ship_gesture_handler(Mouse_event* mouseEvent, bool reset){
     static int x_delta = 0, y_delta = 0;
     static Ship_state shipState = START_STATE;
+
+    if(reset){
+        x_delta = 0, y_delta = 0;
+        shipState = START_STATE;
+        return false;
+    }
     
     switch(shipState){
         case START_STATE:
