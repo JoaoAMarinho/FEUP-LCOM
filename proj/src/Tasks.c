@@ -25,6 +25,7 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
     task->taskRoom=currentRoom;
     task->taskType=taskName;
     task->animationIndex=0;
+    task->isFinished=false;
 
     xpm_image_t img;
 
@@ -78,7 +79,7 @@ void draw_current_tasks(){
     xpm_image_t img;
     xpm_load(taskArrow_xpm, XPM_8_8_8_8, &img);
     for (int index = 0; index < n_tasks; index++)
-        if(gameTasks[index]==NULL) continue;
+        if(gameTasks[index]->isFinished) continue;
         else if(gameTasks[index]->taskRoom==room->currentRoom){draw_task_arrow(gameTasks[index],img); found=true;}
         else if(found) break;
 }
@@ -98,7 +99,7 @@ void draw_warnings(){
     xpm_image_t img;
     xpm_load(taskWarning_xpm, XPM_8_8_8_8, &img);
     for(int index=0; index < n_tasks; index++){
-        if(gameTasks[index]==NULL) continue;
+        if(gameTasks[index]->isFinished) continue;
         else if(previous_room==END){
             previous_room=gameTasks[index]->taskRoom;
             draw_task_warning(previous_room,img);
@@ -159,29 +160,16 @@ void draw_task_warning(Room_number room,xpm_image_t img){
     }
 }
 
-/*
-void erase_task_arrow(Task* task){
-    uint32_t* backgroundMap=(uint32_t*)room->roomBackground.bytes;
-
-    for(int i = task->x; i <= task->x+task->buttonClicked.width; i++) {
-            for (int j = task->y; j < task->y + task->buttonClicked.height; j++) {
-                if (i < (int)horizontal_res - 1 && j < (int)vertical_res - 1)
-                    drawPixel(i,j,*(backgroundMap  + i + j * horizontal_res));
-            }
-        }
-}
-*/
-
 void finish_task(int index) {
-  if (gameTasks[index] != NULL){
-        gameTasks[index] = NULL; 
+  if (!gameTasks[index]->isFinished){
+        gameTasks[index]->isFinished=true; 
     }
 }
 
 int near_task(int x_position, int y_position){
     bool found=false;
     for (int index = 0; index < n_tasks; index++){
-        if(gameTasks[index]==NULL) continue;
+        if(gameTasks[index]->isFinished) continue;
         else if(gameTasks[index]->taskRoom==room->currentRoom){
             found=true;
             if(sqrt((gameTasks[index]->x-x_position)*(gameTasks[index]->x-x_position)+(gameTasks[index]->y-y_position)*(gameTasks[index]->y-y_position))<=90){

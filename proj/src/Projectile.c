@@ -182,7 +182,7 @@ bool projectileCollision(Projectile *projectile){
       for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
         for (int j = projectile->y; j >= projectile->y - projectile->projectileSpeed; j--) {
           for (int k = 0; k < n_opponents; k++)
-            if(gameOpponents[k]==NULL) continue;
+            if(!gameOpponents[k]->isAlive) continue;
             else if(gameOpponents[k]->opponentRoom==room->currentRoom){
               found=true;
               if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
@@ -217,7 +217,7 @@ bool projectileCollision(Projectile *projectile){
       for (int i = projectile->x; i <= projectile->x + projectile->projectileImg.width; i++) {
         for (int j = projectile->y + projectile->projectileImg.height; j <= projectile->y + projectile->projectileImg.height + projectile->projectileSpeed; j++) {
           for (int k = 0; k < n_opponents; k++)
-            if(gameOpponents[k]==NULL) continue;
+            if(!gameOpponents[k]->isAlive) continue;
             else if(gameOpponents[k]->opponentRoom==room->currentRoom){
               found=true;
               if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
@@ -252,7 +252,7 @@ bool projectileCollision(Projectile *projectile){
       for (int i = projectile->x; i >= projectile->x - projectile->projectileSpeed; i--) {
         for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
           for (int k = 0; k < n_opponents; k++)
-            if(gameOpponents[k]==NULL) continue;
+            if(!gameOpponents[k]->isAlive) continue;
             else if(gameOpponents[k]->opponentRoom==room->currentRoom){
               found=true;
               if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
@@ -287,7 +287,7 @@ bool projectileCollision(Projectile *projectile){
       for (int i = projectile->x + projectile->projectileImg.width; i <= projectile->x + projectile->projectileImg.width + projectile->projectileSpeed; i++) {
         for (int j = projectile->y; j <= projectile->y + projectile->projectileImg.height; j++) {
           for (int k = 0; k < n_opponents; k++)
-            if(gameOpponents[k]==NULL) continue;
+            if(!gameOpponents[k]->isAlive) continue;
             else if(gameOpponents[k]->opponentRoom==room->currentRoom){
               found=true;
               if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {

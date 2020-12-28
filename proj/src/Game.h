@@ -22,17 +22,10 @@ void Play_ih(Device device);
 //Tasks interrupt handlers
 //void task1IH(Device device);
 
-
-
-
-//Load da task conforme o room
-//void Loadtask(unsigned int state, Lever * lever);
-
 //Verificar se o player está na zona de transição de sala
 bool roomTransition();
 //Verificar se o player está perto o suficiente da task
 //int check_task_position();
 
-
-//Controlo de todas as task
-//bool task1Handler(int * xlen, LeverState * state, struct mouse_ev * mouse_event);
+//Reset game conditions
+void ResetGame();

@@ -44,6 +44,7 @@ typedef struct {
 
     xpm_image_t taskAnimations[10];
     unsigned int animationIndex;
+    bool isFinished;
 
 } Task;
 
@@ -59,8 +60,6 @@ void draw_task_arrow(Task* task,xpm_image_t img);
 void draw_warnings();
 
 void draw_task_warning(Room_number room,xpm_image_t img);
-
-//void erase_task_arrow(Task* task);
 
 void finish_task(int index);
 

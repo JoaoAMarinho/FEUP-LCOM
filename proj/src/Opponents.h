@@ -30,6 +30,7 @@ typedef struct {
     
     unsigned int animationIndex;
     bool isMoving;
+    bool isAlive;
 
     Direction direction;
 

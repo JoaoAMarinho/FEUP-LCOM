@@ -60,7 +60,7 @@ int gameLoop(){
 
     uint8_t kb_bytes[2];
 
-    while(gameMenu != FINAL && keyboard_data != ESC_KEY) {
+    while(gameMenu != FINAL && keyboard_data!=0x90 ) {
         if ( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) { 
         printf("driver_receive failed with: %d", r);
         continue;
@@ -182,8 +182,6 @@ void Play_ih(Device device){
     static Projectile * playerProjectile;
 	static bool pr_exists=false , canBlast=true, projectile_anim=false, opponent_anim=false, victory;
 	static int projectile_index=0, opponent_anim_index=0, opponent_index;
-    //static int checkLever; //Task à qual está perto
-
     //The way the player is facing
     static bool up = false, down = false, left = false, right = false;
 
@@ -192,7 +190,7 @@ void Play_ih(Device device){
 			//Verificar vitória
 			victory=false; //ALTERAR PARA TRUE
 			for(int index=0; index<n_tasks; index++){
-				if(gameTasks[index]==NULL){
+				if(gameTasks[index]->isFinished){
 					continue;
 				}else{
 					victory=false;
@@ -215,7 +213,7 @@ void Play_ih(Device device){
 				draw_GameTimer();
 			}
 			if(game_counter==0){
-				gameMenu = FINAL; //Vai para defeat
+				gameMenu = DEFEAT;
 			}
 
 			//Change of rooms
@@ -257,7 +255,7 @@ void Play_ih(Device device){
 			//Move opponents
 			bool found=false;
 			for (int index = 0; index < n_opponents; index++) {
-				if(gameOpponents[index]==NULL) continue;
+				if(!gameOpponents[index]->isAlive) continue;
        	 		else if(gameOpponents[index]->opponentRoom==room->currentRoom){
 					found=true;
 					if (time_counter % 7 == 0 && gameOpponents[index]->isMoving) //Update opponent animation
@@ -279,25 +277,21 @@ void Play_ih(Device device){
 			}
 
 			//Player Death
+			static Direction temp;
+			if(opponent_index!=-1 && !opponent_anim)
+				temp=gameOpponents[opponent_index]->direction;
+
 			if (!player->alive && !opponent_anim) {
 				erase_opponent(gameOpponents[opponent_index]);
-				if(player->direction==UP){
-					gameOpponents[opponent_index]->direction=DOWN;
-				}
-				else if(player->direction==DOWN){
-					gameOpponents[opponent_index]->direction=UP;
-				}
-				else if(player->direction==RIGHT){
-					gameOpponents[opponent_index]->direction=LEFT;
-				}
-				else if(player->direction==LEFT){
-					gameOpponents[opponent_index]->direction=RIGHT;
-				}
+				if(player->direction==UP && (gameOpponents[opponent_index]->direction==RIGHT||gameOpponents[opponent_index]->direction==LEFT) && player->y>(gameOpponents[opponent_index]->y+gameOpponents[opponent_index]->opponentImg.height-5)) gameOpponents[opponent_index]->direction=DOWN;
+				else if(player->direction==DOWN && (gameOpponents[opponent_index]->direction==RIGHT||gameOpponents[opponent_index]->direction==LEFT) && (player->y+player->playerImg.height-5)<gameOpponents[opponent_index]->y) gameOpponents[opponent_index]->direction=UP;
+				else if(player->direction==RIGHT && (gameOpponents[opponent_index]->direction==UP||gameOpponents[opponent_index]->direction==DOWN) && (player->x+player->playerImg.width-5)<gameOpponents[opponent_index]->x) gameOpponents[opponent_index]->direction=LEFT;
+				else if(player->direction==LEFT && (gameOpponents[opponent_index]->direction==UP||gameOpponents[opponent_index]->direction==DOWN) && player->x>(gameOpponents[opponent_index]->x+gameOpponents[opponent_index]->opponentImg.width-5)) gameOpponents[opponent_index]->direction=RIGHT;
 				draw_opponent(gameOpponents[opponent_index]);
 				opponent_anim=true;
 			}
 			//Death Animation
-			if(opponent_anim && time_counter%(5+15*opponent_anim_index)==0){
+			if(opponent_anim && time_counter%(5+10*opponent_anim_index)==0){
 				opponent_anim_index++;
 				erase_opponent(gameOpponents[opponent_index]);
 				if(opponent_anim_index==2){
@@ -305,12 +299,18 @@ void Play_ih(Device device){
 				}
 				opponent_atack(gameOpponents[opponent_index], opponent_anim_index);
 				if(opponent_anim_index == 3){
-					gameMenu=FINAL;
+					gameMenu=DEFEAT;
 				}
 			}
 
 			if (gameMenu == DEFEAT) {
-				//Draw lost menu
+				pr_exists=false; canBlast=true; projectile_anim=false; opponent_anim=false;
+				up = false; down = false; left = false; right = false;
+				gameOpponents[opponent_index]->isMoving=true;
+				gameOpponents[opponent_index]->direction=temp;
+				projectile_index=0; opponent_anim_index=0;
+				LoadDefeat();
+				ResetGame();
 			}
       		break;
 
@@ -430,4 +430,25 @@ bool roomTransition(){
 			break;
 	}
 	return false;
+}
+
+//Reset game conditions
+void ResetGame(){
+    for(int index=0; index<n_tasks; index++){
+		if(gameTasks[index]->isFinished){
+			gameTasks[index]->isFinished=false;
+			gameTasks[index]->animationIndex=0;
+			gameTasks[index]->taskImg=gameTasks[index]->taskAnimations[0];
+		}
+	}
+	for(int index=0; index<n_opponents; index++){
+		if(!gameOpponents[index]->isAlive){
+			gameOpponents[index]->isAlive=true;
+			gameOpponents[index]->animationIndex=0;
+			gameOpponents[index]->opponentImg=gameOpponents[index]->opponentAnimations[0];
+		}
+	}
+	free(player);
+	time_counter=0;
+	game_counter=300; //Trocar para tempo normal
 }

@@ -136,19 +136,15 @@ void animate_player(Player *player){
 void change_direction(Player * player, /*uint8_t keyboard_data,*/ bool * up, bool * down, bool * left, bool * right){
     if (keyboard_data == 0x11 /*Make-code W*/ || keyboard_data == 0x48 /*Make-code Up-arrow*/) {
         *up = true;
-        //player->direction = UP;
     }
     else if (keyboard_data == 0x1E /*Make-code A*/ || keyboard_data == 0x4B /*Make-code Left-arrow*/) {
         *left = true;
-        //player->direction = LEFT;
     }
     else if (keyboard_data == 0x1F /*Make-code S*/ || keyboard_data == 0x50 /*Make-code Down-arrow*/) {
         *down = true;
-        //player->direction = DOWN;
     }
     else if (keyboard_data == 0x20 /*Make-code D*/ || keyboard_data == 0x4D /*Make-code Right-arrow*/) {
         *right = true;
-        //player->direction = RIGHT;
     }
     else if (keyboard_data == 0x91 /*Break-code W*/ || keyboard_data == 0xC8 /*Break-code Up-arrow*/)
         *up = false;
@@ -277,85 +273,22 @@ bool room_player_collision(Player* player){
 }
 
 int player_opponent_collision(Player * player){
-    if(player->direction==UP){
-        for (int i = player->x + 3; i <= player->x + player->playerImg.width - 3; i++) {
-            for (int j = player->y; j >= player->y - player->yspeed; j--) {
-                for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
-                    else if(gameOpponents[k]->opponentRoom==room->currentRoom){
-                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width &&j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
-                            return k;
-                        }
-
-                    }
-                }
+    for(int k=0; k < n_opponents; k++){
+        if(!gameOpponents[k]->isAlive) continue;
+        else if(gameOpponents[k]->opponentRoom==room->currentRoom){
+            if(player->x >= gameOpponents[k]->x && player->y >= gameOpponents[k]->y && player->x <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
+                return k;
+            }
+            else if(player->x + /*x_size*/player->playerImg.width >= gameOpponents[k]->x && player->y >= gameOpponents[k]->y && player->x + player->playerImg.width <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
+                return k;
+            }
+            else if(player->x >= gameOpponents[k]->x && player->y + player->playerImg.height >= gameOpponents[k]->y && player->x <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y + player->playerImg.height <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
+                return k;
+            }
+            else if(player->x + player->playerImg.width >= gameOpponents[k]->x && player->y + player->playerImg.height >= gameOpponents[k]->y && player->x + player->playerImg.width <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y + player->playerImg.height <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
+                return k;
             }
         }
     }
-    else if(player->direction==DOWN){
-        for (int i = player->x + 3; i <= player->x + player->playerImg.width - 3; i++) {
-            for (int j = player->y + player->playerImg.height; j <= player->y + player->playerImg.height + player->yspeed; j++) {
-                for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
-                    else if(gameOpponents[k]->opponentRoom==room->currentRoom){
-                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
-                            return k;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else if(player->direction==RIGHT){
-        for (int i = player->x + player->playerImg.width; i <= player->x + player->xspeed + player->playerImg.width; i++) {
-            for (int j = player->y + 3; j <= player->y + player->playerImg.height - 3; j++) {
-                for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
-                    else if(gameOpponents[k]->opponentRoom==room->currentRoom){
-                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
-                            return k;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    else if(player->direction==LEFT){
-        for (int i = player->x; i >= player->x - player->xspeed; i--) {
-            for (int j = player->y + 3; j <= player->y + player->playerImg.height - 3; j++) {
-                for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
-                    else if(gameOpponents[k]->opponentRoom==room->currentRoom){
-                        if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
-                            return k;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    /*if(player->direction==UP || player->direction==DOWN){
-        for(int k=0; k < n_opponents; k++){
-            if(gameOpponents[k]==NULL) continue;
-            else if(gameOpponents[k]->opponentRoom==room->currentRoom){
-                //Collision from all directions
-                if(gameOpponents[k]==UP){
-                    if(gameOpponents[k]->y-gameOpponents[k]->yspeed < player->y+player->playerImg.width && gameOpponents[k]->x+gameOpponents[k]->opponentImg.height>player->x && gameOpponents[k]->x+gameOpponents[k]->opponentImg.height<player->x+player->playerImg.height) return k;
-                    //gameOpponents[k]->y-gameOpponents[k]->opponentImg.width )
-                }
-                if(player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width && (player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.height || player->x+player->playerImg.height>gameOpponents[k]->x))
-                {
-                    return k;
-                }else if(player->y+player->playerImg.width > gameOpponents[k]->y && (player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.height || player->x+player->playerImg.height>gameOpponents[k]->x)){
-                    return k;
-                }
-                else if(player->x < gameOpponents[k]->x+gameOpponents[k]->opponentImg.width && ( player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width || player->y + player->playerImg.width > gameOpponents[k]->y)){
-                    return k;
-                }else if(player->x+player->playerImg.height > gameOpponents[k]->x && ( player->y < gameOpponents[k]->y+gameOpponents[k]->opponentImg.width || player->y + player->playerImg.width > gameOpponents[k]->y)){
-                    return k;
-                }
-            }
-        }
-    }*/
     return -1;
 }

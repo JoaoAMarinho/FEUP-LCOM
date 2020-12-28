@@ -11,6 +11,9 @@
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
+#include "Xpms/Instructions.xpm"
+
+#include "Xpms/Defeat.xpm"
 //#include "Xpms/Main_Menu/BackGroundObstacles.xpm"
 //#include "Xpms/Tasks/TasksObstacles.xpm"
 #include "Xpms/GameMap.xpm"
@@ -60,6 +63,10 @@ void Ship_ih(Device device);
 //Load menus
 void LoadMain();
 
+void LoadInstructions();
+
+void LoadDefeat();
+
 void LoadGameMap();
 
 void LoadGameTimer();
@@ -81,3 +88,4 @@ void draw_Number(int x, int y, int n);
 
 //Gesture handlers
 bool ship_gesture_handler(Mouse_event* mouseEvent);
+

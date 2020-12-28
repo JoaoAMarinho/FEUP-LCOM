@@ -32,6 +32,7 @@ Opponent* create_opponent(int x, int y, Direction direction, Room_number current
     opponent->xspeed = 3;
     opponent->yspeed = 3;
     opponent->isMoving=hasMovement;
+    opponent->isAlive=true;
     opponent->animationIndex=0;
 
     xpm_image_t img;
@@ -144,7 +145,7 @@ void erase_opponent(Opponent* opponent){
 void draw_current_opponents(){
     bool found=false;
     for (int i = 0; i < n_opponents; i++)
-        if(gameOpponents[i]==NULL) continue;
+        if(!gameOpponents[i]->isAlive) continue;
         else if(gameOpponents[i]->opponentRoom==room->currentRoom){draw_opponent(gameOpponents[i]); found=true;}
         else if(found) break;
 }
@@ -222,8 +223,8 @@ void opponent_atack(Opponent* opponent, int index){
 
 void kill_opponent(int index) {
   erase_opponent(gameOpponents[index]);
-  if (gameOpponents[index] != NULL){
-        gameOpponents[index] = NULL; 
+  if (gameOpponents[index]->isAlive){
+        gameOpponents[index]->isAlive=false; 
     }
 }
 
@@ -269,7 +270,7 @@ bool opponent_opponent_colision(Opponent* opponent){
         for (int i = opponent->x; i <= opponent->x + opponent->opponentImg.width; i++) {
             for (int j = opponent->y; j >= opponent->y - opponent->yspeed; j--) {
                 for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
+                    if(!gameOpponents[k]->isAlive) continue;
                     else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
                         if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width &&j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
                             return true;
@@ -283,7 +284,7 @@ bool opponent_opponent_colision(Opponent* opponent){
         for (int i = opponent->x; i <= opponent->x + opponent->opponentImg.width; i++) {
             for (int j = opponent->y + opponent->opponentImg.height; j <= opponent->y + opponent->opponentImg.height + opponent->yspeed; j++) {
                 for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
+                    if(!gameOpponents[k]->isAlive) continue;
                     else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
                         if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
                             return true;
@@ -297,7 +298,7 @@ bool opponent_opponent_colision(Opponent* opponent){
         for (int i = opponent->x + opponent->opponentImg.width; i <= opponent->x + opponent->xspeed + opponent->opponentImg.width; i++) {
             for (int j = opponent->y; j <= opponent->y + opponent->opponentImg.height; j++) {
                 for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
+                    if(!gameOpponents[k]->isAlive) continue;
                     else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
                         if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
                             return true;
@@ -311,7 +312,7 @@ bool opponent_opponent_colision(Opponent* opponent){
         for (int i = opponent->x; i >= opponent->x - opponent->xspeed; i--) {
             for (int j = opponent->y; j <= opponent->y + opponent->opponentImg.height; j++) {
                 for(int k=0; k < n_opponents; k++){
-                    if(gameOpponents[k]==NULL) continue;
+                    if(!gameOpponents[k]->isAlive) continue;
                     else if(gameOpponents[k]->opponentRoom==room->currentRoom && gameOpponents[k]!=opponent){
                         if (i > gameOpponents[k]->x && i < gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && j > gameOpponents[k]->y && j < gameOpponents[k]->y + gameOpponents[k]->opponentImg.height) {
                             return true;

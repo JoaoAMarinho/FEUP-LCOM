@@ -157,6 +157,7 @@ void Main_ih(Device device){
         gameMenu = FINAL;
     else if (playClicked) { // Começar o jogo
         gameMenu = PLAYING;
+        keyboard_data = 0x00;
         player=create_player();
         //clean_clock();
         LoadPlay(CAFETERIA);
@@ -164,7 +165,7 @@ void Main_ih(Device device){
     else if (instructionsClicked) { // Instruções
         gameMenu = INSTRUCTIONS;
         //clean_clock();
-        //Desenhar instruçoes();
+        LoadInstructions();
     }
     else if (bestscoresClicked) { // Mostrar best scores
         gameMenu = BESTSCORES;
@@ -174,7 +175,24 @@ void Main_ih(Device device){
 
 void Bestscores_ih(Device device){return;}
 
-void Instructions_ih(Device device){return;}
+void Instructions_ih(Device device){
+    switch (device) {
+        case TIMER:
+            break;
+        case KEYBOARD:
+            if (keyboard_data == ESC_KEY) {
+                gameMenu = MAIN;
+                //LoadRtc();
+                LoadMain();
+                draw_cursor();
+            }
+            break;
+        case MOUSE:
+            break;
+        case RTC:
+            break;
+  }
+}
 
 void Pause_ih(Device device){return;}
 
@@ -210,7 +228,24 @@ void GameMap_ih(Device device){
 
 void Victory_ih(Device device){return;}
 
-void Defeat_ih(Device device){return;}
+void Defeat_ih(Device device){
+
+    switch (device) {
+        case TIMER:
+            break;
+        case KEYBOARD:
+            if (keyboard_data == ESC_KEY) {
+                gameMenu = MAIN;
+                //LoadRtc();
+                LoadMain();
+            }
+            break;
+        case MOUSE:
+            break;
+        case RTC:
+            break;
+    }
+}
 
 //---------------------------------------------------------------------------------------------
 //Tasks interrupt handlers
@@ -226,7 +261,7 @@ void Ice_ih(Device device){
                 draw_GameTimer();
 			}
 			if(game_counter==0 && !task_finished){
-				gameMenu = FINAL; //Vai para defeat
+				gameMenu = DEFEAT;
 			}
             //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
             if(checkOverIce()==1 && !ice1_clicked){ //Over middle ice
@@ -276,13 +311,17 @@ void Ice_ih(Device device){
                 }
             }
             //End task
-            if(task_finished)
+            if(task_finished){
                 finish_task(task_index);
+            }
             break;
 
         case KEYBOARD:
             if (keyboard_data == E_KEY) {
         	    gameMenu = PLAYING;
+                *mouseEvent=MOVE;
+                ice1_clicked = false; ice2_clicked = false; ice3_clicked = false; task_finished= false;
+                gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
         	    LoadPlay(room->currentRoom);
       	    }
 
@@ -295,7 +334,6 @@ void Ice_ih(Device device){
             update_cursor_without_draw(&mouse_pack);
             draw_GameTimer();
             draw_cursor();
-            //update_cursor(&mouse_pack);
             break;
         case RTC:
             break;
@@ -314,7 +352,7 @@ void Ship_ih(Device device){
                 draw_GameTimer();
 			}
 			if(game_counter==0 && !task_finished){
-				gameMenu = FINAL; //Vai para defeat
+				gameMenu = DEFEAT;
 			}
             //Rato não pode passar por cima do timer !!!!!!!!!!!!!!!
             
@@ -327,6 +365,9 @@ void Ship_ih(Device device){
         case KEYBOARD:
             if (keyboard_data == E_KEY) {
         	    gameMenu = PLAYING;
+                task_finished= false;
+                gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+                *mouseEvent=MOVE;
         	    LoadPlay(room->currentRoom);
       	    }
 
@@ -353,7 +394,6 @@ void Ship_ih(Device device){
 void LoadMain(){
     xpm_load(MainBackGround, XPM_8_8_8_8, &current_background);
     //xpm_load(MainBackGroundObstacles, XPM_8_8_8_8, &background_obstacles);
-
     cursor = create_cursor();
 
     mainButtons = (Button **) malloc(5 * sizeof(Button *));
@@ -363,14 +403,28 @@ void LoadMain(){
     mainButtons[2] = createButton(BESTSCORES_B,500,230);
     mainButtons[3] = createButton(EXIT_B,500,290);
     mainButtons[4] = createButton(CALENDAR_B,27,524);
-    
 
-    
     add_button(mainButtons[0]);
     add_button(mainButtons[1]);
     add_button(mainButtons[2]);
     add_button(mainButtons[3]);
     add_button(mainButtons[4]);
+    draw_Menu();
+}
+
+void LoadInstructions(){
+    xpm_image_t instructionsImg;
+    xpm_load(Instructions_xpm, XPM_8_8_8_8, &instructionsImg);
+    uint32_t* map = (uint32_t*) instructionsImg.bytes;
+    for(int i = 0; i < instructionsImg.width; i++) {
+        for (int j = 0; j < instructionsImg.height; j++) {
+            drawPixel(i,j,*(map + i + j*horizontal_res));
+        }
+    }
+}
+
+void LoadDefeat(){
+    xpm_load(Defeat_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
 }
 //Loadvictory
@@ -584,6 +638,7 @@ void LoadPlay(Room_number currentRoom){
         draw_player(player);
     }
     previousRoom = currentRoom;
+    keyboard_data = 0x00;
 }
 
 //---------------------------------------------------------------------------------------------
@@ -603,7 +658,7 @@ void draw_Menu() {
 void draw_GameTimer(){
     unsigned int counter=game_counter;
     int n;
-    if(counter>100){ //3 digits
+    if(counter>=100){ //3 digits
         n=counter%10;
         draw_Number(423,4,n);
         counter=counter/10;
@@ -612,7 +667,7 @@ void draw_GameTimer(){
         counter=counter/10;
         n=counter%10;
         draw_Number(373,4,n);
-    }else if(counter>10){ //2 digits
+    }else if(counter>=10){ //2 digits
         n=counter%10;
         draw_Number(412,4,n);
         counter=counter/10;
@@ -723,6 +778,9 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
             }
             break;
         case END_STATE:
+            x_delta = 0;
+            y_delta = 0;
+            shipState=START_STATE;
             gameTasks[task_index]->animationIndex=4;
             gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
             LoadTask(task_index);
@@ -733,5 +791,4 @@ bool ship_gesture_handler(Mouse_event* mouseEvent){
     }
     return false;
 }
-
 
