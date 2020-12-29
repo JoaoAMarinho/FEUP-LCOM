@@ -39,37 +39,4 @@ void (kbc_ih)() {
     kb_error = true;
 }
 
-void (getEsc)(){
-  int ipc_status;
-  uint16_t r;
-  message msg;
-  uint8_t bit_no;
-  keyboard_subscribe_int(&bit_no);
-
-  uint32_t irq_set = BIT(bit_no);
-  
-  while( keyboard_data!=ESC_KEY) { 
-    if( (r = driver_receive(ANY, &msg, &ipc_status)) != 0 ) {
-        printf("driver_receive failed with: %d", r);
-        continue;
-    }
-    if (is_ipc_notify(ipc_status)) { /* received notification */
-        switch (_ENDPOINT_P(msg.m_source)) {
-        case HARDWARE: /* hardware interrupt notification */
-          if (msg.m_notify.interrupts & irq_set) { /* subscribed interrupt */
-            kbc_ih();
-          }
-          break;
-
-        default:
-            break; /* no other notifications expected: do nothing */
-        }
-    }
-    else { /* received a standard message, not a notification */
-    /* no standard messages expected: do nothing */
-    }
-  }
-
-  keyboard_unsubscribe_int();
-}
 

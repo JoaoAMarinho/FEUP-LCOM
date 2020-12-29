@@ -38,6 +38,7 @@ typedef struct {
 } GameTimer;
 
 //Menu interrupt handlers
+
 void Main_ih(Device device);
 
 void Bestscores_ih(Device device);
