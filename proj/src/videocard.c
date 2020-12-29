@@ -128,42 +128,6 @@ int drawPixel(uint16_t x,uint16_t y, uint32_t color){
     return 0;
 }
 
-int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color){
-    if (x >= horizontal_res || y >= vertical_res)
-		return 1;
-    //Change color of pixel in line
-    for (int i = 0; i < len; i++)
-	{
-        if(x+i>horizontal_res) break;
-
-		drawPixel(x+i,y,color);
-  	}
-    return 0;
-}
-
-int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint32_t color){
-    //Draw line by line (horizontal)
-    for(int i=0; i<height; i++){
-        if(y+i>vertical_res) break;
-
-        vg_draw_hline(x,y+i,width,color);
-    }
-
-    return 0;
-}
-
-unsigned get_bytes_per_pixel() {
-  return bytes_per_pixel;
-}
-
-uint16_t getHorizontal() {
-	return horizontal_res;
-}
-
-uint16_t getVertical() {
-	return vertical_res;
-}
-
 void copy_to_vram(){
     memcpy(video_mem, secondBuffer, vertical_res * horizontal_res * bytes_per_pixel);
 }

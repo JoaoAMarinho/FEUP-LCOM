@@ -7,8 +7,6 @@ extern uint8_t mouse_data;
 extern Mouse_event m_event;
 extern uint16_t horizontal_res, vertical_res;
 extern xpm_image_t current_background; //background image so that the cursor is deleted
-//extern xpm_image_t background_obstacles;
-//extern Room * room;
 
 Cursor *cursor;
 
@@ -25,10 +23,9 @@ int(mouse_subscribe_int)(uint8_t* bit_n){
 
 int (mouse_unsubscribe_int)(){
     if (sys_irqrmpolicy(&mouse_hook_id)) {
-        printf("Irqrmpolicy fails");
-    return 1;
-  }
-  return 0;
+        return 1;
+    }
+    return 0;
 }
 
 void (mouse_ih)(){
