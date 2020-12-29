@@ -13,7 +13,7 @@
 #include "Xpms/Instructions.xpm"
 #include "Xpms/Pause_Menu/PauseBackground.xpm"
 #include "Xpms/GameMap.xpm"
-//Victory
+#include "Xpms/Victory.xpm"
 #include "Xpms/Defeat.xpm"
 
 #include "Xpms/Numbers/Number0.xpm"
@@ -37,6 +37,11 @@ typedef struct {
 
 } GameTimer;
 
+typedef struct {
+    int points;
+    Date data;
+
+} Score;
 //Menu interrupt handlers
 
 void Main_ih(Device device);
@@ -71,7 +76,8 @@ void LoadPause();
 
 void LoadGameMap();
 
-//Load victory
+void LoadVictory();
+
 void LoadDefeat();
 
 void LoadNumbers();
@@ -98,4 +104,9 @@ void draw_Symbol();
 
 //Gesture handlers
 bool ship_gesture_handler(Mouse_event* mouseEvent,bool reset);
+
+//Scores
+void insertBestScores();
+
+void draw_Score(int x, int y);
 

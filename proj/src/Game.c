@@ -20,6 +20,7 @@ uint8_t rtc_date[3];
 
 //Game global variables
 extern Player * player;
+int pontos;
 extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
@@ -27,6 +28,7 @@ extern int n_tasks;
 extern Opponent ** gameOpponents;
 extern int n_opponents;
 extern GameTimer* gameTimer;
+extern Score* scores;
 extern Date * date;
 Menu gameMenu = MAIN;
 extern Button ** mainButtons;
@@ -188,7 +190,7 @@ void Play_ih(Device device){
     switch (device) {
         case TIMER:
 			//Verificar vitória
-			victory=false; //ALTERAR PARA TRUE
+			victory=true; //ALTERAR PARA TRUE
 			for(int index=0; index<n_tasks; index++){
 				if(gameTasks[index]->isFinished){
 					continue;
@@ -198,11 +200,13 @@ void Play_ih(Device device){
 				}
 			}
 			if(victory){
-				//gameMenu=VICTORY;
-				//Loadvictory();
-				gameMenu=GAMEMAP;
-				game_counter=20;
-				LoadGameMap();
+				pr_exists=false; canBlast=true; projectile_anim=false; opponent_anim=false;
+				up = false; down = false; left = false; right = false;
+				projectile_index=0; opponent_anim_index=0;
+				pontos=5000/game_counter;
+				gameMenu=VICTORY;
+				LoadVictory();
+				ResetGame();
 				break;
 			}
 
@@ -364,7 +368,7 @@ void Play_ih(Device device){
 
         break;
 
-    case MOUSE: //Não fazer nada ou clicar no map e pode vê-lo
+    case MOUSE:
         break;
     case RTC:
         break;

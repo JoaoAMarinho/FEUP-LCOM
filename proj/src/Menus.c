@@ -7,6 +7,7 @@ extern struct packet mouse_pack;
 
 extern Menu gameMenu;
 extern Player * player;
+extern int pontos;
 extern Room * room;
 extern Cursor * cursor;
 extern Task ** gameTasks;
@@ -17,9 +18,9 @@ xpm_image_t current_background;
 //xpm_image_t background_obstacles;
 
 GameTimer* gameTimer;
+Score scores[5];
 Button ** mainButtons;
 Button ** pauseButtons;
-//static Button * continueButton;
 
 void ResetGame();
 //---------------------------------------------------------------------------------------------
@@ -302,7 +303,22 @@ void GameMap_ih(Device device){
     }
 }
 
-void Victory_ih(Device device){return;}
+void Victory_ih(Device device){
+    switch (device) {
+        case TIMER:
+            break;
+        case KEYBOARD:
+            if (keyboard_data == ESC_KEY) {
+                gameMenu = MAIN;
+                LoadMain();
+            }
+            break;
+        case MOUSE:
+            break;
+        case RTC:
+            break;
+    }
+}
 
 void Defeat_ih(Device device){
 
@@ -480,6 +496,8 @@ void LoadMain(){
     draw_Menu();
 }
 
+//Load bestsores
+
 void LoadInstructions(){
     xpm_image_t instructionsImg;
     xpm_load(Instructions_xpm, XPM_8_8_8_8, &instructionsImg);
@@ -504,20 +522,23 @@ void LoadPause(){
     draw_Menu();
 }
 
-void LoadDefeat(){
-    xpm_load(Defeat_xpm, XPM_8_8_8_8, &current_background);
-    draw_Menu();
-}
-//Loadvictory
-//Loaddefeat
-//Load bestscores
-//Load instructions
-
 void LoadGameMap(){
     xpm_load(gameMap_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
     draw_GameTimer();
     draw_warnings();
+}
+
+void LoadVictory(){
+    insertBestScores();
+    xpm_load(Victory_xpm, XPM_8_8_8_8, &current_background);
+    draw_Menu();
+    draw_Score(12,12);
+}
+
+void LoadDefeat(){
+    xpm_load(Defeat_xpm, XPM_8_8_8_8, &current_background);
+    draw_Menu();
 }
 
 void LoadNumbers(){
@@ -927,3 +948,21 @@ bool ship_gesture_handler(Mouse_event* mouseEvent, bool reset){
     return false;
 }
 
+//---------------------------------------------------------------------------------------------
+//Scores
+void insertBestScores(){
+    Score x;
+    x.points=pontos;
+    x.data=(*date);
+    for (int i = 0; i < 5; i++){
+        if(scores[i].points < x.points){
+            Score temp_score = scores[i];
+            scores[i] = x;
+            x = temp_score;
+        }
+    }
+}
+
+void draw_Score(int x, int y){
+
+}
