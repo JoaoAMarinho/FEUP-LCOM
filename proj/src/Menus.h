@@ -9,7 +9,7 @@
 
 //Include das images dos menus
 #include "Xpms/Main_Menu/BackGround.xpm"
-//Bestscores
+#include "Xpms/BestScores.xpm"
 #include "Xpms/Instructions.xpm"
 #include "Xpms/Pause_Menu/PauseBackground.xpm"
 #include "Xpms/GameMap.xpm"
@@ -42,8 +42,8 @@ typedef struct {
     Date data;
 
 } Score;
-//Menu interrupt handlers
 
+//Menu interrupt handlers
 void Main_ih(Device device);
 
 void Bestscores_ih(Device device);
@@ -68,7 +68,7 @@ void Ship_ih(Device device);
 //Load menus
 void LoadMain();
 
-//LoadBestscores();
+void LoadBestsores();
 
 void LoadInstructions();
 
@@ -98,7 +98,7 @@ void erase_GameTimer(); //Erase countdown time
 void draw_Number(int x, int y, int n);
 
 //Date
-void draw_Date();
+void draw_Main_Date();
 void eraseDate();
 void draw_Symbol();
 
@@ -110,3 +110,6 @@ void insertBestScores();
 
 void draw_Score(int x, int y);
 
+void draw_BestScore(int y, Score score);
+
+void draw_Date(int y,Date date);

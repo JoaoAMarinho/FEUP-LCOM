@@ -27,6 +27,13 @@ typedef enum{
 
 
 // Subscribes mouse
+/**
+ * @brief 
+ * 
+ * @param bit_n
+ *
+ * @return 
+ */
 int(mouse_subscribe_int)(uint8_t* bit_n);
 
 // Unsubscribes mouse

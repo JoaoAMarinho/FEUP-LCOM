@@ -4,7 +4,7 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Opponent ** gameOpponents;
-int n_opponents=4;
+int n_opponents=18;
 
 //---------------------------------------------------------------------------------------------
 
@@ -12,12 +12,24 @@ void LoadOpponents(){
     gameOpponents = (Opponent **) malloc(n_opponents * sizeof(Opponent *));
 
     //Opponents ordered by their room
-    gameOpponents[0] = create_opponent(129,510,RIGHT,CAFETERIA, true);
-    gameOpponents[1] = create_opponent(102,200,DOWN,CAFETERIA, true);
+    gameOpponents[0] = create_opponent(175,431,DOWN,WEAPONS, false);
+    gameOpponents[1] = create_opponent(258,510,UP,NAVIGATION, true);
     gameOpponents[2] = create_opponent(477,207,LEFT,HALLWAY1, true);
     gameOpponents[3] = create_opponent(452,515,UP,HALLWAY1, true);
-    //gameOpponents[1] = create_opponent(500,170,DOWN,HALLWAY1);
-    //gameOpponents[2] = create_opponent(500,230,LEFT,NAVIGATION);
+    gameOpponents[4] = create_opponent(324,168,RIGHT,ADMIN,true);
+    gameOpponents[5] = create_opponent(639,337,DOWN,ADMIN,true);
+    gameOpponents[6] = create_opponent(222,117,DOWN,MEDBAY,true);
+    gameOpponents[7] = create_opponent(586,177,LEFT,ELETRICAL,true);
+    gameOpponents[8] = create_opponent(296,108,RIGHT,UPPERENG,false);
+    gameOpponents[9] = create_opponent(207,280,RIGHT,HALLWAY3,true);
+    gameOpponents[10] = create_opponent(572,377,LEFT,HALLWAY3,true);
+    gameOpponents[11] = create_opponent(479,222,DOWN,REACTOR,true);
+    gameOpponents[12] = create_opponent(296,364,RIGHT,REACTOR,true);
+    gameOpponents[13] = create_opponent(339,119,UP,SECURITY,false);
+    gameOpponents[14] = create_opponent(284,490,RIGHT,LOWERENG,true);
+    gameOpponents[15] = create_opponent(444,513,UP,HALLWAY2,false);
+    gameOpponents[16] = create_opponent(157,223,DOWN,HALLWAY2,false);
+    gameOpponents[17] = create_opponent(93,352,RIGHT,HALLWAY2,true);
 
 }
 

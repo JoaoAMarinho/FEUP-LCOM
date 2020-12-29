@@ -190,7 +190,7 @@ void Play_ih(Device device){
     switch (device) {
         case TIMER:
 			//Verificar vitória
-			victory=true; //ALTERAR PARA TRUE
+			victory=true;
 			for(int index=0; index<n_tasks; index++){
 				if(gameTasks[index]->isFinished){
 					continue;
@@ -203,7 +203,9 @@ void Play_ih(Device device){
 				pr_exists=false; canBlast=true; projectile_anim=false; opponent_anim=false;
 				up = false; down = false; left = false; right = false;
 				projectile_index=0; opponent_anim_index=0;
-				pontos=5000/game_counter;
+				if(game_counter!=0)
+					pontos=5*game_counter;
+				else pontos=1;
 				gameMenu=VICTORY;
 				LoadVictory();
 				ResetGame();

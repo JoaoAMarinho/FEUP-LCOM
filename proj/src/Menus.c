@@ -137,7 +137,7 @@ void Main_ih(Device device){
                         overCalendar = true;
                         mainButtons[4]->isMouseOver = true;
                         draw_button(mainButtons[4]);
-                        draw_Date();
+                        draw_Main_Date();
                     }
                     break;
             }
@@ -168,11 +168,28 @@ void Main_ih(Device device){
     }
     else if (bestscoresClicked) { // Mostrar best scores
         gameMenu = BESTSCORES;
-        //desenhar bestscores();
+        LoadBestsores();
     }
 }
 
-void Bestscores_ih(Device device){return;}
+void Bestscores_ih(Device device){
+    switch (device) {
+        case TIMER:
+            break;
+        case KEYBOARD:
+            if (keyboard_data == ESC_KEY) {
+                gameMenu = MAIN;
+                LoadRTC();
+                LoadMain();
+                draw_cursor();
+            }
+            break;
+        case MOUSE:
+            break;
+        case RTC:
+            break;
+  }
+}
 
 void Instructions_ih(Device device){
     switch (device) {
@@ -181,7 +198,7 @@ void Instructions_ih(Device device){
         case KEYBOARD:
             if (keyboard_data == ESC_KEY) {
                 gameMenu = MAIN;
-                //LoadRtc();
+                LoadRTC();
                 LoadMain();
                 draw_cursor();
             }
@@ -496,7 +513,16 @@ void LoadMain(){
     draw_Menu();
 }
 
-//Load bestsores
+void LoadBestsores(){
+    xpm_load(BestScores_xpm, XPM_8_8_8_8, &current_background);
+
+    draw_Menu();
+    draw_BestScore(182,scores[0]);
+    draw_BestScore(238,scores[1]);
+    draw_BestScore(294,scores[2]);
+    draw_BestScore(350,scores[3]);
+    draw_BestScore(406,scores[4]);
+}
 
 void LoadInstructions(){
     xpm_image_t instructionsImg;
@@ -533,7 +559,7 @@ void LoadVictory(){
     insertBestScores();
     xpm_load(Victory_xpm, XPM_8_8_8_8, &current_background);
     draw_Menu();
-    draw_Score(12,12);
+    draw_Score(445,419);
 }
 
 void LoadDefeat(){
@@ -816,7 +842,7 @@ void draw_Number(int x, int y, int n){
 //---------------------------------------------------------------------------------------------
 //Draw Date
 
-void draw_Date(){
+void draw_Main_Date(){
     draw_Number(100,538,date->day/10);
     draw_Number(121,538,date->day%10);
     draw_Symbol(143,538,0);
@@ -964,5 +990,38 @@ void insertBestScores(){
 }
 
 void draw_Score(int x, int y){
+    if(pontos>=100){ //3 digits
+        draw_Number(x,y,pontos/100);
+        draw_Number(x+25,y,(pontos/10)%10);
+        draw_Number(x+50,y,pontos%10);
+    }else if(pontos>=10){ //2 digits
+        draw_Number(x,y,(pontos/10)%10);
+        draw_Number(x+25,y,pontos%10);
+    }else{ //1 digit
+        draw_Number(x,y,pontos%10);
+    }
+}
 
+void draw_BestScore(int y, Score score){
+    
+    //Draw score
+    draw_Number(536,y,score.points/100);
+    draw_Number(557,y,(score.points/10)%10);
+    draw_Number(578,y,score.points%10);
+
+    //Draw date
+    draw_Date(y,score.data);
+    
+}
+void draw_Date(int y,Date date){
+    draw_Number(164,y,date.day/10);
+    draw_Number(186,y,date.day%10);
+    draw_Symbol(212,y,0);
+    draw_Number(224,y,date.month/10);
+    draw_Number(246,y,date.month%10);
+    draw_Symbol(272,y,0);
+    draw_Number(284,y,2);
+    draw_Number(306,y,0);
+    draw_Number(328,y,date.year/10);
+    draw_Number(350,y,date.year%10);
 }
