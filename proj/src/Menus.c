@@ -259,14 +259,19 @@ void Pause_ih(Device device){
 
     if (resumeClicked) { // Começar o jogo
         overResume = false, overMenu = false;
+        *mouseEvent=MOVE;
+        cursor->x=400; cursor->y=300;
         gameMenu = PLAYING;
+        LoadPlay(room->currentRoom,true);
         LoadPlay(room->currentRoom,false);
     }
     else if (menuClicked) { // Instruções
         overResume = false, overMenu = false;
+        *mouseEvent=MOVE;
+        cursor->x=400; cursor->y=300;
         gameMenu = MAIN;
         ResetGame();
-        //LoadRtc();
+        LoadRTC();
         LoadMain();
     }
 }
