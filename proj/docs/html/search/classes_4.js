@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['opponent_32',['Opponent',['../struct_opponent.html',1,'']]]
+  ['opponent_384',['Opponent',['../struct_opponent.html',1,'']]]
 ];

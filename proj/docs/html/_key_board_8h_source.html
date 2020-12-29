@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ShipEscape: KeyBoard.h Source File</title>
+<title>ShipEscape: D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX-LCOM/shared/g02/proj/src/KeyBoard.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,32 +60,56 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">KeyBoard.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="_key_board_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;i8042.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;utils.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="i8042_8h.html">i8042.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Subscribes keyboard</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"></span>int(keyboard_subscribe_int)(uint8_t* bit_no);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"></span>int(<a class="code" href="_key_board_8h.html#a178b1db0b319dccad2840cc3fd273132">keyboard_subscribe_int</a>)(uint8_t* bit_no);</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Unsubscribes keyboard</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span>int (keyboard_unsubscribe_int)();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span>int (<a class="code" href="_key_board_8h.html#a32cc4de66854f8a7bd909e7aa8b901ed">keyboard_unsubscribe_int</a>)();</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// Handles keyboard interrupts</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span>void (kbc_ih)();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span>void (<a class="code" href="_key_board_8h.html#aea970a154161a35f6894898a092ed70a">kbc_ih</a>)();</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="a_key_board_8c_html_a29ff55300c0a65d73d7e138d8f67b872"><div class="ttname"><a href="_key_board_8c.html#a29ff55300c0a65d73d7e138d8f67b872">kb_error</a></div><div class="ttdeci">bool kb_error</div><div class="ttdef"><b>Definition:</b> Game.c:9</div></div>
+<div class="ttc" id="a_key_board_8c_html_a4106b9f641b7ec5bdb602975fce75bcf"><div class="ttname"><a href="_key_board_8c.html#a4106b9f641b7ec5bdb602975fce75bcf">keyboard_data</a></div><div class="ttdeci">uint8_t keyboard_data</div><div class="ttdef"><b>Definition:</b> Game.c:8</div></div>
+<div class="ttc" id="a_key_board_8c_html_a178b1db0b319dccad2840cc3fd273132"><div class="ttname"><a href="_key_board_8c.html#a178b1db0b319dccad2840cc3fd273132">keyboard_subscribe_int</a></div><div class="ttdeci">int() keyboard_subscribe_int(uint8_t *bit_no)</div><div class="ttdoc">Subscribes keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:10</div></div>
+<div class="ttc" id="autils_8c_html_a79a031a8611f5b2d6afa4158e92b0fb4"><div class="ttname"><a href="utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4">util_sys_inb</a></div><div class="ttdeci">int() util_sys_inb(int port, uint8_t *value)</div><div class="ttdoc">Function able read from registers.</div><div class="ttdef"><b>Definition:</b> utils.c:22</div></div>
+<div class="ttc" id="a_key_board_8c_html_a21b0753690e302dd17346f984b2b1ef7"><div class="ttname"><a href="_key_board_8c.html#a21b0753690e302dd17346f984b2b1ef7">kb_hook_id</a></div><div class="ttdeci">int kb_hook_id</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:5</div></div>
+<div class="ttc" id="a_key_board_8c_html_aea970a154161a35f6894898a092ed70a"><div class="ttname"><a href="_key_board_8c.html#aea970a154161a35f6894898a092ed70a">kbc_ih</a></div><div class="ttdeci">void() kbc_ih()</div><div class="ttdoc">Handles keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:29</div></div>
+<div class="ttc" id="ai8042_8h_html_a81d2ca6759f3f3bf04556b7558aea6bc"><div class="ttname"><a href="i8042_8h.html#a81d2ca6759f3f3bf04556b7558aea6bc">PARITY_ERROR</a></div><div class="ttdeci">#define PARITY_ERROR</div><div class="ttdef"><b>Definition:</b> i8042.h:34</div></div>
+<div class="ttc" id="ai8042_8h_html_aefc48d416c882f06edaf6d01779d4d74"><div class="ttname"><a href="i8042_8h.html#aefc48d416c882f06edaf6d01779d4d74">TIMEOUT_ERROR</a></div><div class="ttdeci">#define TIMEOUT_ERROR</div><div class="ttdef"><b>Definition:</b> i8042.h:35</div></div>
+<div class="ttc" id="ai8042_8h_html"><div class="ttname"><a href="i8042_8h.html">i8042.h</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+<div class="ttc" id="a_key_board_8h_html_a178b1db0b319dccad2840cc3fd273132"><div class="ttname"><a href="_key_board_8h.html#a178b1db0b319dccad2840cc3fd273132">keyboard_subscribe_int</a></div><div class="ttdeci">int() keyboard_subscribe_int(uint8_t *bit_no)</div><div class="ttdoc">Subscribes keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:10</div></div>
+<div class="ttc" id="ai8042_8h_html_ae62c18868d0dadcfb8f4ad6365d6e0e7"><div class="ttname"><a href="i8042_8h.html#ae62c18868d0dadcfb8f4ad6365d6e0e7">KEYBOARD_OUT_BUF</a></div><div class="ttdeci">#define KEYBOARD_OUT_BUF</div><div class="ttdef"><b>Definition:</b> i8042.h:28</div></div>
+<div class="ttc" id="ai8042_8h_html_a5c1072213ce8d8cd43628c4319ae0391"><div class="ttname"><a href="i8042_8h.html#a5c1072213ce8d8cd43628c4319ae0391">KBD_IRQ</a></div><div class="ttdeci">#define KBD_IRQ</div><div class="ttdef"><b>Definition:</b> i8042.h:13</div></div>
+<div class="ttc" id="a_key_board_8c_html_a32cc4de66854f8a7bd909e7aa8b901ed"><div class="ttname"><a href="_key_board_8c.html#a32cc4de66854f8a7bd909e7aa8b901ed">keyboard_unsubscribe_int</a></div><div class="ttdeci">int() keyboard_unsubscribe_int()</div><div class="ttdoc">Unsubscribes keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:20</div></div>
+<div class="ttc" id="a_key_board_8h_html_aea970a154161a35f6894898a092ed70a"><div class="ttname"><a href="_key_board_8h.html#aea970a154161a35f6894898a092ed70a">kbc_ih</a></div><div class="ttdeci">void() kbc_ih()</div><div class="ttdoc">Handles keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:29</div></div>
+<div class="ttc" id="ai8042_8h_html_a526d513d3b5a8e360dcedf743c6d9b45"><div class="ttname"><a href="i8042_8h.html#a526d513d3b5a8e360dcedf743c6d9b45">OUTPUT_BUF_FULL</a></div><div class="ttdeci">#define OUTPUT_BUF_FULL</div><div class="ttdef"><b>Definition:</b> i8042.h:41</div></div>
+<div class="ttc" id="a_key_board_8h_html"><div class="ttname"><a href="_key_board_8h.html">KeyBoard.h</a></div></div>
+<div class="ttc" id="ai8042_8h_html_aade608c2b485d0c1238c401e073bbbdc"><div class="ttname"><a href="i8042_8h.html#aade608c2b485d0c1238c401e073bbbdc">STATUS_REGISTER</a></div><div class="ttdeci">#define STATUS_REGISTER</div><div class="ttdef"><b>Definition:</b> i8042.h:29</div></div>
+<div class="ttc" id="a_key_board_8h_html_a32cc4de66854f8a7bd909e7aa8b901ed"><div class="ttname"><a href="_key_board_8h.html#a32cc4de66854f8a7bd909e7aa8b901ed">keyboard_unsubscribe_int</a></div><div class="ttdeci">int() keyboard_unsubscribe_int()</div><div class="ttdoc">Unsubscribes keyboard interrupts.</div><div class="ttdef"><b>Definition:</b> KeyBoard.c:20</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

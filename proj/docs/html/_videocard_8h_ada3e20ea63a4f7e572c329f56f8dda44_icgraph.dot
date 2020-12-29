@@ -1,0 +1,12 @@
+digraph "set_mode"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="set_mode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Changes the videocard mode to the one specified in the paramter."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="vg_init",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8h.html#aa6c1ff5024cd4d15e476bce487584daa",tooltip="Inicializes the videocard memory and changes it's mode."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e",tooltip=" "];
+}

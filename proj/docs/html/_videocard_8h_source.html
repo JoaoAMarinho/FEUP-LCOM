@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ShipEscape: Videocard.h Source File</title>
+<title>ShipEscape: D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX-LCOM/shared/g02/proj/src/Videocard.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,49 +60,72 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Videocard.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="_videocard_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;i8042.h&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;utils.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="i8042_8h.html">i8042.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//Sentido do player ou do enemy</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {UP, DOWN, LEFT, RIGHT} Direction;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;int (set_mode)(uint16_t mode);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">void</span>* (vg_init)(uint16_t mode);</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa">   16</a></span>&#160;<span class="comment"></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa">UP</a>, <a class="code" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da">DOWN</a>, <a class="code" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065">LEFT</a>, <a class="code" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38">RIGHT</a>} <a class="code" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a>;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">void</span>* (map_mem)(uint16_t mode);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;int (vg_draw_rectangle)(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint32_t color);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;int (vg_draw_hline)(uint16_t x,uint16_t y,uint16_t len ,uint32_t color);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">int</span> drawPixel(uint16_t x,uint16_t y, uint32_t color);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">unsigned</span> get_bytes_per_pixel();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;uint16_t getHorizontal();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;uint16_t getVertical();</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> copy_to_vram();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;int (<a class="code" href="_videocard_8h.html#ada3e20ea63a4f7e572c329f56f8dda44">set_mode</a>)(uint16_t mode);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span>* (<a class="code" href="_videocard_8h.html#aa6c1ff5024cd4d15e476bce487584daa">vg_init</a>)(uint16_t mode);</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> free_mem();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_videocard_8h.html#a54b128407fee04f1172990f0f39532b1">get_vbe_mode_info</a>(uint16_t mode, vbe_mode_info_t *<a class="code" href="_videocard_8c.html#a26081be7a771e5c611b33f15caaf831e">vmi_p</a>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span>* (<a class="code" href="_videocard_8h.html#a7ec354c48e5e189600a432981cc2e525">map_mem</a>)(uint16_t mode);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_videocard_8h.html#a6091a4bd04596e6e8e39b7dee1e1b118">drawPixel</a>(uint16_t x,uint16_t y, uint32_t color);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_videocard_8h.html#a5962bd49e868bdc99b946acc0b2df2a1">copy_to_vram</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_videocard_8h.html#a5b86e611e659eb33da1bf16fa0f0f706">free_mem</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="a_videocard_8c_html_a7ec354c48e5e189600a432981cc2e525"><div class="ttname"><a href="_videocard_8c.html#a7ec354c48e5e189600a432981cc2e525">map_mem</a></div><div class="ttdeci">void *() map_mem(uint16_t mode)</div><div class="ttdoc">Allocates memory for the primary and secondary buffer.</div><div class="ttdef"><b>Definition:</b> Videocard.c:75</div></div>
+<div class="ttc" id="ai8042_8h_html_a6492b88b080756a7c3ffab3f391223fa"><div class="ttname"><a href="i8042_8h.html#a6492b88b080756a7c3ffab3f391223fa">VIDEO_CARD</a></div><div class="ttdeci">#define VIDEO_CARD</div><div class="ttdef"><b>Definition:</b> i8042.h:81</div></div>
+<div class="ttc" id="a_videocard_8c_html_a59f3a4d6ab9893f8778cfbda7ec53346"><div class="ttname"><a href="_videocard_8c.html#a59f3a4d6ab9893f8778cfbda7ec53346">horizontal_res</a></div><div class="ttdeci">uint16_t horizontal_res</div><div class="ttdef"><b>Definition:</b> Game.c:17</div></div>
+<div class="ttc" id="a_videocard_8h_html_a7ec354c48e5e189600a432981cc2e525"><div class="ttname"><a href="_videocard_8h.html#a7ec354c48e5e189600a432981cc2e525">map_mem</a></div><div class="ttdeci">void *() map_mem(uint16_t mode)</div><div class="ttdoc">Allocates memory for the primary and secondary buffer.</div><div class="ttdef"><b>Definition:</b> Videocard.c:75</div></div>
+<div class="ttc" id="a_videocard_8h_html"><div class="ttname"><a href="_videocard_8h.html">Videocard.h</a></div></div>
+<div class="ttc" id="a_videocard_8c_html_a26081be7a771e5c611b33f15caaf831e"><div class="ttname"><a href="_videocard_8c.html#a26081be7a771e5c611b33f15caaf831e">vmi_p</a></div><div class="ttdeci">vbe_mode_info_t vmi_p</div><div class="ttdef"><b>Definition:</b> Videocard.c:8</div></div>
+<div class="ttc" id="a_videocard_8h_html_a224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065"><div class="ttname"><a href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaadb45120aafd37a973140edee24708065">LEFT</a></div><div class="ttdeci">@ LEFT</div><div class="ttdef"><b>Definition:</b> Videocard.h:16</div></div>
+<div class="ttc" id="a_videocard_8c_html_a27553ef0da1f0b187170035242a2287f"><div class="ttname"><a href="_videocard_8c.html#a27553ef0da1f0b187170035242a2287f">mr</a></div><div class="ttdeci">struct minix_mem_range mr</div><div class="ttdef"><b>Definition:</b> Videocard.c:10</div></div>
+<div class="ttc" id="a_videocard_8c_html_a5962bd49e868bdc99b946acc0b2df2a1"><div class="ttname"><a href="_videocard_8c.html#a5962bd49e868bdc99b946acc0b2df2a1">copy_to_vram</a></div><div class="ttdeci">void copy_to_vram()</div><div class="ttdoc">Copies all the pixels from the second buffer to the primary one.</div><div class="ttdef"><b>Definition:</b> Videocard.c:131</div></div>
+<div class="ttc" id="a_videocard_8h_html_a6091a4bd04596e6e8e39b7dee1e1b118"><div class="ttname"><a href="_videocard_8h.html#a6091a4bd04596e6e8e39b7dee1e1b118">drawPixel</a></div><div class="ttdeci">int drawPixel(uint16_t x, uint16_t y, uint32_t color)</div><div class="ttdoc">Draws a certain pixel with a specific colour in the secondary buffer.</div><div class="ttdef"><b>Definition:</b> Videocard.c:117</div></div>
+<div class="ttc" id="ai8042_8h_html"><div class="ttname"><a href="i8042_8h.html">i8042.h</a></div></div>
+<div class="ttc" id="a_videocard_8h_html_aa6c1ff5024cd4d15e476bce487584daa"><div class="ttname"><a href="_videocard_8h.html#aa6c1ff5024cd4d15e476bce487584daa">vg_init</a></div><div class="ttdeci">void *() vg_init(uint16_t mode)</div><div class="ttdoc">Inicializes the videocard memory and changes it's mode.</div><div class="ttdef"><b>Definition:</b> Videocard.c:34</div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
+<div class="ttc" id="a_videocard_8h_html_a5962bd49e868bdc99b946acc0b2df2a1"><div class="ttname"><a href="_videocard_8h.html#a5962bd49e868bdc99b946acc0b2df2a1">copy_to_vram</a></div><div class="ttdeci">void copy_to_vram()</div><div class="ttdoc">Copies all the pixels from the second buffer to the primary one.</div><div class="ttdef"><b>Definition:</b> Videocard.c:131</div></div>
+<div class="ttc" id="a_videocard_8h_html_a224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38"><div class="ttname"><a href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaec8379af7490bb9eaaf579cf17876f38">RIGHT</a></div><div class="ttdeci">@ RIGHT</div><div class="ttdef"><b>Definition:</b> Videocard.h:16</div></div>
+<div class="ttc" id="a_videocard_8c_html_aa6c1ff5024cd4d15e476bce487584daa"><div class="ttname"><a href="_videocard_8c.html#aa6c1ff5024cd4d15e476bce487584daa">vg_init</a></div><div class="ttdeci">void *() vg_init(uint16_t mode)</div><div class="ttdoc">Inicializes the videocard memory and changes it's mode.</div><div class="ttdef"><b>Definition:</b> Videocard.c:34</div></div>
+<div class="ttc" id="a_videocard_8h_html_a5b86e611e659eb33da1bf16fa0f0f706"><div class="ttname"><a href="_videocard_8h.html#a5b86e611e659eb33da1bf16fa0f0f706">free_mem</a></div><div class="ttdeci">void free_mem()</div><div class="ttdoc">frees the memory allocated for the secondary buffer</div><div class="ttdef"><b>Definition:</b> Videocard.c:135</div></div>
+<div class="ttc" id="a_videocard_8h_html_a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa"><div class="ttname"><a href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaaba595d8bca8bc5e67c37c0a9d89becfa">UP</a></div><div class="ttdeci">@ UP</div><div class="ttdef"><b>Definition:</b> Videocard.h:16</div></div>
+<div class="ttc" id="a_videocard_8h_html_a54b128407fee04f1172990f0f39532b1"><div class="ttname"><a href="_videocard_8h.html#a54b128407fee04f1172990f0f39532b1">get_vbe_mode_info</a></div><div class="ttdeci">int get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p)</div><div class="ttdoc">Get the vbe mode information.</div><div class="ttdef"><b>Definition:</b> Videocard.c:43</div></div>
+<div class="ttc" id="a_videocard_8c_html_a7e63f29397ac0cfb9967f719cb62f716"><div class="ttname"><a href="_videocard_8c.html#a7e63f29397ac0cfb9967f719cb62f716">vertical_res</a></div><div class="ttdeci">uint16_t vertical_res</div><div class="ttdef"><b>Definition:</b> Videocard.c:14</div></div>
+<div class="ttc" id="a_videocard_8c_html_a54b128407fee04f1172990f0f39532b1"><div class="ttname"><a href="_videocard_8c.html#a54b128407fee04f1172990f0f39532b1">get_vbe_mode_info</a></div><div class="ttdeci">int get_vbe_mode_info(uint16_t mode, vbe_mode_info_t *vmi_p)</div><div class="ttdoc">Get the vbe mode information.</div><div class="ttdef"><b>Definition:</b> Videocard.c:43</div></div>
+<div class="ttc" id="a_videocard_8h_html_ada3e20ea63a4f7e572c329f56f8dda44"><div class="ttname"><a href="_videocard_8h.html#ada3e20ea63a4f7e572c329f56f8dda44">set_mode</a></div><div class="ttdeci">int() set_mode(uint16_t mode)</div><div class="ttdoc">Changes the videocard mode to the one specified in the paramter.</div><div class="ttdef"><b>Definition:</b> Videocard.c:19</div></div>
+<div class="ttc" id="a_videocard_8c_html_a5b86e611e659eb33da1bf16fa0f0f706"><div class="ttname"><a href="_videocard_8c.html#a5b86e611e659eb33da1bf16fa0f0f706">free_mem</a></div><div class="ttdeci">void free_mem()</div><div class="ttdoc">frees the memory allocated for the secondary buffer</div><div class="ttdef"><b>Definition:</b> Videocard.c:135</div></div>
+<div class="ttc" id="a_videocard_8h_html_a224b9163917ac32fc95a60d8c1eec3aa"><div class="ttname"><a href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a></div><div class="ttdeci">Direction</div><div class="ttdoc">Enum type with all the different directions.</div><div class="ttdef"><b>Definition:</b> Videocard.h:16</div></div>
+<div class="ttc" id="a_videocard_8c_html_af5e580602d23ab791f95c0d70a5e8be7"><div class="ttname"><a href="_videocard_8c.html#af5e580602d23ab791f95c0d70a5e8be7">r1</a></div><div class="ttdeci">int r1</div><div class="ttdef"><b>Definition:</b> Videocard.c:9</div></div>
+<div class="ttc" id="a_videocard_8h_html_a224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da"><div class="ttname"><a href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aaa9b0b4a95b99523966e0e34ffdadac9da">DOWN</a></div><div class="ttdeci">@ DOWN</div><div class="ttdef"><b>Definition:</b> Videocard.h:16</div></div>
+<div class="ttc" id="a_videocard_8c_html_a6091a4bd04596e6e8e39b7dee1e1b118"><div class="ttname"><a href="_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118">drawPixel</a></div><div class="ttdeci">int drawPixel(uint16_t x, uint16_t y, uint32_t color)</div><div class="ttdoc">Draws a certain pixel with a specific colour in the secondary buffer.</div><div class="ttdef"><b>Definition:</b> Videocard.c:117</div></div>
+<div class="ttc" id="a_videocard_8c_html_ada3e20ea63a4f7e572c329f56f8dda44"><div class="ttname"><a href="_videocard_8c.html#ada3e20ea63a4f7e572c329f56f8dda44">set_mode</a></div><div class="ttdeci">int() set_mode(uint16_t mode)</div><div class="ttdoc">Changes the videocard mode to the one specified in the paramter.</div><div class="ttdef"><b>Definition:</b> Videocard.c:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

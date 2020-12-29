@@ -1,4 +1,23 @@
 var searchData=
 [
-  ['date_2',['Date',['../struct_date.html',1,'']]]
+  ['cafeteria_21',['CAFETERIA',['../_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a972fadc7c75d7f847cc2aac95e5a7c9a',1,'Rooms.h']]],
+  ['calendar_5fb_22',['CALENDAR_B',['../_buttons_8h.html#ad8ff0681f092fa41b9d74b5263e76de9ad3e78607840da69b043635e43f85bfe9',1,'Buttons.h']]],
+  ['change_5fdirection_23',['change_direction',['../_player_8c.html#a68e2c12fdc9233ea73979ea64ec83a43',1,'change_direction(Player *player, bool *up, bool *down, bool *left, bool *right):&#160;Player.c'],['../_player_8h.html#a68e2c12fdc9233ea73979ea64ec83a43',1,'change_direction(Player *player, bool *up, bool *down, bool *left, bool *right):&#160;Player.c']]],
+  ['check_5fkbc_24',['CHECK_KBC',['../i8042_8h.html#a55fefff08c94153a53592686472a6c80',1,'i8042.h']]],
+  ['check_5fkeyboard_5finterface_25',['CHECK_KEYBOARD_INTERFACE',['../i8042_8h.html#a0332329d0624cc6f9defd50555393d92',1,'i8042.h']]],
+  ['checkoverice_26',['checkOverIce',['../mouse_8c.html#ad141f125e71b2082e2544fc73301cb7d',1,'checkOverIce():&#160;mouse.c'],['../mouse_8h.html#ad141f125e71b2082e2544fc73301cb7d',1,'checkOverIce():&#160;mouse.c']]],
+  ['checkovermain_27',['checkOverMain',['../mouse_8c.html#a09bf2bcab848bf4c6b8dd4a56cb3d815',1,'checkOverMain():&#160;mouse.c'],['../mouse_8h.html#a09bf2bcab848bf4c6b8dd4a56cb3d815',1,'checkOverMain():&#160;mouse.c']]],
+  ['checkoverpause_28',['checkOverPause',['../mouse_8c.html#ad6f080e3b8aa2d2883e105ffbf9e2b1e',1,'checkOverPause():&#160;mouse.c'],['../mouse_8h.html#ad6f080e3b8aa2d2883e105ffbf9e2b1e',1,'checkOverPause():&#160;mouse.c']]],
+  ['command_5fregister_29',['COMMAND_REGISTER',['../i8042_8h.html#a249b4cc8a854fe6dc7ab568c2f8d2fa3',1,'i8042.h']]],
+  ['copy_5fto_5fvram_30',['copy_to_vram',['../_videocard_8c.html#a5962bd49e868bdc99b946acc0b2df2a1',1,'copy_to_vram():&#160;Videocard.c'],['../_videocard_8h.html#a5962bd49e868bdc99b946acc0b2df2a1',1,'copy_to_vram():&#160;Videocard.c']]],
+  ['create_5fcursor_31',['create_cursor',['../mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776',1,'create_cursor():&#160;mouse.c'],['../mouse_8h.html#a234572e3817a4f64b8a83a84fcbdb776',1,'create_cursor():&#160;mouse.c']]],
+  ['create_5fdate_32',['create_date',['../_rtc_8c.html#af97cc9f1ac651d83c3bd52170b76e89a',1,'create_date():&#160;Rtc.c'],['../_rtc_8h.html#af97cc9f1ac651d83c3bd52170b76e89a',1,'create_date():&#160;Rtc.c']]],
+  ['create_5fopponent_33',['create_opponent',['../_opponents_8c.html#aeabda63f074d5dd83987eb55fb3e4fb1',1,'create_opponent(int x, int y, Direction direction, Room_number currentRoom, bool hasMovement):&#160;Opponents.c'],['../_opponents_8h.html#aeabda63f074d5dd83987eb55fb3e4fb1',1,'create_opponent(int x, int y, Direction direction, Room_number currentRoom, bool hasMovement):&#160;Opponents.c']]],
+  ['create_5fplayer_34',['create_player',['../_player_8c.html#a37a8bafa3bd82b382ed0dc10b6a47bc6',1,'create_player():&#160;Player.c'],['../_player_8h.html#a37a8bafa3bd82b382ed0dc10b6a47bc6',1,'create_player():&#160;Player.c']]],
+  ['create_5fprojectile_35',['create_projectile',['../_projectile_8c.html#a352fc596042e87ac31deaeadc6e9ce58',1,'create_projectile(Player *player):&#160;Projectile.c'],['../_projectile_8h.html#a352fc596042e87ac31deaeadc6e9ce58',1,'create_projectile(Player *player):&#160;Projectile.c']]],
+  ['create_5ftask_36',['create_task',['../_tasks_8c.html#af450d3fb297aa88a976268853f3a900e',1,'create_task(int x, int y, Task_type taskName, Room_number currentRoom):&#160;Tasks.c'],['../_tasks_8h.html#af450d3fb297aa88a976268853f3a900e',1,'create_task(int x, int y, Task_type taskName, Room_number currentRoom):&#160;Tasks.c']]],
+  ['createbutton_37',['createButton',['../_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2',1,'createButton(ButtonInfo buttonInfo, int x, int y):&#160;Buttons.c'],['../_buttons_8h.html#a6f7167cea85cc80823166bfe23e6e0c2',1,'createButton(ButtonInfo buttonInfo, int x, int y):&#160;Buttons.c']]],
+  ['current_5fbackground_38',['current_background',['../_buttons_8c.html#a3ca1e629d3b47674ba5a0e53f4f664cf',1,'current_background():&#160;Menus.c'],['../_menus_8c.html#a3ca1e629d3b47674ba5a0e53f4f664cf',1,'current_background():&#160;Menus.c'],['../mouse_8c.html#a3ca1e629d3b47674ba5a0e53f4f664cf',1,'current_background():&#160;Menus.c'],['../_rtc_8c.html#a3ca1e629d3b47674ba5a0e53f4f664cf',1,'current_background():&#160;Menus.c']]],
+  ['currentroom_39',['currentRoom',['../struct_room.html#a3307aa87c9c900686e8e1f5a00be6104',1,'Room']]],
+  ['cursor_40',['Cursor',['../struct_cursor.html',1,'Cursor'],['../_game_8c.html#a8a6bb85bf44d1392b588a65de57652c0',1,'cursor():&#160;mouse.c'],['../_menus_8c.html#a8a6bb85bf44d1392b588a65de57652c0',1,'cursor():&#160;mouse.c'],['../mouse_8c.html#a8a6bb85bf44d1392b588a65de57652c0',1,'cursor():&#160;mouse.c']]]
 ];

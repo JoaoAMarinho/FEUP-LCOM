@@ -1,0 +1,20 @@
+digraph "Victory_ih"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Victory_ih",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="LoadMain",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ae973fa5491e0fee81d89dc596ee62933",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="add_button",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="create_cursor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776",tooltip="Create a cursor object."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="createButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2",tooltip=" "];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip=" "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
+}

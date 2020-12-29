@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['parity_5ferror_220',['PARITY_ERROR',['../i8042_8h.html#a81d2ca6759f3f3bf04556b7558aea6bc',1,'i8042.h']]],
+  ['pause_221',['PAUSE',['../_menus_8h.html#af3d52afbb0d088f62e02208b24a9cbd2a56b36d0d0bb01b339cf1041adc08e262',1,'Menus.h']]],
+  ['pause_5fih_222',['Pause_ih',['../_menus_8c.html#aa7f24b953299929df44e12a52d9207dc',1,'Pause_ih(Device device):&#160;Menus.c'],['../_menus_8h.html#aa7f24b953299929df44e12a52d9207dc',1,'Pause_ih(Device device):&#160;Menus.c']]],
+  ['pausebuttons_223',['pauseButtons',['../_game_8c.html#a8e353a3bfe99f35c39cd37164f13b036',1,'pauseButtons():&#160;Menus.c'],['../_menus_8c.html#a8e353a3bfe99f35c39cd37164f13b036',1,'pauseButtons():&#160;Menus.c']]],
+  ['pc_5fconfig_224',['PC_CONFIG',['../i8042_8h.html#ac89ac3be66635d7f5643be86002c1f51',1,'i8042.h']]],
+  ['play_5fb_225',['PLAY_B',['../_buttons_8h.html#ad8ff0681f092fa41b9d74b5263e76de9a7ed0feb90e7e552b88c49ce28c9960c6',1,'Buttons.h']]],
+  ['play_5fih_226',['Play_ih',['../_game_8c.html#a5e37d0a40a8d0e1d72ebe9e838178e76',1,'Play_ih(Device device):&#160;Game.c'],['../_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76',1,'Play_ih(Device device):&#160;Game.c']]],
+  ['player_227',['Player',['../struct_player.html',1,'Player'],['../_game_8c.html#a96781128d3743da3d17e0fdd91afba7b',1,'player():&#160;Player.c'],['../_menus_8c.html#a96781128d3743da3d17e0fdd91afba7b',1,'player():&#160;Player.c'],['../_player_8c.html#a96781128d3743da3d17e0fdd91afba7b',1,'player():&#160;Player.c'],['../_projectile_8c.html#a96781128d3743da3d17e0fdd91afba7b',1,'player():&#160;Player.c']]],
+  ['player_2ec_228',['Player.c',['../_player_8c.html',1,'']]],
+  ['player_2eh_229',['Player.h',['../_player_8h.html',1,'']]],
+  ['player_5fopponent_5fcollision_230',['player_opponent_collision',['../_player_8c.html#a061b0867a3c39e202931d7b23ec4ea7e',1,'player_opponent_collision(Player *player):&#160;Player.c'],['../_player_8h.html#a061b0867a3c39e202931d7b23ec4ea7e',1,'player_opponent_collision(Player *player):&#160;Player.c']]],
+  ['playerimg_231',['playerImg',['../struct_player.html#a75a9822d1ea1f9e907fe0420826d0362',1,'Player']]],
+  ['playerright_232',['PlayerRight',['../struct_player.html#aaa628cfb5572391d9bed8f279be4bb70',1,'Player']]],
+  ['playing_233',['PLAYING',['../_menus_8h.html#af3d52afbb0d088f62e02208b24a9cbd2af095245f5cebc27a97a124345269fed8',1,'Menus.h']]],
+  ['points_234',['points',['../struct_score.html#af7f8f4a4e39e09fdb5e9f02330ecabef',1,'Score']]],
+  ['pontos_235',['pontos',['../_game_8c.html#a464231a07242e02c22eeafd1d6604fc3',1,'pontos():&#160;Game.c'],['../_menus_8c.html#a464231a07242e02c22eeafd1d6604fc3',1,'pontos():&#160;Game.c']]],
+  ['proj_2ec_236',['proj.c',['../proj_8c.html',1,'']]],
+  ['proj_5fmain_5floop_237',['proj_main_loop',['../proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e',1,'proj.c']]],
+  ['projectile_238',['Projectile',['../struct_projectile.html',1,'']]],
+  ['projectile_2ec_239',['Projectile.c',['../_projectile_8c.html',1,'']]],
+  ['projectile_2eh_240',['Projectile.h',['../_projectile_8h.html',1,'']]],
+  ['projectileanimations_241',['projectileAnimations',['../struct_projectile.html#a584957b62a5f6eb326fd285d17433a54',1,'Projectile']]],
+  ['projectilecollision_242',['projectileCollision',['../_projectile_8c.html#aadfcf2de0cce9ef7003507e8e9c93bf4',1,'projectileCollision(Projectile *projectile):&#160;Projectile.c'],['../_projectile_8h.html#aadfcf2de0cce9ef7003507e8e9c93bf4',1,'projectileCollision(Projectile *projectile):&#160;Projectile.c']]],
+  ['projectileimg_243',['projectileImg',['../struct_projectile.html#a973aa2272ccb6384e5bdf0e04a687a0c',1,'Projectile']]],
+  ['projectilespeed_244',['projectileSpeed',['../struct_projectile.html#a2c14da414cef9cb5e07e742606b6a397',1,'Projectile']]]
+];

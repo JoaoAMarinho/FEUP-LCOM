@@ -1,0 +1,24 @@
+digraph "util_sys_inb"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="RL";
+  Node1 [label="util_sys_inb",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Function able read from registers."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="kbc_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_key_board_8h.html#aea970a154161a35f6894898a092ed70a",tooltip="Handles keyboard interrupts."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="gameLoop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba",tooltip=" "];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="proj_main_loop",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e",tooltip=" "];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="mouse_data_reporting",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8h.html#a541100d5ec8100f2dfa8fd9435dad1dc",tooltip="Enables or disables stream mode data reporting, by sending the respective cmd to the mouse."];
+  Node5 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="mouse_ih",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8h.html#a210374b50462acdedab00df64d5cea3c",tooltip="Handles mouse interrupts."];
+  Node6 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="timer_get_conf",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$timer_8c.html#a703c60b40c8c49607d6ecb6fef82d27a",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="timer_set_frequency",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$timer_8c.html#af2c04fa8e97ffa748fd3f612886a92a7",tooltip=" "];
+}

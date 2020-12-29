@@ -1,0 +1,19 @@
+digraph "move_opponent"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="move_opponent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="draw_opponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="erase_opponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853",tooltip=" "];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="opponent_opponent_colision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#ac980447170577783ee298a806ace20d2",tooltip=" "];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="room_opponent_collision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#a29fac6365df53322a55732747a84c6f5",tooltip=" "];
+}

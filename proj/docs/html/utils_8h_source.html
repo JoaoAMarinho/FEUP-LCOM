@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ShipEscape: utils.h Source File</title>
+<title>ShipEscape: D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX-LCOM/shared/g02/proj/src/utils.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,32 +60,55 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">utils.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
+<a href="utils_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;int(util_get_LSB)(uint16_t val, uint8_t *lsb);</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;int(util_get_MSB)(uint16_t val, uint8_t *msb);</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;int (util_sys_inb)(<span class="keywordtype">int</span> port, uint8_t *value);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;int(<a class="code" href="utils_8h.html#a81621440b3d65680979425e39aa8c789">util_get_LSB</a>)(uint16_t val, uint8_t *lsb);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;int(<a class="code" href="utils_8h.html#a6a880076cd2ec468834438b6e0c58836">util_get_MSB</a>)(uint16_t val, uint8_t *msb);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;int (<a class="code" href="utils_8h.html#a79a031a8611f5b2d6afa4158e92b0fb4">util_sys_inb</a>)(<span class="keywordtype">int</span> port, uint8_t *value);</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="agroup__i8254_html_gacf926951944b6cf370b7229ebd50dd8b"><div class="ttname"><a href="group__i8254.html#gacf926951944b6cf370b7229ebd50dd8b">TIMER_FREQ</a></div><div class="ttdeci">#define TIMER_FREQ</div><div class="ttdoc">clock frequency for timer in PC and AT</div><div class="ttdef"><b>Definition:</b> i8254.h:12</div></div>
+<div class="ttc" id="autils_8h_html_a6a880076cd2ec468834438b6e0c58836"><div class="ttname"><a href="utils_8h.html#a6a880076cd2ec468834438b6e0c58836">util_get_MSB</a></div><div class="ttdeci">int() util_get_MSB(uint16_t val, uint8_t *msb)</div><div class="ttdoc">Get the most significant byte from val.</div><div class="ttdef"><b>Definition:</b> utils.c:15</div></div>
+<div class="ttc" id="autils_8c_html_a79a031a8611f5b2d6afa4158e92b0fb4"><div class="ttname"><a href="utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4">util_sys_inb</a></div><div class="ttdeci">int() util_sys_inb(int port, uint8_t *value)</div><div class="ttdoc">Function able read from registers.</div><div class="ttdef"><b>Definition:</b> utils.c:22</div></div>
+<div class="ttc" id="ai8042_8h_html_a30bf84c312af248cb81bb224e09f9ba8"><div class="ttname"><a href="i8042_8h.html#a30bf84c312af248cb81bb224e09f9ba8">TIMER0_IRQ</a></div><div class="ttdeci">#define TIMER0_IRQ</div><div class="ttdoc">Timer 0 IRQ line.</div><div class="ttdef"><b>Definition:</b> i8042.h:23</div></div>
 <div class="ttc" id="agroup__i8254_html_ga4c2eecbfb96744a9c2af71dba75ecb18"><div class="ttname"><a href="group__i8254.html#ga4c2eecbfb96744a9c2af71dba75ecb18">TIMER_RB_CMD</a></div><div class="ttdeci">#define TIMER_RB_CMD</div><div class="ttdoc">Read Back Command.</div><div class="ttdef"><b>Definition:</b> i8254.h:31</div></div>
+<div class="ttc" id="atimer_8c_html_a96e6321e488d93a8134897510c435eb7"><div class="ttname"><a href="timer_8c.html#a96e6321e488d93a8134897510c435eb7">timer_hook_id</a></div><div class="ttdeci">int timer_hook_id</div><div class="ttdef"><b>Definition:</b> timer.c:9</div></div>
+<div class="ttc" id="autils_8c_html_a6a880076cd2ec468834438b6e0c58836"><div class="ttname"><a href="utils_8c.html#a6a880076cd2ec468834438b6e0c58836">util_get_MSB</a></div><div class="ttdeci">int() util_get_MSB(uint16_t val, uint8_t *msb)</div><div class="ttdoc">Get the most significant byte from val.</div><div class="ttdef"><b>Definition:</b> utils.c:15</div></div>
+<div class="ttc" id="atimer_8c_html_a703c60b40c8c49607d6ecb6fef82d27a"><div class="ttname"><a href="timer_8c.html#a703c60b40c8c49607d6ecb6fef82d27a">timer_get_conf</a></div><div class="ttdeci">int() timer_get_conf(uint8_t timer, uint8_t *st)</div><div class="ttdef"><b>Definition:</b> timer.c:87</div></div>
+<div class="ttc" id="atimer_8c_html_a8acb57b4b7f64beb6e96c33690aadda6"><div class="ttname"><a href="timer_8c.html#a8acb57b4b7f64beb6e96c33690aadda6">time_counter</a></div><div class="ttdeci">int time_counter</div><div class="ttdef"><b>Definition:</b> Game.c:5</div></div>
+<div class="ttc" id="atimer_8c_html_ac57a7e1140a7e00ad95ac5488d2a671b"><div class="ttname"><a href="timer_8c.html#ac57a7e1140a7e00ad95ac5488d2a671b">timer_subscribe_int</a></div><div class="ttdeci">int() timer_subscribe_int(uint8_t *bit_no)</div><div class="ttdef"><b>Definition:</b> timer.c:66</div></div>
+<div class="ttc" id="atimer_8c_html_afabd21de449be154dd65d5fdb2d8045d"><div class="ttname"><a href="timer_8c.html#afabd21de449be154dd65d5fdb2d8045d">timer_unsubscribe_int</a></div><div class="ttdeci">int() timer_unsubscribe_int()</div><div class="ttdef"><b>Definition:</b> timer.c:75</div></div>
+<div class="ttc" id="ai8254_8h_html"><div class="ttname"><a href="i8254_8h.html">i8254.h</a></div></div>
+<div class="ttc" id="atimer_8c_html_a91a2072306c68353712a6b771287dc2c"><div class="ttname"><a href="timer_8c.html#a91a2072306c68353712a6b771287dc2c">timer_int_handler</a></div><div class="ttdeci">void() timer_int_handler()</div><div class="ttdef"><b>Definition:</b> timer.c:83</div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div></div>
 <div class="ttc" id="agroup__i8254_html_gac62c99c2a9289891c1b83052242cca49"><div class="ttname"><a href="group__i8254.html#gac62c99c2a9289891c1b83052242cca49">TIMER_1</a></div><div class="ttdeci">#define TIMER_1</div><div class="ttdoc">Timer 1 count register.</div><div class="ttdef"><b>Definition:</b> i8254.h:18</div></div>
+<div class="ttc" id="autils_8c_html_a81621440b3d65680979425e39aa8c789"><div class="ttname"><a href="utils_8c.html#a81621440b3d65680979425e39aa8c789">util_get_LSB</a></div><div class="ttdeci">int() util_get_LSB(uint16_t val, uint8_t *lsb)</div><div class="ttdoc">Get the least significant byte from val.</div><div class="ttdef"><b>Definition:</b> utils.c:8</div></div>
 <div class="ttc" id="agroup__i8254_html_ga282832448fb0281ef53d243c1cd48491"><div class="ttname"><a href="group__i8254.html#ga282832448fb0281ef53d243c1cd48491">TIMER_CTRL</a></div><div class="ttdeci">#define TIMER_CTRL</div><div class="ttdoc">Control register.</div><div class="ttdef"><b>Definition:</b> i8254.h:20</div></div>
+<div class="ttc" id="agroup__i8254_html_ga6c248216df24b5e9d907d126d80bd195"><div class="ttname"><a href="group__i8254.html#ga6c248216df24b5e9d907d126d80bd195">TIMER_RB_COUNT_</a></div><div class="ttdeci">#define TIMER_RB_COUNT_</div><div class="ttdef"><b>Definition:</b> i8254.h:51</div></div>
 <div class="ttc" id="agroup__i8254_html_ga8c0f1933323274c765e23837e4fbc8c7"><div class="ttname"><a href="group__i8254.html#ga8c0f1933323274c765e23837e4fbc8c7">TIMER_LSB_MSB</a></div><div class="ttdeci">#define TIMER_LSB_MSB</div><div class="ttdoc">Initialize LSB first and MSB afterwards.</div><div class="ttdef"><b>Definition:</b> i8254.h:37</div></div>
 <div class="ttc" id="agroup__i8254_html_ga4745cbf21da3d3fea5dbb080b2b73bac"><div class="ttname"><a href="group__i8254.html#ga4745cbf21da3d3fea5dbb080b2b73bac">TIMER_SQR_WAVE</a></div><div class="ttdeci">#define TIMER_SQR_WAVE</div><div class="ttdoc">Mode 3: square wave generator.</div><div class="ttdef"><b>Definition:</b> i8254.h:41</div></div>
+<div class="ttc" id="autils_8h_html_a79a031a8611f5b2d6afa4158e92b0fb4"><div class="ttname"><a href="utils_8h.html#a79a031a8611f5b2d6afa4158e92b0fb4">util_sys_inb</a></div><div class="ttdeci">int() util_sys_inb(int port, uint8_t *value)</div><div class="ttdoc">Function able read from registers.</div><div class="ttdef"><b>Definition:</b> utils.c:22</div></div>
+<div class="ttc" id="agroup__i8254_html_gaf598b17740e07842a0545af512714711"><div class="ttname"><a href="group__i8254.html#gaf598b17740e07842a0545af512714711">TIMER_RB_SEL</a></div><div class="ttdeci">#define TIMER_RB_SEL(n)</div><div class="ttdef"><b>Definition:</b> i8254.h:53</div></div>
+<div class="ttc" id="autils_8h_html_a81621440b3d65680979425e39aa8c789"><div class="ttname"><a href="utils_8h.html#a81621440b3d65680979425e39aa8c789">util_get_LSB</a></div><div class="ttdeci">int() util_get_LSB(uint16_t val, uint8_t *lsb)</div><div class="ttdoc">Get the least significant byte from val.</div><div class="ttdef"><b>Definition:</b> utils.c:8</div></div>
 <div class="ttc" id="agroup__i8254_html_gacc9ff9df4a9674a1ce9ba08fc4a4679e"><div class="ttname"><a href="group__i8254.html#gacc9ff9df4a9674a1ce9ba08fc4a4679e">TIMER_0</a></div><div class="ttdeci">#define TIMER_0</div><div class="ttdoc">Timer 0 count register.</div><div class="ttdef"><b>Definition:</b> i8254.h:17</div></div>
 <div class="ttc" id="agroup__i8254_html_ga6a4822642d40c248435692324a818010"><div class="ttname"><a href="group__i8254.html#ga6a4822642d40c248435692324a818010">TIMER_SEL0</a></div><div class="ttdeci">#define TIMER_SEL0</div><div class="ttdoc">Control Word for Timer 0.</div><div class="ttdef"><b>Definition:</b> i8254.h:28</div></div>
 <div class="ttc" id="agroup__i8254_html_ga8349623fd8d99f9cc5d8ae29d78594fc"><div class="ttname"><a href="group__i8254.html#ga8349623fd8d99f9cc5d8ae29d78594fc">TIMER_SEL1</a></div><div class="ttdeci">#define TIMER_SEL1</div><div class="ttdoc">Control Word for Timer 1.</div><div class="ttdef"><b>Definition:</b> i8254.h:29</div></div>
-<div class="ttc" id="agroup__i8254_html_ga30bf84c312af248cb81bb224e09f9ba8"><div class="ttname"><a href="group__i8254.html#ga30bf84c312af248cb81bb224e09f9ba8">TIMER0_IRQ</a></div><div class="ttdeci">#define TIMER0_IRQ</div><div class="ttdoc">Timer 0 IRQ line.</div><div class="ttdef"><b>Definition:</b> i8254.h:13</div></div>
+<div class="ttc" id="atimer_8c_html_af2c04fa8e97ffa748fd3f612886a92a7"><div class="ttname"><a href="timer_8c.html#af2c04fa8e97ffa748fd3f612886a92a7">timer_set_frequency</a></div><div class="ttdeci">int() timer_set_frequency(uint8_t timer, uint32_t freq)</div><div class="ttdef"><b>Definition:</b> timer.c:13</div></div>
 <div class="ttc" id="agroup__i8254_html_ga142a255de0dbc48aeabd45fc10c33672"><div class="ttname"><a href="group__i8254.html#ga142a255de0dbc48aeabd45fc10c33672">TIMER_SEL2</a></div><div class="ttdeci">#define TIMER_SEL2</div><div class="ttdoc">Control Word for Timer 2.</div><div class="ttdef"><b>Definition:</b> i8254.h:30</div></div>
+<div class="ttc" id="atimer_8c_html_a140d8f092c0913cabdca949c4a1cc650"><div class="ttname"><a href="timer_8c.html#a140d8f092c0913cabdca949c4a1cc650">timer_display_conf</a></div><div class="ttdeci">int() timer_display_conf(uint8_t timer, uint8_t st, enum timer_status_field field)</div><div class="ttdef"><b>Definition:</b> timer.c:95</div></div>
 <div class="ttc" id="agroup__i8254_html_ga1f34f18ad0ab8cace46b615773b48735"><div class="ttname"><a href="group__i8254.html#ga1f34f18ad0ab8cace46b615773b48735">TIMER_2</a></div><div class="ttdeci">#define TIMER_2</div><div class="ttdoc">Timer 2 count register.</div><div class="ttdef"><b>Definition:</b> i8254.h:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

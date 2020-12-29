@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ShipEscape: Rooms.h Source File</title>
+<title>ShipEscape: D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX-LCOM/shared/g02/proj/src/Rooms.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,7 +46,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,19 +60,24 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">Rooms.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="_rooms_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// IMPORTANT: you must include the following line in all your C files</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;lcom/lcf.h&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Any header files included below this line should have been created by you</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;Videocard.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_videocard_8h.html">Videocard.h</a>&quot;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">//#include &quot;Lever.h&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//Include dos xpm dos rooms</span></div>
@@ -105,24 +109,55 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;Xpms/Rooms/SecurityObstacles.xpm&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, HALLWAY3, LOWERENG, REACTOR, SECURITY, BREAK<span class="comment">/*dont know if needed yet*/</span>, END} Room_number;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ab63189a3c80b9f806e6e529a63114052">   40</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {<a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a972fadc7c75d7f847cc2aac95e5a7c9a">CAFETERIA</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a2e0303d5610cd368f9c0deec31712c0c">HALLWAY1</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a3228e792244f936584abc6e3d7542d2c">ADMIN</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ab63189a3c80b9f806e6e529a63114052">WEAPONS</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a4f3cdbc69ba8f3214642f591ce934b00">NAVIGATION</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ab9fc34b7d43aa0c6aa6157ff20548b0b">HALLWAY2</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4aa7dc8d8f2a332b3fc5551658d7e3e2ab">MEDBAY</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4aeeb0cd2fa0f33d0f853516ecd0cb9f9d">ELETRICAL</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4abcaf7e186220f8fdf05e2aae14a1118b">UPPERENG</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ac9bcea53b181babc3ba8be447134fce8">HALLWAY3</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a38221ec36533a70a5a951ec8ae32976b">LOWERENG</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a4d109801b52df28858d000ab95e4a774">REACTOR</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a1f086547f14eb82024dea582d0424ab1">SECURITY</a>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a9524d094809858b9e4f778763913568a">BREAK</a><span class="comment">/*dont know if needed yet*/</span>, <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4adc6f24fd6915a3f2786a1b7045406924">END</a>} <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="struct_room.html">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Room_number currentRoom;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    xpm_image_t roomObstacles;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    xpm_image_t roomBackground;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="struct_room.html#a3307aa87c9c900686e8e1f5a00be6104">   43</a></span>&#160;    <a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a> <a class="code" href="struct_room.html#a3307aa87c9c900686e8e1f5a00be6104">currentRoom</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="struct_room.html#a08f2fe2a0b4bee7c2aca5415aa3f9560">   44</a></span>&#160;    xpm_image_t <a class="code" href="struct_room.html#a08f2fe2a0b4bee7c2aca5415aa3f9560">roomObstacles</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="struct_room.html#a98d8043c807a0d3cc34ac07b0910758b">   45</a></span>&#160;    xpm_image_t <a class="code" href="struct_room.html#a98d8043c807a0d3cc34ac07b0910758b">roomBackground</a>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <a class="code" href="struct_room.html">Room</a>;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="struct_room.html">Room</a> * load_room(Room_number roomNumber);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<a class="code" href="struct_room.html">Room</a> * <a class="code" href="_rooms_8h.html#a95409ba2abe4b32d559c00ba66e0f841">load_room</a>(<a class="code" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a> roomNumber);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> delete_room();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_rooms_8h.html#a2bd2be0b6d044f022acf6e1aab5b6aae">delete_room</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> draw_room();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="_rooms_8h.html#afdd3ac068f320937693d22b737d25610">draw_room</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4adc6f24fd6915a3f2786a1b7045406924"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4adc6f24fd6915a3f2786a1b7045406924">END</a></div><div class="ttdeci">@ END</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8c_html_ad96e784de0850a8633d49cccd5086acf"><div class="ttname"><a href="_rooms_8c.html#ad96e784de0850a8633d49cccd5086acf">room</a></div><div class="ttdeci">Room * room</div><div class="ttdef"><b>Definition:</b> Rooms.c:5</div></div>
+<div class="ttc" id="a_rooms_8h_html"><div class="ttname"><a href="_rooms_8h.html">Rooms.h</a></div></div>
+<div class="ttc" id="astruct_room_html_a08f2fe2a0b4bee7c2aca5415aa3f9560"><div class="ttname"><a href="struct_room.html#a08f2fe2a0b4bee7c2aca5415aa3f9560">Room::roomObstacles</a></div><div class="ttdeci">xpm_image_t roomObstacles</div><div class="ttdef"><b>Definition:</b> Rooms.h:44</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4abcaf7e186220f8fdf05e2aae14a1118b"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4abcaf7e186220f8fdf05e2aae14a1118b">UPPERENG</a></div><div class="ttdeci">@ UPPERENG</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_videocard_8h_html"><div class="ttname"><a href="_videocard_8h.html">Videocard.h</a></div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4ab9fc34b7d43aa0c6aa6157ff20548b0b"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ab9fc34b7d43aa0c6aa6157ff20548b0b">HALLWAY2</a></div><div class="ttdeci">@ HALLWAY2</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a></div><div class="ttdeci">Room_number</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8c_html_a95409ba2abe4b32d559c00ba66e0f841"><div class="ttname"><a href="_rooms_8c.html#a95409ba2abe4b32d559c00ba66e0f841">load_room</a></div><div class="ttdeci">Room * load_room(Room_number roomNumber)</div><div class="ttdef"><b>Definition:</b> Rooms.c:9</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a2e0303d5610cd368f9c0deec31712c0c"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a2e0303d5610cd368f9c0deec31712c0c">HALLWAY1</a></div><div class="ttdeci">@ HALLWAY1</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="astruct_room_html_a3307aa87c9c900686e8e1f5a00be6104"><div class="ttname"><a href="struct_room.html#a3307aa87c9c900686e8e1f5a00be6104">Room::currentRoom</a></div><div class="ttdeci">Room_number currentRoom</div><div class="ttdef"><b>Definition:</b> Rooms.h:43</div></div>
+<div class="ttc" id="astruct_room_html_a98d8043c807a0d3cc34ac07b0910758b"><div class="ttname"><a href="struct_room.html#a98d8043c807a0d3cc34ac07b0910758b">Room::roomBackground</a></div><div class="ttdeci">xpm_image_t roomBackground</div><div class="ttdef"><b>Definition:</b> Rooms.h:45</div></div>
+<div class="ttc" id="a_rooms_8c_html_a2bd2be0b6d044f022acf6e1aab5b6aae"><div class="ttname"><a href="_rooms_8c.html#a2bd2be0b6d044f022acf6e1aab5b6aae">delete_room</a></div><div class="ttdeci">void delete_room()</div><div class="ttdef"><b>Definition:</b> Rooms.c:83</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4ab63189a3c80b9f806e6e529a63114052"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ab63189a3c80b9f806e6e529a63114052">WEAPONS</a></div><div class="ttdeci">@ WEAPONS</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_a95409ba2abe4b32d559c00ba66e0f841"><div class="ttname"><a href="_rooms_8h.html#a95409ba2abe4b32d559c00ba66e0f841">load_room</a></div><div class="ttdeci">Room * load_room(Room_number roomNumber)</div><div class="ttdef"><b>Definition:</b> Rooms.c:9</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a38221ec36533a70a5a951ec8ae32976b"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a38221ec36533a70a5a951ec8ae32976b">LOWERENG</a></div><div class="ttdeci">@ LOWERENG</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4ac9bcea53b181babc3ba8be447134fce8"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4ac9bcea53b181babc3ba8be447134fce8">HALLWAY3</a></div><div class="ttdeci">@ HALLWAY3</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4aeeb0cd2fa0f33d0f853516ecd0cb9f9d"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4aeeb0cd2fa0f33d0f853516ecd0cb9f9d">ELETRICAL</a></div><div class="ttdeci">@ ELETRICAL</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
 <div class="ttc" id="astruct_room_html"><div class="ttname"><a href="struct_room.html">Room</a></div><div class="ttdef"><b>Definition:</b> Rooms.h:42</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a4d109801b52df28858d000ab95e4a774"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a4d109801b52df28858d000ab95e4a774">REACTOR</a></div><div class="ttdeci">@ REACTOR</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a4f3cdbc69ba8f3214642f591ce934b00"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a4f3cdbc69ba8f3214642f591ce934b00">NAVIGATION</a></div><div class="ttdeci">@ NAVIGATION</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8c_html_a7e63f29397ac0cfb9967f719cb62f716"><div class="ttname"><a href="_rooms_8c.html#a7e63f29397ac0cfb9967f719cb62f716">vertical_res</a></div><div class="ttdeci">uint16_t vertical_res</div><div class="ttdef"><b>Definition:</b> Rooms.c:3</div></div>
+<div class="ttc" id="a_rooms_8c_html_a59f3a4d6ab9893f8778cfbda7ec53346"><div class="ttname"><a href="_rooms_8c.html#a59f3a4d6ab9893f8778cfbda7ec53346">horizontal_res</a></div><div class="ttdeci">uint16_t horizontal_res</div><div class="ttdef"><b>Definition:</b> Game.c:17</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4aa7dc8d8f2a332b3fc5551658d7e3e2ab"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4aa7dc8d8f2a332b3fc5551658d7e3e2ab">MEDBAY</a></div><div class="ttdeci">@ MEDBAY</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a3228e792244f936584abc6e3d7542d2c"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a3228e792244f936584abc6e3d7542d2c">ADMIN</a></div><div class="ttdeci">@ ADMIN</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_afdd3ac068f320937693d22b737d25610"><div class="ttname"><a href="_rooms_8h.html#afdd3ac068f320937693d22b737d25610">draw_room</a></div><div class="ttdeci">void draw_room()</div><div class="ttdef"><b>Definition:</b> Rooms.c:72</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a1f086547f14eb82024dea582d0424ab1"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a1f086547f14eb82024dea582d0424ab1">SECURITY</a></div><div class="ttdeci">@ SECURITY</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a972fadc7c75d7f847cc2aac95e5a7c9a"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a972fadc7c75d7f847cc2aac95e5a7c9a">CAFETERIA</a></div><div class="ttdeci">@ CAFETERIA</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_videocard_8c_html_a6091a4bd04596e6e8e39b7dee1e1b118"><div class="ttname"><a href="_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118">drawPixel</a></div><div class="ttdeci">int drawPixel(uint16_t x, uint16_t y, uint32_t color)</div><div class="ttdoc">Draws a certain pixel with a specific colour in the secondary buffer.</div><div class="ttdef"><b>Definition:</b> Videocard.c:117</div></div>
+<div class="ttc" id="a_rooms_8h_html_ad5a455b4fad028e9159244ebb76dd7d4a9524d094809858b9e4f778763913568a"><div class="ttname"><a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a9524d094809858b9e4f778763913568a">BREAK</a></div><div class="ttdeci">@ BREAK</div><div class="ttdef"><b>Definition:</b> Rooms.h:40</div></div>
+<div class="ttc" id="a_rooms_8h_html_a2bd2be0b6d044f022acf6e1aab5b6aae"><div class="ttname"><a href="_rooms_8h.html#a2bd2be0b6d044f022acf6e1aab5b6aae">delete_room</a></div><div class="ttdeci">void delete_room()</div><div class="ttdef"><b>Definition:</b> Rooms.c:83</div></div>
+<div class="ttc" id="a_rooms_8c_html_afdd3ac068f320937693d22b737d25610"><div class="ttname"><a href="_rooms_8c.html#afdd3ac068f320937693d22b737d25610">draw_room</a></div><div class="ttdeci">void draw_room()</div><div class="ttdef"><b>Definition:</b> Rooms.c:72</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20

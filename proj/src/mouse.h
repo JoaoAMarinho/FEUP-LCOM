@@ -16,10 +16,16 @@
  *
  * @brief Struct that represents the cursor information 
  * 
+ * @var Cursor::img
+ * cursor xpm
+ * @var Cursor::x
+ * cursor x position
+ * @var Cursor::y
+ * cursor y position
  */
 typedef struct {
-    xpm_image_t img; /** @brief cursor xpm */
-    int x, y; /** @brief x and y position of the cursor */
+    xpm_image_t img;
+    int x, y;
 } Cursor;
 
 /**
