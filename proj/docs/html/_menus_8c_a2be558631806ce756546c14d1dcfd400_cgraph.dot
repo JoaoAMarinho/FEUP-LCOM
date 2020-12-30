@@ -4,12 +4,12 @@ digraph "draw_Main_Date"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="draw_Main_Date",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="draw_Main_Date",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws the date in the main menu."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip=" "];
+  Node2 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip="Draws a specific number in a certain position."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="draw_Symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#add2b6827038a412296d2c160ea053c01",tooltip=" "];
+  Node4 [label="draw_Symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#add2b6827038a412296d2c160ea053c01",tooltip="Draws a specific symbol in a certain position."];
   Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

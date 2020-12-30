@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['img_559',['img',['../struct_cursor.html#a86d0d51ceb4bc3bd26707520f257a5a4',1,'Cursor']]],
-  ['isalive_560',['isAlive',['../struct_opponent.html#aabfb502219a0916360c29c8ba710b3c6',1,'Opponent']]],
-  ['isfinished_561',['isFinished',['../struct_task.html#a0e40c5fb8a37c60628678563bfea6975',1,'Task']]],
-  ['ismouseover_562',['isMouseOver',['../struct_button.html#a42e61bb17784ff0505d511da2761c236',1,'Button']]],
-  ['ismoving_563',['isMoving',['../struct_opponent.html#a420415c6b665fb9669a388e0e96ceb02',1,'Opponent']]]
+  ['img_557',['img',['../struct_cursor.html#a86d0d51ceb4bc3bd26707520f257a5a4',1,'Cursor']]],
+  ['isalive_558',['isAlive',['../struct_opponent.html#a2351f374092f4d9da39166cc12a6054a',1,'Opponent']]],
+  ['isfinished_559',['isFinished',['../struct_task.html#adcc05b7a8d36f0e35e285eabc2a4aeeb',1,'Task']]],
+  ['ismouseover_560',['isMouseOver',['../struct_button.html#a6b55abc83ec4dfa815777a6e4cf8571c',1,'Button']]],
+  ['ismoving_561',['isMoving',['../struct_opponent.html#a27b4bdc6217b46e8a5ac1f0aa8817d89',1,'Opponent']]]
 ];

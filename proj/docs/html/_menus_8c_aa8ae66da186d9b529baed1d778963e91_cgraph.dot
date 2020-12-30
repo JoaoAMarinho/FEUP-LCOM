@@ -4,19 +4,19 @@ digraph "LoadGameMap"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="LoadGameMap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="LoadGameMap",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Loads the gameMap menu xpm, the task warnings and draws it."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_GameTimer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929",tooltip=" "];
+  Node2 [label="draw_GameTimer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929",tooltip="Draws the remaining game time."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip=" "];
+  Node3 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip="Draws a specific number in a certain position."];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip=" "];
+  Node5 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip="Draws the current_background."];
   Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="draw_warnings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#a5690d9f9f3ec78b9ca117e83c52fc222",tooltip=" "];
+  Node6 [label="draw_warnings",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#a5690d9f9f3ec78b9ca117e83c52fc222",tooltip="Draws all the warnings to each task in the map menu."];
   Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="draw_task_warning",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721",tooltip=" "];
+  Node7 [label="draw_task_warning",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721",tooltip="Draws a warning to a specific task in the map menu."];
   Node7 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

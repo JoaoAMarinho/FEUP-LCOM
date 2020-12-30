@@ -4,14 +4,14 @@ digraph "move_player"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="move_player",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="move_player",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Changes the player direction and position if it does not collide with any object."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_player",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#a21473296e1c865781a3b550ffaedbf24",tooltip=" "];
+  Node2 [label="draw_player",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#a21473296e1c865781a3b550ffaedbf24",tooltip="Draws the player parameter on the screen."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="erase_player",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#adf6090d8eba84dacd9cf33ce004a67c9",tooltip=" "];
+  Node4 [label="erase_player",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#adf6090d8eba84dacd9cf33ce004a67c9",tooltip="Substitutes the player pixels with the room background in order to erase it."];
   Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="room_player_collision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#a168f257d420b07e6afb62b6542b7aea3",tooltip=" "];
+  Node5 [label="room_player_collision",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_player_8c.html#a168f257d420b07e6afb62b6542b7aea3",tooltip="Checks the player collision with the room obstacles."];
 }

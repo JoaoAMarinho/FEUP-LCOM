@@ -31,7 +31,7 @@
  * @brief enum with all the menus
  * 
  */
-typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK/*TASKS*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
+typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK, DOWNLOADTASK/*TASKS*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
 
 /**
  * @brief enum with all the possible devices
@@ -132,6 +132,13 @@ void Ice_ih(Device device);
  * @param device which send an interrupt
  */
 void Ship_ih(Device device);
+
+/**
+ * @brief Download task interrupt handler
+ * 
+ * @param device which send an interrupt
+ */
+void Download_ih(Device device);
 
 //Load menus
 /**

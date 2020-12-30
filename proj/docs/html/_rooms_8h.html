@@ -118,6 +118,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_room.html">Room</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct that represents the room information.  <a href="struct_room.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
@@ -139,19 +140,22 @@ Enumerations</h2></td></tr>
 <a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a4d109801b52df28858d000ab95e4a774">REACTOR</a>, 
 <br />
 &#160;&#160;<a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a1f086547f14eb82024dea582d0424ab1">SECURITY</a>, 
-<a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4a9524d094809858b9e4f778763913568a">BREAK</a>, 
 <a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4adc6f24fd6915a3f2786a1b7045406924">END</a>
 <br />
  }</td></tr>
+<tr class="memdesc:ad5a455b4fad028e9159244ebb76dd7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum with all the possible rooms  <a href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">More...</a><br /></td></tr>
 <tr class="separator:ad5a455b4fad028e9159244ebb76dd7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a95409ba2abe4b32d559c00ba66e0f841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_room.html">Room</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8h.html#a95409ba2abe4b32d559c00ba66e0f841">load_room</a> (<a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a> roomNumber)</td></tr>
+<tr class="memdesc:a95409ba2abe4b32d559c00ba66e0f841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for the room and loads its obstacles and background xpms.  <a href="_rooms_8h.html#a95409ba2abe4b32d559c00ba66e0f841">More...</a><br /></td></tr>
 <tr class="separator:a95409ba2abe4b32d559c00ba66e0f841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8h.html#a2bd2be0b6d044f022acf6e1aab5b6aae">delete_room</a> ()</td></tr>
+<tr class="memdesc:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory allocated for room.  <a href="_rooms_8h.html#a2bd2be0b6d044f022acf6e1aab5b6aae">More...</a><br /></td></tr>
 <tr class="separator:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdd3ac068f320937693d22b737d25610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8h.html#afdd3ac068f320937693d22b737d25610">draw_room</a> ()</td></tr>
+<tr class="memdesc:afdd3ac068f320937693d22b737d25610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the room background to the screen.  <a href="_rooms_8h.html#afdd3ac068f320937693d22b737d25610">More...</a><br /></td></tr>
 <tr class="separator:afdd3ac068f320937693d22b737d25610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
@@ -166,6 +170,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>enum with all the possible rooms </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a972fadc7c75d7f847cc2aac95e5a7c9a"></a>CAFETERIA&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a2e0303d5610cd368f9c0deec31712c0c"></a>HALLWAY1&#160;</td><td class="fielddoc"></td></tr>
@@ -180,7 +186,6 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a38221ec36533a70a5a951ec8ae32976b"></a>LOWERENG&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a4d109801b52df28858d000ab95e4a774"></a>REACTOR&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a1f086547f14eb82024dea582d0424ab1"></a>SECURITY&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4a9524d094809858b9e4f778763913568a"></a>BREAK&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad5a455b4fad028e9159244ebb76dd7d4adc6f24fd6915a3f2786a1b7045406924"></a>END&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
@@ -201,6 +206,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Frees the memory allocated for room. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -223,6 +230,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws the room background to the screen. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -251,6 +260,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocates memory for the room and loads its obstacles and background xpms. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roomNumber</td><td>specifies the room type</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Room* pointer to the object created </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

@@ -4,16 +4,16 @@ digraph "LoadVictory"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="LoadVictory",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="LoadVictory",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Loads the victory menu xpm, the score and draws it."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip=" "];
+  Node2 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip="Draws the current_background."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="draw_Score",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#afceaffa935f92c780db7180ef085d8e7",tooltip=" "];
+  Node4 [label="draw_Score",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#afceaffa935f92c780db7180ef085d8e7",tooltip="Draws the pontos in a certain position."];
   Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip=" "];
+  Node5 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip="Draws a specific number in a certain position."];
   Node5 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node6 [label="insertBestScores",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#adfdd93cc57aa697beb8f293f87abcac3",tooltip=" "];
+  Node6 [label="insertBestScores",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#adfdd93cc57aa697beb8f293f87abcac3",tooltip="Tries to insert the current score in the scores array."];
 }

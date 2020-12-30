@@ -83,10 +83,13 @@ Include dependency graph for Rooms.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a95409ba2abe4b32d559c00ba66e0f841"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_room.html">Room</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8c.html#a95409ba2abe4b32d559c00ba66e0f841">load_room</a> (<a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a> roomNumber)</td></tr>
+<tr class="memdesc:a95409ba2abe4b32d559c00ba66e0f841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for the room and loads its obstacles and background xpms.  <a href="_rooms_8c.html#a95409ba2abe4b32d559c00ba66e0f841">More...</a><br /></td></tr>
 <tr class="separator:a95409ba2abe4b32d559c00ba66e0f841"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdd3ac068f320937693d22b737d25610"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8c.html#afdd3ac068f320937693d22b737d25610">draw_room</a> ()</td></tr>
+<tr class="memdesc:afdd3ac068f320937693d22b737d25610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the room background to the screen.  <a href="_rooms_8c.html#afdd3ac068f320937693d22b737d25610">More...</a><br /></td></tr>
 <tr class="separator:afdd3ac068f320937693d22b737d25610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_rooms_8c.html#a2bd2be0b6d044f022acf6e1aab5b6aae">delete_room</a> ()</td></tr>
+<tr class="memdesc:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory allocated for room.  <a href="_rooms_8c.html#a2bd2be0b6d044f022acf6e1aab5b6aae">More...</a><br /></td></tr>
 <tr class="separator:a2bd2be0b6d044f022acf6e1aab5b6aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -113,6 +116,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Frees the memory allocated for room. </p>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -135,6 +140,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws the room background to the screen. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -163,6 +170,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocates memory for the room and loads its obstacles and background xpms. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roomNumber</td><td>specifies the room type</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Room* pointer to the object created </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

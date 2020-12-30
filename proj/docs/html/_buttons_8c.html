@@ -83,12 +83,16 @@ Include dependency graph for Buttons.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a6f7167cea85cc80823166bfe23e6e0c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_button.html">Button</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2">createButton</a> (<a class="el" href="_buttons_8h.html#ad8ff0681f092fa41b9d74b5263e76de9">ButtonInfo</a> buttonInfo, int x, int y)</td></tr>
+<tr class="memdesc:a6f7167cea85cc80823166bfe23e6e0c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a <a class="el" href="struct_button.html" title="Struct that represents the button information.">Button</a> object.  <a href="_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2">More...</a><br /></td></tr>
 <tr class="separator:a6f7167cea85cc80823166bfe23e6e0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cffe5189a594e49e7510d739e186fa0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_buttons_8c.html#a8cffe5189a594e49e7510d739e186fa0">draw_button</a> (<a class="el" href="struct_button.html">Button</a> *button)</td></tr>
+<tr class="memdesc:a8cffe5189a594e49e7510d739e186fa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the button parameter on the screen.  <a href="_buttons_8c.html#a8cffe5189a594e49e7510d739e186fa0">More...</a><br /></td></tr>
 <tr class="separator:a8cffe5189a594e49e7510d739e186fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a90cba6b6a8a859b588dcde42e7b2d5f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_buttons_8c.html#a90cba6b6a8a859b588dcde42e7b2d5f6">erase_button</a> (<a class="el" href="struct_button.html">Button</a> *button)</td></tr>
+<tr class="memdesc:a90cba6b6a8a859b588dcde42e7b2d5f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Substitutes the button pixels with the menu background in order to erase it.  <a href="_buttons_8c.html#a90cba6b6a8a859b588dcde42e7b2d5f6">More...</a><br /></td></tr>
 <tr class="separator:a90cba6b6a8a859b588dcde42e7b2d5f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a30ae39d684716ecba2f9c5e2fa90c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4">add_button</a> (<a class="el" href="struct_button.html">Button</a> *button)</td></tr>
+<tr class="memdesc:a1a30ae39d684716ecba2f9c5e2fa90c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the button to the current_background img.  <a href="_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4">More...</a><br /></td></tr>
 <tr class="separator:a1a30ae39d684716ecba2f9c5e2fa90c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -116,6 +120,14 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds the button to the current_background img. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>to be added </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -155,6 +167,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Create a <a class="el" href="struct_button.html" title="Struct that represents the button information.">Button</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buttonInfo</td><td>type of the button created</td></tr>
+    <tr><td class="paramname">x</td><td>position of the button</td></tr>
+    <tr><td class="paramname">y</td><td>position of the button</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Button* object created </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -178,6 +201,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws the button parameter on the screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>pointer to the object to be drawn </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -206,6 +237,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Substitutes the button pixels with the menu background in order to erase it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">button</td><td>pointer of the object to be remove from the screen </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

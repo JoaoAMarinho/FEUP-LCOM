@@ -4,7 +4,7 @@ extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Task ** gameTasks;
-int n_tasks=2;
+int n_tasks=3;
 
 //---------------------------------------------------------------------------------------------
 
@@ -14,6 +14,7 @@ void LoadTasks(){
     //Tasks ordered by room
     gameTasks[0] = create_task(442,307,ICE,WEAPONS);
     gameTasks[1] = create_task(590,146,SHIP,NAVIGATION);
+    gameTasks[2] = create_task(123,54,DOWNLOAD,ELETRICAL);
 }
 
 Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
@@ -60,6 +61,26 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
             task->taskAnimations[3] = img;
             xpm_load(Shiptask4_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[4] = img;
+            break;
+        case DOWNLOAD:
+            xpm_load(Downloadtask0_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[0] = img;
+            xpm_load(Downloadtask1_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[1] = img;
+            xpm_load(Downloadtask2_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[2] = img;
+            xpm_load(Downloadtask3_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[3] = img;
+            xpm_load(Downloadtask4_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[4] = img;
+            xpm_load(Downloadtask5_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[5] = img;
+            xpm_load(Downloadtask6_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[6] = img;
+            xpm_load(Downloadtask7_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[7] = img;
+            xpm_load(Downloadtask8_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[8] = img;
             break;
         //Other tasks;
         default:

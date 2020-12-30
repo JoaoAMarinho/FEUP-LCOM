@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['x_610',['x',['../struct_button.html#a6150e0515f7202e2fb518f7206ed97dc',1,'Button::x()'],['../struct_cursor.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Cursor::x()'],['../struct_opponent.html#a6150e0515f7202e2fb518f7206ed97dc',1,'Opponent::x()'],['../struct_player.html#a6150e0515f7202e2fb518f7206ed97dc',1,'Player::x()'],['../struct_projectile.html#a6150e0515f7202e2fb518f7206ed97dc',1,'Projectile::x()'],['../struct_task.html#a6150e0515f7202e2fb518f7206ed97dc',1,'Task::x()']]],
-  ['xspeed_611',['xspeed',['../struct_opponent.html#a90b9d56e145baae469f7b6bb757d9b27',1,'Opponent::xspeed()'],['../struct_player.html#a90b9d56e145baae469f7b6bb757d9b27',1,'Player::xspeed()']]]
+  ['x_608',['x',['../struct_button.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Button::x()'],['../struct_cursor.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Cursor::x()'],['../struct_opponent.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Opponent::x()'],['../struct_player.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Player::x()'],['../struct_projectile.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Projectile::x()'],['../struct_task.html#a9336ebf25087d91c818ee6e9ec29f8c1',1,'Task::x()']]],
+  ['xspeed_609',['xspeed',['../struct_opponent.html#a98f2e0dfcdbd3de203bc2e72c511fe68',1,'Opponent::xspeed()'],['../struct_player.html#a98f2e0dfcdbd3de203bc2e72c511fe68',1,'Player::xspeed()']]]
 ];

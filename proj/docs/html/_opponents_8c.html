@@ -83,26 +83,37 @@ Include dependency graph for Opponents.c:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a77b76e85acb761c82bab20e7585ff017"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a77b76e85acb761c82bab20e7585ff017">LoadOpponents</a> ()</td></tr>
+<tr class="memdesc:a77b76e85acb761c82bab20e7585ff017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory for all the existing opponents in the gameOpponents array.  <a href="_opponents_8c.html#a77b76e85acb761c82bab20e7585ff017">More...</a><br /></td></tr>
 <tr class="separator:a77b76e85acb761c82bab20e7585ff017"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeabda63f074d5dd83987eb55fb3e4fb1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_opponent.html">Opponent</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#aeabda63f074d5dd83987eb55fb3e4fb1">create_opponent</a> (int x, int y, <a class="el" href="_videocard_8h.html#a224b9163917ac32fc95a60d8c1eec3aa">Direction</a> direction, <a class="el" href="_rooms_8h.html#ad5a455b4fad028e9159244ebb76dd7d4">Room_number</a> currentRoom, bool hasMovement)</td></tr>
+<tr class="memdesc:aeabda63f074d5dd83987eb55fb3e4fb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a opponent object.  <a href="_opponents_8c.html#aeabda63f074d5dd83987eb55fb3e4fb1">More...</a><br /></td></tr>
 <tr class="separator:aeabda63f074d5dd83987eb55fb3e4fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a266cb6486a1ed361ae0381cf46ab7764"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764">draw_opponent</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:a266cb6486a1ed361ae0381cf46ab7764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws the opponent parameter on the screen.  <a href="_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764">More...</a><br /></td></tr>
 <tr class="separator:a266cb6486a1ed361ae0381cf46ab7764"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a193a4a3e914becc3f34ce1d381777853"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853">erase_opponent</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:a193a4a3e914becc3f34ce1d381777853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Substitutes the opponent pixels with the room background in order to erase it.  <a href="_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853">More...</a><br /></td></tr>
 <tr class="separator:a193a4a3e914becc3f34ce1d381777853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e635b388f51128a51ca2e76f7a1f0e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a2e635b388f51128a51ca2e76f7a1f0e6">draw_current_opponents</a> ()</td></tr>
+<tr class="memdesc:a2e635b388f51128a51ca2e76f7a1f0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws all the opponents with the same room as the room variable.  <a href="_opponents_8c.html#a2e635b388f51128a51ca2e76f7a1f0e6">More...</a><br /></td></tr>
 <tr class="separator:a2e635b388f51128a51ca2e76f7a1f0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4705ad3c5c9e661c3003c0451b9988e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a4705ad3c5c9e661c3003c0451b9988e4">move_opponent</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:a4705ad3c5c9e661c3003c0451b9988e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the player position if it does not collide with any object, else changes direction.  <a href="_opponents_8c.html#a4705ad3c5c9e661c3003c0451b9988e4">More...</a><br /></td></tr>
 <tr class="separator:a4705ad3c5c9e661c3003c0451b9988e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73358e93e4cccfee54666d4a0bbca9cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a73358e93e4cccfee54666d4a0bbca9cb">animate_opponent</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:a73358e93e4cccfee54666d4a0bbca9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the opponent image with the following index in the array of animations.  <a href="_opponents_8c.html#a73358e93e4cccfee54666d4a0bbca9cb">More...</a><br /></td></tr>
 <tr class="separator:a73358e93e4cccfee54666d4a0bbca9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbe162ca5e98eacded988eb7c4d8434e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#adbe162ca5e98eacded988eb7c4d8434e">opponent_atack</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent, int index)</td></tr>
+<tr class="memdesc:adbe162ca5e98eacded988eb7c4d8434e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Change the opponent image with the following index in the array of atack animations.  <a href="_opponents_8c.html#adbe162ca5e98eacded988eb7c4d8434e">More...</a><br /></td></tr>
 <tr class="separator:adbe162ca5e98eacded988eb7c4d8434e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf5e4efb45bf6abe60b5c5d63adcc7b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#aaf5e4efb45bf6abe60b5c5d63adcc7b3">kill_opponent</a> (int index)</td></tr>
+<tr class="memdesc:aaf5e4efb45bf6abe60b5c5d63adcc7b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the boolean value of <a class="el" href="struct_opponent.html#a2351f374092f4d9da39166cc12a6054a">Opponent::isAlive</a> to false.  <a href="_opponents_8c.html#aaf5e4efb45bf6abe60b5c5d63adcc7b3">More...</a><br /></td></tr>
 <tr class="separator:aaf5e4efb45bf6abe60b5c5d63adcc7b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29fac6365df53322a55732747a84c6f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#a29fac6365df53322a55732747a84c6f5">room_opponent_collision</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:a29fac6365df53322a55732747a84c6f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the collision of an opponent with the room obstacles.  <a href="_opponents_8c.html#a29fac6365df53322a55732747a84c6f5">More...</a><br /></td></tr>
 <tr class="separator:a29fac6365df53322a55732747a84c6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac980447170577783ee298a806ace20d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_opponents_8c.html#ac980447170577783ee298a806ace20d2">opponent_opponent_colision</a> (<a class="el" href="struct_opponent.html">Opponent</a> *opponent)</td></tr>
+<tr class="memdesc:ac980447170577783ee298a806ace20d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks the collision of an opponent with another from the same room.  <a href="_opponents_8c.html#ac980447170577783ee298a806ace20d2">More...</a><br /></td></tr>
 <tr class="separator:ac980447170577783ee298a806ace20d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -134,6 +145,14 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Change the opponent image with the following index in the array of animations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>to be animated on the screen </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -190,6 +209,19 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Create a opponent object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>position of the opponent</td></tr>
+    <tr><td class="paramname">y</td><td>position of the opponent </td></tr>
+    <tr><td class="paramname">direction</td><td>of the opponent</td></tr>
+    <tr><td class="paramname">currentRoom</td><td>of the opponent</td></tr>
+    <tr><td class="paramname">hasMovement</td><td>true if opponent moves, false if not</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Opponent* object created </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -212,6 +244,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws all the opponents with the same room as the room variable. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -240,6 +274,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Draws the opponent parameter on the screen. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>pointer to the object to be drawn </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -268,6 +310,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Substitutes the opponent pixels with the room background in order to erase it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>pointer of the object to be remove from the screen </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -296,6 +346,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Changes the boolean value of <a class="el" href="struct_opponent.html#a2351f374092f4d9da39166cc12a6054a">Opponent::isAlive</a> to false. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>of the opponent in the array of gameOpponents </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -323,6 +381,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Allocates memory for all the existing opponents in the gameOpponents array. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -351,6 +411,14 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Changes the player position if it does not collide with any object, else changes direction. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>to be moved </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -389,6 +457,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Change the opponent image with the following index in the array of atack animations. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>that is atacking</td></tr>
+    <tr><td class="paramname">index</td><td>of the img in the array of atack animations </td></tr>
+  </table>
+  </dd>
+</dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -417,6 +494,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks the collision of an opponent with another from the same room. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>to be checked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if it collides </dd>
+<dd>
+false if it does not collide </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -440,6 +528,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Checks the collision of an opponent with the room obstacles. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opponent</td><td>to be checked</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if it collides </dd>
+<dd>
+false if it does not collide </dd></dl>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">

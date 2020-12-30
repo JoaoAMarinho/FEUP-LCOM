@@ -29,12 +29,23 @@
 #include "Xpms/Tasks/Ship-task/Shiptask3.xpm"
 #include "Xpms/Tasks/Ship-task/Shiptask4.xpm"
 
+//Download task xpms
+#include "Xpms/Tasks/Download-task/Downloadtask0.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask1.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask2.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask3.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask4.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask5.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask6.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask7.xpm"
+#include "Xpms/Tasks/Download-task/Downloadtask8.xpm"
+
 //Task names
 /**
  * @brief enum with all the task types
  * 
  */
-typedef enum {ICE,SHIP} Task_type;
+typedef enum {ICE,SHIP,DOWNLOAD} Task_type;
 
 //Task States
 /**

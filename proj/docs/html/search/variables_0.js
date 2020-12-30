@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['alive_540',['alive',['../struct_player.html#a23a0742ddb120a88b03c4eaa61daab72',1,'Player']]],
-  ['animationindex_541',['animationIndex',['../struct_opponent.html#aa5a700dc18fc837488149f0bee08168b',1,'Opponent::animationIndex()'],['../struct_task.html#aa5a700dc18fc837488149f0bee08168b',1,'Task::animationIndex()']]]
+  ['alive_538',['alive',['../struct_player.html#a1e21ed5b71d748120cd80fa98723be88',1,'Player']]],
+  ['animationindex_539',['animationIndex',['../struct_opponent.html#a9830f03385b6a4b8b5f9b087094c8a7a',1,'Opponent::animationIndex()'],['../struct_task.html#a9830f03385b6a4b8b5f9b087094c8a7a',1,'Task::animationIndex()']]]
 ];

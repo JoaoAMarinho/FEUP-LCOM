@@ -4,15 +4,15 @@ digraph "LoadMain"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="LoadMain",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="LoadMain",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Loads the main menu xpm, it's buttons, and draws the menu."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="add_button",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4",tooltip=" "];
+  Node2 [label="add_button",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4",tooltip="Adds the button to the current_background img."];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="create_cursor",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776",tooltip="Create a cursor object."];
   Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="createButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2",tooltip=" "];
+  Node4 [label="createButton",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2",tooltip="Create a Button object."];
   Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip=" "];
+  Node5 [label="draw_Menu",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4",tooltip="Draws the current_background."];
   Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
 }

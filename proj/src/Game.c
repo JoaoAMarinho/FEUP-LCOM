@@ -165,6 +165,9 @@ void receiveInterrupt(Device device){
 		case SHIPTASK:
 			Ship_ih(device);
 			break;
+		case DOWNLOADTASK:
+			Download_ih(device);
+			break;
         case PAUSE:
             Pause_ih(device);
             break;
@@ -351,6 +354,9 @@ void Play_ih(Device device){
 						break;
 					case SHIP:
 						gameMenu=SHIPTASK;
+						break;
+					case DOWNLOAD:
+						gameMenu=DOWNLOADTASK;
 						break;
 					//Resto das tasks
 					default:

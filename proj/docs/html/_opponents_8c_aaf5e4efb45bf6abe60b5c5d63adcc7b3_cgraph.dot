@@ -4,9 +4,9 @@ digraph "kill_opponent"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="kill_opponent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="kill_opponent",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Changes the boolean value of Opponent::isAlive to false."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="erase_opponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853",tooltip=" "];
+  Node2 [label="erase_opponent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853",tooltip="Substitutes the opponent pixels with the room background in order to erase it."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
 }

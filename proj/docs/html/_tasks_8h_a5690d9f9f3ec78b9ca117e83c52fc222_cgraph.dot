@@ -4,9 +4,9 @@ digraph "draw_warnings"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="draw_warnings",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="draw_warnings",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws all the warnings to each task in the map menu."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_task_warning",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721",tooltip=" "];
+  Node2 [label="draw_task_warning",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721",tooltip="Draws a warning to a specific task in the map menu."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
 }

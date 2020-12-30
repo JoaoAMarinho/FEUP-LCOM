@@ -4,15 +4,15 @@ digraph "draw_BestScore"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node1 [label="draw_BestScore",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 [label="draw_BestScore",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Draws a specific score in a certain position."];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="draw_Date",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#aab1921686c12a1657afd75ef82b79ec2",tooltip=" "];
+  Node2 [label="draw_Date",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#aab1921686c12a1657afd75ef82b79ec2",tooltip="Draws a specific date in a certain position."];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip=" "];
+  Node3 [label="draw_Number",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884",tooltip="Draws a specific number in a certain position."];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node4 [label="drawPixel",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118",tooltip="Draws a certain pixel with a specific colour in the secondary buffer."];
   Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="draw_Symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#add2b6827038a412296d2c160ea053c01",tooltip=" "];
+  Node5 [label="draw_Symbol",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$_menus_8c.html#add2b6827038a412296d2c160ea053c01",tooltip="Draws a specific symbol in a certain position."];
   Node5 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

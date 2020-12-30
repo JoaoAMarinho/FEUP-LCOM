@@ -488,6 +488,67 @@ void Ship_ih(Device device){
     } 
 }
 
+void Download_ih(Device device){
+    static Mouse_event * mouseEvent;
+    static bool download_started = false, task_finished= false;
+
+    switch (device) {
+        case TIMER:
+            if(time_counter%60==0 && game_counter!=0){
+				game_counter--;
+                erase_GameTimer();
+                draw_GameTimer();
+                if(download_started && !task_finished){
+                    if(gameTasks[task_index]->animationIndex==8){
+                        task_finished=true;
+                    }
+                    else{
+                        gameTasks[task_index]->animationIndex++;
+                        gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[gameTasks[task_index]->animationIndex];
+                        LoadTask(task_index);
+                    }
+                }
+			}
+			if(game_counter==0 && !task_finished){
+				gameMenu = DEFEAT;
+			}
+
+            if(cursor->x>336 && cursor->x<459 && cursor->y>371 && cursor->y<406 && !download_started){
+                if ( *mouseEvent == L_UP) {
+                    download_started = true;
+                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                    gameTasks[task_index]->animationIndex++;
+                    LoadTask(task_index);
+                }
+            }
+
+            //End task
+            if(task_finished){
+                finish_task(task_index);
+            }
+            break;
+
+        case KEYBOARD:
+            if (keyboard_data==E_KEY || keyboard_data==ESC_KEY) {
+        	    gameMenu = PLAYING;
+                download_started = false; task_finished= false;
+                *mouseEvent=MOVE;
+                gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+                gameTasks[task_index]->animationIndex=0;
+        	    LoadPlay(room->currentRoom,false);
+      	    }
+            break;
+        case MOUSE:
+            mouseEvent = get_mouse_event(&mouse_pack);
+            update_cursor_without_draw(&mouse_pack);
+            draw_GameTimer();
+            draw_cursor();
+            break;
+        case RTC:
+            break;
+    }
+}
+
 //---------------------------------------------------------------------------------------------
 //Load menus
 
