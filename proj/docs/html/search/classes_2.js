@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['date_380',['Date',['../struct_date.html',1,'']]]
+  ['date_383',['Date',['../struct_date.html',1,'']]]
 ];

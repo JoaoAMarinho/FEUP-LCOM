@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['opponentanimations_578',['opponentAnimations',['../struct_opponent.html#a67ad057c2a6e5fd9e57a02ffe8dbcd77',1,'Opponent']]],
-  ['opponentatack_579',['opponentAtack',['../struct_opponent.html#afe135a2d5d2b7fdcfc7d817eebaffcf5',1,'Opponent']]],
-  ['opponentimg_580',['opponentImg',['../struct_opponent.html#a3981bea0b2b07bba1961f92fc7b198d1',1,'Opponent']]],
-  ['opponentroom_581',['opponentRoom',['../struct_opponent.html#ab5dd60818b76a175f8a051cf3ba0e6f1',1,'Opponent']]]
+  ['opponentanimations_582',['opponentAnimations',['../struct_opponent.html#a67ad057c2a6e5fd9e57a02ffe8dbcd77',1,'Opponent']]],
+  ['opponentatack_583',['opponentAtack',['../struct_opponent.html#afe135a2d5d2b7fdcfc7d817eebaffcf5',1,'Opponent']]],
+  ['opponentimg_584',['opponentImg',['../struct_opponent.html#a3981bea0b2b07bba1961f92fc7b198d1',1,'Opponent']]],
+  ['opponentroom_585',['opponentRoom',['../struct_opponent.html#ab5dd60818b76a175f8a051cf3ba0e6f1',1,'Opponent']]]
 ];
