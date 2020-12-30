@@ -17,11 +17,11 @@
  * @brief Struct that represents the cursor information 
  * 
  * @var Cursor::img
- * cursor xpm
+ * Cursor xpm
  * @var Cursor::x
- * cursor x position
+ * Cursor x position
  * @var Cursor::y
- * cursor y position
+ * Cursor y position
  */
 typedef struct {
     xpm_image_t img;

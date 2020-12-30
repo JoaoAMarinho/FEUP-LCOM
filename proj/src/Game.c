@@ -15,7 +15,7 @@ Mouse_event m_event;
 bool mouse_error=false;
 //Graphics card
 uint16_t horizontal_res, vertical_res;
-//Rtc
+//RTC
 uint8_t rtc_date[3];
 
 //Game global variables
@@ -58,7 +58,6 @@ int gameLoop(){
 
     LoadMain();
 	LoadNumbers();
-	//LoadLetters();
     //Other loads (tasks and other things)
 	LoadOpponents(); //Load to gameOpponents array
 	LoadTasks(); //Load to gameTasks array
@@ -133,10 +132,16 @@ int gameLoop(){
   if (timer_unsubscribe_int() != 0) {return 1;}
 
   delete_room(room);
+  free(player);
+  free(gameOpponents);
+  free(gameTasks);
+  free(cursor);
+  free(scores);
+  free(date);
+  free(mainButtons);
+  free(pauseButtons);
 
   return 0;
-
-    
 }
 
 void receiveInterrupt(Device device){
@@ -160,9 +165,6 @@ void receiveInterrupt(Device device){
 		case SHIPTASK:
 			Ship_ih(device);
 			break;
-        //case LEVER:
-        //    LeverInterruptHandler(device);
-        //    break;
         case PAUSE:
             Pause_ih(device);
             break;
@@ -230,9 +232,9 @@ void Play_ih(Device device){
 
 			//Player Animation
 			if(player->alive){
-				if (time_counter % 7 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
+				if (time_counter % 5 == 0 && (keyboard_data == 0x11 || keyboard_data == 0x48 || keyboard_data == 0x1E ||keyboard_data == 0x4B))
 					animate_player(player);
-				if(time_counter % 7 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x4D))
+				if(time_counter % 5 == 0 && (keyboard_data == 0x1F ||keyboard_data == 0x50 || keyboard_data == 0x20 ||keyboard_data == 0x4D))
 					animate_player(player);
 			}
 			//Move player
@@ -366,7 +368,7 @@ void Play_ih(Device device){
 
         //UPDATE MOVING DIRECTION
 		if(player->alive)
-        	change_direction(player, &up, &down, &left, &right);
+        	change_direction(&up, &down, &left, &right);
 
         break;
 
@@ -376,8 +378,6 @@ void Play_ih(Device device){
         break;
   }
 }
-
-//Interrupt handler das tasks
 
 //Verificar se o player está na zona de transição de sala
 bool roomTransition(){

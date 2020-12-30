@@ -61,8 +61,6 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
             xpm_load(Shiptask4_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[4] = img;
             break;
-        case T3:
-            break;
         //Other tasks;
         default:
             break;
@@ -134,20 +132,31 @@ void draw_task_warning(Room_number room,xpm_image_t img){
         case HALLWAY2:
             break;
         case MEDBAY:
+            x=293;
+            y=155;
             break;
         case ELETRICAL:
+            x=305;
+            y=303;
             break;
         case UPPERENG:
+            x=199;
+            y=123;
             break;
         case HALLWAY3:
             break;
         case LOWERENG:
+            x=209;
+            y=449;
             break;
         case REACTOR:
+            x=92;
+            y=269;
             break;
         case SECURITY:
+            x=227;
+            y=306;
             break;
-        //o resto dos rooms
         default: 
             break;
     }

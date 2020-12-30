@@ -1,7 +1,6 @@
 #include "Buttons.h"
 
 extern uint16_t horizontal_res, vertical_res;
-//extern Room * room;
 extern xpm_image_t current_background;
 
 //---------------------------------------------------------------------------------------------

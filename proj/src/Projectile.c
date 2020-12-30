@@ -5,8 +5,6 @@ extern Room * room;
 extern Opponent ** gameOpponents;
 extern int n_opponents;
 
-//extern GameState gameState;
-
 extern uint16_t horizontal_res, vertical_res;
 
 //---------------------------------------------------------------------------------------------
@@ -22,8 +20,8 @@ Projectile* create_projectile(Player * player){
     
     xpm_image_t img;
     //Load pprojectile animations
-	xpm_load(projectile_xpm, XPM_8_8_8_8, &projectile->projectileImg);
-	projectile->projectileAnimations[0] = projectile->projectileImg;
+	  xpm_load(projectile_xpm, XPM_8_8_8_8, &projectile->projectileImg);
+	  projectile->projectileAnimations[0] = projectile->projectileImg;
     xpm_load(projectile_anim1_xpm, XPM_8_8_8_8, &img);
     projectile->projectileAnimations[1] = img;
     xpm_load(projectile_anim2_xpm, XPM_8_8_8_8, &img);
@@ -162,7 +160,6 @@ Projectile * blast(Player * player){
     return projectile;
 }
 
-//Falta::Colisão com inimigos
 bool projectileCollision(Projectile *projectile){
     if(projectile->direction==UP){
 
@@ -305,10 +302,4 @@ bool projectileCollision(Projectile *projectile){
     //No collision
     return false;
 }
-
-//void enemy_shoot(Enemy * enemy); //Tiro do inimigo
-
-//bool enemyBulletAnimation(Bullet * bullet, Player * player); //Animação da bala do inimigo
-
-//bool check_collision_with_player(Bullet * bullet, Player * player); //Verifica se o inimigo matou o player
 

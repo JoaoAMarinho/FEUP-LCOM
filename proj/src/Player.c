@@ -5,7 +5,6 @@ extern uint8_t keyboard_data;
 extern Room * room;
 extern Opponent ** gameOpponents;
 extern int n_opponents;
-//extern Menu gameMenu;
 
 Player * player;
 
@@ -133,7 +132,7 @@ void animate_player(Player *player){
     }
 }
 
-void change_direction(Player * player, bool * up, bool * down, bool * left, bool * right){
+void change_direction(bool * up, bool * down, bool * left, bool * right){
     if (keyboard_data == 0x11 /*Make-code W*/ || keyboard_data == 0x48 /*Make-code Up-arrow*/) {
         *up = true;
     }
@@ -279,7 +278,7 @@ int player_opponent_collision(Player * player){
             if(player->x >= gameOpponents[k]->x && player->y >= gameOpponents[k]->y && player->x <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
                 return k;
             }
-            else if(player->x + /*x_size*/player->playerImg.width >= gameOpponents[k]->x && player->y >= gameOpponents[k]->y && player->x + player->playerImg.width <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
+            else if(player->x + player->playerImg.width >= gameOpponents[k]->x && player->y >= gameOpponents[k]->y && player->x + player->playerImg.width <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){
                 return k;
             }
             else if(player->x >= gameOpponents[k]->x && player->y + player->playerImg.height >= gameOpponents[k]->y && player->x <= gameOpponents[k]->x + gameOpponents[k]->opponentImg.width && player->y + player->playerImg.height <= gameOpponents[k]->y + gameOpponents[k]->opponentImg.height){

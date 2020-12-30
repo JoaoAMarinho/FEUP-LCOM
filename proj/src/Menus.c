@@ -15,7 +15,6 @@ int task_index;
 extern Date * date;
 
 xpm_image_t current_background;
-//xpm_image_t background_obstacles;
 
 GameTimer* gameTimer;
 Score scores[5];
@@ -494,7 +493,6 @@ void Ship_ih(Device device){
 
 void LoadMain(){
     xpm_load(MainBackGround, XPM_8_8_8_8, &current_background);
-    //xpm_load(MainBackGroundObstacles, XPM_8_8_8_8, &background_obstacles);
     cursor = create_cursor();
 
     mainButtons = (Button **) malloc(5 * sizeof(Button *));
@@ -603,7 +601,6 @@ void LoadNumbers(){
 //Load tasks
 
 void LoadTask(int index){
-    //xpm_load(tasksObstacles_xpm, XPM_8_8_8_8, &background_obstacles);
     task_index=index;
     current_background=gameTasks[index]->taskImg;
     draw_Menu();
