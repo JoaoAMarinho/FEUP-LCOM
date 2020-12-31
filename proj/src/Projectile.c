@@ -1,5 +1,10 @@
 #include "Projectile.h"
 
+#include "Xpms/Projectiles/Projectile.xpm"
+#include "Xpms/Projectiles/Projectileanim1.xpm"
+#include "Xpms/Projectiles/Projectileanim2.xpm"
+#include "Xpms/Projectiles/Projectileanim3.xpm"
+
 extern Player * player;
 extern Room * room;
 extern Opponent ** gameOpponents;

@@ -1,6 +1,8 @@
 #include "mouse.h"
 #include <math.h>
 
+#include "Xpms/Cursor.xpm"
+
 int mouse_hook_id=MOUSE_IRQ;
 extern bool mouse_error;
 extern uint8_t mouse_data;

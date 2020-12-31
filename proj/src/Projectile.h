@@ -3,11 +3,6 @@
 #include <lcom/lcf.h>
 #include "Player.h"
 
-#include "Xpms/Projectiles/Projectile.xpm"
-#include "Xpms/Projectiles/Projectileanim1.xpm"
-#include "Xpms/Projectiles/Projectileanim2.xpm"
-#include "Xpms/Projectiles/Projectileanim3.xpm"
-
 /**
  * @struct Projectile
  *

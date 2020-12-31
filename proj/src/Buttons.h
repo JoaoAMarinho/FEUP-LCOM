@@ -6,22 +6,6 @@
 // Any header files included below this line should have been created by you
 #include "Videocard.h"
 
-#include "Xpms/Main_Menu/Buttons/BestScores_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/BestScores_not_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Exit_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Exit_not_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Instructions_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Instructions_not_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Play_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Play_not_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Calendar_clicked.xpm"
-#include "Xpms/Main_Menu/Buttons/Calendar_not_clicked.xpm"
-
-#include "Xpms/Pause_Menu/Buttons/Resume_clicked.xpm"
-#include "Xpms/Pause_Menu/Buttons/Resume_not_clicked.xpm"
-#include "Xpms/Pause_Menu/Buttons/Menu_clicked.xpm"
-#include "Xpms/Pause_Menu/Buttons/Menu_not_clicked.xpm"
-
 /**
  * @brief enum with all the button types
  * 

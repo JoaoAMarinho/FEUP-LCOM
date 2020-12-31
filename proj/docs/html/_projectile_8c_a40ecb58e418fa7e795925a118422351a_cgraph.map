@@ -1,0 +1,9 @@
+<map id="animate_projectile" name="animate_projectile">
+<area shape="rect" id="node1" title="Changes the projectile position if it does not collide, else it erases it." alt="" coords="5,56,132,83"/>
+<area shape="rect" id="node2" href="$_projectile_8c.html#aaaf2947b73a3774a4133fd2edafb4a4a" title="Draws the projectile parameter on the screen." alt="" coords="351,5,459,32"/>
+<area shape="rect" id="node4" href="$_projectile_8c.html#a4991834527208cf6a17533cb65f7ec0c" title="Substitutes the projectile pixels with the room background in order to erase it." alt="" coords="507,56,621,83"/>
+<area shape="rect" id="node5" href="$_projectile_8c.html#aadfcf2de0cce9ef7003507e8e9c93bf4" title="Checks if a certain projectile collided with any object." alt="" coords="180,107,303,133"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="669,56,748,83"/>
+<area shape="rect" id="node6" href="$_opponents_8c.html#aaf5e4efb45bf6abe60b5c5d63adcc7b3" title="Changes the boolean value of Opponent::isAlive to false." alt="" coords="355,107,454,133"/>
+<area shape="rect" id="node7" href="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="507,107,621,133"/>
+</map>

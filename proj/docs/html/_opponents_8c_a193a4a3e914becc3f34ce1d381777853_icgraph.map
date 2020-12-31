@@ -1,0 +1,12 @@
+<map id="erase_opponent" name="erase_opponent">
+<area shape="rect" id="node1" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="1061,81,1176,108"/>
+<area shape="rect" id="node2" href="$_opponents_8h.html#a73358e93e4cccfee54666d4a0bbca9cb" title="Change the opponent image with the following index in the array of animations." alt="" coords="739,5,867,32"/>
+<area shape="rect" id="node3" href="$_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="451,81,516,108"/>
+<area shape="rect" id="node7" href="$_opponents_8h.html#aaf5e4efb45bf6abe60b5c5d63adcc7b3" title="Changes the boolean value of Opponent::isAlive to false." alt="" coords="915,107,1013,133"/>
+<area shape="rect" id="node10" href="$_opponents_8h.html#a4705ad3c5c9e661c3003c0451b9988e4" title="Changes the player position if it does not collide with any object, else changes direction." alt="" coords="571,157,683,184"/>
+<area shape="rect" id="node4" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,81,403,108"/>
+<area shape="rect" id="node5" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,81,245,108"/>
+<area shape="rect" id="node6" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,81,115,108"/>
+<area shape="rect" id="node8" href="$_projectile_8h.html#aadfcf2de0cce9ef7003507e8e9c93bf4" title="Checks if a certain projectile collided with any object." alt="" coords="741,107,864,133"/>
+<area shape="rect" id="node9" href="$_projectile_8h.html#a40ecb58e418fa7e795925a118422351a" title="Changes the projectile position if it does not collide, else it erases it." alt="" coords="564,107,691,133"/>
+</map>

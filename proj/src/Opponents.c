@@ -1,5 +1,16 @@
 #include "Opponents.h"
 
+//Include dos xpm dos Opponents
+#include "Xpms/Opponent/Opponent_anim0.xpm"
+#include "Xpms/Opponent/Opponent_anim1.xpm"
+#include "Xpms/Opponent/Opponent_anim2.xpm"
+#include "Xpms/Opponent/Opponent_anim3.xpm"
+#include "Xpms/Opponent/Opponent_anim4.xpm"
+#include "Xpms/Opponent/Opponent_atack0.xpm"
+#include "Xpms/Opponent/Opponent_atack1.xpm"
+#include "Xpms/Opponent/Opponent_atack2.xpm"
+#include "Xpms/Opponent/Opponent_atack3.xpm"
+
 extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 

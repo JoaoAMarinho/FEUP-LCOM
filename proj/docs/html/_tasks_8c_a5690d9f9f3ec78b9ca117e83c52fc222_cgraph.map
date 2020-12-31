@@ -1,0 +1,5 @@
+<map id="draw_warnings" name="draw_warnings">
+<area shape="rect" id="node1" title="Draws all the warnings to each task in the map menu." alt="" coords="5,5,112,32"/>
+<area shape="rect" id="node2" href="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721" title="Draws a warning to a specific task in the map menu." alt="" coords="160,5,292,32"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="340,5,419,32"/>
+</map>

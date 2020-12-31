@@ -1,0 +1,5 @@
+<map id="draw_Score" name="draw_Score">
+<area shape="rect" id="node1" title="Draws the pontos in a certain position." alt="" coords="5,5,96,32"/>
+<area shape="rect" id="node2" href="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884" title="Draws a specific number in a certain position." alt="" coords="144,5,245,32"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="293,5,372,32"/>
+</map>

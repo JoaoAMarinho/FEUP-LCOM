@@ -5,12 +5,6 @@
 #include "KeyBoard.h"
 #include "Tasks.h"
 
-#include "Xpms/Player/player_right0.xpm"
-#include "Xpms/Player/player_right1.xpm"
-#include "Xpms/Player/player_right2.xpm"
-#include "Xpms/Player/player_right3.xpm"
-#include "Xpms/Player/player_right4.xpm"
-
 /**
  * @struct Player
  *

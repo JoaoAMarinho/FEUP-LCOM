@@ -1,0 +1,8 @@
+<map id="move_opponent" name="move_opponent">
+<area shape="rect" id="node1" title="Changes the player position if it does not collide with any object, else changes direction." alt="" coords="5,81,117,108"/>
+<area shape="rect" id="node2" href="$_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764" title="Draws the opponent parameter on the screen." alt="" coords="204,5,313,32"/>
+<area shape="rect" id="node4" href="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="201,56,316,83"/>
+<area shape="rect" id="node5" href="$_opponents_8c.html#ac980447170577783ee298a806ace20d2" title="Checks the collision of an opponent with another from the same room." alt="" coords="165,107,352,133"/>
+<area shape="rect" id="node6" href="$_opponents_8c.html#a29fac6365df53322a55732747a84c6f5" title="Checks the collision of an opponent with the room obstacles." alt="" coords="176,157,341,184"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="400,31,479,57"/>
+</map>

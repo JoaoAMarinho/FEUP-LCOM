@@ -1,0 +1,8 @@
+<map id="draw_BestScore" name="draw_BestScore">
+<area shape="rect" id="node1" title="Draws a specific score in a certain position." alt="" coords="723,5,840,32"/>
+<area shape="rect" id="node2" href="$_menus_8h.html#ace31b8ab160f9392523b2eeee6bc4d3d" title="Loads the bestScores menu xpm, each score, and draws the menu." alt="" coords="565,5,675,32"/>
+<area shape="rect" id="node3" href="$_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="451,5,517,32"/>
+<area shape="rect" id="node4" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,5,403,32"/>
+<area shape="rect" id="node5" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,5,245,32"/>
+<area shape="rect" id="node6" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,5,115,32"/>
+</map>

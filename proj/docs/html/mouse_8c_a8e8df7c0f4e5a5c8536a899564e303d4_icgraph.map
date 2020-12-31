@@ -1,0 +1,9 @@
+<map id="update_cursor_without_draw" name="update_cursor_without_draw">
+<area shape="rect" id="node1" title="Changes the cursor position according to it&#39;s movement without drawing it." alt="" coords="593,56,780,83"/>
+<area shape="rect" id="node2" href="$_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="451,5,545,32"/>
+<area shape="rect" id="node6" href="$_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="470,56,526,83"/>
+<area shape="rect" id="node7" href="$_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="465,107,531,133"/>
+<area shape="rect" id="node3" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,56,403,83"/>
+<area shape="rect" id="node4" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,56,245,83"/>
+<area shape="rect" id="node5" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,56,115,83"/>
+</map>

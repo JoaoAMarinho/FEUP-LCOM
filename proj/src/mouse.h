@@ -9,8 +9,6 @@
 #include "utils.h"
 #include "Videocard.h"
 
-#include "Xpms/Cursor.xpm"
-
 /** 
  * @struct Cursor
  *

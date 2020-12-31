@@ -1,5 +1,8 @@
 #include "rtc.h"
 
+//Xpms
+#include "Xpms/Numbers/Slash.xpm"
+
 int rtc_hook_id=RTC_IRQ;
 extern uint8_t rtc_date[3];
 extern uint16_t horizontal_res, vertical_res;

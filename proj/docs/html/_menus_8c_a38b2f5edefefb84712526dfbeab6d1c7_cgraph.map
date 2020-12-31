@@ -1,0 +1,7 @@
+<map id="draw_BestScore" name="draw_BestScore">
+<area shape="rect" id="node1" title="Draws a specific score in a certain position." alt="" coords="5,31,123,57"/>
+<area shape="rect" id="node2" href="$_menus_8c.html#aab1921686c12a1657afd75ef82b79ec2" title="Draws a specific date in a certain position." alt="" coords="171,56,253,83"/>
+<area shape="rect" id="node3" href="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884" title="Draws a specific number in a certain position." alt="" coords="301,5,403,32"/>
+<area shape="rect" id="node5" href="$_menus_8c.html#add2b6827038a412296d2c160ea053c01" title="Draws a specific symbol in a certain position." alt="" coords="302,56,402,83"/>
+<area shape="rect" id="node4" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="451,31,529,57"/>
+</map>

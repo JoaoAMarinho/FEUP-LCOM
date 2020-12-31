@@ -1,5 +1,11 @@
 #include "Player.h"
 
+#include "Xpms/Player/player_right0.xpm"
+#include "Xpms/Player/player_right1.xpm"
+#include "Xpms/Player/player_right2.xpm"
+#include "Xpms/Player/player_right3.xpm"
+#include "Xpms/Player/player_right4.xpm"
+
 extern uint16_t horizontal_res, vertical_res;
 extern uint8_t keyboard_data;
 extern Room * room;

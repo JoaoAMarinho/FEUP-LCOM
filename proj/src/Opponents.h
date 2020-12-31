@@ -7,17 +7,6 @@
 #include "i8042.h"
 #include "Rooms.h"
 
-//Include dos xpm dos Opponents
-#include "Xpms/Opponent/Opponent_anim0.xpm"
-#include "Xpms/Opponent/Opponent_anim1.xpm"
-#include "Xpms/Opponent/Opponent_anim2.xpm"
-#include "Xpms/Opponent/Opponent_anim3.xpm"
-#include "Xpms/Opponent/Opponent_anim4.xpm"
-#include "Xpms/Opponent/Opponent_atack0.xpm"
-#include "Xpms/Opponent/Opponent_atack1.xpm"
-#include "Xpms/Opponent/Opponent_atack2.xpm"
-#include "Xpms/Opponent/Opponent_atack3.xpm"
-
 /**
  * @struct Opponent
  *

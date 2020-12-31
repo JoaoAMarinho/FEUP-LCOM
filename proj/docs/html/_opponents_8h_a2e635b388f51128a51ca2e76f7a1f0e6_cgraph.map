@@ -1,0 +1,5 @@
+<map id="draw_current_opponents" name="draw_current_opponents">
+<area shape="rect" id="node1" title="Draws all the opponents with the same room as the room variable." alt="" coords="5,5,168,32"/>
+<area shape="rect" id="node2" href="$_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764" title="Draws the opponent parameter on the screen." alt="" coords="216,5,325,32"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="373,5,452,32"/>
+</map>

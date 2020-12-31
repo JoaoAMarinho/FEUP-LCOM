@@ -265,7 +265,7 @@ void Play_ih(Device device){
 
 			//Revive 2 opponents
 			if(game_counter%10==0){
-				int number_of_revives=2;
+				int number_of_revives=1;
 				for (int index = 0; index < n_opponents && number_of_revives!=0; index++) {
 					if(!gameOpponents[index]->isAlive && gameOpponents[index]->opponentRoom!=room->currentRoom){
 						gameOpponents[index]->isAlive=true;

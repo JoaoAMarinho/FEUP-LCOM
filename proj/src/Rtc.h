@@ -4,9 +4,6 @@
 
 #include "i8042.h"
 
-//Xpms
-#include "Xpms/Numbers/Slash.xpm"
-
 /**
  * @struct Date
  *

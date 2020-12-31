@@ -1,0 +1,52 @@
+<map id="gameLoop" name="gameLoop">
+<area shape="rect" id="node1" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="5,563,88,589"/>
+<area shape="rect" id="node2" href="$_videocard_8c.html#a5962bd49e868bdc99b946acc0b2df2a1" title="Copies all the pixels from the second buffer to the primary one." alt="" coords="171,5,274,32"/>
+<area shape="rect" id="node3" href="$_rtc_8c.html#af97cc9f1ac651d83c3bd52170b76e89a" title="Create a date object." alt="" coords="177,56,268,83"/>
+<area shape="rect" id="node4" href="$_rooms_8c.html#a2bd2be0b6d044f022acf6e1aab5b6aae" title="Frees the memory allocated for room." alt="" coords="176,107,269,133"/>
+<area shape="rect" id="node5" href="$mouse_8c.html#a6dc85028d5d0611c9dfa840d4386ce3d" title="Builds the mouse packet with information from the mouse." alt="" coords="179,157,266,184"/>
+<area shape="rect" id="node6" href="$_key_board_8c.html#aea970a154161a35f6894898a092ed70a" title="Handles keyboard interrupts." alt="" coords="193,208,253,235"/>
+<area shape="rect" id="node8" href="$_key_board_8c.html#a178b1db0b319dccad2840cc3fd273132" title="Subscribes keyboard interrupts." alt="" coords="143,360,302,387"/>
+<area shape="rect" id="node9" href="$_key_board_8c.html#a32cc4de66854f8a7bd909e7aa8b901ed" title="Unsubscribes keyboard interrupts." alt="" coords="136,411,309,437"/>
+<area shape="rect" id="node10" href="$_menus_8c.html#ae973fa5491e0fee81d89dc596ee62933" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="579,411,658,437"/>
+<area shape="rect" id="node16" href="$_menus_8c.html#ab67034898e43094fa444bd9358978b4c" title="Loads the numbers xpms to the gameTimer." alt="" coords="171,664,274,691"/>
+<area shape="rect" id="node17" href="$_opponents_8c.html#a77b76e85acb761c82bab20e7585ff017" title="Allocates memory for all the existing opponents in the gameOpponents array." alt="" coords="166,715,279,741"/>
+<area shape="rect" id="node19" href="$_rtc_8c.html#aaa4808c1358ca9bffac5eca0e68a9a68" title="Reads the information from the rtc to the rtc_date array." alt="" coords="581,512,656,539"/>
+<area shape="rect" id="node22" href="$_tasks_8c.html#a170a6728930a224bbd70affb7733e6b3" title="Allocates memory for all the existing task in the gameTasks array." alt="" coords="180,765,265,792"/>
+<area shape="rect" id="node24" href="$mouse_8c.html#a541100d5ec8100f2dfa8fd9435dad1dc" title="Enables or disables stream mode data reporting, by sending the respective cmd to the mouse." alt="" coords="147,259,298,285"/>
+<area shape="rect" id="node25" href="$mouse_8c.html#a210374b50462acdedab00df64d5cea3c" title="Handles mouse interrupts." alt="" coords="183,309,262,336"/>
+<area shape="rect" id="node26" href="$mouse_8c.html#af911ba818e23f8bd02977a567d1bbbd5" title="Subscribes mouse interrupts." alt="" coords="150,816,295,843"/>
+<area shape="rect" id="node27" href="$mouse_8c.html#a3ecf823d80520009ae5e0d76ae40a3c3" title="Unsubscribes mouse interrupts." alt="" coords="143,867,302,893"/>
+<area shape="rect" id="node28" href="$_game_8c.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="168,563,277,589"/>
+<area shape="rect" id="node40" href="$_rtc_8c.html#a886f0bece1ad0cf1cbec6ad01ffca682" title="Updates the date object with the values from the rtc_date array." alt="" coords="575,892,663,919"/>
+<area shape="rect" id="node45" href="$_rtc_8c.html#a4c407bd8aa03827b0f868962cf00dbd6" title="Subscribes rtc interrupts." alt="" coords="162,917,283,944"/>
+<area shape="rect" id="node47" href="$_rtc_8c.html#a9d4850bb2a488644672d43287f160622" title="Unsubscribes rtc interrupts." alt="" coords="155,968,290,995"/>
+<area shape="rect" id="node48" href="$timer_8c.html#a91a2072306c68353712a6b771287dc2c" title=" " alt="" coords="162,1019,283,1045"/>
+<area shape="rect" id="node49" href="$timer_8c.html#ac57a7e1140a7e00ad95ac5488d2a671b" title=" " alt="" coords="155,1069,290,1096"/>
+<area shape="rect" id="node50" href="$timer_8c.html#afabd21de449be154dd65d5fdb2d8045d" title=" " alt="" coords="148,1120,297,1147"/>
+<area shape="rect" id="node7" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Function able read from registers." alt="" coords="387,208,477,235"/>
+<area shape="rect" id="node11" href="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4" title="Adds the button to the current_background img." alt="" coords="738,360,825,387"/>
+<area shape="rect" id="node12" href="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776" title="Create a cursor object." alt="" coords="731,411,832,437"/>
+<area shape="rect" id="node13" href="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2" title="Create a Button object." alt="" coords="733,461,829,488"/>
+<area shape="rect" id="node14" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="737,516,825,543"/>
+<area shape="rect" id="node15" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="888,592,967,619"/>
+<area shape="rect" id="node18" href="$_opponents_8c.html#aeabda63f074d5dd83987eb55fb3e4fb1" title="Create a opponent object." alt="" coords="373,968,491,995"/>
+<area shape="rect" id="node20" href="$_rtc_8c.html#a5852df494f99fa6bacb2a95ac37528ca" title="Reads a register from the rtc to the rtc_date array." alt="" coords="734,693,829,720"/>
+<area shape="rect" id="node21" href="$_rtc_8c.html#a525a2c36bf3d39b60d609eb65bade82e" title="Waits for a valid rtc." alt="" coords="880,693,975,720"/>
+<area shape="rect" id="node23" href="$_tasks_8c.html#af450d3fb297aa88a976268853f3a900e" title="Create a task object." alt="" coords="387,1019,477,1045"/>
+<area shape="rect" id="node29" href="$_menus_8c.html#ab6dc6a05d4e412a14a2c419d4118ccfe" title="BestScores menu interrupt handler." alt="" coords="379,512,485,539"/>
+<area shape="rect" id="node31" href="$_menus_8c.html#abc71382567d46bbabe7740babd08ac81" title="Defeat menu interrupt handler." alt="" coords="394,309,470,336"/>
+<area shape="rect" id="node32" href="$_menus_8c.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="385,613,479,640"/>
+<area shape="rect" id="node36" href="$_menus_8c.html#ad1f6bce2532f99468270f5c296fada98" title="GameMap menu interrupt handler." alt="" coords="383,765,481,792"/>
+<area shape="rect" id="node37" href="$_menus_8c.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="404,664,460,691"/>
+<area shape="rect" id="node38" href="$_menus_8c.html#a3db5e984387c8f6cc7dedd2d02e138c5" title="Instructions menu interrupt handler." alt="" coords="379,563,485,589"/>
+<area shape="rect" id="node39" href="$_menus_8c.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="399,867,465,893"/>
+<area shape="rect" id="node41" href="$_menus_8c.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="394,411,470,437"/>
+<area shape="rect" id="node42" href="$_game_8c.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="399,816,465,843"/>
+<area shape="rect" id="node43" href="$_menus_8c.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="399,715,465,741"/>
+<area shape="rect" id="node44" href="$_menus_8c.html#acff6a858f1f25da9f7a7e0186c95f950" title="Victory menu interrupt handler." alt="" coords="392,360,472,387"/>
+<area shape="rect" id="node30" href="$mouse_8c.html#a608343c0c4fb70cff0ccd951d5d98b2a" title="Draws the cursor object on the screen." alt="" coords="573,604,665,631"/>
+<area shape="rect" id="node33" href="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929" title="Draws the remaining game time." alt="" coords="557,763,680,789"/>
+<area shape="rect" id="node34" href="$_menus_8c.html#a2665a92d6b5004d12a6eb85144ce9e6f" title="Removes the game time from the screen." alt="" coords="555,712,683,739"/>
+<area shape="rect" id="node35" href="$_tasks_8c.html#a1f73242d18585f6d2cdacad109e60b2a" title="Finishes a task by putting its bool isFinished to true." alt="" coords="577,661,661,688"/>
+<area shape="rect" id="node46" href="$_rtc_8c.html#a7ed44750b29afb14ab738e731b134181" title="Enables or disables the update of the rtc according to the parameter." alt="" coords="357,1069,507,1096"/>
+</map>

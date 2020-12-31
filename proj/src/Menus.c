@@ -1,5 +1,25 @@
 #include "Menus.h"
 
+//Include das images dos menus
+#include "Xpms/Main_Menu/BackGround.xpm"
+#include "Xpms/BestScores.xpm"
+#include "Xpms/Instructions.xpm"
+#include "Xpms/Pause_Menu/PauseBackground.xpm"
+#include "Xpms/GameMap.xpm"
+#include "Xpms/Victory.xpm"
+#include "Xpms/Defeat.xpm"
+
+#include "Xpms/Numbers/Number0.xpm"
+#include "Xpms/Numbers/Number1.xpm"
+#include "Xpms/Numbers/Number2.xpm"
+#include "Xpms/Numbers/Number3.xpm"
+#include "Xpms/Numbers/Number4.xpm"
+#include "Xpms/Numbers/Number5.xpm"
+#include "Xpms/Numbers/Number6.xpm"
+#include "Xpms/Numbers/Number7.xpm"
+#include "Xpms/Numbers/Number8.xpm"
+#include "Xpms/Numbers/Number9.xpm"
+
 extern unsigned int time_counter,game_counter;
 extern uint16_t horizontal_res, vertical_res;
 extern uint8_t keyboard_data;

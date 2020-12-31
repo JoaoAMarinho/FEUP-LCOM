@@ -1,0 +1,8 @@
+<map id="room_opponent_collision" name="room_opponent_collision">
+<area shape="rect" id="node1" title="Checks the collision of an opponent with the room obstacles." alt="" coords="724,5,889,32"/>
+<area shape="rect" id="node2" href="$_opponents_8h.html#a4705ad3c5c9e661c3003c0451b9988e4" title="Changes the player position if it does not collide with any object, else changes direction." alt="" coords="564,5,676,32"/>
+<area shape="rect" id="node3" href="$_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="451,5,516,32"/>
+<area shape="rect" id="node4" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,5,403,32"/>
+<area shape="rect" id="node5" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,5,245,32"/>
+<area shape="rect" id="node6" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,5,115,32"/>
+</map>

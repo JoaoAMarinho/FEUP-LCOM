@@ -1,0 +1,13 @@
+<map id="Bestscores_ih" name="Bestscores_ih">
+<area shape="rect" id="node1" title="BestScores menu interrupt handler." alt="" coords="5,107,111,133"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a608343c0c4fb70cff0ccd951d5d98b2a" title="Draws the cursor object on the screen." alt="" coords="159,5,251,32"/>
+<area shape="rect" id="node4" href="$_menus_8c.html#ae973fa5491e0fee81d89dc596ee62933" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="165,107,244,133"/>
+<area shape="rect" id="node9" href="$_rtc_8c.html#aaa4808c1358ca9bffac5eca0e68a9a68" title="Reads the information from the rtc to the rtc_date array." alt="" coords="167,183,242,209"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="456,81,535,108"/>
+<area shape="rect" id="node5" href="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4" title="Adds the button to the current_background img." alt="" coords="306,31,393,57"/>
+<area shape="rect" id="node6" href="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776" title="Create a cursor object." alt="" coords="299,81,400,108"/>
+<area shape="rect" id="node7" href="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2" title="Create a Button object." alt="" coords="301,132,397,159"/>
+<area shape="rect" id="node8" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="305,183,393,209"/>
+<area shape="rect" id="node10" href="$_rtc_8c.html#a5852df494f99fa6bacb2a95ac37528ca" title="Reads a register from the rtc to the rtc_date array." alt="" coords="302,233,397,260"/>
+<area shape="rect" id="node11" href="$_rtc_8c.html#a525a2c36bf3d39b60d609eb65bade82e" title="Waits for a valid rtc." alt="" coords="448,233,543,260"/>
+</map>

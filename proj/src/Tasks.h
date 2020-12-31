@@ -8,38 +8,6 @@
 
 #include "Opponents.h"
 
-//Include dos xpm das tasks
-#include "Xpms/Tasks/TaskArrow.xpm"
-#include "Xpms/Tasks/TaskWarning.xpm"
-
-//Ice task xpms
-#include "Xpms/Tasks/Ice-task/Icetask0.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask1.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask2.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask3.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask4.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask5.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask6.xpm"
-#include "Xpms/Tasks/Ice-task/Icetask7.xpm"
-
-//Ship task xpms
-#include "Xpms/Tasks/Ship-task/Shiptask0.xpm"
-#include "Xpms/Tasks/Ship-task/Shiptask1.xpm"
-#include "Xpms/Tasks/Ship-task/Shiptask2.xpm"
-#include "Xpms/Tasks/Ship-task/Shiptask3.xpm"
-#include "Xpms/Tasks/Ship-task/Shiptask4.xpm"
-
-//Download task xpms
-#include "Xpms/Tasks/Download-task/Downloadtask0.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask1.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask2.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask3.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask4.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask5.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask6.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask7.xpm"
-#include "Xpms/Tasks/Download-task/Downloadtask8.xpm"
-
 //Task names
 /**
  * @brief enum with all the task types

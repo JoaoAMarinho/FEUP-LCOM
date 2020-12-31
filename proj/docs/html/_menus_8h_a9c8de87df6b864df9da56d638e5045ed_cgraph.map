@@ -1,0 +1,22 @@
+<map id="Download_ih" name="Download_ih">
+<area shape="rect" id="node1" title="Download task interrupt handler." alt="" coords="5,194,100,221"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a608343c0c4fb70cff0ccd951d5d98b2a" title="Draws the cursor object on the screen." alt="" coords="418,67,510,94"/>
+<area shape="rect" id="node4" href="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929" title="Draws the remaining game time." alt="" coords="403,169,525,195"/>
+<area shape="rect" id="node6" href="$_menus_8c.html#a2665a92d6b5004d12a6eb85144ce9e6f" title="Removes the game time from the screen." alt="" coords="177,17,305,43"/>
+<area shape="rect" id="node7" href="$_tasks_8c.html#a1f73242d18585f6d2cdacad109e60b2a" title="Finishes a task by putting its bool isFinished to true." alt="" coords="199,169,283,195"/>
+<area shape="rect" id="node8" href="$mouse_8c.html#a85e75f7cad7714586c25f99175f2b9be" title="Get the mouse event object." alt="" coords="180,219,303,246"/>
+<area shape="rect" id="node9" href="$_menus_8c.html#ab1d0c183f6f3c1261e727283299e7a5b" title="Draws the room as well as all the tasks and opponents from that room, changes the player direction an..." alt="" coords="203,321,279,347"/>
+<area shape="rect" id="node17" href="$_menus_8c.html#aa2a078fba4dccaaf0b32cfbb078555d1" title="Draws a specific task." alt="" coords="202,118,281,145"/>
+<area shape="rect" id="node19" href="$mouse_8c.html#a8e8df7c0f4e5a5c8536a899564e303d4" title="Changes the cursor position according to it&#39;s movement without drawing it." alt="" coords="148,422,335,449"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="760,219,839,246"/>
+<area shape="rect" id="node5" href="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884" title="Draws a specific number in a certain position." alt="" coords="602,169,703,195"/>
+<area shape="rect" id="node10" href="$_opponents_8c.html#a2e635b388f51128a51ca2e76f7a1f0e6" title="Draws all the opponents with the same room as the room variable." alt="" coords="383,422,545,449"/>
+<area shape="rect" id="node12" href="$_tasks_8c.html#a7367e6de842ffaeb002e99d34bbc8c5c" title="Draws the arrow pointing to each task in the room." alt="" coords="397,219,531,246"/>
+<area shape="rect" id="node14" href="$_player_8c.html#a21473296e1c865781a3b550ffaedbf24" title="Draws the player parameter on the screen." alt="" coords="607,270,698,297"/>
+<area shape="rect" id="node15" href="$_rooms_8c.html#afdd3ac068f320937693d22b737d25610" title="Draws the room background to the screen." alt="" coords="610,321,695,347"/>
+<area shape="rect" id="node16" href="$_rooms_8c.html#a95409ba2abe4b32d559c00ba66e0f841" title="Allocates memory for the room and loads its obstacles and background xpms." alt="" coords="423,371,505,398"/>
+<area shape="rect" id="node11" href="$_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764" title="Draws the opponent parameter on the screen." alt="" coords="598,383,707,410"/>
+<area shape="rect" id="node13" href="$_tasks_8c.html#a93da032b32a09169a21644aaaa9df109" title="Draws an arrow pointing to a specific task in the room." alt="" coords="593,219,712,246"/>
+<area shape="rect" id="node18" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="609,118,697,145"/>
+<area shape="rect" id="node20" href="$mouse_8c.html#a954a28cd211a8ca9e076c800a8886a76" title="Substitutes the cursor pixels with the background in order to erase it" alt="" coords="415,473,513,499"/>
+</map>

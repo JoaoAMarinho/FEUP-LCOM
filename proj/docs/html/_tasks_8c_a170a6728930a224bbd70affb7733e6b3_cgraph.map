@@ -1,0 +1,4 @@
+<map id="LoadTasks" name="LoadTasks">
+<area shape="rect" id="node1" title="Allocates memory for all the existing task in the gameTasks array." alt="" coords="5,5,91,32"/>
+<area shape="rect" id="node2" href="$_tasks_8c.html#af450d3fb297aa88a976268853f3a900e" title="Create a task object." alt="" coords="139,5,229,32"/>
+</map>
