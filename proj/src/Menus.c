@@ -967,9 +967,9 @@ void draw_Number(int x, int y, int n){
 void draw_Main_Date(){
     draw_Number(100,538,date->day/10);
     draw_Number(121,538,date->day%10);
-    draw_Symbol(143,538,0);
+    draw_Symbol(140,538,0);
     draw_Number(148,538,date->month/10);
-    draw_Number(162,538,date->month%10);
+    draw_Number(164,538,date->month%10);
     draw_Symbol(182,538,0);
     draw_Number(191,538,2);
     draw_Number(212,538,0);

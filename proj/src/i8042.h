@@ -11,7 +11,6 @@
 
 #define MOUSE_IRQ 12
 #define KBD_IRQ 0x01
-#define RTC_IRQ 0x08
 
 //Some Break codes
 #define ESC_KEY 0x81
@@ -76,51 +75,5 @@
 #define RIGHT_BUTTON  BIT(1)    
 #define LEFT_BUTTON   BIT(0) 
 
-//Videocard service
-
-#define VIDEO_CARD 0x10
-#define PC_CONFIG 0x11
-#define MEMORY_CONFIG 0x12
-#define KEYBOARD_SERVICE 0x16
-
-//Grafics mode
-
-#define MODE1 0x105 //1024x768, bits per pixel: 8
-#define MODE2 0x110 //640x480, bits per pixel: 15(5:5:5)
-#define MODE3 0x115 //800x600, bits per pixel: 24(8:8:8)
-#define MODE4 0x11A //1280x1024, bits per pixel: 16(5:6:5)
-#define MODE5 0x14C //1152x864, bits per pixel: 32((8:)8:8:8)
-
-//RTC defines
-#define RTC_ADDR_REG 0x70
-#define RTC_DATA_REG 0x71
-
-//#define RTC_SEC  0x00
-//#define RTC_MIN  0x02
-//#define RTC_HOUR    0x04
-//#define RTC_DAY_OF_WEEK 0x06
-#define RTC_D   0x07
-#define RTC_M   0x08
-#define RTC_Y   0x09
-
-//Register A
-#define RTC_A_REGISTER  0x0A
-#define RTC_UIP BIT(7)
-
-//Register B
-#define RTC_B_REGISTER 0x0B
-#define RTC_SET BIT(7)
-#define RTC_PIE BIT(6)
-#define RTC_AIE BIT(5)
-#define RTC_UIE BIT(4)
-
-//Register C
-#define RTC_C_REGISTER 0x0C
-#define RTC_PI_PENDING BIT(6)
-#define RTC_AI_PENDING BIT(5)
-#define RTC_UI_PENDING BIT(4)
-
-//Register D
-#define RTC_D_REGISTER 0x0D
 
 #endif /*_LCOM_I8042_H*/

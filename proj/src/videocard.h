@@ -5,7 +5,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#include "i8042.h"
+#include "VideocardConstants.h"
 #include "utils.h"
 
 //Sentido do player ou do enemy
