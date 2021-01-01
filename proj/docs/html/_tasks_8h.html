@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ShipEscape_logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ShipEscape
    &#160;<span id="projectnumber">v1.0.0</span>
@@ -82,17 +83,18 @@ $(function() {
 Include dependency graph for Tasks.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="_tasks_8h__incl.png" border="0" usemap="#a_d_1_2_escola_2_faculdade_22___ano_21___semestre_2_l_c_o_m_2_m_i_n_i_x-_l_c_o_m_2shared_2g02_2proj_2src_2_tasks_8h" alt=""/></div>
-<map name="_d_1_2_escola_2_faculdade_22___ano_21___semestre_2_l_c_o_m_2_m_i_n_i_x-_l_c_o_m_2shared_2g02_2proj_2src_2_tasks_8h" id="a_d_1_2_escola_2_faculdade_22___ano_21___semestre_2_l_c_o_m_2_m_i_n_i_x-_l_c_o_m_2shared_2g02_2proj_2src_2_tasks_8h">
-<area shape="rect" title=" " alt="" coords="12,5,191,76"/>
-<area shape="rect" title=" " alt="" coords="121,423,199,449"/>
-<area shape="rect" title=" " alt="" coords="174,124,237,151"/>
-<area shape="rect" href="_opponents_8h.html" title=" " alt="" coords="53,124,149,151"/>
-<area shape="rect" href="i8042_8h.html" title=" " alt="" coords="93,348,157,375"/>
-<area shape="rect" href="_rooms_8h.html" title=" " alt="" coords="157,199,232,225"/>
-<area shape="rect" href="_videocard_8h.html" title=" " alt="" coords="249,273,340,300"/>
-<area shape="rect" title=" " alt="" coords="313,423,378,449"/>
-<area shape="rect" title=" " alt="" coords="416,348,477,375"/>
-<area shape="rect" href="utils_8h.html" title=" " alt="" coords="283,348,341,375"/>
+<map name="_d_1_2_escola_2_faculdade_22___ano_21___semestre_2_l_c_o_m_2_m_i_n_i_x-_l_c_o_m_2shared_2g02_2proj_2src_2_tasks_8h" id="_d_1_2_escola_2_faculdade_22___ano_21___semestre_2_l_c_o_m_2_m_i_n_i_x-_l_c_o_m_2shared_2g02_2proj_2src_2_tasks_8h">
+<area shape="rect" title=" " alt="" coords="5,5,184,76"/>
+<area shape="rect" title=" " alt="" coords="193,423,271,449"/>
+<area shape="rect" title=" " alt="" coords="63,124,126,151"/>
+<area shape="rect" href="_opponents_8h.html" title=" " alt="" coords="151,124,247,151"/>
+<area shape="rect" href="i8042_8h.html" title=" " alt="" coords="80,273,144,300"/>
+<area shape="rect" href="_rooms_8h.html" title=" " alt="" coords="219,199,293,225"/>
+<area shape="rect" href="_videocard_8h.html" title=" " alt="" coords="447,273,537,300"/>
+<area shape="rect" title=" " alt="" coords="569,423,634,449"/>
+<area shape="rect" title=" " alt="" coords="579,348,640,375"/>
+<area shape="rect" href="_videocard_constants_8h.html" title=" " alt="" coords="270,348,421,375"/>
+<area shape="rect" href="utils_8h.html" title=" " alt="" coords="497,348,554,375"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -126,16 +128,17 @@ Data Structures</h2></td></tr>
 Enumerations</h2></td></tr>
 <tr class="memitem:a2cb102d7d3b2ef60f676eaee98225431"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431">Task_type</a> { <a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431a6d7134828b81adf5407a447d1aa6f672">ICE</a>, 
 <a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431a5e69962f7be201703b58f4fdb5b326fa">SHIP</a>, 
-<a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431af3898e158fb222d52e6ad04cb9219194">DOWNLOAD</a>
+<a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431af3898e158fb222d52e6ad04cb9219194">DOWNLOAD</a>, 
+<a class="el" href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431ab8f22878cbe7cc7489be00dcf9afe313">SEQUENCE</a>
  }</td></tr>
 <tr class="memdesc:a2cb102d7d3b2ef60f676eaee98225431"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum with all the task types  <a href="_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431">More...</a><br /></td></tr>
 <tr class="separator:a2cb102d7d3b2ef60f676eaee98225431"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a575f8ebd9c4dfc91715f05b75f2c1bc7"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7">Ship_state</a> { <a class="el" href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7a399c982a0c65189d8b619a10443b9a8e">START_STATE</a>, 
-<a class="el" href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7a8f8a763f5c9c92a1bbad5b669ef8d232">TRANSITION_STATE</a>, 
-<a class="el" href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7a3b8fcb01cbfafaacda7074a210e8b1de">END_STATE</a>
+<tr class="memitem:ad49620a2d68293f5d1a3590b7d3f45ab"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45ab">Task_state</a> { <a class="el" href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45aba399c982a0c65189d8b619a10443b9a8e">START_STATE</a>, 
+<a class="el" href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45aba8f8a763f5c9c92a1bbad5b669ef8d232">TRANSITION_STATE</a>, 
+<a class="el" href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45aba3b8fcb01cbfafaacda7074a210e8b1de">END_STATE</a>
  }</td></tr>
-<tr class="memdesc:a575f8ebd9c4dfc91715f05b75f2c1bc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum with the states of the task SHIP  <a href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7">More...</a><br /></td></tr>
-<tr class="separator:a575f8ebd9c4dfc91715f05b75f2c1bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ad49620a2d68293f5d1a3590b7d3f45ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">enum with the states of the tasks SHIP and SEQUENCE  <a href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45ab">More...</a><br /></td></tr>
+<tr class="separator:ad49620a2d68293f5d1a3590b7d3f45ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -165,23 +168,23 @@ Functions</h2></td></tr>
 <tr class="separator:a5ec7516574ad7b0bbba63cbfd1e5782e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a575f8ebd9c4dfc91715f05b75f2c1bc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a575f8ebd9c4dfc91715f05b75f2c1bc7">&#9670;&nbsp;</a></span>Ship_state</h2>
+<a id="ad49620a2d68293f5d1a3590b7d3f45ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49620a2d68293f5d1a3590b7d3f45ab">&#9670;&nbsp;</a></span>Task_state</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">enum <a class="el" href="_tasks_8h.html#a575f8ebd9c4dfc91715f05b75f2c1bc7">Ship_state</a></td>
+          <td class="memname">enum <a class="el" href="_tasks_8h.html#ad49620a2d68293f5d1a3590b7d3f45ab">Task_state</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>enum with the states of the task SHIP </p>
+<p>enum with the states of the tasks SHIP and SEQUENCE </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a575f8ebd9c4dfc91715f05b75f2c1bc7a399c982a0c65189d8b619a10443b9a8e"></a>START_STATE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a575f8ebd9c4dfc91715f05b75f2c1bc7a8f8a763f5c9c92a1bbad5b669ef8d232"></a>TRANSITION_STATE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a575f8ebd9c4dfc91715f05b75f2c1bc7a3b8fcb01cbfafaacda7074a210e8b1de"></a>END_STATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad49620a2d68293f5d1a3590b7d3f45aba399c982a0c65189d8b619a10443b9a8e"></a>START_STATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad49620a2d68293f5d1a3590b7d3f45aba8f8a763f5c9c92a1bbad5b669ef8d232"></a>TRANSITION_STATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad49620a2d68293f5d1a3590b7d3f45aba3b8fcb01cbfafaacda7074a210e8b1de"></a>END_STATE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -203,6 +206,7 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2cb102d7d3b2ef60f676eaee98225431a6d7134828b81adf5407a447d1aa6f672"></a>ICE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a2cb102d7d3b2ef60f676eaee98225431a5e69962f7be201703b58f4fdb5b326fa"></a>SHIP&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a2cb102d7d3b2ef60f676eaee98225431af3898e158fb222d52e6ad04cb9219194"></a>DOWNLOAD&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a2cb102d7d3b2ef60f676eaee98225431ab8f22878cbe7cc7489be00dcf9afe313"></a>SEQUENCE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -302,19 +306,20 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_tasks_8h_a7367e6de842ffaeb002e99d34bbc8c5c_icgraph.png" border="0" usemap="#a_tasks_8h_a7367e6de842ffaeb002e99d34bbc8c5c_icgraph" alt=""/></div>
 <map name="_tasks_8h_a7367e6de842ffaeb002e99d34bbc8c5c_icgraph" id="_tasks_8h_a7367e6de842ffaeb002e99d34bbc8c5c_icgraph">
-<area shape="rect" title="Draws the arrow pointing to each task in the room." alt="" coords="860,183,995,209"/>
-<area shape="rect" href="_menus_8h.html#a1b9a630c88309b3402fd87a4ffa6bc7f" title="Draws the room as well as all the tasks and opponents from that room, changes the player direction an..." alt="" coords="736,183,812,209"/>
+<area shape="rect" title="Draws the arrow pointing to each task in the room." alt="" coords="867,208,1001,235"/>
+<area shape="rect" href="_menus_8h.html#a1b9a630c88309b3402fd87a4ffa6bc7f" title="Draws the room as well as all the tasks and opponents from that room, changes the player direction an..." alt="" coords="743,208,819,235"/>
 <area shape="rect" href="_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="453,5,547,32"/>
 <area shape="rect" href="_menus_8h.html#ad1f6bce2532f99468270f5c296fada98" title="GameMap menu interrupt handler." alt="" coords="451,56,549,83"/>
-<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="615,107,671,133"/>
-<area shape="rect" href="_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="609,157,676,184"/>
+<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="472,107,528,133"/>
+<area shape="rect" href="_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="613,157,679,184"/>
 <area shape="rect" href="_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="462,208,538,235"/>
 <area shape="rect" href="_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="467,259,533,285"/>
-<area shape="rect" href="_menus_8c.html#a7be4f604c1baeb7cac84122a7f2438cf" title="Resets the game conditions in order to start from the beginning." alt="" coords="597,259,688,285"/>
-<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="610,360,675,387"/>
-<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,157,403,184"/>
-<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,157,245,184"/>
-<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,157,115,184"/>
+<area shape="rect" href="_menus_8c.html#a7be4f604c1baeb7cac84122a7f2438cf" title="Resets the game conditions in order to start from the beginning." alt="" coords="601,259,691,285"/>
+<area shape="rect" href="_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="597,360,695,387"/>
+<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="613,411,679,437"/>
+<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,183,403,209"/>
+<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,183,245,209"/>
+<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,183,115,209"/>
 </map>
 </div>
 
@@ -368,20 +373,21 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_tasks_8h_a93da032b32a09169a21644aaaa9df109_icgraph.png" border="0" usemap="#a_tasks_8h_a93da032b32a09169a21644aaaa9df109_icgraph" alt=""/></div>
 <map name="_tasks_8h_a93da032b32a09169a21644aaaa9df109_icgraph" id="_tasks_8h_a93da032b32a09169a21644aaaa9df109_icgraph">
-<area shape="rect" title="Draws an arrow pointing to a specific task in the room." alt="" coords="1043,183,1161,209"/>
-<area shape="rect" href="_tasks_8h.html#a7367e6de842ffaeb002e99d34bbc8c5c" title="Draws the arrow pointing to each task in the room." alt="" coords="860,183,995,209"/>
-<area shape="rect" href="_menus_8h.html#a1b9a630c88309b3402fd87a4ffa6bc7f" title="Draws the room as well as all the tasks and opponents from that room, changes the player direction an..." alt="" coords="736,183,812,209"/>
+<area shape="rect" title="Draws an arrow pointing to a specific task in the room." alt="" coords="1049,208,1168,235"/>
+<area shape="rect" href="_tasks_8h.html#a7367e6de842ffaeb002e99d34bbc8c5c" title="Draws the arrow pointing to each task in the room." alt="" coords="867,208,1001,235"/>
+<area shape="rect" href="_menus_8h.html#a1b9a630c88309b3402fd87a4ffa6bc7f" title="Draws the room as well as all the tasks and opponents from that room, changes the player direction an..." alt="" coords="743,208,819,235"/>
 <area shape="rect" href="_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="453,5,547,32"/>
 <area shape="rect" href="_menus_8h.html#ad1f6bce2532f99468270f5c296fada98" title="GameMap menu interrupt handler." alt="" coords="451,56,549,83"/>
-<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="615,107,671,133"/>
-<area shape="rect" href="_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="609,157,676,184"/>
+<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="472,107,528,133"/>
+<area shape="rect" href="_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="613,157,679,184"/>
 <area shape="rect" href="_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="462,208,538,235"/>
 <area shape="rect" href="_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="467,259,533,285"/>
-<area shape="rect" href="_menus_8c.html#a7be4f604c1baeb7cac84122a7f2438cf" title="Resets the game conditions in order to start from the beginning." alt="" coords="597,259,688,285"/>
-<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="610,360,675,387"/>
-<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,157,403,184"/>
-<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,157,245,184"/>
-<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,157,115,184"/>
+<area shape="rect" href="_menus_8c.html#a7be4f604c1baeb7cac84122a7f2438cf" title="Resets the game conditions in order to start from the beginning." alt="" coords="601,259,691,285"/>
+<area shape="rect" href="_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="597,360,695,387"/>
+<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="613,411,679,437"/>
+<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,183,403,209"/>
+<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,183,245,209"/>
+<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,183,115,209"/>
 </map>
 </div>
 
@@ -517,13 +523,14 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="_tasks_8h_a1f73242d18585f6d2cdacad109e60b2a_icgraph.png" border="0" usemap="#a_tasks_8h_a1f73242d18585f6d2cdacad109e60b2a_icgraph" alt=""/></div>
 <map name="_tasks_8h_a1f73242d18585f6d2cdacad109e60b2a_icgraph" id="_tasks_8h_a1f73242d18585f6d2cdacad109e60b2a_icgraph">
-<area shape="rect" title="Finishes a task by putting its bool isFinished to true." alt="" coords="593,56,677,83"/>
-<area shape="rect" href="_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="451,5,545,32"/>
-<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="470,56,526,83"/>
-<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="465,107,531,133"/>
-<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,56,403,83"/>
-<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,56,245,83"/>
-<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,56,115,83"/>
+<area shape="rect" title="Finishes a task by putting its bool isFinished to true." alt="" coords="596,81,680,108"/>
+<area shape="rect" href="_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="452,5,547,32"/>
+<area shape="rect" href="_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="471,56,527,83"/>
+<area shape="rect" href="_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="451,107,548,133"/>
+<area shape="rect" href="_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="467,157,532,184"/>
+<area shape="rect" href="_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,81,403,108"/>
+<area shape="rect" href="_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,81,245,108"/>
+<area shape="rect" href="proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,81,115,108"/>
 </map>
 </div>
 

@@ -11,7 +11,21 @@
  * @brief enum with all the menus
  * 
  */
-typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK, DOWNLOADTASK, SEQUENCETASK/*TASKS*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
+typedef enum {
+    MAIN, /**< @brief Main menu screen*/
+    PLAYING, /**< @brief Play mode*/
+    INSTRUCTIONS, /**< @brief Instructions menu screen*/
+    BESTSCORES, /**< @brief Best scores menu screen*/
+    ICETASK, /**< @brief Ice task screen*/
+    SHIPTASK, /**< @brief Ship task screen*/
+    DOWNLOADTASK, /**< @brief Download task screen*/
+    SEQUENCETASK/*TASKS*/, /**< @brief Sequence task screen*/
+    PAUSE, /**< @brief Pause menu screen*/
+    GAMEMAP, /**< @brief Map menu screen*/
+    VICTORY, /**< @brief Victory menu screen*/
+    DEFEAT, /**< @brief Defeat menu screen*/
+    FINAL   /**< @brief End of game*/
+} Menu;
 
 /**
  * @brief enum with all the possible devices

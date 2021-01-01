@@ -1,0 +1,9 @@
+<map id="sequence_gesture_handler" name="sequence_gesture_handler">
+<area shape="rect" id="node1" title="Task sequence mouse gesture handler." alt="" coords="5,56,183,83"/>
+<area shape="rect" id="node2" href="$_menus_8c.html#aa2a078fba4dccaaf0b32cfbb078555d1" title="Draws a specific task." alt="" coords="231,56,309,83"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a608343c0c4fb70cff0ccd951d5d98b2a" title="Draws the cursor object on the screen." alt="" coords="533,5,625,32"/>
+<area shape="rect" id="node5" href="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929" title="Draws the remaining game time." alt="" coords="357,56,480,83"/>
+<area shape="rect" id="node7" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="375,107,463,133"/>
+<area shape="rect" id="node4" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="677,56,756,83"/>
+<area shape="rect" id="node6" href="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884" title="Draws a specific number in a certain position." alt="" coords="528,56,629,83"/>
+</map>

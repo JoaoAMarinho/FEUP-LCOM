@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['score_389',['Score',['../struct_score.html',1,'']]]
+  ['score_395',['Score',['../struct_score.html',1,'']]]
 ];
