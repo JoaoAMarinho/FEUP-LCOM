@@ -569,6 +569,50 @@ void Download_ih(Device device){
     }
 }
 
+void Sequence_ih(Device device){
+    static Mouse_event * mouseEvent;
+    static bool task_finished = false;
+
+    switch (device) {
+        case TIMER:
+            if(time_counter%60==0 && game_counter!=0){
+				game_counter--;
+                erase_GameTimer();
+                draw_GameTimer();
+			}
+			if(game_counter==0 && !task_finished){
+				gameMenu = DEFEAT;
+			}
+            
+            //End task
+            if(task_finished){
+                finish_task(task_index);
+            }
+            break;
+
+        case KEYBOARD:
+            if (keyboard_data==E_KEY || keyboard_data==ESC_KEY) {
+        	    gameMenu = PLAYING;
+                task_finished= false;
+                *mouseEvent=MOVE;
+                gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+                sequence_gesture_handler(mouseEvent,true);
+        	    LoadPlay(room->currentRoom,false);
+      	    }
+            break;
+        case MOUSE:
+            mouseEvent = get_mouse_event(&mouse_pack);
+            update_cursor_without_draw(&mouse_pack);
+            draw_GameTimer();
+            draw_cursor();
+            if(!task_finished)
+                task_finished=sequence_gesture_handler(mouseEvent,false);
+            break;
+        case RTC:
+            break;
+    }
+}
+
 //---------------------------------------------------------------------------------------------
 //Load menus
 
@@ -959,7 +1003,7 @@ void draw_Symbol(int x, int y, int n){
 
 bool ship_gesture_handler(Mouse_event* mouseEvent, bool reset){
     static int x_delta = 0, y_delta = 0;
-    static Ship_state shipState = START_STATE;
+    static Task_state shipState = START_STATE;
 
     if(reset){
         x_delta = 0, y_delta = 0;
@@ -1045,6 +1089,70 @@ bool ship_gesture_handler(Mouse_event* mouseEvent, bool reset){
             gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
             LoadTask(task_index);
             return true;
+            break;
+        default:
+            break; 
+    }
+    return false;
+}
+
+bool sequence_gesture_handler(Mouse_event* mouseEvent,bool reset){
+    static bool n1_clicked = false, n2_clicked = false, n3_clicked = false;
+    static Task_state sequenceState = START_STATE;
+
+    if(reset){
+        n1_clicked = false; n2_clicked = false; n3_clicked = false;
+        sequenceState = START_STATE;
+        return false;
+    }
+    
+    switch(sequenceState){
+        case START_STATE:
+            gameTasks[task_index]->animationIndex=0;
+            gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[0];
+            LoadTask(task_index);
+            if (*mouseEvent == L_UP && cursor->x > 248 && cursor->y > 327 && cursor->x < 389 && cursor->y < 465 ) {
+                sequenceState = TRANSITION_STATE;
+                n1_clicked = true;
+                gameTasks[task_index]->animationIndex=1;
+                gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[1];
+                LoadTask(task_index);
+            }
+            break;
+        case TRANSITION_STATE:
+            if(*mouseEvent==L_UP && !n2_clicked && !n3_clicked){ //Just clicked n1
+                if(cursor->x > 404 && cursor->y>168 && cursor->x<544 && cursor->y<306){
+                    gameTasks[task_index]->animationIndex=2;
+                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[2];
+                    LoadTask(task_index);
+                    n2_clicked=true;
+                }else{
+                    n1_clicked=false;
+                    sequenceState=START_STATE;
+                }
+            }else if(*mouseEvent==L_UP && !n3_clicked){
+                if(cursor->x > 254 && cursor->y>170 && cursor->x<392 && cursor->y<307){
+                    gameTasks[task_index]->animationIndex=3;
+                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[3];
+                    LoadTask(task_index);
+                    n3_clicked=true;
+                    sequenceState=END_STATE;
+                }else{
+                    n2_clicked=false;
+                    n1_clicked=false;
+                    sequenceState=START_STATE;
+                }
+            }
+            break;
+        case END_STATE:
+            if(*mouseEvent==L_UP){
+                if(cursor->x > 405 && cursor->y>324 && cursor->x<544 && cursor->y<462){
+                    gameTasks[task_index]->animationIndex=4;
+                    gameTasks[task_index]->taskImg=gameTasks[task_index]->taskAnimations[4];
+                    LoadTask(task_index);
+                    return true;
+                }else sequenceState=START_STATE; 
+            }
             break;
         default:
             break; 

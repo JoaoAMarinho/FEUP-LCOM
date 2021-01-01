@@ -13,14 +13,14 @@
  * @brief enum with all the task types
  * 
  */
-typedef enum {ICE,SHIP,DOWNLOAD} Task_type;
+typedef enum {ICE,SHIP,DOWNLOAD, SEQUENCE} Task_type;
 
 //Task States
 /**
- * @brief enum with the states of the task SHIP
+ * @brief enum with the states of the tasks SHIP and SEQUENCE
  * 
  */
-typedef enum {START_STATE, TRANSITION_STATE, END_STATE} Ship_state;
+typedef enum {START_STATE, TRANSITION_STATE, END_STATE} Task_state;
 
 /**
  * @struct Task

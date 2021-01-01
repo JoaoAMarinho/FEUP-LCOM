@@ -168,6 +168,9 @@ void receiveInterrupt(Device device){
 		case DOWNLOADTASK:
 			Download_ih(device);
 			break;
+		case SEQUENCETASK:
+			Sequence_ih(device);
+			break;
         case PAUSE:
             Pause_ih(device);
             break;
@@ -368,6 +371,9 @@ void Play_ih(Device device){
 						break;
 					case DOWNLOAD:
 						gameMenu=DOWNLOADTASK;
+						break;
+					case SEQUENCE:
+						gameMenu=SEQUENCETASK;
 						break;
 					//Resto das tasks
 					default:

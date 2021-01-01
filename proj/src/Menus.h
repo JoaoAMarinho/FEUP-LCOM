@@ -11,7 +11,7 @@
  * @brief enum with all the menus
  * 
  */
-typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK, DOWNLOADTASK/*TASKS*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
+typedef enum {MAIN, PLAYING, INSTRUCTIONS, BESTSCORES, ICETASK, SHIPTASK, DOWNLOADTASK, SEQUENCETASK/*TASKS*/, PAUSE, GAMEMAP, VICTORY, DEFEAT, FINAL} Menu;
 
 /**
  * @brief enum with all the possible devices
@@ -119,6 +119,13 @@ void Ship_ih(Device device);
  * @param device which send an interrupt
  */
 void Download_ih(Device device);
+
+/**
+ * @brief Sequence task interrupt handler
+ * 
+ * @param device which send an interrupt
+ */
+void Sequence_ih(Device device);
 
 //Load menus
 /**
@@ -257,6 +264,18 @@ void draw_Symbol(int x, int y, int n);
  * @return false if it did not reach the end state
  */
 bool ship_gesture_handler(Mouse_event* mouseEvent,bool reset);
+
+/**
+ * @brief Task sequence mouse gesture handler 
+ * 
+ * @param mouseEvent event occured in the mouse
+ *
+ * @param reset bool true if it is to reset the handler, false if not
+ *
+ * @return true  if it reached the end state 
+ * @return false if it did not reach the end state
+ */
+bool sequence_gesture_handler(Mouse_event* mouseEvent,bool reset);
 
 //Scores
 /**
