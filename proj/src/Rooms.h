@@ -11,7 +11,22 @@
  * @brief enum with all the possible rooms
  * 
  */
-typedef enum {CAFETERIA, HALLWAY1, ADMIN, WEAPONS, NAVIGATION, HALLWAY2, MEDBAY, ELETRICAL, UPPERENG, HALLWAY3, LOWERENG, REACTOR, SECURITY, END} Room_number;
+typedef enum {
+    CAFETERIA, /**< @brief Cafeteria room*/
+    HALLWAY1, /**< @brief Hallway1 room*/
+    ADMIN, /**< @brief Admin room*/
+    WEAPONS, /**< @brief Weapons room*/
+    NAVIGATION, /**< @brief Navigatiom room*/
+    HALLWAY2, /**< @brief Hallway2 room*/
+    MEDBAY, /**< @brief Medbay room*/
+    ELETRICAL, /**< @brief Eletrical room*/
+    UPPERENG, /**< @brief Uppereng room*/
+    HALLWAY3, /**< @brief Hallway3 room*/
+    LOWERENG, /**< @brief Lowereng room*/
+    REACTOR, /**< @brief Reator room*/
+    SECURITY, /**< @brief Security room*/
+    END /**< @brief End state*/
+} Room_number;
 
 /**
  * @struct Room  
