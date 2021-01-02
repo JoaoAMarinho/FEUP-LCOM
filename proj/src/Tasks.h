@@ -13,7 +13,7 @@
  * @brief enum with all the task types
  * 
  */
-typedef enum {ICE,SHIP,DOWNLOAD, SEQUENCE} Task_type;
+typedef enum {ICE,SHIP,DOWNLOAD, SEQUENCE, ANOMALY, POWER} Task_type;
 
 //Task States
 /**
@@ -78,9 +78,11 @@ void LoadTasks();
  *
  * @param currentRoom of the task
  *
+ * @param alreadyLoaded True if the task xpms have been loaded before, false if not
+ *
  * @return Task* object created
  */
-Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom);
+Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom, bool alreadyLoaded);
 
 /**
  * @brief Draws the arrow pointing to each task in the room

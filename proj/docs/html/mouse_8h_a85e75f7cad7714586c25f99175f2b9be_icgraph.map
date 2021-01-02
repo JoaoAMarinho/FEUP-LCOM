@@ -1,12 +1,14 @@
 <map id="get_mouse_event" name="get_mouse_event">
-<area shape="rect" id="node1" title="Get the mouse event object." alt="" coords="596,132,719,159"/>
-<area shape="rect" id="node2" href="$_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="452,5,547,32"/>
-<area shape="rect" id="node6" href="$_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="471,56,527,83"/>
-<area shape="rect" id="node7" href="$_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="466,107,533,133"/>
-<area shape="rect" id="node8" href="$_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="461,157,537,184"/>
-<area shape="rect" id="node9" href="$_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="451,208,548,235"/>
-<area shape="rect" id="node10" href="$_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="467,259,532,285"/>
-<area shape="rect" id="node3" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,132,403,159"/>
-<area shape="rect" id="node4" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,132,245,159"/>
-<area shape="rect" id="node5" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,132,115,159"/>
+<area shape="rect" id="node1" title="Get the mouse event object." alt="" coords="596,183,719,209"/>
+<area shape="rect" id="node2" href="$_menus_8h.html#aac511a6a92bf89b83f9869b0327b45e6" title="Anomaly task interrupt handler." alt="" coords="454,5,545,32"/>
+<area shape="rect" id="node6" href="$_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="452,56,547,83"/>
+<area shape="rect" id="node7" href="$_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="471,107,527,133"/>
+<area shape="rect" id="node8" href="$_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="466,157,533,184"/>
+<area shape="rect" id="node9" href="$_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="461,208,537,235"/>
+<area shape="rect" id="node10" href="$_menus_8h.html#a23d8348bb291d16d0bee0a6325b987e6" title="Power task interrupt handler." alt="" coords="462,259,537,285"/>
+<area shape="rect" id="node11" href="$_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="451,309,548,336"/>
+<area shape="rect" id="node12" href="$_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="467,360,532,387"/>
+<area shape="rect" id="node3" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,183,403,209"/>
+<area shape="rect" id="node4" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,183,245,209"/>
+<area shape="rect" id="node5" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,183,115,209"/>
 </map>

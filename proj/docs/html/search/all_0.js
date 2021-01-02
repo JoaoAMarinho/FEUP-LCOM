@@ -9,5 +9,8 @@ var searchData=
   ['animate_5fplayer_6',['animate_player',['../_player_8c.html#a7aefbdb854259d01f536589486caf610',1,'animate_player(Player *player):&#160;Player.c'],['../_player_8h.html#a7aefbdb854259d01f536589486caf610',1,'animate_player(Player *player):&#160;Player.c']]],
   ['animate_5fprojectile_7',['animate_projectile',['../_projectile_8c.html#a40ecb58e418fa7e795925a118422351a',1,'animate_projectile(Projectile *projectile):&#160;Projectile.c'],['../_projectile_8h.html#a40ecb58e418fa7e795925a118422351a',1,'animate_projectile(Projectile *projectile):&#160;Projectile.c']]],
   ['animationindex_8',['animationIndex',['../struct_opponent.html#a9830f03385b6a4b8b5f9b087094c8a7a',1,'Opponent::animationIndex()'],['../struct_task.html#a9830f03385b6a4b8b5f9b087094c8a7a',1,'Task::animationIndex()']]],
-  ['aux_9',['AUX',['../i8042_8h.html#a1b41fd2be63532d4ab910f8b256c3811',1,'i8042.h']]]
+  ['anomaly_9',['ANOMALY',['../_tasks_8h.html#a2cb102d7d3b2ef60f676eaee98225431a281089a30fbc86508cbb2b2fcf4d0f5d',1,'Tasks.h']]],
+  ['anomaly_5fih_10',['Anomaly_ih',['../_menus_8c.html#aac511a6a92bf89b83f9869b0327b45e6',1,'Anomaly_ih(Device device):&#160;Menus.c'],['../_menus_8h.html#aac511a6a92bf89b83f9869b0327b45e6',1,'Anomaly_ih(Device device):&#160;Menus.c']]],
+  ['anomalytask_11',['ANOMALYTASK',['../_menus_8h.html#af3d52afbb0d088f62e02208b24a9cbd2a5c49124b717021f6d9dc0873288ffdb5',1,'Menus.h']]],
+  ['aux_12',['AUX',['../i8042_8h.html#a1b41fd2be63532d4ab910f8b256c3811',1,'i8042.h']]]
 ];

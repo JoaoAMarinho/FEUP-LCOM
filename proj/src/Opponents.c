@@ -23,7 +23,7 @@ void LoadOpponents(){
     gameOpponents = (Opponent **) malloc(n_opponents * sizeof(Opponent *));
 
     //Opponents ordered by their room
-    gameOpponents[0] = create_opponent(175,425,DOWN,WEAPONS, false);
+    gameOpponents[0] = create_opponent(175,420,DOWN,WEAPONS, false);
     gameOpponents[1] = create_opponent(258,510,UP,NAVIGATION, true);
     gameOpponents[2] = create_opponent(477,207,LEFT,HALLWAY1, true);
     gameOpponents[3] = create_opponent(452,515,UP,HALLWAY1, true);
@@ -38,9 +38,9 @@ void LoadOpponents(){
     gameOpponents[12] = create_opponent(296,364,RIGHT,REACTOR,true);
     gameOpponents[13] = create_opponent(339,119,UP,SECURITY,false);
     gameOpponents[14] = create_opponent(284,490,RIGHT,LOWERENG,true);
-    gameOpponents[15] = create_opponent(444,513,UP,HALLWAY2,false);
+    gameOpponents[15] = create_opponent(342,416,RIGHT,HALLWAY2,false);
     gameOpponents[16] = create_opponent(157,223,DOWN,HALLWAY2,false);
-    gameOpponents[17] = create_opponent(93,352,RIGHT,HALLWAY2,true);
+    gameOpponents[17] = create_opponent(93,314,RIGHT,HALLWAY2,true);
 
 }
 

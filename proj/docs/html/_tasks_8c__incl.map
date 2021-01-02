@@ -1,5 +1,5 @@
 <map id="D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX&#45;LCOM/shared/g02/proj/src/Tasks.c" name="D:/Escola/Faculdade/2_Ano/1_Semestre/LCOM/MINIX&#45;LCOM/shared/g02/proj/src/Tasks.c">
-<area shape="rect" id="node1" title=" " alt="" coords="2508,5,2687,76"/>
+<area shape="rect" id="node1" title=" " alt="" coords="2880,5,3059,76"/>
 <area shape="rect" id="node2" href="$_tasks_8h.html" title=" " alt="" coords="41,131,109,158"/>
 <area shape="rect" id="node13" title=" " alt="" coords="133,131,320,158"/>
 <area shape="rect" id="node14" title=" " alt="" coords="344,131,547,158"/>
@@ -30,6 +30,10 @@
 <area shape="rect" id="node39" title=" " alt="" coords="4947,124,5122,165"/>
 <area shape="rect" id="node40" title=" " alt="" coords="5146,124,5321,165"/>
 <area shape="rect" id="node41" title=" " alt="" coords="5345,124,5519,165"/>
+<area shape="rect" id="node42" title=" " alt="" coords="5543,124,5710,165"/>
+<area shape="rect" id="node43" title=" " alt="" coords="5734,124,5901,165"/>
+<area shape="rect" id="node44" title=" " alt="" coords="5925,124,6088,165"/>
+<area shape="rect" id="node45" title=" " alt="" coords="6112,124,6275,165"/>
 <area shape="rect" id="node3" title=" " alt="" coords="173,512,251,539"/>
 <area shape="rect" id="node4" title=" " alt="" coords="43,213,106,240"/>
 <area shape="rect" id="node5" href="$_opponents_8h.html" title=" " alt="" coords="131,213,227,240"/>

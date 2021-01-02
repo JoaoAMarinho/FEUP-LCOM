@@ -19,7 +19,9 @@ typedef enum {
     ICETASK, /**< @brief Ice task screen*/
     SHIPTASK, /**< @brief Ship task screen*/
     DOWNLOADTASK, /**< @brief Download task screen*/
-    SEQUENCETASK/*TASKS*/, /**< @brief Sequence task screen*/
+    SEQUENCETASK, /**< @brief Sequence task screen*/
+    ANOMALYTASK, /**< @brief Anomamly task screen*/
+    POWERTASK, /**< @brief Power task screen*/
     PAUSE, /**< @brief Pause menu screen*/
     GAMEMAP, /**< @brief Map menu screen*/
     VICTORY, /**< @brief Victory menu screen*/
@@ -140,6 +142,20 @@ void Download_ih(Device device);
  * @param device which send an interrupt
  */
 void Sequence_ih(Device device);
+
+/**
+ * @brief Anomaly task interrupt handler
+ * 
+ * @param device which send an interrupt
+ */
+void Anomaly_ih(Device device);
+
+/**
+ * @brief Power task interrupt handler
+ * 
+ * @param device which send an interrupt
+ */
+void Power_ih(Device device);
 
 //Load menus
 /**

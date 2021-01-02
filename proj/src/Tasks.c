@@ -39,11 +39,19 @@
 #include "Xpms/Tasks/Sequence-task/Sequencetask3.xpm"
 #include "Xpms/Tasks/Sequence-task/Sequencetask4.xpm"
 
+//Anomaly task xpms
+#include "Xpms/Tasks/Anomaly-task/Anomalytask0.xpm"
+#include "Xpms/Tasks/Anomaly-task/Anomalytask1.xpm"
+
+//Power task xpms
+#include "Xpms/Tasks/Power-task/Powertask0.xpm"
+#include "Xpms/Tasks/Power-task/Powertask1.xpm"
+
 extern uint16_t horizontal_res, vertical_res;
 extern Room * room;
 
 Task ** gameTasks;
-int n_tasks=4;
+int n_tasks=7;
 
 //---------------------------------------------------------------------------------------------
 
@@ -51,13 +59,22 @@ void LoadTasks(){
     gameTasks = (Task **) malloc(n_tasks * sizeof(Task *));
 
     //Tasks ordered by room
-    gameTasks[0] = create_task(442,307,ICE,WEAPONS);
-    gameTasks[1] = create_task(590,146,SHIP,NAVIGATION);
-    gameTasks[2] = create_task(123,54,DOWNLOAD,ELETRICAL);
-    gameTasks[3] = create_task(169,95,SEQUENCE,REACTOR);
+    gameTasks[0] = create_task(442,307,ICE,WEAPONS,false);
+    gameTasks[1] = create_task(590,146,SHIP,NAVIGATION,false);
+    gameTasks[2] = create_task(123,54,DOWNLOAD,ELETRICAL,false);
+    gameTasks[3] = create_task(169,95,SEQUENCE,REACTOR,false);
+    gameTasks[4] = create_task(585,411,ANOMALY,MEDBAY,false);
+    gameTasks[5] = create_task(283,62,DOWNLOAD,LOWERENG,true);
+    gameTasks[6] = create_task(324,67,POWER,UPPERENG,false);
+    
+    //Loaded before
+    for(int i=0; i<9; i++){
+        gameTasks[5]->taskAnimations[i]=gameTasks[2]->taskAnimations[i];
+    }
+    gameTasks[5]->taskImg = gameTasks[5]->taskAnimations[0];
 }
 
-Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
+Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom, bool alreadyLoaded){
     Task* task= (Task*) malloc(sizeof(Task));
 
     task->x = x;
@@ -67,6 +84,8 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
     task->taskType=taskName;
     task->animationIndex=0;
     task->isFinished=false;
+
+    if(alreadyLoaded) return task;
 
     xpm_image_t img;
 
@@ -133,6 +152,18 @@ Task* create_task(int x, int y, Task_type taskName, Room_number currentRoom){
             task->taskAnimations[3] = img;
             xpm_load(Sequencetask4_xpm, XPM_8_8_8_8, &img);
             task->taskAnimations[4] = img;
+            break;
+        case ANOMALY:
+            xpm_load(Anomalytask0_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[0] = img;
+            xpm_load(Anomalytask1_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[1] = img;
+            break;
+        case POWER:
+            xpm_load(Powertask0_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[0] = img;
+            xpm_load(Powertask1_xpm, XPM_8_8_8_8, &img);
+            task->taskAnimations[1] = img;
             break;
         //Other tasks;
         default:

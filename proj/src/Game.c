@@ -3,7 +3,7 @@
 //Device global variables
 //Timer
 unsigned int time_counter=0;
-unsigned int game_counter=200;
+unsigned int game_counter=300;
 //KeyBoard
 uint8_t keyboard_data;
 bool kb_error=false;
@@ -170,6 +170,12 @@ void receiveInterrupt(Device device){
 			break;
 		case SEQUENCETASK:
 			Sequence_ih(device);
+			break;
+		case ANOMALYTASK:
+			Anomaly_ih(device);
+			break;
+		case POWERTASK:
+			Power_ih(device);
 			break;
         case PAUSE:
             Pause_ih(device);
@@ -375,7 +381,12 @@ void Play_ih(Device device){
 					case SEQUENCE:
 						gameMenu=SEQUENCETASK;
 						break;
-					//Resto das tasks
+					case ANOMALY:
+						gameMenu=ANOMALYTASK;
+						break;
+					case POWER:
+						gameMenu=POWERTASK;
+						break;
 					default:
 						break;
 				}
@@ -481,5 +492,5 @@ void ResetGame(){
 	LoadPlay(CAFETERIA,true);
 	free(player);
 	time_counter=0;
-	game_counter=200; //Trocar para tempo normal
+	game_counter=300; //Trocar para tempo normal
 }

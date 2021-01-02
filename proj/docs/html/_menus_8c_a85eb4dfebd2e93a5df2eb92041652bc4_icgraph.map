@@ -1,26 +1,28 @@
 <map id="draw_Menu" name="draw_Menu">
 <area shape="rect" id="node1" title="Draws the current_background." alt="" coords="989,157,1077,184"/>
 <area shape="rect" id="node2" href="$_menus_8h.html#ace31b8ab160f9392523b2eeee6bc4d3d" title="Loads the bestScores menu xpm, each score, and draws the menu." alt="" coords="831,5,941,32"/>
-<area shape="rect" id="node7" href="$_menus_8h.html#a673b273cbb240a1935911c88b071bbca" title="Loads the defeat menu xpm and draws it." alt="" coords="843,208,929,235"/>
-<area shape="rect" id="node9" href="$_menus_8h.html#aa8ae66da186d9b529baed1d778963e91" title="Loads the gameMap menu xpm, the task warnings and draws it." alt="" coords="831,56,941,83"/>
+<area shape="rect" id="node7" href="$_menus_8h.html#a673b273cbb240a1935911c88b071bbca" title="Loads the defeat menu xpm and draws it." alt="" coords="843,107,929,133"/>
+<area shape="rect" id="node9" href="$_menus_8h.html#aa8ae66da186d9b529baed1d778963e91" title="Loads the gameMap menu xpm, the task warnings and draws it." alt="" coords="831,157,941,184"/>
 <area shape="rect" id="node10" href="$_menus_8h.html#ae973fa5491e0fee81d89dc596ee62933" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="655,259,733,285"/>
-<area shape="rect" id="node16" href="$_menus_8h.html#a07bd6147697a2c580d307ebad35a9fce" title="Loads the pause menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="843,107,929,133"/>
-<area shape="rect" id="node17" href="$_menus_8h.html#aa2a078fba4dccaaf0b32cfbb078555d1" title="Draws a specific task." alt="" coords="847,436,925,463"/>
-<area shape="rect" id="node24" href="$_menus_8h.html#a88871c4848e946c336092836fe71598a" title="Loads the victory menu xpm, the score and draws it." alt="" coords="841,157,931,184"/>
-<area shape="rect" id="node3" href="$_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="661,5,727,32"/>
-<area shape="rect" id="node4" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,284,403,311"/>
-<area shape="rect" id="node5" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,157,245,184"/>
-<area shape="rect" id="node6" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,157,115,184"/>
+<area shape="rect" id="node16" href="$_menus_8h.html#a07bd6147697a2c580d307ebad35a9fce" title="Loads the pause menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="843,208,929,235"/>
+<area shape="rect" id="node17" href="$_menus_8h.html#aa2a078fba4dccaaf0b32cfbb078555d1" title="Draws a specific task." alt="" coords="847,487,925,513"/>
+<area shape="rect" id="node26" href="$_menus_8h.html#a88871c4848e946c336092836fe71598a" title="Loads the victory menu xpm, the score and draws it." alt="" coords="841,56,931,83"/>
+<area shape="rect" id="node3" href="$_menus_8h.html#a3592ff08968cbb8da75d5867a18fd867" title="Main menu interrupt handler." alt="" coords="471,5,537,32"/>
+<area shape="rect" id="node4" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,335,403,361"/>
+<area shape="rect" id="node5" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,183,245,209"/>
+<area shape="rect" id="node6" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,183,115,209"/>
 <area shape="rect" id="node8" href="$_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="661,132,727,159"/>
 <area shape="rect" id="node11" href="$_menus_8h.html#ab6dc6a05d4e412a14a2c419d4118ccfe" title="BestScores menu interrupt handler." alt="" coords="451,157,557,184"/>
 <area shape="rect" id="node12" href="$_menus_8h.html#abc71382567d46bbabe7740babd08ac81" title="Defeat menu interrupt handler." alt="" coords="466,208,542,235"/>
 <area shape="rect" id="node13" href="$_menus_8h.html#a3db5e984387c8f6cc7dedd2d02e138c5" title="Instructions menu interrupt handler." alt="" coords="451,259,557,285"/>
 <area shape="rect" id="node14" href="$_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="466,309,542,336"/>
 <area shape="rect" id="node15" href="$_menus_8h.html#acff6a858f1f25da9f7a7e0186c95f950" title="Victory menu interrupt handler." alt="" coords="464,360,544,387"/>
-<area shape="rect" id="node18" href="$_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="647,411,741,437"/>
-<area shape="rect" id="node19" href="$_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="666,461,722,488"/>
-<area shape="rect" id="node20" href="$_menus_8h.html#a3525a97b676ae3e7ad750825642d6236" title="Task sequence mouse gesture handler." alt="" coords="605,512,783,539"/>
-<area shape="rect" id="node22" href="$_menus_8h.html#aa3f868c35495feafc394086d705b2d47" title="Task ship mouse gesture handler." alt="" coords="621,563,767,589"/>
-<area shape="rect" id="node21" href="$_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="455,512,553,539"/>
-<area shape="rect" id="node23" href="$_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="471,563,537,589"/>
+<area shape="rect" id="node18" href="$_menus_8h.html#aac511a6a92bf89b83f9869b0327b45e6" title="Anomaly task interrupt handler." alt="" coords="649,411,739,437"/>
+<area shape="rect" id="node19" href="$_menus_8h.html#a9c8de87df6b864df9da56d638e5045ed" title="Download task interrupt handler." alt="" coords="647,461,741,488"/>
+<area shape="rect" id="node20" href="$_menus_8h.html#a2c868904f0707add63b5b8dad5a0fb70" title="Ice task interrupt handler." alt="" coords="666,512,722,539"/>
+<area shape="rect" id="node21" href="$_menus_8h.html#a23d8348bb291d16d0bee0a6325b987e6" title="Power task interrupt handler." alt="" coords="657,563,731,589"/>
+<area shape="rect" id="node22" href="$_menus_8h.html#a3525a97b676ae3e7ad750825642d6236" title="Task sequence mouse gesture handler." alt="" coords="605,613,783,640"/>
+<area shape="rect" id="node24" href="$_menus_8h.html#aa3f868c35495feafc394086d705b2d47" title="Task ship mouse gesture handler." alt="" coords="621,664,767,691"/>
+<area shape="rect" id="node23" href="$_menus_8h.html#a49a2d9a5fab3729f539923f1d453fcac" title="Sequence task interrupt handler." alt="" coords="455,613,553,640"/>
+<area shape="rect" id="node25" href="$_menus_8h.html#a75e8944d5ec282e8efbbaec5b8c46fb1" title="Ship task interrupt handler." alt="" coords="471,664,537,691"/>
 </map>
