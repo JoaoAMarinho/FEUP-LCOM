@@ -1,0 +1,6 @@
+<map id="vg_init" name="vg_init">
+<area shape="rect" id="node1" title="Inicializes the videocard memory and changes it&#39;s mode." alt="" coords="5,31,64,57"/>
+<area shape="rect" id="node2" href="$_videocard_8c.html#a7ec354c48e5e189600a432981cc2e525" title="Allocates memory for the primary and secondary buffer." alt="" coords="112,5,195,32"/>
+<area shape="rect" id="node4" href="$_videocard_8c.html#ada3e20ea63a4f7e572c329f56f8dda44" title="Changes the videocard mode to the one specified in the paramter." alt="" coords="114,56,193,83"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a54b128407fee04f1172990f0f39532b1" title="Get the vbe mode information." alt="" coords="243,5,375,32"/>
+</map>

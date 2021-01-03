@@ -1,6 +1,0 @@
-<map id="animate_opponent" name="animate_opponent">
-<area shape="rect" id="node1" title="Change the opponent image with the following index in the array of animations." alt="" coords="5,31,133,57"/>
-<area shape="rect" id="node2" href="$_opponents_8c.html#a266cb6486a1ed361ae0381cf46ab7764" title="Draws the opponent parameter on the screen." alt="" coords="184,5,293,32"/>
-<area shape="rect" id="node4" href="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="181,56,296,83"/>
-<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="344,31,423,57"/>
-</map>

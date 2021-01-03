@@ -1,4 +1,0 @@
-<map id="map_mem" name="map_mem">
-<area shape="rect" id="node1" title="Allocates memory for the primary and secondary buffer." alt="" coords="5,5,88,32"/>
-<area shape="rect" id="node2" href="$_videocard_8c.html#a54b128407fee04f1172990f0f39532b1" title="Get the vbe mode information." alt="" coords="136,5,268,32"/>
-</map>

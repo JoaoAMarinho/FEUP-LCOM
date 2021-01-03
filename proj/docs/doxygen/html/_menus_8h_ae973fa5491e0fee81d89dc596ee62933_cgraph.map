@@ -1,0 +1,8 @@
+<map id="LoadMain" name="LoadMain">
+<area shape="rect" id="node1" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node2" href="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4" title="Adds the button to the current_background img." alt="" coords="139,5,226,32"/>
+<area shape="rect" id="node3" href="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776" title="Create a cursor object." alt="" coords="132,56,233,83"/>
+<area shape="rect" id="node4" href="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2" title="Create a Button object." alt="" coords="135,107,231,133"/>
+<area shape="rect" id="node5" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="139,157,227,184"/>
+<area shape="rect" id="node6" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="281,157,360,184"/>
+</map>

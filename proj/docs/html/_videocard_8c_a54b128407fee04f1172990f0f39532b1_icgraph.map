@@ -1,6 +1,0 @@
-<map id="get_vbe_mode_info" name="get_vbe_mode_info">
-<area shape="rect" id="node1" title="Get the vbe mode information." alt="" coords="400,5,532,32"/>
-<area shape="rect" id="node2" href="$_videocard_8h.html#a7ec354c48e5e189600a432981cc2e525" title="Allocates memory for the primary and secondary buffer." alt="" coords="269,5,352,32"/>
-<area shape="rect" id="node3" href="$_videocard_8h.html#aa6c1ff5024cd4d15e476bce487584daa" title="Inicializes the videocard memory and changes it&#39;s mode." alt="" coords="163,5,221,32"/>
-<area shape="rect" id="node4" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,5,115,32"/>
-</map>

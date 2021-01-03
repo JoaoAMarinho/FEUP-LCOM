@@ -492,5 +492,5 @@ void ResetGame(){
 	LoadPlay(CAFETERIA,true);
 	free(player);
 	time_counter=0;
-	game_counter=300; //Trocar para tempo normal
+	game_counter=300;
 }

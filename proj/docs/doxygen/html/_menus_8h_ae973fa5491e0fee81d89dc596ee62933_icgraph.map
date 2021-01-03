@@ -1,0 +1,11 @@
+<map id="LoadMain" name="LoadMain">
+<area shape="rect" id="node1" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="605,117,684,144"/>
+<area shape="rect" id="node2" href="$_menus_8h.html#ab6dc6a05d4e412a14a2c419d4118ccfe" title="BestScores menu interrupt handler." alt="" coords="451,41,557,68"/>
+<area shape="rect" id="node4" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,41,245,68"/>
+<area shape="rect" id="node6" href="$_menus_8h.html#abc71382567d46bbabe7740babd08ac81" title="Defeat menu interrupt handler." alt="" coords="466,92,542,119"/>
+<area shape="rect" id="node7" href="$_menus_8h.html#a3db5e984387c8f6cc7dedd2d02e138c5" title="Instructions menu interrupt handler." alt="" coords="451,143,557,169"/>
+<area shape="rect" id="node8" href="$_menus_8h.html#aa7f24b953299929df44e12a52d9207dc" title="Pause menu interrupt handler." alt="" coords="466,193,542,220"/>
+<area shape="rect" id="node9" href="$_menus_8h.html#acff6a858f1f25da9f7a7e0186c95f950" title="Victory menu interrupt handler." alt="" coords="464,244,544,271"/>
+<area shape="rect" id="node3" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,117,403,144"/>
+<area shape="rect" id="node5" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,41,115,68"/>
+</map>

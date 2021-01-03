@@ -1,0 +1,4 @@
+<map id="rtc_unsubscribe_int" name="rtc_unsubscribe_int">
+<area shape="rect" id="node1" title="Unsubscribes rtc interrupts." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node2" href="$_rtc_8c.html#a7ed44750b29afb14ab738e731b134181" title="Enables or disables the update of the rtc according to the parameter." alt="" coords="188,5,337,32"/>
+</map>

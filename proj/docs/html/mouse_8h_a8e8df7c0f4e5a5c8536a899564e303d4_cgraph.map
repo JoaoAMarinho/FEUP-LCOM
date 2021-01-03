@@ -1,5 +1,0 @@
-<map id="update_cursor_without_draw" name="update_cursor_without_draw">
-<area shape="rect" id="node1" title="Changes the cursor position according to it&#39;s movement without drawing it." alt="" coords="5,5,192,32"/>
-<area shape="rect" id="node2" href="$mouse_8c.html#a954a28cd211a8ca9e076c800a8886a76" title="Substitutes the cursor pixels with the background in order to erase it" alt="" coords="240,5,337,32"/>
-<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="385,5,464,32"/>
-</map>

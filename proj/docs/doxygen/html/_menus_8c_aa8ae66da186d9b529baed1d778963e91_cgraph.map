@@ -1,0 +1,9 @@
+<map id="LoadGameMap" name="LoadGameMap">
+<area shape="rect" id="node1" title="Loads the gameMap menu xpm, the task warnings and draws it." alt="" coords="5,56,116,83"/>
+<area shape="rect" id="node2" href="$_menus_8c.html#a05dfd7f7c32d4a948723f0ceb4446929" title="Draws the remaining game time." alt="" coords="164,5,287,32"/>
+<area shape="rect" id="node5" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="357,56,445,83"/>
+<area shape="rect" id="node6" href="$_tasks_8c.html#a5690d9f9f3ec78b9ca117e83c52fc222" title="Draws all the warnings to each task in the map menu." alt="" coords="172,107,279,133"/>
+<area shape="rect" id="node3" href="$_menus_8c.html#ad6695b0cd150a5b834a17dcaf664c884" title="Draws a specific number in a certain position." alt="" coords="350,5,451,32"/>
+<area shape="rect" id="node4" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="515,56,593,83"/>
+<area shape="rect" id="node7" href="$_tasks_8c.html#ae8be42430e51b8e5aa7623ddcfd8a721" title="Draws a warning to a specific task in the map menu." alt="" coords="335,107,467,133"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="erase_opponent" name="erase_opponent">
+<area shape="rect" id="node1" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="168,5,247,32"/>
+</map>

@@ -1,6 +1,0 @@
-<map id="animate_player" name="animate_player">
-<area shape="rect" id="node1" title="Change the player image with the following index in the array of animations." alt="" coords="5,31,116,57"/>
-<area shape="rect" id="node2" href="$_player_8c.html#a21473296e1c865781a3b550ffaedbf24" title="Draws the player parameter on the screen." alt="" coords="167,5,257,32"/>
-<area shape="rect" id="node4" href="$_player_8c.html#adf6090d8eba84dacd9cf33ce004a67c9" title="Substitutes the player pixels with the room background in order to erase it." alt="" coords="164,56,260,83"/>
-<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="308,31,387,57"/>
-</map>

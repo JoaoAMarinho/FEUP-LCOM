@@ -1,9 +1,0 @@
-<map id="draw_task_warning" name="draw_task_warning">
-<area shape="rect" id="node1" title="Draws a warning to a specific task in the map menu." alt="" coords="877,5,1009,32"/>
-<area shape="rect" id="node2" href="$_tasks_8h.html#a5690d9f9f3ec78b9ca117e83c52fc222" title="Draws all the warnings to each task in the map menu." alt="" coords="723,5,829,32"/>
-<area shape="rect" id="node3" href="$_menus_8h.html#aa8ae66da186d9b529baed1d778963e91" title="Loads the gameMap menu xpm, the task warnings and draws it." alt="" coords="564,5,675,32"/>
-<area shape="rect" id="node4" href="$_game_8h.html#a5e37d0a40a8d0e1d72ebe9e838178e76" title="Play menu interrupt handler." alt="" coords="451,5,516,32"/>
-<area shape="rect" id="node5" href="$_game_8h.html#a2bc13b25628ee7b60fb6d5c72da10d39" title="Redirects the interrupt received to its handler deppending on the current gameMenu." alt="" coords="293,5,403,32"/>
-<area shape="rect" id="node6" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,5,245,32"/>
-<area shape="rect" id="node7" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,5,115,32"/>
-</map>

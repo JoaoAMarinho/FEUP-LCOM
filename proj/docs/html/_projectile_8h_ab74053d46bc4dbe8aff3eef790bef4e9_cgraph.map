@@ -1,4 +1,0 @@
-<map id="blast" name="blast">
-<area shape="rect" id="node1" title="Blasts a projectile from the player." alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node2" href="$_projectile_8c.html#a352fc596042e87ac31deaeadc6e9ce58" title="Create a projectile object." alt="" coords="104,5,221,32"/>
-</map>

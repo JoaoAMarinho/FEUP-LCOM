@@ -1,6 +1,0 @@
-<map id="projectileCollision" name="projectileCollision">
-<area shape="rect" id="node1" title="Checks if a certain projectile collided with any object." alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node2" href="$_opponents_8c.html#aaf5e4efb45bf6abe60b5c5d63adcc7b3" title="Changes the boolean value of Opponent::isAlive to false." alt="" coords="176,5,275,32"/>
-<area shape="rect" id="node3" href="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="323,5,437,32"/>
-<area shape="rect" id="node4" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="485,5,564,32"/>
-</map>

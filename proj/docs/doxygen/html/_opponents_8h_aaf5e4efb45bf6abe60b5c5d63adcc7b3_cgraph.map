@@ -1,0 +1,5 @@
+<map id="kill_opponent" name="kill_opponent">
+<area shape="rect" id="node1" title="Changes the boolean value of Opponent::isAlive to false." alt="" coords="5,5,104,32"/>
+<area shape="rect" id="node2" href="$_opponents_8c.html#a193a4a3e914becc3f34ce1d381777853" title="Substitutes the opponent pixels with the room background in order to erase it." alt="" coords="152,5,267,32"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="315,5,393,32"/>
+</map>

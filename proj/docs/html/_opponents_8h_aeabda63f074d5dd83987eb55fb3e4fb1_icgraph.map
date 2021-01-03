@@ -1,6 +1,0 @@
-<map id="create_opponent" name="create_opponent">
-<area shape="rect" id="node1" title="Create a opponent object." alt="" coords="455,5,573,32"/>
-<area shape="rect" id="node2" href="$_opponents_8h.html#a77b76e85acb761c82bab20e7585ff017" title="Allocates memory for all the existing opponents in the gameOpponents array." alt="" coords="293,5,407,32"/>
-<area shape="rect" id="node3" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,5,245,32"/>
-<area shape="rect" id="node4" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,5,115,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="rtc_enable_update_int" name="rtc_enable_update_int">
-<area shape="rect" id="node1" title="Enables or disables the update of the rtc according to the parameter." alt="" coords="476,31,625,57"/>
-<area shape="rect" id="node2" href="$_rtc_8h.html#a4c407bd8aa03827b0f868962cf00dbd6" title="Subscribes rtc interrupts." alt="" coords="300,5,421,32"/>
-<area shape="rect" id="node5" href="$_rtc_8h.html#a9d4850bb2a488644672d43287f160622" title="Unsubscribes rtc interrupts." alt="" coords="293,56,428,83"/>
-<area shape="rect" id="node3" href="$_game_8h.html#ae3fcb6ab83836a82d8ab58a853667cba" title="Game main loop, subscribes and receives all the interrupts from each device, in the end unsubscribes ..." alt="" coords="163,31,245,57"/>
-<area shape="rect" id="node4" href="$proj_8c.html#a90aad768b0a0b41e4bcacc566b0cae6e" title=" " alt="" coords="5,31,115,57"/>
-</map>

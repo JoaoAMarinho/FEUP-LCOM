@@ -1,5 +1,0 @@
-<map id="LoadRTC" name="LoadRTC">
-<area shape="rect" id="node1" title="Reads the information from the rtc to the rtc_date array." alt="" coords="5,5,80,32"/>
-<area shape="rect" id="node2" href="$_rtc_8c.html#a5852df494f99fa6bacb2a95ac37528ca" title="Reads a register from the rtc to the rtc_date array." alt="" coords="128,5,223,32"/>
-<area shape="rect" id="node3" href="$_rtc_8c.html#a525a2c36bf3d39b60d609eb65bade82e" title="Waits for a valid rtc." alt="" coords="271,5,365,32"/>
-</map>

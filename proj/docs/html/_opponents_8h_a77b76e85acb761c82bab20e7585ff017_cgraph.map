@@ -1,4 +1,0 @@
-<map id="LoadOpponents" name="LoadOpponents">
-<area shape="rect" id="node1" title="Allocates memory for all the existing opponents in the gameOpponents array." alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node2" href="$_opponents_8c.html#aeabda63f074d5dd83987eb55fb3e4fb1" title="Create a opponent object." alt="" coords="167,5,285,32"/>
-</map>

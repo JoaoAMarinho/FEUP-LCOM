@@ -1,4 +1,0 @@
-<map id="draw_button" name="draw_button">
-<area shape="rect" id="node1" title="Draws the button parameter on the screen." alt="" coords="5,5,97,32"/>
-<area shape="rect" id="node2" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="145,5,224,32"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="explode_projectile" name="explode_projectile">
-<area shape="rect" id="node1" title="Change projectile img to the following in the array of animation." alt="" coords="5,5,132,32"/>
-<area shape="rect" id="node2" href="$_projectile_8c.html#aaaf2947b73a3774a4133fd2edafb4a4a" title="Draws the projectile parameter on the screen." alt="" coords="180,5,288,32"/>
-<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="336,5,415,32"/>
-</map>

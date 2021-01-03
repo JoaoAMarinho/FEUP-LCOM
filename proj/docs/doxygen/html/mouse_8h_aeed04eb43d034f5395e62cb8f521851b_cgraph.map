@@ -1,0 +1,6 @@
+<map id="update_cursor" name="update_cursor">
+<area shape="rect" id="node1" title="Changes the cursor position according to it&#39;s movement." alt="" coords="5,31,109,57"/>
+<area shape="rect" id="node2" href="$mouse_8c.html#a608343c0c4fb70cff0ccd951d5d98b2a" title="Draws the cursor object on the screen." alt="" coords="160,5,252,32"/>
+<area shape="rect" id="node4" href="$mouse_8c.html#a954a28cd211a8ca9e076c800a8886a76" title="Substitutes the cursor pixels with the background in order to erase it" alt="" coords="157,56,255,83"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="303,31,381,57"/>
+</map>

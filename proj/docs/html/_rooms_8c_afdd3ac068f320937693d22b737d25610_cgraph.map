@@ -1,4 +1,0 @@
-<map id="draw_room" name="draw_room">
-<area shape="rect" id="node1" title="Draws the room background to the screen." alt="" coords="5,5,91,32"/>
-<area shape="rect" id="node2" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="139,5,217,32"/>
-</map>

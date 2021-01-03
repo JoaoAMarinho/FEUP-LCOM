@@ -1,5 +1,0 @@
-<map id="LoadDefeat" name="LoadDefeat">
-<area shape="rect" id="node1" title="Loads the defeat menu xpm and draws it." alt="" coords="5,5,92,32"/>
-<area shape="rect" id="node2" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="140,5,228,32"/>
-<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="276,5,355,32"/>
-</map>

@@ -1,0 +1,9 @@
+<map id="Defeat_ih" name="Defeat_ih">
+<area shape="rect" id="node1" title="Defeat menu interrupt handler." alt="" coords="5,81,81,108"/>
+<area shape="rect" id="node2" href="$_menus_8c.html#ae973fa5491e0fee81d89dc596ee62933" title="Loads the main menu xpm, it&#39;s buttons, and draws the menu." alt="" coords="129,81,208,108"/>
+<area shape="rect" id="node3" href="$_buttons_8c.html#a1a30ae39d684716ecba2f9c5e2fa90c4" title="Adds the button to the current_background img." alt="" coords="263,5,350,32"/>
+<area shape="rect" id="node4" href="$mouse_8c.html#a234572e3817a4f64b8a83a84fcbdb776" title="Create a cursor object." alt="" coords="256,56,357,83"/>
+<area shape="rect" id="node5" href="$_buttons_8c.html#a6f7167cea85cc80823166bfe23e6e0c2" title="Create a Button object." alt="" coords="259,107,355,133"/>
+<area shape="rect" id="node6" href="$_menus_8c.html#a85eb4dfebd2e93a5df2eb92041652bc4" title="Draws the current_background." alt="" coords="263,157,351,184"/>
+<area shape="rect" id="node7" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="405,157,484,184"/>
+</map>

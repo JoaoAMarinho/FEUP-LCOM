@@ -1,0 +1,7 @@
+<map id="move_player" name="move_player">
+<area shape="rect" id="node1" title="Changes the player direction and position if it does not collide with any object." alt="" coords="5,56,100,83"/>
+<area shape="rect" id="node2" href="$_player_8c.html#a21473296e1c865781a3b550ffaedbf24" title="Draws the player parameter on the screen." alt="" coords="176,5,267,32"/>
+<area shape="rect" id="node4" href="$_player_8c.html#adf6090d8eba84dacd9cf33ce004a67c9" title="Substitutes the player pixels with the room background in order to erase it." alt="" coords="173,56,269,83"/>
+<area shape="rect" id="node5" href="$_player_8c.html#a168f257d420b07e6afb62b6542b7aea3" title="Checks the player collision with the room obstacles." alt="" coords="148,107,295,133"/>
+<area shape="rect" id="node3" href="$_videocard_8c.html#a6091a4bd04596e6e8e39b7dee1e1b118" title="Draws a certain pixel with a specific colour in the secondary buffer." alt="" coords="343,31,421,57"/>
+</map>
