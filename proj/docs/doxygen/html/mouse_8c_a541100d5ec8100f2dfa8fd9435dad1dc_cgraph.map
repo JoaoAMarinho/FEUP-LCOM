@@ -1,0 +1,4 @@
+<map id="mouse_data_reporting" name="mouse_data_reporting">
+<area shape="rect" id="node1" title="Enables or disables stream mode data reporting, by sending the respective cmd to the mouse." alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node2" href="$utils_8c.html#a79a031a8611f5b2d6afa4158e92b0fb4" title="Function able read from registers." alt="" coords="204,5,295,32"/>
+</map>
