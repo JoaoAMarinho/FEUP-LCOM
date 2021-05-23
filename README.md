@@ -1,6 +1,6 @@
 # FEUP-LCOM 2020/2021
 
-Weekly labs as well as the final projetc in C for the LCOM curricular unit.
+Weekly labs as well as the final project in C for the LCOM curricular unit.
 
 ### Project Infos
 * **Date:** 2nd Year, 1st Semester, 2020/2021
